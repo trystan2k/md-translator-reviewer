@@ -10,6 +10,7 @@ To get started, install the `life-meaning-finder` library using npm or yarn:
 
 ```bash
 npm install life-meaning-finder
+
 ```
 
 ### **Usage**

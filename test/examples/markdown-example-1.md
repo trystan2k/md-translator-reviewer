@@ -4,7 +4,7 @@
 
 The earliest stages of human history are known as prehistory, marked by the development of tools, fire, and early communication through cave art. Humans lived as hunter-gatherers, with evidence of their existence found in Africa as early as 200,000 years ago.
 
-### Key Developments
+### Key Developments in Prehistory
 
 - **Stone Tools**: Early humans created tools from stone, marking the Paleolithic era.
 - **Fire**: Mastery of fire enabled cooking, protection, and social interaction.
