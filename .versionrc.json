@@ -1,0 +1,13 @@
+{
+  "releaseCommitMessageFormat": "chore: release {{currentTag}}",
+  "types": [
+    { "type": "feat", "section": "Features" },
+    { "type": "fix", "section": "Bug Fixes" },
+    { "type": "chore", "section": "Chore" },
+    { "type": "test", "section": "Tests", "hidden": true },
+    { "type": "style", "section": "Style", "hidden": true },
+    { "type": "refactor", "section": "Refactor", "hidden": true },
+    { "type": "build", "section": "Build System", "hidden": true },
+    { "type": "ci", "hidden": true }
+  ]
+}

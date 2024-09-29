@@ -1,0 +1,23 @@
+name: Test Markdown Reviewer and Translator
+
+on:
+  pull_request_review_comment:
+    types: [ created ]
+
+jobs:
+  md-reviewr-translator:
+    runs-on: ubuntu-latest
+    name: A test job to run the Markdown Reviwer and Translator
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Test the md-reviewr-translator action
+        if: |
+          contains(github.event.comment.body, '/mtr-')
+        uses: ./ # Uses an action in the root directory
+        id: md-translator-reviewer
+        with:
+          aiApiKey: ${{ secrets.AI_API_KEY }}
+          aiProvider: google

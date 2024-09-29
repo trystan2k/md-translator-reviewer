@@ -1,0 +1,21 @@
+name: 'Markdown Reviwer and Translator'
+description: 'Markdown grammar reviewer and translation into any other language powered by Google Gemini'
+author: 'Thiago Mendonca'
+inputs:
+  token:
+    description: 'GITHUB_TOKEN or a `repo` scoped Personal Access Token (PAT)'
+    default: ${{ github.token }}
+  aiApiKey:
+    description: API Key to use the AI service
+    required: true
+  aiProvider:
+    description: 'AI Provider'
+    required: false
+    default: 'google'
+  aiModel:
+    description: 'AI language model to use.'
+    required: false
+    default: 'gemini-1.5-flash'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
