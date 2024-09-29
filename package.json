@@ -1,7 +1,7 @@
 {
   "name": "md-translator-reviewer",
   "description": "A GitHub Action to translate and review markdown files",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "Thiago Mendonca",
   "private": true,
   "homepage": "https://github.com/trystan2k/md-translator-reviewer#readme",
