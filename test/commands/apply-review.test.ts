@@ -2,7 +2,7 @@ import { describe, expect, jest, test, beforeEach } from '@jest/globals';
 
 import { applyReviewCommand, ApplyReviewCommandOptions } from '@/md/commands/apply-review';
 import { AI, createAIInstance } from '@/md/ai/ai';
-import { gitCheckout, gitCommitPush, gitPostReplyPullReviewComment, gitSetConfig } from '@/md/git';
+import { getCommitMessage, gitCheckout, gitCommitPush, gitPostReplyPullReviewComment, gitSetConfig } from '@/md/git';
 import { modifyFile } from '@/md/utils/file';
 
 jest.mock('@/md/ai/ai');
@@ -12,15 +12,17 @@ jest.mock('@/md/utils/file');
 describe('applyReviewCommand', () => {
   const mockAIInstance = {
     applyReview: jest.fn<typeof AI.prototype.applyReview>(),
-  };
+  } as unknown as jest.Mocked<AI>;
 
   beforeEach(() => {
     (createAIInstance as jest.Mock).mockReturnValue(mockAIInstance);
+    (getCommitMessage as jest.Mock).mockReturnValue('Apply review suggestions for file %file');
     jest.clearAllMocks();
   });
 
   test('should apply review suggestions and commit changes', async () => {
     const options: ApplyReviewCommandOptions = {
+      aiInstance: mockAIInstance,
       filePath: 'test-file.txt',
       suggestions: 'Some suggestions',
     };
@@ -30,7 +32,6 @@ describe('applyReviewCommand', () => {
 
     await applyReviewCommand(options);
 
-    expect(createAIInstance).toHaveBeenCalled();
     expect(mockAIInstance.applyReview).toHaveBeenCalledWith(options.filePath, options.suggestions);
     expect(modifyFile).toHaveBeenCalledWith(options.filePath, 'Modified content');
     expect(gitSetConfig).toHaveBeenCalled();
@@ -45,6 +46,7 @@ describe('applyReviewCommand', () => {
 
   test('should handle errors gracefully', async () => {
     const options: ApplyReviewCommandOptions = {
+      aiInstance: mockAIInstance,
       filePath: 'test-file.txt',
       suggestions: 'Some suggestions',
     };
@@ -53,7 +55,6 @@ describe('applyReviewCommand', () => {
 
     await expect(applyReviewCommand(options)).rejects.toThrow('AI error');
 
-    expect(createAIInstance).toHaveBeenCalled();
     expect(mockAIInstance.applyReview).toHaveBeenCalledWith(options.filePath, options.suggestions);
     expect(modifyFile).not.toHaveBeenCalled();
     expect(gitSetConfig).not.toHaveBeenCalled();

@@ -2,7 +2,7 @@ import { describe, expect, jest, test, beforeEach } from '@jest/globals';
 
 import { translateCommand, TranslateCommandOptions } from '@/md/commands/translate';
 import { AI, createAIInstance } from '@/md/ai/ai';
-import { gitSetConfig, gitCommitPush, gitCheckout, gitPostReplyPullReviewComment } from '@/md/git';
+import { gitSetConfig, gitCommitPush, gitCheckout, gitPostReplyPullReviewComment, getCommitMessage } from '@/md/git';
 import { createFile, generateOutputFilePath } from '@/md/utils/file';
 
 jest.mock('@/md/ai/ai');
@@ -12,15 +12,17 @@ jest.mock('@/md/utils/file');
 describe('translateCommand', () => {
   const mockAIInstance = {
     translateFile: jest.fn<typeof AI.prototype.translateFile>(),
-  };
+  } as unknown as jest.Mocked<AI>;
 
   beforeEach(() => {
     (createAIInstance as jest.Mock).mockReturnValue(mockAIInstance);
+    (getCommitMessage as jest.Mock).mockReturnValue('Add translation of file %file for language %lang');
     jest.clearAllMocks();
   });
 
   test('should translate the file and perform git operations', async () => {
     const options: TranslateCommandOptions = {
+      aiInstance: mockAIInstance,
       filePath: 'path/to/file.txt',
       targetLang: 'es',
     };
@@ -34,7 +36,6 @@ describe('translateCommand', () => {
 
     await translateCommand(options);
 
-    expect(createAIInstance).toHaveBeenCalled();
     expect(mockAIInstance.translateFile).toHaveBeenCalledWith(options.filePath, options.targetLang);
     expect(generateOutputFilePath).toHaveBeenCalledWith({ filePath: options.filePath, targetLang: options.targetLang });
     expect(createFile).toHaveBeenCalledWith(translatedContent, outputFilePath);
@@ -52,6 +53,7 @@ describe('translateCommand', () => {
 
   test('should handle errors gracefully', async () => {
     const options: TranslateCommandOptions = {
+      aiInstance: mockAIInstance,
       filePath: 'path/to/file.txt',
       targetLang: 'es',
     };
@@ -60,7 +62,6 @@ describe('translateCommand', () => {
 
     await expect(translateCommand(options)).rejects.toThrow('Translation failed');
 
-    expect(createAIInstance).toHaveBeenCalled();
     expect(mockAIInstance.translateFile).toHaveBeenCalledWith(options.filePath, options.targetLang);
     expect(generateOutputFilePath).not.toHaveBeenCalled();
     expect(createFile).not.toHaveBeenCalled();

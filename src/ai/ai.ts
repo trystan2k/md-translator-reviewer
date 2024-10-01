@@ -4,7 +4,7 @@ import { createGoogleGenerativeAI } from './google-ai-adapter';
 import { AIModel, AIProviderInitializer, Config } from './types';
 import { createVercelAI } from './vercel-ai-adapter';
 
-import { getBuildInput, logBuildInfo } from '@/md/git';
+import { logBuildInfo } from '@/md/git';
 
 export type CountTokensResponse = {
   totalTokens: number;
@@ -19,19 +19,17 @@ const providerInitializers: Record<string, AIProviderInitializer> = {
 export class AI {
   private provider: AIModel;
 
-  constructor(providerName: string, apiKey: string, config: Config) {
-    this.provider = this.createProvider(providerName, apiKey, config);
+  constructor(providerName: string, modelName: string, apiKey: string, config: Config) {
+    this.provider = this.createProvider(providerName, modelName, apiKey, config);
   }
 
-  private createProvider(providerName: string, apiKey: string, config: Config) {
-    const model = getBuildInput('aiModel', { required: true });
-
+  private createProvider(providerName: string, modelName: string, apiKey: string, config: Config) {
     const initializer = providerInitializers[providerName];
     if (!initializer) {
       throw new Error(`Provider ${providerName} is not supported.`);
     }
 
-    return initializer(model, apiKey, config);
+    return initializer(modelName, apiKey, config);
   }
 
   private async sendRequest(propmt: string, filePath: string, systemPrompt?: string): Promise<string> {
@@ -93,11 +91,6 @@ export class AI {
   }
 }
 
-const aiProviderConfig: Config = { temperature: 0.1, topP: 0.8, topK: 30 };
-
-export const createAIInstance = () => {
-  const aiApiKey = getBuildInput('aiApiKey', { required: true });
-  const aiProvider = getBuildInput('aiProvider', { required: true });
-
-  return new AI(aiProvider, aiApiKey, aiProviderConfig);
+export const createAIInstance = (aiProvider: string, aiModel: string, aiApiKey: string, aiProviderConfig: Config) => {
+  return new AI(aiProvider, aiModel, aiApiKey, aiProviderConfig);
 };

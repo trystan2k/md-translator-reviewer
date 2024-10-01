@@ -5,6 +5,7 @@ import { context, getOctokit } from '@actions/github';
 
 import {
   authorizeUser,
+  getCommitMessage,
   getGitInstance,
   gitAddCommentReaction,
   gitCheckout,
@@ -195,6 +196,15 @@ describe('Git Utilities', () => {
         username: 'user',
       });
       expect(isAuthorized).toBe(false);
+    });
+  });
+
+  describe('getCommitMessage', () => {
+    test('should return a commit message template', () => {
+      (getInput as jest.Mock).mockReturnValue('Test commit message');
+      const commitMessage = getCommitMessage('commit-message');
+      expect(getInput).toHaveBeenCalledWith('commit-message');
+      expect(commitMessage).toBe('Test commit message');
     });
   });
 });

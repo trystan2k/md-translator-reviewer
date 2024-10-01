@@ -21,3 +21,5 @@ jobs:
         with:
           aiApiKey: ${{ secrets.AI_API_KEY }}
           aiProvider: google
+          translateCommitMessageTemplate: 'feat(*): add translation of file %file for language %lang'
+          applyReviewCommitMessageTemplate: 'fix(*): apply review suggestions for file %file'

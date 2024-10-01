@@ -6,7 +6,6 @@ import { availableFileExtensions } from '@/md/utils/const';
 import { INVALID_FILE_EXTENSION, postError } from '@/md/utils/error';
 
 type CommandParamsOutput = {
-  filePath: string;
   command: Command;
   targetLang: string | undefined;
   suggestions: string | undefined;
@@ -53,7 +52,6 @@ export const commandValidator = async ({
   }
 
   return {
-    filePath,
     command: command as Command,
     targetLang,
     suggestions: parsedSuggestions,

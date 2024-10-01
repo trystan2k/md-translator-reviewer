@@ -16,6 +16,14 @@ inputs:
     description: 'AI language model to use.'
     required: false
     default: 'gemini-1.5-flash'
+  translateCommitMessageTemplate:
+    description: 'Commit message template when creating new translated file. %file is replaced with the file name and %lang with language'
+    required: false
+    default: 'add translation of file %file for language %lang'
+  applyReviewCommitMessageTemplate:
+    description: 'Commit message template when creating a reviewed file. %file is replaced with the file name'
+    required: false
+    default: 'apply review suggestions for file %file'
 runs:
   using: 'node20'
   main: 'dist/index.js'

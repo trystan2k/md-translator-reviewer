@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import { describe, expect, jest, test, beforeEach, afterEach } from '@jest/globals';
 
 import { createGoogleGenerativeAI } from '@/md/ai/google-ai-adapter';
-import { getBuildInput, logBuildInfo } from '@/md/git';
+import { logBuildInfo } from '@/md/git';
 import { AI, createAIInstance } from '@/md/ai/ai';
 import { CountTokensResponse } from '@/md/ai/types';
 import { createVercelAI } from '@/md/ai/vercel-ai-adapter';
@@ -43,14 +43,7 @@ describe('AI', () => {
           .mockImplementation(() => ({ text: 'mock response', responseTokens: 50 })),
       });
 
-      (getBuildInput as jest.Mock<typeof getBuildInput>).mockImplementation((key: string) => {
-        if (key === 'aiModel') return mockModel;
-        if (key === 'aiApiKey') return mockApiKey;
-        if (key === 'aiProvider') return providerName;
-        return 'default_value';
-      });
-
-      ai = createAIInstance();
+      ai = createAIInstance(providerName, mockModel, mockApiKey, mockConfig);
     });
 
     afterEach(() => {
@@ -68,7 +61,7 @@ describe('AI', () => {
     });
 
     test('should throw an error if the provider is not supported', () => {
-      expect(() => new AI('unsupportedProvider', mockApiKey, mockConfig)).toThrow(
+      expect(() => new AI('unsupportedProvider', mockModel, mockApiKey, mockConfig)).toThrow(
         'Provider unsupportedProvider is not supported.',
       );
     });
