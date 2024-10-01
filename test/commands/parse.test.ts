@@ -16,15 +16,13 @@ describe('parse', () => {
     });
 
     test('should throw an error if comment body is not present', async () => {
-      buildContext.payload = { comment: { id: 1, body: null } };
-
-      await expect(getCommandParams()).rejects.toThrow('Error: Failed to get command correctly.');
+      await expect(getCommandParams(null, 'filePath')).rejects.toThrow('Error: Failed to get command correctly.');
     });
 
     test('should call postError if the command is invalid', async () => {
       buildContext.payload = { comment: { id: 2, body: 'invalid command' } };
 
-      await getCommandParams().catch(() => {
+      await getCommandParams('invalid command', 'filePath').catch(() => {
         return null;
       });
 
@@ -32,7 +30,6 @@ describe('parse', () => {
     });
 
     test('should call commandValidator with correct parameters', async () => {
-      buildContext.payload = { comment: { id: 3, body: 'some text /mtr-translate en', path: 'some/path' } };
       const expectedParams = {
         suggestions: 'some text ',
         filePath: 'some/path',
@@ -40,13 +37,12 @@ describe('parse', () => {
         targetLang: 'en',
       };
 
-      await getCommandParams();
+      await getCommandParams('some text /mtr-translate en', 'some/path');
 
       expect(commandValidator).toHaveBeenCalledWith(expectedParams);
     });
 
     test('should handle missing optional parameters gracefully', async () => {
-      buildContext.payload = { comment: { id: 4, body: '/mtr-review', path: 'some/path' } };
       const expectedParams = {
         suggestions: '',
         filePath: 'some/path',
@@ -54,7 +50,7 @@ describe('parse', () => {
         targetLang: undefined,
       };
 
-      await getCommandParams();
+      await getCommandParams('/mtr-review', 'some/path');
 
       expect(commandValidator).toHaveBeenCalledWith(expectedParams);
     });

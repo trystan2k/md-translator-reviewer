@@ -14396,7 +14396,7 @@ var ProxyTracer_1 = __nccwpck_require__(3860);
 Object.defineProperty(exports, "ProxyTracer", ({ enumerable: true, get: function () { return ProxyTracer_1.ProxyTracer; } }));
 var ProxyTracerProvider_1 = __nccwpck_require__(9729);
 Object.defineProperty(exports, "ProxyTracerProvider", ({ enumerable: true, get: function () { return ProxyTracerProvider_1.ProxyTracerProvider; } }));
-var SamplingResult_1 = __nccwpck_require__(7862);
+var SamplingResult_1 = __nccwpck_require__(5481);
 Object.defineProperty(exports, "SamplingDecision", ({ enumerable: true, get: function () { return SamplingResult_1.SamplingDecision; } }));
 var span_kind_1 = __nccwpck_require__(3133);
 Object.defineProperty(exports, "SpanKind", ({ enumerable: true, get: function () { return span_kind_1.SpanKind; } }));
@@ -15445,7 +15445,7 @@ exports.ProxyTracerProvider = ProxyTracerProvider;
 
 /***/ }),
 
-/***/ 7862:
+/***/ 5481:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -22866,7 +22866,7 @@ const Client = __nccwpck_require__(4673)
 const Dispatcher = __nccwpck_require__(2711)
 const errors = __nccwpck_require__(575)
 const Pool = __nccwpck_require__(9960)
-const BalancedPool = __nccwpck_require__(5481)
+const BalancedPool = __nccwpck_require__(7862)
 const Agent = __nccwpck_require__(4081)
 const util = __nccwpck_require__(532)
 const { InvalidArgumentError } = errors
@@ -24544,7 +24544,7 @@ module.exports = { getResolveErrorBodyCallback }
 
 /***/ }),
 
-/***/ 5481:
+/***/ 7862:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -50113,16 +50113,15 @@ const providerInitializers = {
 };
 class AI {
     provider;
-    constructor(providerName, apiKey, config) {
-        this.provider = this.createProvider(providerName, apiKey, config);
+    constructor(providerName, modelName, apiKey, config) {
+        this.provider = this.createProvider(providerName, modelName, apiKey, config);
     }
-    createProvider(providerName, apiKey, config) {
-        const model = (0, git_1.getBuildInput)('aiModel', { required: true });
+    createProvider(providerName, modelName, apiKey, config) {
         const initializer = providerInitializers[providerName];
         if (!initializer) {
             throw new Error(`Provider ${providerName} is not supported.`);
         }
-        return initializer(model, apiKey, config);
+        return initializer(modelName, apiKey, config);
     }
     async sendRequest(propmt, filePath, systemPrompt) {
         const fileContent = await promises_1.default.readFile(filePath);
@@ -50168,11 +50167,8 @@ class AI {
     }
 }
 exports.AI = AI;
-const aiProviderConfig = { temperature: 0.1, topP: 0.8, topK: 30 };
-const createAIInstance = () => {
-    const aiApiKey = (0, git_1.getBuildInput)('aiApiKey', { required: true });
-    const aiProvider = (0, git_1.getBuildInput)('aiProvider', { required: true });
-    return new AI(aiProvider, aiApiKey, aiProviderConfig);
+const createAIInstance = (aiProvider, aiModel, aiApiKey, aiProviderConfig) => {
+    return new AI(aiProvider, aiModel, aiApiKey, aiProviderConfig);
 };
 exports.createAIInstance = createAIInstance;
 
@@ -50309,16 +50305,16 @@ exports.createVercelAI = createVercelAI;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.applyReviewCommand = void 0;
-const ai_1 = __nccwpck_require__(697);
+const const_1 = __nccwpck_require__(1357);
 const git_1 = __nccwpck_require__(2483);
 const file_1 = __nccwpck_require__(8754);
-const applyReviewCommand = async ({ filePath, suggestions }) => {
-    const aiInstance = (0, ai_1.createAIInstance)();
+const applyReviewCommand = async ({ aiInstance, filePath, suggestions }) => {
     const resultText = await aiInstance.applyReview(filePath, suggestions);
     await (0, file_1.modifyFile)(filePath, resultText);
     await (0, git_1.gitSetConfig)();
     const branch = await (0, git_1.gitCheckout)();
-    await (0, git_1.gitCommitPush)({ branch, filePath, message: `Apply review suggestions for file ${filePath}` });
+    const commitMessage = (0, git_1.getCommitMessage)(const_1.ACTION_INPUT_KEY_APPLY_REVIEW_COMMIT_MESSAGE_TEMPLATE);
+    await (0, git_1.gitCommitPush)({ branch, filePath, message: commitMessage.replace('%file', filePath) });
     await (0, git_1.gitPostReplyPullReviewComment)(`🎉 Suggestions reviews applied`);
 };
 exports.applyReviewCommand = applyReviewCommand;
@@ -50335,13 +50331,10 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getCommandParams = void 0;
 const validate_1 = __nccwpck_require__(8561);
 const types_1 = __nccwpck_require__(7998);
-const git_1 = __nccwpck_require__(2483);
 const error_1 = __nccwpck_require__(8032);
-const getCommandParams = async () => {
-    const comment = git_1.buildContext.payload.comment?.body;
+const getCommandParams = async (comment, filePath) => {
     if (!comment)
         throw new Error('Error: Failed to get command correctly.');
-    const filePath = git_1.buildContext.payload.comment?.path;
     const availableCommands = Object.values(types_1.Command).join('|');
     const regex = new RegExp(`([\\s\\S]*)\\/(${availableCommands})\\s*(\\S*)?`);
     const match = regex.exec(comment);
@@ -50349,7 +50342,7 @@ const getCommandParams = async () => {
         await (0, error_1.postError)(`Invalid command: \`${comment}\`\n${error_1.COMMAND_USAGE}`);
     }
     const [, suggestions, command, targetLang] = match;
-    return (0, validate_1.commandValidator)({ suggestions, filePath, command, targetLang });
+    return (0, validate_1.commandValidator)({ suggestions, command, filePath, targetLang });
 };
 exports.getCommandParams = getCommandParams;
 
@@ -50363,10 +50356,8 @@ exports.getCommandParams = getCommandParams;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.reviewCommand = void 0;
-const ai_1 = __nccwpck_require__(697);
 const git_1 = __nccwpck_require__(2483);
-const reviewCommand = async ({ filePath }) => {
-    const aiInstance = (0, ai_1.createAIInstance)();
+const reviewCommand = async ({ aiInstance, filePath }) => {
     const suggestions = await aiInstance.reviewFile(filePath);
     await (0, git_1.gitPostReplyPullReviewComment)(`🎉 Here are the suggestions:\r\n\r\n${suggestions}`);
 };
@@ -50382,20 +50373,20 @@ exports.reviewCommand = reviewCommand;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.translateCommand = void 0;
-const ai_1 = __nccwpck_require__(697);
+const const_1 = __nccwpck_require__(1357);
 const git_1 = __nccwpck_require__(2483);
 const file_1 = __nccwpck_require__(8754);
-const translateCommand = async ({ filePath, targetLang }) => {
-    const aiInstance = (0, ai_1.createAIInstance)();
+const translateCommand = async ({ aiInstance, filePath, targetLang }) => {
     const outputFileContent = await aiInstance.translateFile(filePath, targetLang);
     const outputFilePath = (0, file_1.generateOutputFilePath)({ filePath, targetLang });
     await (0, file_1.createFile)(outputFileContent, outputFilePath);
     await (0, git_1.gitSetConfig)();
     const branch = await (0, git_1.gitCheckout)();
+    const commitMessage = (0, git_1.getCommitMessage)(const_1.ACTION_INPUT_KEY_TRANSLATE_COMMIT_MESSAGE_TEMPLATE);
     await (0, git_1.gitCommitPush)({
         branch,
         filePath: outputFilePath,
-        message: `Add translation of file ${filePath} for language ${targetLang}`,
+        message: commitMessage.replace('%file', filePath).replace('%lang', targetLang),
     });
     await (0, git_1.gitPostReplyPullReviewComment)(`🎉 Translation of file **"${filePath}"** to **"${targetLang}"** completed! Generated file **"${outputFilePath}"**`);
 };
@@ -50461,7 +50452,6 @@ const commandValidator = async ({ suggestions, filePath, command, targetLang, })
         }
     }
     return {
-        filePath,
         command: command,
         targetLang,
         suggestions: parsedSuggestions,
@@ -50478,7 +50468,7 @@ exports.commandValidator = commandValidator;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.authorizeUser = exports.gitCheckout = exports.gitCommitPush = exports.gitSetConfig = exports.gitPostReplyPullReviewComment = exports.gitPostComment = exports.gitAddCommentReaction = exports.logBuildInfo = exports.buildContext = exports.getBuildInput = exports.setBuildFailed = exports.getGitInstance = exports.Reaction = void 0;
+exports.getCommitMessage = exports.authorizeUser = exports.gitCheckout = exports.gitCommitPush = exports.gitSetConfig = exports.gitPostReplyPullReviewComment = exports.gitPostComment = exports.gitAddCommentReaction = exports.logBuildInfo = exports.buildContext = exports.getBuildInput = exports.setBuildFailed = exports.getGitInstance = exports.Reaction = void 0;
 const core_1 = __nccwpck_require__(7627);
 const exec_1 = __nccwpck_require__(9365);
 const github_1 = __nccwpck_require__(3802);
@@ -50576,6 +50566,11 @@ const authorizeUser = async () => {
     return user.permission === 'admin' || user.permission === 'write';
 };
 exports.authorizeUser = authorizeUser;
+const getCommitMessage = (template) => {
+    const commitMessageTemplate = (0, exports.getBuildInput)(template);
+    return commitMessageTemplate;
+};
+exports.getCommitMessage = getCommitMessage;
 
 
 /***/ }),
@@ -50586,8 +50581,13 @@ exports.authorizeUser = authorizeUser;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.availableFileExtensions = void 0;
+exports.ACTION_INPUT_KEY_AI_API_KEY = exports.ACTION_INPUT_KEY_AI_MODEL = exports.ACTION_INPUT_KEY_AI_PROVIDER = exports.ACTION_INPUT_KEY_APPLY_REVIEW_COMMIT_MESSAGE_TEMPLATE = exports.ACTION_INPUT_KEY_TRANSLATE_COMMIT_MESSAGE_TEMPLATE = exports.availableFileExtensions = void 0;
 exports.availableFileExtensions = ['.md', '.mdx'];
+exports.ACTION_INPUT_KEY_TRANSLATE_COMMIT_MESSAGE_TEMPLATE = 'translateCommitMessageTemplate';
+exports.ACTION_INPUT_KEY_APPLY_REVIEW_COMMIT_MESSAGE_TEMPLATE = 'applyReviewCommitMessageTemplate';
+exports.ACTION_INPUT_KEY_AI_PROVIDER = 'aiProvider';
+exports.ACTION_INPUT_KEY_AI_MODEL = 'aiModel';
+exports.ACTION_INPUT_KEY_AI_API_KEY = 'aiApiKey';
 
 
 /***/ }),
@@ -54569,6 +54569,8 @@ var __webpack_exports__ = {};
 var exports = __webpack_exports__;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+const ai_1 = __nccwpck_require__(697);
+const const_1 = __nccwpck_require__(1357);
 const parse_1 = __nccwpck_require__(6248);
 const translate_1 = __nccwpck_require__(9389);
 const git_1 = __nccwpck_require__(2483);
@@ -54577,15 +54579,22 @@ const review_1 = __nccwpck_require__(6335);
 const apply_review_1 = __nccwpck_require__(9844);
 const error_1 = __nccwpck_require__(8032);
 const commands = {
-    [types_1.Command.MtrTranslate]: async ({ filePath, targetLang }) => {
-        await (0, translate_1.translateCommand)({ filePath, targetLang });
+    [types_1.Command.MtrTranslate]: async ({ aiInstance, filePath, targetLang }) => {
+        await (0, translate_1.translateCommand)({ aiInstance, filePath, targetLang });
     },
-    [types_1.Command.MtrReview]: async ({ filePath }) => {
-        await (0, review_1.reviewCommand)({ filePath });
+    [types_1.Command.MtrReview]: async ({ aiInstance, filePath }) => {
+        await (0, review_1.reviewCommand)({ aiInstance, filePath });
     },
-    [types_1.Command.MtrApplyReview]: async ({ filePath, suggestions }) => {
-        await (0, apply_review_1.applyReviewCommand)({ filePath, suggestions });
+    [types_1.Command.MtrApplyReview]: async ({ aiInstance, filePath, suggestions }) => {
+        await (0, apply_review_1.applyReviewCommand)({ aiInstance, filePath, suggestions });
     },
+};
+const getAIInstance = () => {
+    const aiProvider = (0, git_1.getBuildInput)(const_1.ACTION_INPUT_KEY_AI_PROVIDER, { required: true });
+    const aiModel = (0, git_1.getBuildInput)(const_1.ACTION_INPUT_KEY_AI_MODEL, { required: true });
+    const aiApiKey = (0, git_1.getBuildInput)(const_1.ACTION_INPUT_KEY_AI_API_KEY, { required: true });
+    const aiProviderConfig = { temperature: 0.1, topP: 0.8, topK: 30 };
+    return (0, ai_1.createAIInstance)(aiProvider, aiModel, aiApiKey, aiProviderConfig);
 };
 async function main() {
     const eventName = git_1.buildContext.eventName;
@@ -54597,10 +54606,17 @@ async function main() {
         await (0, error_1.postError)('You have no permission in this repository to use this action.');
     }
     await (0, git_1.gitAddCommentReaction)(git_1.Reaction.EYES);
-    const { filePath, command, targetLang, suggestions } = await (0, parse_1.getCommandParams)();
+    const comment = git_1.buildContext.payload.comment?.body;
+    const filePath = git_1.buildContext.payload.comment?.path;
+    const { command, targetLang, suggestions } = await (0, parse_1.getCommandParams)(comment, filePath);
     // getCommandParams() will throw an error if the command is invalid or if any required parameters are missing,
     // so we can safely assume that the command is valid and all required parameters are present
-    await commands[command]({ filePath, targetLang: targetLang, suggestions: suggestions });
+    await commands[command]({
+        aiInstance: getAIInstance(),
+        filePath,
+        targetLang: targetLang,
+        suggestions: suggestions,
+    });
     await (0, git_1.gitAddCommentReaction)(git_1.Reaction.PLUS_ONE);
 }
 main().catch(e => {

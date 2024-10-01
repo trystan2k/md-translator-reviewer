@@ -150,12 +150,14 @@ Create a new workflow file in your repository to trigger the Markdown Translator
 
 The action requires the following inputs:
 
-| Name                       | Required    | Default Value         | Description                                                                     |
-| -------------------------- | ----------- | --------------------- | ------------------------------------------------------------------------------- |
-| token                      | true        | `${{ github.token }}` | The GitHub token to access the repository.                                      |
-| aiApiKey                   | true        |                       | The API key for the selected AI provider.                                       |
-| aiProvider                 | true        | `google`              | The name of the AI provider to use (google, vercel-ai-google, vercel-ai-openai).|
-| aiModel                    | false       | `gemini-1.5-flash`    | The AI model to use for the translation.                                        |
+| Name                            | Required    | Default Value                                       | Description                                                                     |
+| ------------------------------- | ----------- | --------------------------------------------------- | ------------------------------------------------------------------------------- |
+| token                           | true        | `${{ github.token }}`                               | The GitHub token to access the repository.                                      |
+| aiApiKey                        | true        |                                                     | The API key for the selected AI provider.                                       |
+| aiProvider                      | true        | `google`                                            | The name of the AI provider to use (google, vercel-ai-google, vercel-ai-openai).|
+| aiModel                         | false       | `gemini-1.5-flash`                                  | The AI model to use for the translation.                                        |
+| translateCommitMessageTemplate  | false       | `add translation of file %file for language %lang`  | The commit message template for translation. %file is replaced by file path and %lang for the language |
+| reviewCommitMessageTemplate     | false       | `add review suggestions for file %file`             | The commit message template for review suggestions. %file is replaced by file path  |
 
 Example of a workflow file:
 

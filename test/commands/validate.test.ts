@@ -28,7 +28,6 @@ describe('validate', () => {
       const output = await commandValidator(input);
 
       expect(output).toEqual({
-        filePath: 'test.md',
         command: Command.MtrApplyReview,
         targetLang: 'en',
         suggestions: ' Suggestion 1\r\n Suggestion 2',

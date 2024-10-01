@@ -1,14 +1,10 @@
 import { commandValidator } from './validate';
 import { Command } from './types';
 
-import { buildContext } from '@/md/git';
 import { COMMAND_USAGE, postError } from '@/md/utils/error';
 
-export const getCommandParams = async () => {
-  const comment = buildContext.payload.comment?.body;
+export const getCommandParams = async (comment: string | null | undefined, filePath: string) => {
   if (!comment) throw new Error('Error: Failed to get command correctly.');
-
-  const filePath: string = buildContext.payload.comment?.path;
 
   const availableCommands = Object.values(Command).join('|');
   const regex = new RegExp(`([\\s\\S]*)\\/(${availableCommands})\\s*(\\S*)?`);
@@ -20,5 +16,5 @@ export const getCommandParams = async () => {
 
   const [, suggestions, command, targetLang] = match!;
 
-  return commandValidator({ suggestions, filePath, command, targetLang });
+  return commandValidator({ suggestions, command, filePath, targetLang });
 };

@@ -135,3 +135,8 @@ export const authorizeUser = async () => {
 
   return user.permission === 'admin' || user.permission === 'write';
 };
+
+export const getCommitMessage = (template: string) => {
+  const commitMessageTemplate = getBuildInput(template);
+  return commitMessageTemplate;
+};
