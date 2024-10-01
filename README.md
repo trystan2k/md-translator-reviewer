@@ -193,7 +193,7 @@ Once everything is configured in place, to trigger the action, create a review c
 
 - `translate`: Translates the markdown file into the specified language, creating and pushing to the branch a new file with the translated content and naming it with the language name.
 
-   Example: `/mtr-translate spanish` translates the markdown file into Spanish, generating a new file named `<origina-file-name>-spanish.md(x)`.
+   Example: `/mtr-translate spanish` (or `/mtr-translate es-ES`) translates the markdown file into Spanish, generating a new file named `<origina-file-name>-spanish.md(x)` (or `<origina-file-name>-es-ES.md(x)`) .
 
 - `review`: Reviews the markdown file, providing suggestions, via comment reply, and highlighting areas for improvement.
 
