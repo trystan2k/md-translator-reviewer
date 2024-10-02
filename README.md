@@ -180,7 +180,7 @@ jobs:
         # Only run the action when the comment contains the command '/mtr-'
         if: |
           contains(github.event.comment.body, '/mtr-')
-        uses: trystan2k/markdown-translator-reviewer@v1
+        uses: trystan2k/md-translator-reviewer@v1
         with:
           aiApiKey: ${{ secrets.AI_API_KEY }}
           aiProvider: 'google' # current available providers: google, vercel-ai-google, vercel-ai-openai
