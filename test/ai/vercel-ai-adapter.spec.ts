@@ -1,4 +1,4 @@
-import { describe, expect, jest, test, beforeEach, afterEach } from '@jest/globals';
+import { describe, expect, vi, test, beforeEach, afterEach, Mock } from 'vitest';
 import { CoreTool, generateText, GenerateTextResult } from 'ai';
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { createOpenAI } from '@ai-sdk/openai';
@@ -8,9 +8,9 @@ import type { AIModel, Config, ContentResponse } from '@/md/ai/types';
 import * as aiUtils from '@/md/ai/utils';
 import { createVercelAI } from '@/md/ai/vercel-ai-adapter';
 
-jest.mock('ai');
-jest.mock('@ai-sdk/google');
-jest.mock('@ai-sdk/openai');
+vi.mock('ai');
+vi.mock('@ai-sdk/google');
+vi.mock('@ai-sdk/openai');
 
 describe('VercelAIAdapter', () => {
   describe('invalid provider', () => {
@@ -35,29 +35,29 @@ describe('VercelAIAdapter', () => {
   ])('%s AI provider', (providerName, testFn, mockFn) => {
     let mockGenerateText: GenerateTextResult<Record<string, CoreTool>>;
     const config: Config = { temperature: 0.7, topP: 1, topK: 40 };
-    let mockProvider: jest.Mock;
+    let mockProvider: Mock;
     const model = 'test-model';
     const apiKey = 'test-api-key';
     let aiProvider: AIModel;
 
     beforeEach(() => {
-      mockProvider = jest.fn().mockReturnValue({});
+      mockProvider = vi.fn().mockReturnValue({});
 
-      (generateText as jest.Mock).mockImplementation(() => Promise.resolve(mockGenerateText));
-      (mockFn as jest.Mock).mockReturnValue(mockProvider);
+      vi.mocked(generateText).mockImplementation(() => Promise.resolve(mockGenerateText));
+      vi.mocked(mockFn as Mock).mockReturnValue(mockProvider);
 
       aiProvider = testFn(providerName, model, apiKey, config);
     });
 
     afterEach(() => {
-      jest.clearAllMocks();
+      vi.clearAllMocks();
     });
 
     describe('countTokens', () => {
       test(`should estimate count tokens correctly for ${providerName}`, async () => {
         const prompt = 'Hello, world!';
         const systemPrompt = 'System message';
-        jest.spyOn(aiUtils, 'estimateTokensByWords');
+        vi.spyOn(aiUtils, 'estimateTokensByWords');
 
         const tokenCount = await aiProvider.countTokens(prompt, systemPrompt);
 

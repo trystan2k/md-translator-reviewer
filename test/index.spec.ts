@@ -1,4 +1,4 @@
-import { describe, expect, jest, test, beforeEach } from '@jest/globals';
+import { describe, expect, vi, test, beforeEach } from 'vitest';
 
 import main from '@/md/index';
 import { getCommandParams } from '@/md/commands/parse';
@@ -11,13 +11,13 @@ import { postError } from '@/md/utils/error';
 import { AI, createAIInstance } from '@/md/ai/ai';
 import { Config } from '@/md/ai/types';
 
-jest.mock('@/md/commands/parse');
-jest.mock('@/md/commands/translate');
-jest.mock('@/md/git');
-jest.mock('@/md/commands/types');
-jest.mock('@/md/commands/review');
-jest.mock('@/md/commands/apply-review');
-jest.mock('@/md/utils/error');
+vi.mock('@/md/commands/parse');
+vi.mock('@/md/commands/translate');
+vi.mock('@/md/git');
+vi.mock('@/md/commands/types');
+vi.mock('@/md/commands/review');
+vi.mock('@/md/commands/apply-review');
+vi.mock('@/md/utils/error');
 
 describe('main function', () => {
   const mockApiKey = 'mockApiKey';
@@ -27,7 +27,7 @@ describe('main function', () => {
   let mockAiInstance: AI;
 
   beforeEach(() => {
-    (getBuildInput as jest.Mock<typeof getBuildInput>).mockImplementation((key: string) => {
+    vi.mocked(getBuildInput).mockImplementation((key: string) => {
       if (key === 'aiModel') return mockModel;
       if (key === 'aiApiKey') return mockApiKey;
       if (key === 'aiProvider') return providerName;
@@ -36,7 +36,7 @@ describe('main function', () => {
 
     mockAiInstance = createAIInstance(providerName, mockModel, mockApiKey, aiProviderConfig);
 
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   test('should throw an error if event is not pull_request_review_comment', async () => {
@@ -53,7 +53,7 @@ describe('main function', () => {
       },
     };
 
-    (authorizeUser as jest.Mock<typeof authorizeUser>).mockResolvedValue(false);
+    vi.mocked(authorizeUser).mockResolvedValue(false);
     await main().catch(e => {
       setBuildFailed(e);
     });
@@ -70,8 +70,8 @@ describe('main function', () => {
       },
     };
 
-    (authorizeUser as jest.Mock<typeof authorizeUser>).mockResolvedValue(true);
-    (getCommandParams as jest.Mock<typeof getCommandParams>).mockResolvedValue({
+    vi.mocked(authorizeUser).mockResolvedValue(true);
+    vi.mocked(getCommandParams).mockResolvedValue({
       command: Command.MtrTranslate,
       targetLang: 'es',
       suggestions: undefined,
@@ -97,8 +97,8 @@ describe('main function', () => {
       },
     };
 
-    (authorizeUser as jest.Mock<typeof authorizeUser>).mockResolvedValue(true);
-    (getCommandParams as jest.Mock<typeof getCommandParams>).mockResolvedValue({
+    vi.mocked(authorizeUser).mockResolvedValue(true);
+    vi.mocked(getCommandParams).mockResolvedValue({
       command: Command.MtrReview,
       targetLang: 'es',
       suggestions: undefined,
@@ -120,8 +120,8 @@ describe('main function', () => {
     };
 
     (buildContext.eventName as string) = 'pull_request_review_comment';
-    (authorizeUser as jest.Mock<typeof authorizeUser>).mockResolvedValue(true);
-    (getCommandParams as jest.Mock<typeof getCommandParams>).mockResolvedValue({
+    vi.mocked(authorizeUser).mockResolvedValue(true);
+    vi.mocked(getCommandParams).mockResolvedValue({
       command: Command.MtrApplyReview,
       targetLang: 'es',
       suggestions: 'suggestion1\r\nsuggestion2',
@@ -139,7 +139,7 @@ describe('main function', () => {
 
   test('should handle error', async () => {
     (buildContext.eventName as string) = 'pull_request_review_comment';
-    (authorizeUser as jest.Mock<typeof authorizeUser>).mockRejectedValue(new Error('Authorization failed'));
+    vi.mocked(authorizeUser).mockRejectedValue(new Error('Authorization failed'));
 
     await main().catch(e => {
       setBuildFailed(e);

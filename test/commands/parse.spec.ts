@@ -1,18 +1,18 @@
-import { describe, expect, jest, test, beforeEach } from '@jest/globals';
+import { describe, expect, vi, test, beforeEach } from 'vitest';
 
 import { getCommandParams } from '@/md/commands/parse';
 import { commandValidator } from '@/md/commands/validate';
 import { buildContext } from '@/md/git';
 import { postError } from '@/md/utils/error';
 
-jest.mock('@/md/commands/validate');
-jest.mock('@/md/git');
-jest.mock('@/md/utils/error');
+vi.mock('@/md/commands/validate');
+vi.mock('@/md/git');
+vi.mock('@/md/utils/error');
 
 describe('parse', () => {
   describe('getCommandParams', () => {
     beforeEach(() => {
-      jest.clearAllMocks();
+      vi.clearAllMocks();
     });
 
     test('should throw an error if comment body is not present', async () => {

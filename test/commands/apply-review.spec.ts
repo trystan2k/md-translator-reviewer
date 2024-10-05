@@ -1,23 +1,23 @@
-import { describe, expect, jest, test, beforeEach } from '@jest/globals';
+import { describe, expect, vi, test, beforeEach, Mocked } from 'vitest';
 
 import { applyReviewCommand, ApplyReviewCommandOptions } from '@/md/commands/apply-review';
 import { AI, createAIInstance } from '@/md/ai/ai';
 import { getCommitMessage, gitCheckout, gitCommitPush, gitPostReplyPullReviewComment, gitSetConfig } from '@/md/git';
 import { modifyFile } from '@/md/utils/file';
 
-jest.mock('@/md/ai/ai');
-jest.mock('@/md/git');
-jest.mock('@/md/utils/file');
+vi.mock('@/md/ai/ai');
+vi.mock('@/md/git');
+vi.mock('@/md/utils/file');
 
 describe('applyReviewCommand', () => {
   const mockAIInstance = {
-    applyReview: jest.fn<typeof AI.prototype.applyReview>(),
-  } as unknown as jest.Mocked<AI>;
+    applyReview: vi.fn<typeof AI.prototype.applyReview>(),
+  } as unknown as Mocked<AI>;
 
   beforeEach(() => {
-    (createAIInstance as jest.Mock).mockReturnValue(mockAIInstance);
-    (getCommitMessage as jest.Mock).mockReturnValue('Apply review suggestions for file %file');
-    jest.clearAllMocks();
+    vi.mocked(createAIInstance).mockReturnValue(mockAIInstance);
+    vi.mocked(getCommitMessage).mockReturnValue('Apply review suggestions for file %file');
+    vi.clearAllMocks();
   });
 
   test('should apply review suggestions and commit changes', async () => {
@@ -28,7 +28,7 @@ describe('applyReviewCommand', () => {
     };
 
     mockAIInstance.applyReview.mockResolvedValue('Modified content');
-    (gitCheckout as jest.Mock<() => Promise<string>>).mockResolvedValue('test-branch');
+    vi.mocked(gitCheckout).mockResolvedValue('test-branch');
 
     await applyReviewCommand(options);
 

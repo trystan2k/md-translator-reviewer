@@ -1,5 +1,5 @@
 import { exec } from '@actions/exec';
-import { describe, expect, jest, test, beforeEach } from '@jest/globals';
+import { describe, expect, vi, test, beforeEach, Mock } from 'vitest';
 import { getInput, setFailed } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
@@ -16,19 +16,19 @@ import {
   Reaction,
 } from '@/md/git';
 
-jest.mock('@actions/exec');
-jest.mock('@actions/github');
-jest.mock('@actions/core');
+vi.mock('@actions/exec');
+vi.mock('@actions/github');
+vi.mock('@actions/core');
 
 describe('Git Utilities', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   describe('getGitInstance', () => {
     test('should return an Octokit instance when GITHUB_TOKEN is provided', () => {
-      (getInput as jest.Mock).mockReturnValue('fake-token');
-      (getOctokit as jest.Mock).mockReturnValue({});
+      vi.mocked(getInput).mockReturnValue('fake-token');
+      vi.mocked(getOctokit as Mock).mockReturnValue({});
       const octokit = getGitInstance();
       expect(getInput).toHaveBeenCalledWith('token');
       expect(getOctokit).toHaveBeenCalledWith('fake-token');
@@ -36,17 +36,29 @@ describe('Git Utilities', () => {
     });
 
     test('should call setFailed when GITHUB_TOKEN is not provided', () => {
-      (getInput as jest.Mock).mockReturnValue('');
+      vi.mocked(getInput).mockReturnValue('');
       getGitInstance();
       expect(setFailed).toHaveBeenCalledWith('Error: GITHUB_TOKEN is a required input.');
     });
   });
 
   describe('gitAddCommentReaction', () => {
-    let mockReactions: { createForPullRequestReviewComment: jest.Mock };
+    let mockReactions: { createForPullRequestReviewComment: Mock };
     beforeEach(() => {
-      mockReactions = { createForPullRequestReviewComment: jest.fn() };
-      (getOctokit as jest.Mock).mockReturnValue({ rest: { reactions: mockReactions } });
+      Object.defineProperty(context, 'repo', {
+        value: vi.fn(),
+        configurable: true,
+        writable: true,
+      });
+
+      Object.defineProperty(context, 'issue', {
+        value: vi.fn(),
+        configurable: true,
+        writable: true,
+      });
+
+      mockReactions = { createForPullRequestReviewComment: vi.fn() };
+      vi.mocked(getOctokit as Mock).mockReturnValue({ rest: { reactions: mockReactions } });
     });
 
     test('should add a reaction to a comment', async () => {
@@ -72,8 +84,8 @@ describe('Git Utilities', () => {
 
   describe('gitPostComment', () => {
     test('should post a comment to an issue', async () => {
-      const mockIssues = { createComment: jest.fn() };
-      (getOctokit as jest.Mock).mockReturnValue({ rest: { issues: mockIssues } });
+      const mockIssues = { createComment: vi.fn() };
+      vi.mocked(getOctokit as Mock).mockReturnValue({ rest: { issues: mockIssues } });
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       context.repo = { owner: 'owner', repo: 'repo' };
@@ -93,8 +105,8 @@ describe('Git Utilities', () => {
 
   describe('gitPostReplyPullReviewComment', () => {
     test('should post a reply to a pull request review comment', async () => {
-      const mockPulls = { createReplyForReviewComment: jest.fn() };
-      (getOctokit as jest.Mock).mockReturnValue({ rest: { pulls: mockPulls } });
+      const mockPulls = { createReplyForReviewComment: vi.fn() };
+      vi.mocked(getOctokit as Mock).mockReturnValue({ rest: { pulls: mockPulls } });
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       context.repo = { owner: 'owner', repo: 'repo' };
@@ -138,9 +150,9 @@ describe('Git Utilities', () => {
   describe('gitCheckout', () => {
     test('should checkout a branch', async () => {
       const mockPulls = {
-        get: jest.fn<() => { data: { head: { ref: string } } }>(() => ({ data: { head: { ref: 'feature-branch' } } })),
+        get: vi.fn<() => { data: { head: { ref: string } } }>(() => ({ data: { head: { ref: 'feature-branch' } } })),
       };
-      (getOctokit as jest.Mock).mockReturnValue({ rest: { pulls: mockPulls } });
+      vi.mocked(getOctokit as Mock).mockReturnValue({ rest: { pulls: mockPulls } });
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       context.repo = { owner: 'owner', repo: 'repo' };
@@ -158,11 +170,11 @@ describe('Git Utilities', () => {
   describe('authorizeUser', () => {
     test('should authorize user with admin or write permission', async () => {
       const mockRepos = {
-        getCollaboratorPermissionLevel: jest.fn<() => { data: { permission: string } }>(() => ({
+        getCollaboratorPermissionLevel: vi.fn<() => { data: { permission: string } }>(() => ({
           data: { permission: 'admin' },
         })),
       };
-      (getOctokit as jest.Mock).mockReturnValue({ rest: { repos: mockRepos } });
+      vi.mocked(getOctokit as Mock).mockReturnValue({ rest: { repos: mockRepos } });
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       context.repo = { owner: 'owner', repo: 'repo' };
@@ -179,11 +191,11 @@ describe('Git Utilities', () => {
 
     test('should not authorize user without admin or write permission', async () => {
       const mockRepos = {
-        getCollaboratorPermissionLevel: jest.fn<() => { data: { permission: string } }>(() => ({
+        getCollaboratorPermissionLevel: vi.fn<() => { data: { permission: string } }>(() => ({
           data: { permission: 'read' },
         })),
       };
-      (getOctokit as jest.Mock).mockReturnValue({ rest: { repos: mockRepos } });
+      vi.mocked(getOctokit as Mock).mockReturnValue({ rest: { repos: mockRepos } });
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       context.repo = { owner: 'owner', repo: 'repo' };
@@ -201,7 +213,7 @@ describe('Git Utilities', () => {
 
   describe('getCommitMessage', () => {
     test('should return a commit message template', () => {
-      (getInput as jest.Mock).mockReturnValue('Test commit message');
+      vi.mocked(getInput).mockReturnValue('Test commit message');
       const commitMessage = getCommitMessage('commit-message');
       expect(getInput).toHaveBeenCalledWith('commit-message');
       expect(commitMessage).toBe('Test commit message');

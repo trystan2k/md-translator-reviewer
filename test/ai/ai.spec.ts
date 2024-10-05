@@ -1,22 +1,16 @@
 import fs from 'fs/promises';
 
-import { describe, expect, jest, test, beforeEach, afterEach } from '@jest/globals';
+import { describe, expect, vi, test, beforeEach, afterEach, Mock } from 'vitest';
 
 import { createGoogleGenerativeAI } from '@/md/ai/google-ai-adapter';
 import { logBuildInfo } from '@/md/git';
 import { AI, createAIInstance } from '@/md/ai/ai';
-import { CountTokensResponse } from '@/md/ai/types';
 import { createVercelAI } from '@/md/ai/vercel-ai-adapter';
 
-jest.mock('@/md/git');
-
-jest.mock('fs/promises', () => ({
-  ...jest.requireActual<Record<string, unknown>>('fs/promises'),
-  readFile: jest.fn().mockReturnValue('mock file content'),
-}));
-
-jest.mock('@/md/ai/google-ai-adapter');
-jest.mock('@/md/ai/vercel-ai-adapter');
+vi.mock('fs/promises');
+vi.mock('@/md/git');
+vi.mock('@/md/ai/google-ai-adapter');
+vi.mock('@/md/ai/vercel-ai-adapter');
 
 describe('AI', () => {
   describe.each([
@@ -36,18 +30,16 @@ describe('AI', () => {
     let ai: AI;
 
     beforeEach(() => {
-      (mockFn as jest.Mock).mockReturnValue({
-        countTokens: jest.fn<() => CountTokensResponse>().mockImplementation(() => ({ totalTokens: 100 })),
-        generateContent: jest
-          .fn<() => { text: string; responseTokens: number }>()
-          .mockImplementation(() => ({ text: 'mock response', responseTokens: 50 })),
-      });
-
+      vi.mocked(fs.readFile).mockResolvedValue('mock response');
+      vi.mocked(mockFn as Mock).mockImplementation(() => ({
+        countTokens: vi.fn().mockReturnValue({ totalTokens: 100 }),
+        generateContent: vi.fn().mockResolvedValue({ text: 'mock response', responseTokens: 50 }),
+      }));
       ai = createAIInstance(providerName, mockModel, mockApiKey, mockConfig);
     });
 
     afterEach(() => {
-      jest.clearAllMocks();
+      vi.clearAllMocks();
     });
 
     test('should create an AI instance with the correct provider', () => {

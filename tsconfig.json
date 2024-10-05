@@ -11,12 +11,12 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "declaration": false,
-    "lib": ["DOM","ES2023"],
+    "lib": ["DOM", "ES2023"],
     "skipLibCheck": true,
     "paths": {
       "@/md/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "test/**/*.ts", "jest.config.ts"],
+  "include": ["src/**/*.ts", "test/**/*.ts"],
   "exclude": ["node_modules"]
 }

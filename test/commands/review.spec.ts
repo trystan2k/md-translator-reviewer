@@ -1,22 +1,22 @@
-import { describe, expect, jest, test, beforeEach } from '@jest/globals';
+import { describe, expect, vi, test, beforeEach, Mocked } from 'vitest';
 
 import { reviewCommand } from '@/md/commands/review';
 import { AI, createAIInstance } from '@/md/ai/ai';
 import { gitPostReplyPullReviewComment } from '@/md/git';
 
-jest.mock('@/md/ai/ai');
-jest.mock('@/md/git');
+vi.mock('@/md/ai/ai');
+vi.mock('@/md/git');
 
 describe('reviewCommand', () => {
   const mockFilePath = 'path/to/file';
   const mockSuggestions = 'Mocked suggestions';
   const mockAIInstance = {
-    reviewFile: jest.fn<typeof AI.prototype.reviewFile>(),
-  } as unknown as jest.Mocked<AI>;
+    reviewFile: vi.fn<typeof AI.prototype.reviewFile>(),
+  } as unknown as Mocked<AI>;
 
   beforeEach(() => {
-    (createAIInstance as jest.Mock).mockReturnValue(mockAIInstance);
-    jest.clearAllMocks();
+    vi.mocked(createAIInstance).mockReturnValue(mockAIInstance);
+    vi.clearAllMocks();
   });
 
   test('should call createAIInstance and reviewFile with the correct filePath', async () => {

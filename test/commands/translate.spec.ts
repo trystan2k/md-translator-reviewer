@@ -1,23 +1,23 @@
-import { describe, expect, jest, test, beforeEach } from '@jest/globals';
+import { describe, expect, vi, test, beforeEach, Mocked } from 'vitest';
 
 import { translateCommand, TranslateCommandOptions } from '@/md/commands/translate';
 import { AI, createAIInstance } from '@/md/ai/ai';
 import { gitSetConfig, gitCommitPush, gitCheckout, gitPostReplyPullReviewComment, getCommitMessage } from '@/md/git';
 import { createFile, generateOutputFilePath } from '@/md/utils/file';
 
-jest.mock('@/md/ai/ai');
-jest.mock('@/md/git');
-jest.mock('@/md/utils/file');
+vi.mock('@/md/ai/ai');
+vi.mock('@/md/git');
+vi.mock('@/md/utils/file');
 
 describe('translateCommand', () => {
   const mockAIInstance = {
-    translateFile: jest.fn<typeof AI.prototype.translateFile>(),
-  } as unknown as jest.Mocked<AI>;
+    translateFile: vi.fn<typeof AI.prototype.translateFile>(),
+  } as unknown as Mocked<AI>;
 
   beforeEach(() => {
-    (createAIInstance as jest.Mock).mockReturnValue(mockAIInstance);
-    (getCommitMessage as jest.Mock).mockReturnValue('Add translation of file %file for language %lang');
-    jest.clearAllMocks();
+    vi.mocked(createAIInstance).mockReturnValue(mockAIInstance);
+    vi.mocked(getCommitMessage).mockReturnValue('Add translation of file %file for language %lang');
+    vi.clearAllMocks();
   });
 
   test('should translate the file and perform git operations', async () => {
@@ -31,8 +31,8 @@ describe('translateCommand', () => {
     const outputFilePath = 'path/to/file_es.txt';
 
     mockAIInstance.translateFile.mockResolvedValue(translatedContent);
-    (generateOutputFilePath as jest.Mock).mockReturnValue(outputFilePath);
-    (gitCheckout as jest.Mock<() => Promise<string>>).mockResolvedValue('test-branch');
+    vi.mocked(generateOutputFilePath).mockReturnValue(outputFilePath);
+    vi.mocked(gitCheckout).mockResolvedValue('test-branch');
 
     await translateCommand(options);
 
