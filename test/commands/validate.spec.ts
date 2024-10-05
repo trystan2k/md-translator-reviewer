@@ -1,20 +1,23 @@
-import { describe, expect, jest, test, beforeEach } from '@jest/globals';
+import { describe, expect, vi, test, beforeEach } from 'vitest';
 
 import { commandValidator } from '@/md/commands/validate';
 import { Command } from '@/md/commands/types';
 import { INVALID_FILE_EXTENSION, postError } from '@/md/utils/error';
 
-jest.mock('@/md/utils/error', () => ({
-  ...jest.requireActual<Record<string, unknown>>('@/md/utils/error'),
-  postError: jest.fn(),
-}));
+vi.mock('@/md/utils/error', async () => {
+  const actual = await vi.importActual<Record<string, unknown>>('@/md/utils/error');
+  return {
+    ...actual,
+    postError: vi.fn(),
+  };
+});
 
 describe('validate', () => {
   describe('commandValidator', () => {
     const availableFileExtensions = ['.md', '.txt'];
 
     beforeEach(() => {
-      jest.clearAllMocks();
+      vi.clearAllMocks();
     });
 
     test('should return valid output when all inputs are correct', async () => {

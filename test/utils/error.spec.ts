@@ -1,13 +1,13 @@
-import { describe, expect, jest, test } from '@jest/globals';
+import { describe, expect, vi, test } from 'vitest';
 
 import { COMMAND_USAGE, INVALID_FILE_EXTENSION, postError } from '@/md/utils/error';
 import { gitPostComment, setBuildFailed } from '@/md/git';
 import { availableFileExtensions } from '@/md/utils/const';
 import { Command } from '@/md/commands/types';
 
-jest.mock('@/md/git', () => ({
-  gitPostComment: jest.fn(),
-  setBuildFailed: jest.fn(),
+vi.mock('@/md/git', () => ({
+  gitPostComment: vi.fn(),
+  setBuildFailed: vi.fn(),
 }));
 
 describe('error.ts', () => {

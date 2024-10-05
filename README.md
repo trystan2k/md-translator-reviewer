@@ -73,7 +73,7 @@ The command supports the following commands that can handle markdown (.md) and m
 
 ### Testing
 
-- **Jest**: The action utilizes Jest for testing, ensuring the reliability and accuracy of the codebase.
+- **Vitest**: The action utilizes Vitest for testing, ensuring the reliability and accuracy of the codebase.
 - **Code Coverage**: The action maintains a high code coverage percentage, guaranteeing comprehensive testing.
 
 ### Dependencies

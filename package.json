@@ -35,8 +35,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "build": "ncc build src/index.ts -o dist",
-    "test": "jest --changedSince=origin/main",
-    "test:all": "jest",
+    "test": "vitest run --changed origin/main --coverage.all=false",
+    "test:all": "vitest run",
     "complete-check": "npm run typecheck && npm run lint && npm run test:all && npm run build",
     "prepare": "husky || true",
     "cz": "git-cz",
@@ -60,9 +60,9 @@
     "@commitlint/cz-commitlint": "~19.5.0",
     "@eslint/compat": "~1.1.1",
     "@eslint/js": "~9.11.1",
-    "@jest/globals": "~29.7.0",
     "@types/node": "~22.7.4",
     "@vercel/ncc": "~0.38.2",
+    "@vitest/coverage-v8": "~2.1.2",
     "commit-and-tag-version": "~12.4.4",
     "commitizen": "~4.3.1",
     "eslint-config-prettier": "~9.1.0",
@@ -71,12 +71,11 @@
     "eslint-plugin-unused-imports": "~4.1.4",
     "globals": "~15.9.0",
     "husky": "~9.1.6",
-    "jest": "~29.7.0",
     "lint-staged": "~15.2.10",
     "prettier": "~3.3.3",
-    "ts-jest": "~29.2.5",
     "ts-node": "~10.9.2",
     "typescript": "~5.6.2",
-    "typescript-eslint": "~8.7.0"
+    "typescript-eslint": "~8.7.0",
+    "vitest": "~2.1.2"
   }
 }

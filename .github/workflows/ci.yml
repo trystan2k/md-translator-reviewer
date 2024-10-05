@@ -57,12 +57,12 @@ jobs:
       - name: Test
         id: pnpm-ci-test-main
         if: github.ref_name == 'main'
-        run: pnpm test:all --ci
+        run: pnpm test:all
 
       - name: Test
         id: pnpm-ci-test-not_main
         if: github.ref_name != 'main'
-        run: pnpm test -- --ci
+        run: pnpm test
 
       - name: Build
         id: pnpm-build

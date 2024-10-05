@@ -1,10 +1,10 @@
-import { describe, expect, jest, test, beforeEach, afterEach } from '@jest/globals';
+import { describe, expect, vi, test, beforeEach, afterEach, Mocked } from 'vitest';
 import { GenerativeModel, GoogleGenerativeAI } from '@google/generative-ai';
 
 import { AIModel, Config, ContentResponse } from '@/md/ai/types';
 import { createGoogleGenerativeAI } from '@/md/ai/google-ai-adapter';
 
-jest.mock('@google/generative-ai');
+vi.mock('@google/generative-ai');
 
 describe('GoogleAiProvider', () => {
   const model = 'test-model';
@@ -12,23 +12,25 @@ describe('GoogleAiProvider', () => {
   const config: Config = { temperature: 0.7, topP: 1, topK: 40 };
 
   let googleAiProvider: AIModel;
-  let mockGenerativeModel: jest.Mocked<GenerativeModel>;
+  let mockGenerativeModel: Mocked<GenerativeModel>;
 
   beforeEach(() => {
     mockGenerativeModel = {
-      countTokens: jest.fn(),
-      generateContent: jest.fn(),
-    } as unknown as jest.Mocked<GenerativeModel>;
+      countTokens: vi.fn(),
+      generateContent: vi.fn(),
+    } as unknown as Mocked<GenerativeModel>;
 
-    (GoogleGenerativeAI as jest.Mock).mockImplementation(() => ({
-      getGenerativeModel: jest.fn().mockReturnValue(mockGenerativeModel),
+    vi.mocked(GoogleGenerativeAI).mockImplementation(() => ({
+      apiKey,
+      getGenerativeModel: vi.fn().mockReturnValue(mockGenerativeModel),
+      getGenerativeModelFromCachedContent: vi.fn(),
     }));
 
     googleAiProvider = createGoogleGenerativeAI(model, apiKey, config);
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   describe('countTokens', () => {

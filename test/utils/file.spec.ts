@@ -1,12 +1,12 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-import { describe, expect, jest, test } from '@jest/globals';
+import { describe, expect, vi, test, Mocked } from 'vitest';
 
 import { createFile, generateOutputFilePath, modifyFile } from '@/md/utils/file';
 
-jest.mock('fs/promises');
-const mockedFs = fs as jest.Mocked<typeof fs>;
+vi.mock('fs/promises');
+const mockedFs = fs as Mocked<typeof fs>;
 
 describe('generateOutputFilePath', () => {
   test('should generate the correct output file path', () => {
