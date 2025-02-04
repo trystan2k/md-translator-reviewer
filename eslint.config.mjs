@@ -17,7 +17,7 @@ export default [
       'unused-imports': unusedImports,
     },
   },
-  { ignores: ['**/dist/'] },
+  { ignores: ['**/dist/', '**/coverage/'] },
   {
     rules: {
       'no-console': 'error',
