@@ -33,7 +33,7 @@ describe('VercelAIAdapter', () => {
     ['google', createVercelAI, createGoogleGenerativeAI],
     ['openai', createVercelAI, createOpenAI],
   ])('%s AI provider', (providerName, testFn, mockFn) => {
-    let mockGenerateText: GenerateTextResult<Record<string, CoreTool>>;
+    let mockGenerateText: GenerateTextResult<Record<string, CoreTool>, string>;
     const config: Config = { temperature: 0.7, topP: 1, topK: 40 };
     let mockProvider: Mock;
     const model = 'test-model';
@@ -80,15 +80,17 @@ describe('VercelAIAdapter', () => {
           toolResults: [],
           finishReason: 'unknown',
           warnings: [],
-          responseMessages: [],
           steps: [],
           logprobs: [],
-          roundtrips: [],
           experimental_providerMetadata: undefined,
+          reasoning: '',
+          experimental_output: '',
+          request: {},
           response: {
             id: 'test-id',
             timestamp: new Date(),
             modelId: 'test-model-id',
+            messages: [],
           },
         };
 

@@ -1,14 +1,18 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 579:
+/***/ 3191:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -21,14 +25,14 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.issue = exports.issueCommand = void 0;
 const os = __importStar(__nccwpck_require__(857));
-const utils_1 = __nccwpck_require__(3431);
+const utils_1 = __nccwpck_require__(6283);
 /**
  * Commands
  *
@@ -83,13 +87,13 @@ class Command {
     }
 }
 function escapeData(s) {
-    return utils_1.toCommandValue(s)
+    return (0, utils_1.toCommandValue)(s)
         .replace(/%/g, '%25')
         .replace(/\r/g, '%0D')
         .replace(/\n/g, '%0A');
 }
 function escapeProperty(s) {
-    return utils_1.toCommandValue(s)
+    return (0, utils_1.toCommandValue)(s)
         .replace(/%/g, '%25')
         .replace(/\r/g, '%0D')
         .replace(/\n/g, '%0A')
@@ -100,14 +104,18 @@ function escapeProperty(s) {
 
 /***/ }),
 
-/***/ 7627:
+/***/ 9999:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -120,7 +128,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -134,13 +142,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
-const command_1 = __nccwpck_require__(579);
-const file_command_1 = __nccwpck_require__(4742);
-const utils_1 = __nccwpck_require__(3431);
+exports.platform = exports.toPlatformPath = exports.toWin32Path = exports.toPosixPath = exports.markdownSummary = exports.summary = exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
+const command_1 = __nccwpck_require__(3191);
+const file_command_1 = __nccwpck_require__(9058);
+const utils_1 = __nccwpck_require__(6283);
 const os = __importStar(__nccwpck_require__(857));
 const path = __importStar(__nccwpck_require__(6928));
-const oidc_utils_1 = __nccwpck_require__(1257);
+const oidc_utils_1 = __nccwpck_require__(3549);
 /**
  * The code to exit an action
  */
@@ -154,7 +162,7 @@ var ExitCode;
      * A code indicating that the action was a failure
      */
     ExitCode[ExitCode["Failure"] = 1] = "Failure";
-})(ExitCode = exports.ExitCode || (exports.ExitCode = {}));
+})(ExitCode || (exports.ExitCode = ExitCode = {}));
 //-----------------------------------------------------------------------
 // Variables
 //-----------------------------------------------------------------------
@@ -165,13 +173,13 @@ var ExitCode;
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function exportVariable(name, val) {
-    const convertedVal = utils_1.toCommandValue(val);
+    const convertedVal = (0, utils_1.toCommandValue)(val);
     process.env[name] = convertedVal;
     const filePath = process.env['GITHUB_ENV'] || '';
     if (filePath) {
-        return file_command_1.issueFileCommand('ENV', file_command_1.prepareKeyValueMessage(name, val));
+        return (0, file_command_1.issueFileCommand)('ENV', (0, file_command_1.prepareKeyValueMessage)(name, val));
     }
-    command_1.issueCommand('set-env', { name }, convertedVal);
+    (0, command_1.issueCommand)('set-env', { name }, convertedVal);
 }
 exports.exportVariable = exportVariable;
 /**
@@ -179,7 +187,7 @@ exports.exportVariable = exportVariable;
  * @param secret value of the secret
  */
 function setSecret(secret) {
-    command_1.issueCommand('add-mask', {}, secret);
+    (0, command_1.issueCommand)('add-mask', {}, secret);
 }
 exports.setSecret = setSecret;
 /**
@@ -189,10 +197,10 @@ exports.setSecret = setSecret;
 function addPath(inputPath) {
     const filePath = process.env['GITHUB_PATH'] || '';
     if (filePath) {
-        file_command_1.issueFileCommand('PATH', inputPath);
+        (0, file_command_1.issueFileCommand)('PATH', inputPath);
     }
     else {
-        command_1.issueCommand('add-path', {}, inputPath);
+        (0, command_1.issueCommand)('add-path', {}, inputPath);
     }
     process.env['PATH'] = `${inputPath}${path.delimiter}${process.env['PATH']}`;
 }
@@ -267,10 +275,10 @@ exports.getBooleanInput = getBooleanInput;
 function setOutput(name, value) {
     const filePath = process.env['GITHUB_OUTPUT'] || '';
     if (filePath) {
-        return file_command_1.issueFileCommand('OUTPUT', file_command_1.prepareKeyValueMessage(name, value));
+        return (0, file_command_1.issueFileCommand)('OUTPUT', (0, file_command_1.prepareKeyValueMessage)(name, value));
     }
     process.stdout.write(os.EOL);
-    command_1.issueCommand('set-output', { name }, utils_1.toCommandValue(value));
+    (0, command_1.issueCommand)('set-output', { name }, (0, utils_1.toCommandValue)(value));
 }
 exports.setOutput = setOutput;
 /**
@@ -279,7 +287,7 @@ exports.setOutput = setOutput;
  *
  */
 function setCommandEcho(enabled) {
-    command_1.issue('echo', enabled ? 'on' : 'off');
+    (0, command_1.issue)('echo', enabled ? 'on' : 'off');
 }
 exports.setCommandEcho = setCommandEcho;
 //-----------------------------------------------------------------------
@@ -310,7 +318,7 @@ exports.isDebug = isDebug;
  * @param message debug message
  */
 function debug(message) {
-    command_1.issueCommand('debug', {}, message);
+    (0, command_1.issueCommand)('debug', {}, message);
 }
 exports.debug = debug;
 /**
@@ -319,7 +327,7 @@ exports.debug = debug;
  * @param properties optional properties to add to the annotation.
  */
 function error(message, properties = {}) {
-    command_1.issueCommand('error', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+    (0, command_1.issueCommand)('error', (0, utils_1.toCommandProperties)(properties), message instanceof Error ? message.toString() : message);
 }
 exports.error = error;
 /**
@@ -328,7 +336,7 @@ exports.error = error;
  * @param properties optional properties to add to the annotation.
  */
 function warning(message, properties = {}) {
-    command_1.issueCommand('warning', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+    (0, command_1.issueCommand)('warning', (0, utils_1.toCommandProperties)(properties), message instanceof Error ? message.toString() : message);
 }
 exports.warning = warning;
 /**
@@ -337,7 +345,7 @@ exports.warning = warning;
  * @param properties optional properties to add to the annotation.
  */
 function notice(message, properties = {}) {
-    command_1.issueCommand('notice', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+    (0, command_1.issueCommand)('notice', (0, utils_1.toCommandProperties)(properties), message instanceof Error ? message.toString() : message);
 }
 exports.notice = notice;
 /**
@@ -356,14 +364,14 @@ exports.info = info;
  * @param name The name of the output group
  */
 function startGroup(name) {
-    command_1.issue('group', name);
+    (0, command_1.issue)('group', name);
 }
 exports.startGroup = startGroup;
 /**
  * End an output group.
  */
 function endGroup() {
-    command_1.issue('endgroup');
+    (0, command_1.issue)('endgroup');
 }
 exports.endGroup = endGroup;
 /**
@@ -401,9 +409,9 @@ exports.group = group;
 function saveState(name, value) {
     const filePath = process.env['GITHUB_STATE'] || '';
     if (filePath) {
-        return file_command_1.issueFileCommand('STATE', file_command_1.prepareKeyValueMessage(name, value));
+        return (0, file_command_1.issueFileCommand)('STATE', (0, file_command_1.prepareKeyValueMessage)(name, value));
     }
-    command_1.issueCommand('save-state', { name }, utils_1.toCommandValue(value));
+    (0, command_1.issueCommand)('save-state', { name }, (0, utils_1.toCommandValue)(value));
 }
 exports.saveState = saveState;
 /**
@@ -425,25 +433,29 @@ exports.getIDToken = getIDToken;
 /**
  * Summary exports
  */
-var summary_1 = __nccwpck_require__(8402);
+var summary_1 = __nccwpck_require__(1638);
 Object.defineProperty(exports, "summary", ({ enumerable: true, get: function () { return summary_1.summary; } }));
 /**
  * @deprecated use core.summary
  */
-var summary_2 = __nccwpck_require__(8402);
+var summary_2 = __nccwpck_require__(1638);
 Object.defineProperty(exports, "markdownSummary", ({ enumerable: true, get: function () { return summary_2.markdownSummary; } }));
 /**
  * Path exports
  */
-var path_utils_1 = __nccwpck_require__(6879);
+var path_utils_1 = __nccwpck_require__(539);
 Object.defineProperty(exports, "toPosixPath", ({ enumerable: true, get: function () { return path_utils_1.toPosixPath; } }));
 Object.defineProperty(exports, "toWin32Path", ({ enumerable: true, get: function () { return path_utils_1.toWin32Path; } }));
 Object.defineProperty(exports, "toPlatformPath", ({ enumerable: true, get: function () { return path_utils_1.toPlatformPath; } }));
+/**
+ * Platform utilities exports
+ */
+exports.platform = __importStar(__nccwpck_require__(2563));
 //# sourceMappingURL=core.js.map
 
 /***/ }),
 
-/***/ 4742:
+/***/ 9058:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -451,7 +463,11 @@ Object.defineProperty(exports, "toPlatformPath", ({ enumerable: true, get: funct
 // For internal use, subject to change.
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -464,7 +480,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -472,10 +488,10 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.prepareKeyValueMessage = exports.issueFileCommand = void 0;
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
+const crypto = __importStar(__nccwpck_require__(6982));
 const fs = __importStar(__nccwpck_require__(9896));
 const os = __importStar(__nccwpck_require__(857));
-const uuid_1 = __nccwpck_require__(1987);
-const utils_1 = __nccwpck_require__(3431);
+const utils_1 = __nccwpck_require__(6283);
 function issueFileCommand(command, message) {
     const filePath = process.env[`GITHUB_${command}`];
     if (!filePath) {
@@ -484,14 +500,14 @@ function issueFileCommand(command, message) {
     if (!fs.existsSync(filePath)) {
         throw new Error(`Missing file at path: ${filePath}`);
     }
-    fs.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os.EOL}`, {
+    fs.appendFileSync(filePath, `${(0, utils_1.toCommandValue)(message)}${os.EOL}`, {
         encoding: 'utf8'
     });
 }
 exports.issueFileCommand = issueFileCommand;
 function prepareKeyValueMessage(key, value) {
-    const delimiter = `ghadelimiter_${uuid_1.v4()}`;
-    const convertedValue = utils_1.toCommandValue(value);
+    const delimiter = `ghadelimiter_${crypto.randomUUID()}`;
+    const convertedValue = (0, utils_1.toCommandValue)(value);
     // These should realistically never happen, but just in case someone finds a
     // way to exploit uuid generation let's not allow keys or values that contain
     // the delimiter.
@@ -508,7 +524,7 @@ exports.prepareKeyValueMessage = prepareKeyValueMessage;
 
 /***/ }),
 
-/***/ 1257:
+/***/ 3549:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -524,9 +540,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.OidcClient = void 0;
-const http_client_1 = __nccwpck_require__(2034);
-const auth_1 = __nccwpck_require__(9982);
-const core_1 = __nccwpck_require__(7627);
+const http_client_1 = __nccwpck_require__(787);
+const auth_1 = __nccwpck_require__(3673);
+const core_1 = __nccwpck_require__(9999);
 class OidcClient {
     static createHttpClient(allowRetry = true, maxRetry = 10) {
         const requestOptions = {
@@ -576,9 +592,9 @@ class OidcClient {
                     const encodedAudience = encodeURIComponent(audience);
                     id_token_url = `${id_token_url}&audience=${encodedAudience}`;
                 }
-                core_1.debug(`ID token url is ${id_token_url}`);
+                (0, core_1.debug)(`ID token url is ${id_token_url}`);
                 const id_token = yield OidcClient.getCall(id_token_url);
-                core_1.setSecret(id_token);
+                (0, core_1.setSecret)(id_token);
                 return id_token;
             }
             catch (error) {
@@ -592,14 +608,18 @@ exports.OidcClient = OidcClient;
 
 /***/ }),
 
-/***/ 6879:
+/***/ 539:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -612,7 +632,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -657,7 +677,108 @@ exports.toPlatformPath = toPlatformPath;
 
 /***/ }),
 
-/***/ 8402:
+/***/ 2563:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getDetails = exports.isLinux = exports.isMacOS = exports.isWindows = exports.arch = exports.platform = void 0;
+const os_1 = __importDefault(__nccwpck_require__(857));
+const exec = __importStar(__nccwpck_require__(8872));
+const getWindowsInfo = () => __awaiter(void 0, void 0, void 0, function* () {
+    const { stdout: version } = yield exec.getExecOutput('powershell -command "(Get-CimInstance -ClassName Win32_OperatingSystem).Version"', undefined, {
+        silent: true
+    });
+    const { stdout: name } = yield exec.getExecOutput('powershell -command "(Get-CimInstance -ClassName Win32_OperatingSystem).Caption"', undefined, {
+        silent: true
+    });
+    return {
+        name: name.trim(),
+        version: version.trim()
+    };
+});
+const getMacOsInfo = () => __awaiter(void 0, void 0, void 0, function* () {
+    var _a, _b, _c, _d;
+    const { stdout } = yield exec.getExecOutput('sw_vers', undefined, {
+        silent: true
+    });
+    const version = (_b = (_a = stdout.match(/ProductVersion:\s*(.+)/)) === null || _a === void 0 ? void 0 : _a[1]) !== null && _b !== void 0 ? _b : '';
+    const name = (_d = (_c = stdout.match(/ProductName:\s*(.+)/)) === null || _c === void 0 ? void 0 : _c[1]) !== null && _d !== void 0 ? _d : '';
+    return {
+        name,
+        version
+    };
+});
+const getLinuxInfo = () => __awaiter(void 0, void 0, void 0, function* () {
+    const { stdout } = yield exec.getExecOutput('lsb_release', ['-i', '-r', '-s'], {
+        silent: true
+    });
+    const [name, version] = stdout.trim().split('\n');
+    return {
+        name,
+        version
+    };
+});
+exports.platform = os_1.default.platform();
+exports.arch = os_1.default.arch();
+exports.isWindows = exports.platform === 'win32';
+exports.isMacOS = exports.platform === 'darwin';
+exports.isLinux = exports.platform === 'linux';
+function getDetails() {
+    return __awaiter(this, void 0, void 0, function* () {
+        return Object.assign(Object.assign({}, (yield (exports.isWindows
+            ? getWindowsInfo()
+            : exports.isMacOS
+                ? getMacOsInfo()
+                : getLinuxInfo()))), { platform: exports.platform,
+            arch: exports.arch,
+            isWindows: exports.isWindows,
+            isMacOS: exports.isMacOS,
+            isLinux: exports.isLinux });
+    });
+}
+exports.getDetails = getDetails;
+//# sourceMappingURL=platform.js.map
+
+/***/ }),
+
+/***/ 1638:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -947,7 +1068,7 @@ exports.summary = _summary;
 
 /***/ }),
 
-/***/ 3431:
+/***/ 6283:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -994,7 +1115,7 @@ exports.toCommandProperties = toCommandProperties;
 
 /***/ }),
 
-/***/ 9365:
+/***/ 8872:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -1030,7 +1151,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getExecOutput = exports.exec = void 0;
 const string_decoder_1 = __nccwpck_require__(3193);
-const tr = __importStar(__nccwpck_require__(3068));
+const tr = __importStar(__nccwpck_require__(3725));
 /**
  * Exec a command.
  * Output will be streamed to the live console.
@@ -1104,7 +1225,7 @@ exports.getExecOutput = getExecOutput;
 
 /***/ }),
 
-/***/ 3068:
+/***/ 3725:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -1143,8 +1264,8 @@ const os = __importStar(__nccwpck_require__(857));
 const events = __importStar(__nccwpck_require__(4434));
 const child = __importStar(__nccwpck_require__(5317));
 const path = __importStar(__nccwpck_require__(6928));
-const io = __importStar(__nccwpck_require__(3928));
-const ioUtil = __importStar(__nccwpck_require__(4417));
+const io = __importStar(__nccwpck_require__(3357));
+const ioUtil = __importStar(__nccwpck_require__(2746));
 const timers_1 = __nccwpck_require__(3557);
 /* eslint-disable @typescript-eslint/unbound-method */
 const IS_WINDOWS = process.platform === 'win32';
@@ -1729,7 +1850,7 @@ class ExecState extends events.EventEmitter {
 
 /***/ }),
 
-/***/ 878:
+/***/ 3721:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -1791,7 +1912,7 @@ exports.Context = Context;
 
 /***/ }),
 
-/***/ 3802:
+/***/ 2819:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -1821,8 +1942,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getOctokit = exports.context = void 0;
-const Context = __importStar(__nccwpck_require__(878));
-const utils_1 = __nccwpck_require__(1516);
+const Context = __importStar(__nccwpck_require__(3721));
+const utils_1 = __nccwpck_require__(4655);
 exports.context = new Context.Context();
 /**
  * Returns a hydrated octokit ready to use for GitHub Actions
@@ -1839,7 +1960,7 @@ exports.getOctokit = getOctokit;
 
 /***/ }),
 
-/***/ 4294:
+/***/ 4523:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -1878,8 +1999,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getApiBaseUrl = exports.getProxyFetch = exports.getProxyAgentDispatcher = exports.getProxyAgent = exports.getAuthString = void 0;
-const httpClient = __importStar(__nccwpck_require__(2034));
-const undici_1 = __nccwpck_require__(4860);
+const httpClient = __importStar(__nccwpck_require__(787));
+const undici_1 = __nccwpck_require__(8242);
 function getAuthString(token, options) {
     if (!token && !options.auth) {
         throw new Error('Parameter token or opts.auth is required');
@@ -1916,7 +2037,7 @@ exports.getApiBaseUrl = getApiBaseUrl;
 
 /***/ }),
 
-/***/ 1516:
+/***/ 4655:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -1946,12 +2067,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getOctokitOptions = exports.GitHub = exports.defaults = exports.context = void 0;
-const Context = __importStar(__nccwpck_require__(878));
-const Utils = __importStar(__nccwpck_require__(4294));
+const Context = __importStar(__nccwpck_require__(3721));
+const Utils = __importStar(__nccwpck_require__(4523));
 // octokit + plugins
-const core_1 = __nccwpck_require__(9968);
-const plugin_rest_endpoint_methods_1 = __nccwpck_require__(1756);
-const plugin_paginate_rest_1 = __nccwpck_require__(4146);
+const core_1 = __nccwpck_require__(6407);
+const plugin_rest_endpoint_methods_1 = __nccwpck_require__(869);
+const plugin_paginate_rest_1 = __nccwpck_require__(4301);
 exports.context = new Context.Context();
 const baseUrl = Utils.getApiBaseUrl();
 exports.defaults = {
@@ -1982,7 +2103,7 @@ exports.getOctokitOptions = getOctokitOptions;
 
 /***/ }),
 
-/***/ 9982:
+/***/ 3673:
 /***/ (function(__unused_webpack_module, exports) {
 
 "use strict";
@@ -2070,7 +2191,7 @@ exports.PersonalAccessTokenCredentialHandler = PersonalAccessTokenCredentialHand
 
 /***/ }),
 
-/***/ 2034:
+/***/ 787:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -2112,9 +2233,9 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.HttpClient = exports.isHttps = exports.HttpClientResponse = exports.HttpClientError = exports.getProxyUrl = exports.MediaTypes = exports.Headers = exports.HttpCodes = void 0;
 const http = __importStar(__nccwpck_require__(8611));
 const https = __importStar(__nccwpck_require__(5692));
-const pm = __importStar(__nccwpck_require__(9486));
-const tunnel = __importStar(__nccwpck_require__(7987));
-const undici_1 = __nccwpck_require__(4860);
+const pm = __importStar(__nccwpck_require__(7407));
+const tunnel = __importStar(__nccwpck_require__(6124));
+const undici_1 = __nccwpck_require__(8242);
 var HttpCodes;
 (function (HttpCodes) {
     HttpCodes[HttpCodes["OK"] = 200] = "OK";
@@ -2637,7 +2758,7 @@ class HttpClient {
         }
         const usingSsl = parsedUrl.protocol === 'https:';
         proxyAgent = new undici_1.ProxyAgent(Object.assign({ uri: proxyUrl.href, pipelining: !this._keepAlive ? 0 : 1 }, ((proxyUrl.username || proxyUrl.password) && {
-            token: `${proxyUrl.username}:${proxyUrl.password}`
+            token: `Basic ${Buffer.from(`${proxyUrl.username}:${proxyUrl.password}`).toString('base64')}`
         })));
         this._proxyAgentDispatcher = proxyAgent;
         if (usingSsl && this._ignoreSslError) {
@@ -2729,7 +2850,7 @@ const lowercaseKeys = (obj) => Object.keys(obj).reduce((c, k) => ((c[k.toLowerCa
 
 /***/ }),
 
-/***/ 9486:
+/***/ 7407:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2751,11 +2872,11 @@ function getProxyUrl(reqUrl) {
     })();
     if (proxyVar) {
         try {
-            return new URL(proxyVar);
+            return new DecodedURL(proxyVar);
         }
         catch (_a) {
             if (!proxyVar.startsWith('http://') && !proxyVar.startsWith('https://'))
-                return new URL(`http://${proxyVar}`);
+                return new DecodedURL(`http://${proxyVar}`);
         }
     }
     else {
@@ -2814,11 +2935,24 @@ function isLoopbackAddress(host) {
         hostLower.startsWith('[::1]') ||
         hostLower.startsWith('[0:0:0:0:0:0:0:1]'));
 }
+class DecodedURL extends URL {
+    constructor(url, base) {
+        super(url, base);
+        this._decodedUsername = decodeURIComponent(super.username);
+        this._decodedPassword = decodeURIComponent(super.password);
+    }
+    get username() {
+        return this._decodedUsername;
+    }
+    get password() {
+        return this._decodedPassword;
+    }
+}
 //# sourceMappingURL=proxy.js.map
 
 /***/ }),
 
-/***/ 4417:
+/***/ 2746:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -3008,7 +3142,7 @@ exports.getCmdPath = getCmdPath;
 
 /***/ }),
 
-/***/ 3928:
+/***/ 3357:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -3045,7 +3179,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.findInPath = exports.which = exports.mkdirP = exports.rmRF = exports.mv = exports.cp = void 0;
 const assert_1 = __nccwpck_require__(2613);
 const path = __importStar(__nccwpck_require__(6928));
-const ioUtil = __importStar(__nccwpck_require__(4417));
+const ioUtil = __importStar(__nccwpck_require__(2746));
 /**
  * Copies a file or folder.
  * Based off of shelljs - https://github.com/shelljs/shelljs/blob/9237f66c52e5daa40458f94f9565e18e8132f5a6/src/cp.js
@@ -3314,7 +3448,7 @@ function copyFile(srcFile, destFile, force) {
 
 /***/ }),
 
-/***/ 3418:
+/***/ 9622:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -3340,21 +3474,23 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
-  Google: () => Google,
   createGoogleGenerativeAI: () => createGoogleGenerativeAI,
   google: () => google
 });
 module.exports = __toCommonJS(src_exports);
 
-// src/google-facade.ts
-var import_provider_utils4 = __nccwpck_require__(127);
+// src/google-provider.ts
+var import_provider_utils5 = __nccwpck_require__(2458);
 
 // src/google-generative-ai-language-model.ts
-var import_provider_utils3 = __nccwpck_require__(127);
-var import_zod2 = __nccwpck_require__(931);
+var import_provider_utils3 = __nccwpck_require__(2458);
+var import_zod2 = __nccwpck_require__(6516);
 
 // src/convert-json-schema-to-openapi-schema.ts
 function convertJSONSchemaToOpenAPISchema(jsonSchema) {
+  if (isEmptyObjectSchema(jsonSchema)) {
+    return void 0;
+  }
   if (typeof jsonSchema === "boolean") {
     return { type: "boolean", properties: {} };
   }
@@ -3369,7 +3505,8 @@ function convertJSONSchemaToOpenAPISchema(jsonSchema) {
     oneOf,
     format,
     const: constValue,
-    minLength
+    minLength,
+    enum: enumValues
   } = jsonSchema;
   const result = {};
   if (description)
@@ -3395,7 +3532,10 @@ function convertJSONSchemaToOpenAPISchema(jsonSchema) {
       result.type = type;
     }
   }
-  if (properties) {
+  if (enumValues !== void 0) {
+    result.enum = enumValues;
+  }
+  if (properties != null) {
     result.properties = Object.entries(properties).reduce(
       (acc, [key, value]) => {
         acc[key] = convertJSONSchemaToOpenAPISchema(value);
@@ -3416,16 +3556,20 @@ function convertJSONSchemaToOpenAPISchema(jsonSchema) {
   if (oneOf) {
     result.oneOf = oneOf.map(convertJSONSchemaToOpenAPISchema);
   }
-  if (minLength !== void 0)
+  if (minLength !== void 0) {
     result.minLength = minLength;
+  }
   return result;
+}
+function isEmptyObjectSchema(jsonSchema) {
+  return jsonSchema != null && typeof jsonSchema === "object" && jsonSchema.type === "object" && (jsonSchema.properties == null || Object.keys(jsonSchema.properties).length === 0);
 }
 
 // src/convert-to-google-generative-ai-messages.ts
-var import_provider = __nccwpck_require__(8892);
-var import_provider_utils = __nccwpck_require__(127);
+var import_provider = __nccwpck_require__(4069);
+var import_provider_utils = __nccwpck_require__(2458);
 function convertToGoogleGenerativeAIMessages(prompt) {
-  var _a;
+  var _a, _b;
   const systemInstructionParts = [];
   const contents = [];
   let systemMessagesAllowed = true;
@@ -3450,29 +3594,42 @@ function convertToGoogleGenerativeAIMessages(prompt) {
               break;
             }
             case "image": {
-              if (part.image instanceof URL) {
-                throw new import_provider.UnsupportedFunctionalityError({
-                  functionality: "Image URLs in user messages"
-                });
-              }
-              parts.push({
-                inlineData: {
-                  mimeType: (_a = part.mimeType) != null ? _a : "image/jpeg",
-                  data: (0, import_provider_utils.convertUint8ArrayToBase64)(part.image)
+              parts.push(
+                part.image instanceof URL ? {
+                  fileData: {
+                    mimeType: (_a = part.mimeType) != null ? _a : "image/jpeg",
+                    fileUri: part.image.toString()
+                  }
+                } : {
+                  inlineData: {
+                    mimeType: (_b = part.mimeType) != null ? _b : "image/jpeg",
+                    data: (0, import_provider_utils.convertUint8ArrayToBase64)(part.image)
+                  }
                 }
-              });
+              );
               break;
             }
             case "file": {
-              if (part.data instanceof URL) {
-                throw new import_provider.UnsupportedFunctionalityError({
-                  functionality: "File URLs in user messages"
-                });
-              }
-              parts.push({
-                inlineData: { mimeType: part.mimeType, data: part.data }
-              });
+              parts.push(
+                part.data instanceof URL ? {
+                  fileData: {
+                    mimeType: part.mimeType,
+                    fileUri: part.data.toString()
+                  }
+                } : {
+                  inlineData: {
+                    mimeType: part.mimeType,
+                    data: part.data
+                  }
+                }
+              );
               break;
+            }
+            default: {
+              const _exhaustiveCheck = part;
+              throw new import_provider.UnsupportedFunctionalityError({
+                functionality: `prompt part: ${_exhaustiveCheck}`
+              });
             }
           }
         }
@@ -3510,7 +3667,10 @@ function convertToGoogleGenerativeAIMessages(prompt) {
           parts: content.map((part) => ({
             functionResponse: {
               name: part.toolName,
-              response: part.result
+              response: {
+                name: part.toolName,
+                content: part.result
+              }
             }
           }))
         });
@@ -3534,8 +3694,8 @@ function getModelPath(modelId) {
 }
 
 // src/google-error.ts
-var import_provider_utils2 = __nccwpck_require__(127);
-var import_zod = __nccwpck_require__(931);
+var import_provider_utils2 = __nccwpck_require__(2458);
+var import_zod = __nccwpck_require__(6516);
 var googleErrorDataSchema = import_zod.z.object({
   error: import_zod.z.object({
     code: import_zod.z.number().nullable(),
@@ -3547,6 +3707,82 @@ var googleFailedResponseHandler = (0, import_provider_utils2.createJsonErrorResp
   errorSchema: googleErrorDataSchema,
   errorToMessage: (data) => data.error.message
 });
+
+// src/google-prepare-tools.ts
+var import_provider2 = __nccwpck_require__(4069);
+function prepareTools(mode, useSearchGrounding, isGemini2) {
+  var _a, _b;
+  const tools = ((_a = mode.tools) == null ? void 0 : _a.length) ? mode.tools : void 0;
+  const toolWarnings = [];
+  if (useSearchGrounding) {
+    return {
+      tools: isGemini2 ? { googleSearch: {} } : { googleSearchRetrieval: {} },
+      toolConfig: void 0,
+      toolWarnings
+    };
+  }
+  if (tools == null) {
+    return { tools: void 0, toolConfig: void 0, toolWarnings };
+  }
+  const functionDeclarations = [];
+  for (const tool of tools) {
+    if (tool.type === "provider-defined") {
+      toolWarnings.push({ type: "unsupported-tool", tool });
+    } else {
+      functionDeclarations.push({
+        name: tool.name,
+        description: (_b = tool.description) != null ? _b : "",
+        parameters: convertJSONSchemaToOpenAPISchema(tool.parameters)
+      });
+    }
+  }
+  const toolChoice = mode.toolChoice;
+  if (toolChoice == null) {
+    return {
+      tools: { functionDeclarations },
+      toolConfig: void 0,
+      toolWarnings
+    };
+  }
+  const type = toolChoice.type;
+  switch (type) {
+    case "auto":
+      return {
+        tools: { functionDeclarations },
+        toolConfig: { functionCallingConfig: { mode: "AUTO" } },
+        toolWarnings
+      };
+    case "none":
+      return {
+        tools: { functionDeclarations },
+        toolConfig: { functionCallingConfig: { mode: "NONE" } },
+        toolWarnings
+      };
+    case "required":
+      return {
+        tools: { functionDeclarations },
+        toolConfig: { functionCallingConfig: { mode: "ANY" } },
+        toolWarnings
+      };
+    case "tool":
+      return {
+        tools: { functionDeclarations },
+        toolConfig: {
+          functionCallingConfig: {
+            mode: "ANY",
+            allowedFunctionNames: [toolChoice.toolName]
+          }
+        },
+        toolWarnings
+      };
+    default: {
+      const _exhaustiveCheck = type;
+      throw new import_provider2.UnsupportedFunctionalityError({
+        functionality: `Unsupported tool choice type: ${_exhaustiveCheck}`
+      });
+    }
+  }
+}
 
 // src/map-google-generative-ai-finish-reason.ts
 function mapGoogleGenerativeAIFinishReason({
@@ -3579,8 +3815,9 @@ var GoogleGenerativeAILanguageModel = class {
     this.settings = settings;
     this.config = config;
   }
-  get supportsObjectGeneration() {
-    return this.settings.structuredOutputs !== false;
+  get supportsStructuredOutputs() {
+    var _a;
+    return (_a = this.settings.structuredOutputs) != null ? _a : true;
   }
   get provider() {
     return this.config.provider;
@@ -3598,21 +3835,9 @@ var GoogleGenerativeAILanguageModel = class {
     responseFormat,
     seed
   }) {
-    var _a;
+    var _a, _b;
     const type = mode.type;
     const warnings = [];
-    if (frequencyPenalty != null) {
-      warnings.push({
-        type: "unsupported-setting",
-        setting: "frequencyPenalty"
-      });
-    }
-    if (presencePenalty != null) {
-      warnings.push({
-        type: "unsupported-setting",
-        setting: "presencePenalty"
-      });
-    }
     if (seed != null) {
       warnings.push({
         type: "unsupported-setting",
@@ -3620,32 +3845,42 @@ var GoogleGenerativeAILanguageModel = class {
       });
     }
     const generationConfig = {
-      // model specific settings:
-      topK: topK != null ? topK : this.settings.topK,
       // standardized settings:
       maxOutputTokens: maxTokens,
       temperature,
+      topK,
       topP,
+      frequencyPenalty,
+      presencePenalty,
       stopSequences,
       // response format:
       responseMimeType: (responseFormat == null ? void 0 : responseFormat.type) === "json" ? "application/json" : void 0,
       responseSchema: (responseFormat == null ? void 0 : responseFormat.type) === "json" && responseFormat.schema != null && // Google GenAI does not support all OpenAPI Schema features,
       // so this is needed as an escape hatch:
-      this.supportsObjectGeneration ? convertJSONSchemaToOpenAPISchema(responseFormat.schema) : void 0
+      this.supportsStructuredOutputs ? convertJSONSchemaToOpenAPISchema(responseFormat.schema) : void 0,
+      ...this.settings.audioTimestamp && {
+        audioTimestamp: this.settings.audioTimestamp
+      }
     };
     const { contents, systemInstruction } = convertToGoogleGenerativeAIMessages(prompt);
     switch (type) {
       case "regular": {
+        const { tools, toolConfig, toolWarnings } = prepareTools(
+          mode,
+          (_a = this.settings.useSearchGrounding) != null ? _a : false,
+          this.modelId.includes("gemini-2")
+        );
         return {
           args: {
             generationConfig,
             contents,
             systemInstruction,
             safetySettings: this.settings.safetySettings,
-            ...prepareToolsAndToolConfig(mode),
+            tools,
+            toolConfig,
             cachedContent: this.settings.cachedContent
           },
-          warnings
+          warnings: [...warnings, ...toolWarnings]
         };
       }
       case "object-json": {
@@ -3656,7 +3891,7 @@ var GoogleGenerativeAILanguageModel = class {
               responseMimeType: "application/json",
               responseSchema: mode.schema != null && // Google GenAI does not support all OpenAPI Schema features,
               // so this is needed as an escape hatch:
-              this.supportsObjectGeneration ? convertJSONSchemaToOpenAPISchema(mode.schema) : void 0
+              this.supportsStructuredOutputs ? convertJSONSchemaToOpenAPISchema(mode.schema) : void 0
             },
             contents,
             systemInstruction,
@@ -3675,7 +3910,7 @@ var GoogleGenerativeAILanguageModel = class {
               functionDeclarations: [
                 {
                   name: mode.tool.name,
-                  description: (_a = mode.tool.description) != null ? _a : "",
+                  description: (_b = mode.tool.description) != null ? _b : "",
                   parameters: convertJSONSchemaToOpenAPISchema(
                     mode.tool.parameters
                   )
@@ -3695,14 +3930,22 @@ var GoogleGenerativeAILanguageModel = class {
       }
     }
   }
+  supportsUrl(url) {
+    return this.config.isSupportedUrl(url);
+  }
   async doGenerate(options) {
-    var _a, _b;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
     const { args, warnings } = await this.getArgs(options);
+    const body = JSON.stringify(args);
+    const mergedHeaders = (0, import_provider_utils3.combineHeaders)(
+      await (0, import_provider_utils3.resolve)(this.config.headers),
+      options.headers
+    );
     const { responseHeaders, value: response } = await (0, import_provider_utils3.postJsonToApi)({
       url: `${this.config.baseURL}/${getModelPath(
         this.modelId
       )}:generateContent`,
-      headers: (0, import_provider_utils3.combineHeaders)(this.config.headers(), options.headers),
+      headers: mergedHeaders,
       body: args,
       failedResponseHandler: googleFailedResponseHandler,
       successfulResponseHandler: (0, import_provider_utils3.createJsonResponseHandler)(responseSchema),
@@ -3712,33 +3955,45 @@ var GoogleGenerativeAILanguageModel = class {
     const { contents: rawPrompt, ...rawSettings } = args;
     const candidate = response.candidates[0];
     const toolCalls = getToolCallsFromParts({
-      parts: candidate.content.parts,
+      parts: (_b = (_a = candidate.content) == null ? void 0 : _a.parts) != null ? _b : [],
       generateId: this.config.generateId
     });
     const usageMetadata = response.usageMetadata;
     return {
-      text: getTextFromParts(candidate.content.parts),
+      text: getTextFromParts((_d = (_c = candidate.content) == null ? void 0 : _c.parts) != null ? _d : []),
       toolCalls,
       finishReason: mapGoogleGenerativeAIFinishReason({
         finishReason: candidate.finishReason,
         hasToolCalls: toolCalls != null && toolCalls.length > 0
       }),
       usage: {
-        promptTokens: (_a = usageMetadata == null ? void 0 : usageMetadata.promptTokenCount) != null ? _a : NaN,
-        completionTokens: (_b = usageMetadata == null ? void 0 : usageMetadata.candidatesTokenCount) != null ? _b : NaN
+        promptTokens: (_e = usageMetadata == null ? void 0 : usageMetadata.promptTokenCount) != null ? _e : NaN,
+        completionTokens: (_f = usageMetadata == null ? void 0 : usageMetadata.candidatesTokenCount) != null ? _f : NaN
       },
       rawCall: { rawPrompt, rawSettings },
       rawResponse: { headers: responseHeaders },
-      warnings
+      warnings,
+      providerMetadata: {
+        google: {
+          groundingMetadata: (_g = candidate.groundingMetadata) != null ? _g : null,
+          safetyRatings: (_h = candidate.safetyRatings) != null ? _h : null
+        }
+      },
+      request: { body }
     };
   }
   async doStream(options) {
     const { args, warnings } = await this.getArgs(options);
+    const body = JSON.stringify(args);
+    const headers = (0, import_provider_utils3.combineHeaders)(
+      await (0, import_provider_utils3.resolve)(this.config.headers),
+      options.headers
+    );
     const { responseHeaders, value: response } = await (0, import_provider_utils3.postJsonToApi)({
       url: `${this.config.baseURL}/${getModelPath(
         this.modelId
       )}:streamGenerateContent?alt=sse`,
-      headers: (0, import_provider_utils3.combineHeaders)(this.config.headers(), options.headers),
+      headers,
       body: args,
       failedResponseHandler: googleFailedResponseHandler,
       successfulResponseHandler: (0, import_provider_utils3.createEventSourceResponseHandler)(chunkSchema),
@@ -3751,30 +4006,40 @@ var GoogleGenerativeAILanguageModel = class {
       promptTokens: Number.NaN,
       completionTokens: Number.NaN
     };
-    const generateId3 = this.config.generateId;
+    let providerMetadata = void 0;
+    const generateId2 = this.config.generateId;
     let hasToolCalls = false;
     return {
       stream: response.pipeThrough(
         new TransformStream({
           transform(chunk, controller) {
-            var _a, _b;
+            var _a, _b, _c, _d, _e;
             if (!chunk.success) {
               controller.enqueue({ type: "error", error: chunk.error });
               return;
             }
             const value = chunk.value;
-            const candidate = value.candidates[0];
-            if ((candidate == null ? void 0 : candidate.finishReason) != null) {
-              finishReason = mapGoogleGenerativeAIFinishReason({
-                finishReason: candidate.finishReason,
-                hasToolCalls
-              });
-            }
             const usageMetadata = value.usageMetadata;
             if (usageMetadata != null) {
               usage = {
                 promptTokens: (_a = usageMetadata.promptTokenCount) != null ? _a : NaN,
                 completionTokens: (_b = usageMetadata.candidatesTokenCount) != null ? _b : NaN
+              };
+            }
+            const candidate = (_c = value.candidates) == null ? void 0 : _c[0];
+            if (candidate == null) {
+              return;
+            }
+            if (candidate.finishReason != null) {
+              finishReason = mapGoogleGenerativeAIFinishReason({
+                finishReason: candidate.finishReason,
+                hasToolCalls
+              });
+              providerMetadata = {
+                google: {
+                  groundingMetadata: (_d = candidate.groundingMetadata) != null ? _d : null,
+                  safetyRatings: (_e = candidate.safetyRatings) != null ? _e : null
+                }
               };
             }
             const content = candidate.content;
@@ -3790,7 +4055,7 @@ var GoogleGenerativeAILanguageModel = class {
             }
             const toolCallDeltas = getToolCallsFromParts({
               parts: content.parts,
-              generateId: generateId3
+              generateId: generateId2
             });
             if (toolCallDeltas != null) {
               for (const toolCall of toolCallDeltas) {
@@ -3813,26 +4078,32 @@ var GoogleGenerativeAILanguageModel = class {
             }
           },
           flush(controller) {
-            controller.enqueue({ type: "finish", finishReason, usage });
+            controller.enqueue({
+              type: "finish",
+              finishReason,
+              usage,
+              providerMetadata
+            });
           }
         })
       ),
       rawCall: { rawPrompt, rawSettings },
       rawResponse: { headers: responseHeaders },
-      warnings
+      warnings,
+      request: { body }
     };
   }
 };
 function getToolCallsFromParts({
   parts,
-  generateId: generateId3
+  generateId: generateId2
 }) {
   const functionCallParts = parts.filter(
     (part) => "functionCall" in part
   );
   return functionCallParts.length === 0 ? void 0 : functionCallParts.map((part) => ({
     toolCallType: "function",
-    toolCallId: generateId3(),
+    toolCallId: generateId2(),
     toolName: part.functionCall.name,
     args: JSON.stringify(part.functionCall.args)
   }));
@@ -3857,133 +4128,88 @@ var contentSchema = import_zod2.z.object({
     ])
   )
 });
+var groundingMetadataSchema = import_zod2.z.object({
+  webSearchQueries: import_zod2.z.array(import_zod2.z.string()).nullish(),
+  retrievalQueries: import_zod2.z.array(import_zod2.z.string()).nullish(),
+  searchEntryPoint: import_zod2.z.object({
+    renderedContent: import_zod2.z.string()
+  }).nullish(),
+  groundingChunks: import_zod2.z.array(
+    import_zod2.z.object({
+      web: import_zod2.z.object({
+        uri: import_zod2.z.string(),
+        title: import_zod2.z.string()
+      }).nullish(),
+      retrievedContext: import_zod2.z.object({
+        uri: import_zod2.z.string(),
+        title: import_zod2.z.string()
+      }).nullish()
+    })
+  ).nullish(),
+  groundingSupports: import_zod2.z.array(
+    import_zod2.z.object({
+      segment: import_zod2.z.object({
+        startIndex: import_zod2.z.number().nullish(),
+        endIndex: import_zod2.z.number().nullish(),
+        text: import_zod2.z.string().nullish()
+      }),
+      segment_text: import_zod2.z.string().nullish(),
+      groundingChunkIndices: import_zod2.z.array(import_zod2.z.number()).nullish(),
+      supportChunkIndices: import_zod2.z.array(import_zod2.z.number()).nullish(),
+      confidenceScores: import_zod2.z.array(import_zod2.z.number()).nullish(),
+      confidenceScore: import_zod2.z.array(import_zod2.z.number()).nullish()
+    })
+  ).nullish(),
+  retrievalMetadata: import_zod2.z.union([
+    import_zod2.z.object({
+      webDynamicRetrievalScore: import_zod2.z.number()
+    }),
+    import_zod2.z.object({})
+  ]).nullish()
+});
+var safetyRatingSchema = import_zod2.z.object({
+  category: import_zod2.z.string(),
+  probability: import_zod2.z.string(),
+  probabilityScore: import_zod2.z.number().nullish(),
+  severity: import_zod2.z.string().nullish(),
+  severityScore: import_zod2.z.number().nullish(),
+  blocked: import_zod2.z.boolean().nullish()
+});
 var responseSchema = import_zod2.z.object({
   candidates: import_zod2.z.array(
     import_zod2.z.object({
-      content: contentSchema,
-      finishReason: import_zod2.z.string().optional()
+      content: contentSchema.nullish(),
+      finishReason: import_zod2.z.string().nullish(),
+      safetyRatings: import_zod2.z.array(safetyRatingSchema).nullish(),
+      groundingMetadata: groundingMetadataSchema.nullish()
     })
   ),
   usageMetadata: import_zod2.z.object({
-    promptTokenCount: import_zod2.z.number(),
+    promptTokenCount: import_zod2.z.number().nullish(),
     candidatesTokenCount: import_zod2.z.number().nullish(),
-    totalTokenCount: import_zod2.z.number()
-  }).optional()
+    totalTokenCount: import_zod2.z.number().nullish()
+  }).nullish()
 });
 var chunkSchema = import_zod2.z.object({
   candidates: import_zod2.z.array(
     import_zod2.z.object({
-      content: contentSchema.optional(),
-      finishReason: import_zod2.z.string().optional()
+      content: contentSchema.nullish(),
+      finishReason: import_zod2.z.string().nullish(),
+      safetyRatings: import_zod2.z.array(safetyRatingSchema).nullish(),
+      groundingMetadata: groundingMetadataSchema.nullish()
     })
-  ),
+  ).nullish(),
   usageMetadata: import_zod2.z.object({
-    promptTokenCount: import_zod2.z.number(),
+    promptTokenCount: import_zod2.z.number().nullish(),
     candidatesTokenCount: import_zod2.z.number().nullish(),
-    totalTokenCount: import_zod2.z.number()
-  }).optional()
+    totalTokenCount: import_zod2.z.number().nullish()
+  }).nullish()
 });
-function prepareToolsAndToolConfig(mode) {
-  var _a;
-  const tools = ((_a = mode.tools) == null ? void 0 : _a.length) ? mode.tools : void 0;
-  if (tools == null) {
-    return { tools: void 0, toolConfig: void 0 };
-  }
-  const mappedTools = {
-    functionDeclarations: tools.map((tool) => {
-      var _a2;
-      return {
-        name: tool.name,
-        description: (_a2 = tool.description) != null ? _a2 : "",
-        parameters: convertJSONSchemaToOpenAPISchema(tool.parameters)
-      };
-    })
-  };
-  const toolChoice = mode.toolChoice;
-  if (toolChoice == null) {
-    return { tools: mappedTools, toolConfig: void 0 };
-  }
-  const type = toolChoice.type;
-  switch (type) {
-    case "auto":
-      return {
-        tools: mappedTools,
-        toolConfig: { functionCallingConfig: { mode: "AUTO" } }
-      };
-    case "none":
-      return {
-        tools: mappedTools,
-        toolConfig: { functionCallingConfig: { mode: "NONE" } }
-      };
-    case "required":
-      return {
-        tools: mappedTools,
-        toolConfig: { functionCallingConfig: { mode: "ANY" } }
-      };
-    case "tool":
-      return {
-        tools: mappedTools,
-        toolConfig: {
-          functionCallingConfig: {
-            mode: "ANY",
-            allowedFunctionNames: [toolChoice.toolName]
-          }
-        }
-      };
-    default: {
-      const _exhaustiveCheck = type;
-      throw new Error(`Unsupported tool choice type: ${_exhaustiveCheck}`);
-    }
-  }
-}
-
-// src/google-facade.ts
-var Google = class {
-  /**
-   * Creates a new Google provider instance.
-   */
-  constructor(options = {}) {
-    var _a, _b, _c;
-    this.baseURL = (_b = (0, import_provider_utils4.withoutTrailingSlash)((_a = options.baseURL) != null ? _a : options.baseUrl)) != null ? _b : "https://generativelanguage.googleapis.com/v1beta";
-    this.apiKey = options.apiKey;
-    this.headers = options.headers;
-    this.generateId = (_c = options.generateId) != null ? _c : import_provider_utils4.generateId;
-  }
-  get baseConfig() {
-    return {
-      baseURL: this.baseURL,
-      headers: () => ({
-        "x-goog-api-key": (0, import_provider_utils4.loadApiKey)({
-          apiKey: this.apiKey,
-          environmentVariableName: "GOOGLE_GENERATIVE_AI_API_KEY",
-          description: "Google Generative AI"
-        }),
-        ...this.headers
-      })
-    };
-  }
-  /**
-   * @deprecated Use `chat()` instead.
-   */
-  generativeAI(modelId, settings = {}) {
-    return this.chat(modelId, settings);
-  }
-  chat(modelId, settings = {}) {
-    return new GoogleGenerativeAILanguageModel(modelId, settings, {
-      provider: "google.generative-ai",
-      ...this.baseConfig,
-      generateId: this.generateId
-    });
-  }
-};
-
-// src/google-provider.ts
-var import_provider_utils6 = __nccwpck_require__(127);
 
 // src/google-generative-ai-embedding-model.ts
-var import_provider2 = __nccwpck_require__(8892);
-var import_provider_utils5 = __nccwpck_require__(127);
-var import_zod3 = __nccwpck_require__(931);
+var import_provider3 = __nccwpck_require__(4069);
+var import_provider_utils4 = __nccwpck_require__(2458);
+var import_zod3 = __nccwpck_require__(6516);
 var GoogleGenerativeAIEmbeddingModel = class {
   constructor(modelId, settings, config) {
     this.specificationVersion = "v1";
@@ -4006,16 +4232,20 @@ var GoogleGenerativeAIEmbeddingModel = class {
     abortSignal
   }) {
     if (values.length > this.maxEmbeddingsPerCall) {
-      throw new import_provider2.TooManyEmbeddingValuesForCallError({
+      throw new import_provider3.TooManyEmbeddingValuesForCallError({
         provider: this.provider,
         modelId: this.modelId,
         maxEmbeddingsPerCall: this.maxEmbeddingsPerCall,
         values
       });
     }
-    const { responseHeaders, value: response } = await (0, import_provider_utils5.postJsonToApi)({
+    const mergedHeaders = (0, import_provider_utils4.combineHeaders)(
+      await (0, import_provider_utils4.resolve)(this.config.headers),
+      headers
+    );
+    const { responseHeaders, value: response } = await (0, import_provider_utils4.postJsonToApi)({
       url: `${this.config.baseURL}/models/${this.modelId}:batchEmbedContents`,
-      headers: (0, import_provider_utils5.combineHeaders)(this.config.headers(), headers),
+      headers: mergedHeaders,
       body: {
         requests: values.map((value) => ({
           model: `models/${this.modelId}`,
@@ -4024,7 +4254,7 @@ var GoogleGenerativeAIEmbeddingModel = class {
         }))
       },
       failedResponseHandler: googleFailedResponseHandler,
-      successfulResponseHandler: (0, import_provider_utils5.createJsonResponseHandler)(
+      successfulResponseHandler: (0, import_provider_utils4.createJsonResponseHandler)(
         googleGenerativeAITextEmbeddingResponseSchema
       ),
       abortSignal,
@@ -4041,12 +4271,17 @@ var googleGenerativeAITextEmbeddingResponseSchema = import_zod3.z.object({
   embeddings: import_zod3.z.array(import_zod3.z.object({ values: import_zod3.z.array(import_zod3.z.number()) }))
 });
 
+// src/google-supported-file-url.ts
+function isSupportedFileUrl(url) {
+  return url.toString().startsWith("https://generativelanguage.googleapis.com/v1beta/files/");
+}
+
 // src/google-provider.ts
 function createGoogleGenerativeAI(options = {}) {
-  var _a, _b;
-  const baseURL = (_b = (0, import_provider_utils6.withoutTrailingSlash)((_a = options.baseURL) != null ? _a : options.baseUrl)) != null ? _b : "https://generativelanguage.googleapis.com/v1beta";
+  var _a;
+  const baseURL = (_a = (0, import_provider_utils5.withoutTrailingSlash)(options.baseURL)) != null ? _a : "https://generativelanguage.googleapis.com/v1beta";
   const getHeaders = () => ({
-    "x-goog-api-key": (0, import_provider_utils6.loadApiKey)({
+    "x-goog-api-key": (0, import_provider_utils5.loadApiKey)({
       apiKey: options.apiKey,
       environmentVariableName: "GOOGLE_GENERATIVE_AI_API_KEY",
       description: "Google Generative AI"
@@ -4059,7 +4294,8 @@ function createGoogleGenerativeAI(options = {}) {
       provider: "google.generative-ai",
       baseURL,
       headers: getHeaders,
-      generateId: (_a2 = options.generateId) != null ? _a2 : import_provider_utils6.generateId,
+      generateId: (_a2 = options.generateId) != null ? _a2 : import_provider_utils5.generateId,
+      isSupportedUrl: isSupportedFileUrl,
       fetch: options.fetch
     });
   };
@@ -4092,7 +4328,7 @@ var google = createGoogleGenerativeAI();
 
 /***/ }),
 
-/***/ 2395:
+/***/ 2772:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -4118,32 +4354,50 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
-  OpenAI: () => OpenAI,
   createOpenAI: () => createOpenAI,
   openai: () => openai
 });
 module.exports = __toCommonJS(src_exports);
 
-// src/openai-facade.ts
-var import_provider_utils5 = __nccwpck_require__(127);
+// src/openai-provider.ts
+var import_provider_utils7 = __nccwpck_require__(2458);
 
 // src/openai-chat-language-model.ts
-var import_provider2 = __nccwpck_require__(8892);
-var import_provider_utils3 = __nccwpck_require__(127);
-var import_zod2 = __nccwpck_require__(931);
+var import_provider3 = __nccwpck_require__(4069);
+var import_provider_utils3 = __nccwpck_require__(2458);
+var import_zod2 = __nccwpck_require__(6516);
 
 // src/convert-to-openai-chat-messages.ts
-var import_provider = __nccwpck_require__(8892);
-var import_provider_utils = __nccwpck_require__(127);
+var import_provider = __nccwpck_require__(4069);
+var import_provider_utils = __nccwpck_require__(2458);
 function convertToOpenAIChatMessages({
   prompt,
-  useLegacyFunctionCalling = false
+  useLegacyFunctionCalling = false,
+  systemMessageMode = "system"
 }) {
   const messages = [];
   for (const { role, content } of prompt) {
     switch (role) {
       case "system": {
-        messages.push({ role: "system", content });
+        switch (systemMessageMode) {
+          case "system": {
+            messages.push({ role: "system", content });
+            break;
+          }
+          case "developer": {
+            messages.push({ role: "developer", content });
+            break;
+          }
+          case "remove": {
+            break;
+          }
+          default: {
+            const _exhaustiveCheck = systemMessageMode;
+            throw new Error(
+              `Unsupported system message mode: ${_exhaustiveCheck}`
+            );
+          }
+        }
         break;
       }
       case "user": {
@@ -4170,9 +4424,31 @@ function convertToOpenAIChatMessages({
                 };
               }
               case "file": {
-                throw new import_provider.UnsupportedFunctionalityError({
-                  functionality: "File content parts in user messages"
-                });
+                if (part.data instanceof URL) {
+                  throw new import_provider.UnsupportedFunctionalityError({
+                    functionality: "'File content parts with URL data' functionality not supported."
+                  });
+                }
+                switch (part.mimeType) {
+                  case "audio/wav": {
+                    return {
+                      type: "input_audio",
+                      input_audio: { data: part.data, format: "wav" }
+                    };
+                  }
+                  case "audio/mp3":
+                  case "audio/mpeg": {
+                    return {
+                      type: "input_audio",
+                      input_audio: { data: part.data, format: "mp3" }
+                    };
+                  }
+                  default: {
+                    throw new import_provider.UnsupportedFunctionalityError({
+                      functionality: `File content part type ${part.mimeType} in user messages`
+                    });
+                  }
+                }
               }
             }
           })
@@ -4283,9 +4559,9 @@ function mapOpenAIFinishReason(finishReason) {
 }
 
 // src/openai-error.ts
-var import_zod = __nccwpck_require__(931);
-var import_provider_utils2 = __nccwpck_require__(127);
-var openAIErrorDataSchema = import_zod.z.object({
+var import_zod = __nccwpck_require__(6516);
+var import_provider_utils2 = __nccwpck_require__(2458);
+var openaiErrorDataSchema = import_zod.z.object({
   error: import_zod.z.object({
     message: import_zod.z.string(),
     // The additional information below is handled loosely to support
@@ -4297,7 +4573,7 @@ var openAIErrorDataSchema = import_zod.z.object({
   })
 });
 var openaiFailedResponseHandler = (0, import_provider_utils2.createJsonErrorResponseHandler)({
-  errorSchema: openAIErrorDataSchema,
+  errorSchema: openaiErrorDataSchema,
   errorToMessage: (data) => data.error.message
 });
 
@@ -4314,6 +4590,107 @@ function getResponseMetadata({
   };
 }
 
+// src/openai-prepare-tools.ts
+var import_provider2 = __nccwpck_require__(4069);
+function prepareTools({
+  mode,
+  useLegacyFunctionCalling = false,
+  structuredOutputs
+}) {
+  var _a;
+  const tools = ((_a = mode.tools) == null ? void 0 : _a.length) ? mode.tools : void 0;
+  const toolWarnings = [];
+  if (tools == null) {
+    return { tools: void 0, tool_choice: void 0, toolWarnings };
+  }
+  const toolChoice = mode.toolChoice;
+  if (useLegacyFunctionCalling) {
+    const openaiFunctions = [];
+    for (const tool of tools) {
+      if (tool.type === "provider-defined") {
+        toolWarnings.push({ type: "unsupported-tool", tool });
+      } else {
+        openaiFunctions.push({
+          name: tool.name,
+          description: tool.description,
+          parameters: tool.parameters
+        });
+      }
+    }
+    if (toolChoice == null) {
+      return {
+        functions: openaiFunctions,
+        function_call: void 0,
+        toolWarnings
+      };
+    }
+    const type2 = toolChoice.type;
+    switch (type2) {
+      case "auto":
+      case "none":
+      case void 0:
+        return {
+          functions: openaiFunctions,
+          function_call: void 0,
+          toolWarnings
+        };
+      case "required":
+        throw new import_provider2.UnsupportedFunctionalityError({
+          functionality: "useLegacyFunctionCalling and toolChoice: required"
+        });
+      default:
+        return {
+          functions: openaiFunctions,
+          function_call: { name: toolChoice.toolName },
+          toolWarnings
+        };
+    }
+  }
+  const openaiTools = [];
+  for (const tool of tools) {
+    if (tool.type === "provider-defined") {
+      toolWarnings.push({ type: "unsupported-tool", tool });
+    } else {
+      openaiTools.push({
+        type: "function",
+        function: {
+          name: tool.name,
+          description: tool.description,
+          parameters: tool.parameters,
+          strict: structuredOutputs ? true : void 0
+        }
+      });
+    }
+  }
+  if (toolChoice == null) {
+    return { tools: openaiTools, tool_choice: void 0, toolWarnings };
+  }
+  const type = toolChoice.type;
+  switch (type) {
+    case "auto":
+    case "none":
+    case "required":
+      return { tools: openaiTools, tool_choice: type, toolWarnings };
+    case "tool":
+      return {
+        tools: openaiTools,
+        tool_choice: {
+          type: "function",
+          function: {
+            name: toolChoice.toolName
+          }
+        },
+        toolWarnings
+      };
+    default: {
+      const _exhaustiveCheck = type;
+      throw new import_provider2.UnsupportedFunctionalityError({
+        functionality: `Unsupported tool choice type: ${_exhaustiveCheck}`
+      });
+    }
+  }
+}
+
 // src/openai-chat-language-model.ts
 var OpenAIChatLanguageModel = class {
   constructor(modelId, settings, config) {
@@ -4323,9 +4700,13 @@ var OpenAIChatLanguageModel = class {
     this.config = config;
   }
   get supportsStructuredOutputs() {
-    return this.settings.structuredOutputs === true;
+    var _a;
+    return (_a = this.settings.structuredOutputs) != null ? _a : isReasoningModel(this.modelId);
   }
   get defaultObjectGenerationMode() {
+    if (isAudioModel(this.modelId)) {
+      return "tool";
+    }
     return this.supportsStructuredOutputs ? "json" : "tool";
   }
   get provider() {
@@ -4348,7 +4729,7 @@ var OpenAIChatLanguageModel = class {
     seed,
     providerMetadata
   }) {
-    var _a, _b, _c;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
     const type = mode.type;
     const warnings = [];
     if (topK != null) {
@@ -4357,22 +4738,28 @@ var OpenAIChatLanguageModel = class {
         setting: "topK"
       });
     }
-    if (responseFormat != null && responseFormat.type === "json" && responseFormat.schema != null) {
+    if ((responseFormat == null ? void 0 : responseFormat.type) === "json" && responseFormat.schema != null && !this.supportsStructuredOutputs) {
       warnings.push({
         type: "unsupported-setting",
         setting: "responseFormat",
-        details: "JSON response format schema is not supported"
+        details: "JSON response format schema is only supported with structuredOutputs"
       });
     }
     const useLegacyFunctionCalling = this.settings.useLegacyFunctionCalling;
     if (useLegacyFunctionCalling && this.settings.parallelToolCalls === true) {
-      throw new import_provider2.UnsupportedFunctionalityError({
+      throw new import_provider3.UnsupportedFunctionalityError({
         functionality: "useLegacyFunctionCalling with parallelToolCalls"
       });
     }
-    if (useLegacyFunctionCalling && this.settings.structuredOutputs === true) {
-      throw new import_provider2.UnsupportedFunctionalityError({
+    if (useLegacyFunctionCalling && this.supportsStructuredOutputs) {
+      throw new import_provider3.UnsupportedFunctionalityError({
         functionality: "structuredOutputs with useLegacyFunctionCalling"
+      });
+    }
+    if (getSystemMessageMode(this.modelId) === "remove" && prompt.some((message) => message.role === "system")) {
+      warnings.push({
+        type: "other",
+        message: "system messages are removed for this model"
       });
     }
     const baseArgs = {
@@ -4390,48 +4777,120 @@ var OpenAIChatLanguageModel = class {
       top_p: topP,
       frequency_penalty: frequencyPenalty,
       presence_penalty: presencePenalty,
+      response_format: (responseFormat == null ? void 0 : responseFormat.type) === "json" ? this.supportsStructuredOutputs && responseFormat.schema != null ? {
+        type: "json_schema",
+        json_schema: {
+          schema: responseFormat.schema,
+          strict: true,
+          name: (_a = responseFormat.name) != null ? _a : "response",
+          description: responseFormat.description
+        }
+      } : { type: "json_object" } : void 0,
       stop: stopSequences,
       seed,
       // openai specific settings:
-      max_completion_tokens: (_b = (_a = providerMetadata == null ? void 0 : providerMetadata.openai) == null ? void 0 : _a.maxCompletionTokens) != null ? _b : void 0,
-      // response format:
-      response_format: (responseFormat == null ? void 0 : responseFormat.type) === "json" ? { type: "json_object" } : void 0,
+      // TODO remove in next major version; we auto-map maxTokens now
+      max_completion_tokens: (_b = providerMetadata == null ? void 0 : providerMetadata.openai) == null ? void 0 : _b.maxCompletionTokens,
+      store: (_c = providerMetadata == null ? void 0 : providerMetadata.openai) == null ? void 0 : _c.store,
+      metadata: (_d = providerMetadata == null ? void 0 : providerMetadata.openai) == null ? void 0 : _d.metadata,
+      prediction: (_e = providerMetadata == null ? void 0 : providerMetadata.openai) == null ? void 0 : _e.prediction,
+      reasoning_effort: (_g = (_f = providerMetadata == null ? void 0 : providerMetadata.openai) == null ? void 0 : _f.reasoningEffort) != null ? _g : this.settings.reasoningEffort,
       // messages:
       messages: convertToOpenAIChatMessages({
         prompt,
-        useLegacyFunctionCalling
+        useLegacyFunctionCalling,
+        systemMessageMode: getSystemMessageMode(this.modelId)
       })
     };
     if (isReasoningModel(this.modelId)) {
-      baseArgs.temperature = void 0;
-      baseArgs.top_p = void 0;
-      baseArgs.frequency_penalty = void 0;
-      baseArgs.presence_penalty = void 0;
+      if (baseArgs.temperature != null) {
+        baseArgs.temperature = void 0;
+        warnings.push({
+          type: "unsupported-setting",
+          setting: "temperature",
+          details: "temperature is not supported for reasoning models"
+        });
+      }
+      if (baseArgs.top_p != null) {
+        baseArgs.top_p = void 0;
+        warnings.push({
+          type: "unsupported-setting",
+          setting: "topP",
+          details: "topP is not supported for reasoning models"
+        });
+      }
+      if (baseArgs.frequency_penalty != null) {
+        baseArgs.frequency_penalty = void 0;
+        warnings.push({
+          type: "unsupported-setting",
+          setting: "frequencyPenalty",
+          details: "frequencyPenalty is not supported for reasoning models"
+        });
+      }
+      if (baseArgs.presence_penalty != null) {
+        baseArgs.presence_penalty = void 0;
+        warnings.push({
+          type: "unsupported-setting",
+          setting: "presencePenalty",
+          details: "presencePenalty is not supported for reasoning models"
+        });
+      }
+      if (baseArgs.logit_bias != null) {
+        baseArgs.logit_bias = void 0;
+        warnings.push({
+          type: "other",
+          message: "logitBias is not supported for reasoning models"
+        });
+      }
+      if (baseArgs.logprobs != null) {
+        baseArgs.logprobs = void 0;
+        warnings.push({
+          type: "other",
+          message: "logprobs is not supported for reasoning models"
+        });
+      }
+      if (baseArgs.top_logprobs != null) {
+        baseArgs.top_logprobs = void 0;
+        warnings.push({
+          type: "other",
+          message: "topLogprobs is not supported for reasoning models"
+        });
+      }
+      if (baseArgs.max_tokens != null) {
+        if (baseArgs.max_completion_tokens == null) {
+          baseArgs.max_completion_tokens = baseArgs.max_tokens;
+        }
+        baseArgs.max_tokens = void 0;
+      }
     }
     switch (type) {
       case "regular": {
+        const { tools, tool_choice, functions, function_call, toolWarnings } = prepareTools({
+          mode,
+          useLegacyFunctionCalling,
+          structuredOutputs: this.supportsStructuredOutputs
+        });
         return {
           args: {
             ...baseArgs,
-            ...prepareToolsAndToolChoice({
-              mode,
-              useLegacyFunctionCalling,
-              structuredOutputs: this.settings.structuredOutputs
-            })
+            tools,
+            tool_choice,
+            functions,
+            function_call
           },
-          warnings
+          warnings: [...warnings, ...toolWarnings]
         };
       }
       case "object-json": {
         return {
           args: {
             ...baseArgs,
-            response_format: this.settings.structuredOutputs === true ? {
+            response_format: this.supportsStructuredOutputs && mode.schema != null ? {
               type: "json_schema",
               json_schema: {
                 schema: mode.schema,
                 strict: true,
-                name: (_c = mode.name) != null ? _c : "response",
+                name: (_h = mode.name) != null ? _h : "response",
                 description: mode.description
               }
             } : { type: "json_object" }
@@ -4466,7 +4925,7 @@ var OpenAIChatLanguageModel = class {
                   name: mode.tool.name,
                   description: mode.tool.description,
                   parameters: mode.tool.parameters,
-                  strict: this.settings.structuredOutputs === true ? true : void 0
+                  strict: this.supportsStructuredOutputs ? true : void 0
                 }
               }
             ]
@@ -4481,31 +4940,41 @@ var OpenAIChatLanguageModel = class {
     }
   }
   async doGenerate(options) {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j;
-    const { args, warnings } = this.getArgs(options);
+    var _a, _b, _c, _d, _e, _f, _g, _h;
+    const { args: body, warnings } = this.getArgs(options);
     const { responseHeaders, value: response } = await (0, import_provider_utils3.postJsonToApi)({
       url: this.config.url({
         path: "/chat/completions",
         modelId: this.modelId
       }),
       headers: (0, import_provider_utils3.combineHeaders)(this.config.headers(), options.headers),
-      body: args,
+      body,
       failedResponseHandler: openaiFailedResponseHandler,
       successfulResponseHandler: (0, import_provider_utils3.createJsonResponseHandler)(
-        openAIChatResponseSchema
+        openaiChatResponseSchema
       ),
       abortSignal: options.abortSignal,
       fetch: this.config.fetch
     });
-    const { messages: rawPrompt, ...rawSettings } = args;
+    const { messages: rawPrompt, ...rawSettings } = body;
     const choice = response.choices[0];
-    const providerMetadata = ((_b = (_a = response.usage) == null ? void 0 : _a.completion_tokens_details) == null ? void 0 : _b.reasoning_tokens) != null ? {
-      openai: {
-        reasoningTokens: (_d = (_c = response.usage) == null ? void 0 : _c.completion_tokens_details) == null ? void 0 : _d.reasoning_tokens
-      }
-    } : void 0;
+    const completionTokenDetails = (_a = response.usage) == null ? void 0 : _a.completion_tokens_details;
+    const promptTokenDetails = (_b = response.usage) == null ? void 0 : _b.prompt_tokens_details;
+    const providerMetadata = { openai: {} };
+    if ((completionTokenDetails == null ? void 0 : completionTokenDetails.reasoning_tokens) != null) {
+      providerMetadata.openai.reasoningTokens = completionTokenDetails == null ? void 0 : completionTokenDetails.reasoning_tokens;
+    }
+    if ((completionTokenDetails == null ? void 0 : completionTokenDetails.accepted_prediction_tokens) != null) {
+      providerMetadata.openai.acceptedPredictionTokens = completionTokenDetails == null ? void 0 : completionTokenDetails.accepted_prediction_tokens;
+    }
+    if ((completionTokenDetails == null ? void 0 : completionTokenDetails.rejected_prediction_tokens) != null) {
+      providerMetadata.openai.rejectedPredictionTokens = completionTokenDetails == null ? void 0 : completionTokenDetails.rejected_prediction_tokens;
+    }
+    if ((promptTokenDetails == null ? void 0 : promptTokenDetails.cached_tokens) != null) {
+      providerMetadata.openai.cachedPromptTokens = promptTokenDetails == null ? void 0 : promptTokenDetails.cached_tokens;
+    }
     return {
-      text: (_e = choice.message.content) != null ? _e : void 0,
+      text: (_c = choice.message.content) != null ? _c : void 0,
       toolCalls: this.settings.useLegacyFunctionCalling && choice.message.function_call ? [
         {
           toolCallType: "function",
@@ -4513,7 +4982,7 @@ var OpenAIChatLanguageModel = class {
           toolName: choice.message.function_call.name,
           args: choice.message.function_call.arguments
         }
-      ] : (_f = choice.message.tool_calls) == null ? void 0 : _f.map((toolCall) => {
+      ] : (_d = choice.message.tool_calls) == null ? void 0 : _d.map((toolCall) => {
         var _a2;
         return {
           toolCallType: "function",
@@ -4524,11 +4993,12 @@ var OpenAIChatLanguageModel = class {
       }),
       finishReason: mapOpenAIFinishReason(choice.finish_reason),
       usage: {
-        promptTokens: (_h = (_g = response.usage) == null ? void 0 : _g.prompt_tokens) != null ? _h : NaN,
-        completionTokens: (_j = (_i = response.usage) == null ? void 0 : _i.completion_tokens) != null ? _j : NaN
+        promptTokens: (_f = (_e = response.usage) == null ? void 0 : _e.prompt_tokens) != null ? _f : NaN,
+        completionTokens: (_h = (_g = response.usage) == null ? void 0 : _g.completion_tokens) != null ? _h : NaN
       },
       rawCall: { rawPrompt, rawSettings },
       rawResponse: { headers: responseHeaders },
+      request: { body: JSON.stringify(body) },
       response: getResponseMetadata(response),
       warnings,
       logprobs: mapOpenAIChatLogProbsOutput(choice.logprobs),
@@ -4536,7 +5006,8 @@ var OpenAIChatLanguageModel = class {
     };
   }
   async doStream(options) {
-    if (isReasoningModel(this.modelId)) {
+    var _a;
+    if ((_a = this.settings.simulateStreaming) != null ? _a : isStreamingSimulatedByDefault(this.modelId)) {
       const result = await this.doGenerate(options);
       const simulatedStream = new ReadableStream({
         start(controller) {
@@ -4549,6 +5020,13 @@ var OpenAIChatLanguageModel = class {
           }
           if (result.toolCalls) {
             for (const toolCall of result.toolCalls) {
+              controller.enqueue({
+                type: "tool-call-delta",
+                toolCallType: "function",
+                toolCallId: toolCall.toolCallId,
+                toolName: toolCall.toolName,
+                argsTextDelta: toolCall.args
+              });
               controller.enqueue({
                 type: "tool-call",
                 ...toolCall
@@ -4573,18 +5051,19 @@ var OpenAIChatLanguageModel = class {
       };
     }
     const { args, warnings } = this.getArgs(options);
+    const body = {
+      ...args,
+      stream: true,
+      // only include stream_options when in strict compatibility mode:
+      stream_options: this.config.compatibility === "strict" ? { include_usage: true } : void 0
+    };
     const { responseHeaders, value: response } = await (0, import_provider_utils3.postJsonToApi)({
       url: this.config.url({
         path: "/chat/completions",
         modelId: this.modelId
       }),
       headers: (0, import_provider_utils3.combineHeaders)(this.config.headers(), options.headers),
-      body: {
-        ...args,
-        stream: true,
-        // only include stream_options when in strict compatibility mode:
-        stream_options: this.config.compatibility === "strict" ? { include_usage: true } : void 0
-      },
+      body,
       failedResponseHandler: openaiFailedResponseHandler,
       successfulResponseHandler: (0, import_provider_utils3.createEventSourceResponseHandler)(
         openaiChatChunkSchema
@@ -4602,11 +5081,12 @@ var OpenAIChatLanguageModel = class {
     let logprobs;
     let isFirstChunk = true;
     const { useLegacyFunctionCalling } = this.settings;
+    const providerMetadata = { openai: {} };
     return {
       stream: response.pipeThrough(
         new TransformStream({
           transform(chunk, controller) {
-            var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
+            var _a2, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l;
             if (!chunk.success) {
               finishReason = "error";
               controller.enqueue({ type: "error", error: chunk.error });
@@ -4626,10 +5106,28 @@ var OpenAIChatLanguageModel = class {
               });
             }
             if (value.usage != null) {
+              const {
+                prompt_tokens,
+                completion_tokens,
+                prompt_tokens_details,
+                completion_tokens_details
+              } = value.usage;
               usage = {
-                promptTokens: (_a = value.usage.prompt_tokens) != null ? _a : void 0,
-                completionTokens: (_b = value.usage.completion_tokens) != null ? _b : void 0
+                promptTokens: prompt_tokens != null ? prompt_tokens : void 0,
+                completionTokens: completion_tokens != null ? completion_tokens : void 0
               };
+              if ((completion_tokens_details == null ? void 0 : completion_tokens_details.reasoning_tokens) != null) {
+                providerMetadata.openai.reasoningTokens = completion_tokens_details == null ? void 0 : completion_tokens_details.reasoning_tokens;
+              }
+              if ((completion_tokens_details == null ? void 0 : completion_tokens_details.accepted_prediction_tokens) != null) {
+                providerMetadata.openai.acceptedPredictionTokens = completion_tokens_details == null ? void 0 : completion_tokens_details.accepted_prediction_tokens;
+              }
+              if ((completion_tokens_details == null ? void 0 : completion_tokens_details.rejected_prediction_tokens) != null) {
+                providerMetadata.openai.rejectedPredictionTokens = completion_tokens_details == null ? void 0 : completion_tokens_details.rejected_prediction_tokens;
+              }
+              if ((prompt_tokens_details == null ? void 0 : prompt_tokens_details.cached_tokens) != null) {
+                providerMetadata.openai.cachedPromptTokens = prompt_tokens_details == null ? void 0 : prompt_tokens_details.cached_tokens;
+              }
             }
             const choice = value.choices[0];
             if ((choice == null ? void 0 : choice.finish_reason) != null) {
@@ -4665,19 +5163,19 @@ var OpenAIChatLanguageModel = class {
                 const index = toolCallDelta.index;
                 if (toolCalls[index] == null) {
                   if (toolCallDelta.type !== "function") {
-                    throw new import_provider2.InvalidResponseDataError({
+                    throw new import_provider3.InvalidResponseDataError({
                       data: toolCallDelta,
                       message: `Expected 'function' type.`
                     });
                   }
                   if (toolCallDelta.id == null) {
-                    throw new import_provider2.InvalidResponseDataError({
+                    throw new import_provider3.InvalidResponseDataError({
                       data: toolCallDelta,
                       message: `Expected 'id' to be a string.`
                     });
                   }
-                  if (((_c = toolCallDelta.function) == null ? void 0 : _c.name) == null) {
-                    throw new import_provider2.InvalidResponseDataError({
+                  if (((_a2 = toolCallDelta.function) == null ? void 0 : _a2.name) == null) {
+                    throw new import_provider3.InvalidResponseDataError({
                       data: toolCallDelta,
                       message: `Expected 'function.name' to be a string.`
                     });
@@ -4687,11 +5185,12 @@ var OpenAIChatLanguageModel = class {
                     type: "function",
                     function: {
                       name: toolCallDelta.function.name,
-                      arguments: (_d = toolCallDelta.function.arguments) != null ? _d : ""
-                    }
+                      arguments: (_b = toolCallDelta.function.arguments) != null ? _b : ""
+                    },
+                    hasFinished: false
                   };
                   const toolCall2 = toolCalls[index];
-                  if (((_e = toolCall2.function) == null ? void 0 : _e.name) != null && ((_f = toolCall2.function) == null ? void 0 : _f.arguments) != null) {
+                  if (((_c = toolCall2.function) == null ? void 0 : _c.name) != null && ((_d = toolCall2.function) == null ? void 0 : _d.arguments) != null) {
                     if (toolCall2.function.arguments.length > 0) {
                       controller.enqueue({
                         type: "tool-call-delta",
@@ -4705,65 +5204,77 @@ var OpenAIChatLanguageModel = class {
                       controller.enqueue({
                         type: "tool-call",
                         toolCallType: "function",
-                        toolCallId: (_g = toolCall2.id) != null ? _g : (0, import_provider_utils3.generateId)(),
+                        toolCallId: (_e = toolCall2.id) != null ? _e : (0, import_provider_utils3.generateId)(),
                         toolName: toolCall2.function.name,
                         args: toolCall2.function.arguments
                       });
+                      toolCall2.hasFinished = true;
                     }
                   }
                   continue;
                 }
                 const toolCall = toolCalls[index];
-                if (((_h = toolCallDelta.function) == null ? void 0 : _h.arguments) != null) {
-                  toolCall.function.arguments += (_j = (_i = toolCallDelta.function) == null ? void 0 : _i.arguments) != null ? _j : "";
+                if (toolCall.hasFinished) {
+                  continue;
+                }
+                if (((_f = toolCallDelta.function) == null ? void 0 : _f.arguments) != null) {
+                  toolCall.function.arguments += (_h = (_g = toolCallDelta.function) == null ? void 0 : _g.arguments) != null ? _h : "";
                 }
                 controller.enqueue({
                   type: "tool-call-delta",
                   toolCallType: "function",
                   toolCallId: toolCall.id,
                   toolName: toolCall.function.name,
-                  argsTextDelta: (_k = toolCallDelta.function.arguments) != null ? _k : ""
+                  argsTextDelta: (_i = toolCallDelta.function.arguments) != null ? _i : ""
                 });
-                if (((_l = toolCall.function) == null ? void 0 : _l.name) != null && ((_m = toolCall.function) == null ? void 0 : _m.arguments) != null && (0, import_provider_utils3.isParsableJson)(toolCall.function.arguments)) {
+                if (((_j = toolCall.function) == null ? void 0 : _j.name) != null && ((_k = toolCall.function) == null ? void 0 : _k.arguments) != null && (0, import_provider_utils3.isParsableJson)(toolCall.function.arguments)) {
                   controller.enqueue({
                     type: "tool-call",
                     toolCallType: "function",
-                    toolCallId: (_n = toolCall.id) != null ? _n : (0, import_provider_utils3.generateId)(),
+                    toolCallId: (_l = toolCall.id) != null ? _l : (0, import_provider_utils3.generateId)(),
                     toolName: toolCall.function.name,
                     args: toolCall.function.arguments
                   });
+                  toolCall.hasFinished = true;
                 }
               }
             }
           },
           flush(controller) {
-            var _a, _b;
+            var _a2, _b;
             controller.enqueue({
               type: "finish",
               finishReason,
               logprobs,
               usage: {
-                promptTokens: (_a = usage.promptTokens) != null ? _a : NaN,
+                promptTokens: (_a2 = usage.promptTokens) != null ? _a2 : NaN,
                 completionTokens: (_b = usage.completionTokens) != null ? _b : NaN
-              }
+              },
+              ...providerMetadata != null ? { providerMetadata } : {}
             });
           }
         })
       ),
       rawCall: { rawPrompt, rawSettings },
       rawResponse: { headers: responseHeaders },
+      request: { body: JSON.stringify(body) },
       warnings
     };
   }
 };
-var openAITokenUsageSchema = import_zod2.z.object({
+var openaiTokenUsageSchema = import_zod2.z.object({
   prompt_tokens: import_zod2.z.number().nullish(),
   completion_tokens: import_zod2.z.number().nullish(),
+  prompt_tokens_details: import_zod2.z.object({
+    cached_tokens: import_zod2.z.number().nullish()
+  }).nullish(),
   completion_tokens_details: import_zod2.z.object({
-    reasoning_tokens: import_zod2.z.number().nullish()
+    reasoning_tokens: import_zod2.z.number().nullish(),
+    accepted_prediction_tokens: import_zod2.z.number().nullish(),
+    rejected_prediction_tokens: import_zod2.z.number().nullish()
   }).nullish()
 }).nullish();
-var openAIChatResponseSchema = import_zod2.z.object({
+var openaiChatResponseSchema = import_zod2.z.object({
   id: import_zod2.z.string().nullish(),
   created: import_zod2.z.number().nullish(),
   model: import_zod2.z.string().nullish(),
@@ -4805,7 +5316,7 @@ var openAIChatResponseSchema = import_zod2.z.object({
       finish_reason: import_zod2.z.string().nullish()
     })
   ),
-  usage: openAITokenUsageSchema
+  usage: openaiTokenUsageSchema
 });
 var openaiChatChunkSchema = import_zod2.z.union([
   import_zod2.z.object({
@@ -4851,95 +5362,64 @@ var openaiChatChunkSchema = import_zod2.z.union([
         index: import_zod2.z.number()
       })
     ),
-    usage: openAITokenUsageSchema
+    usage: openaiTokenUsageSchema
   }),
-  openAIErrorDataSchema
+  openaiErrorDataSchema
 ]);
-function prepareToolsAndToolChoice({
-  mode,
-  useLegacyFunctionCalling = false,
-  structuredOutputs = false
-}) {
-  var _a;
-  const tools = ((_a = mode.tools) == null ? void 0 : _a.length) ? mode.tools : void 0;
-  if (tools == null) {
-    return { tools: void 0, tool_choice: void 0 };
-  }
-  const toolChoice = mode.toolChoice;
-  if (useLegacyFunctionCalling) {
-    const mappedFunctions = tools.map((tool) => ({
-      name: tool.name,
-      description: tool.description,
-      parameters: tool.parameters
-    }));
-    if (toolChoice == null) {
-      return { functions: mappedFunctions, function_call: void 0 };
-    }
-    const type2 = toolChoice.type;
-    switch (type2) {
-      case "auto":
-      case "none":
-      case void 0:
-        return {
-          functions: mappedFunctions,
-          function_call: void 0
-        };
-      case "required":
-        throw new import_provider2.UnsupportedFunctionalityError({
-          functionality: "useLegacyFunctionCalling and toolChoice: required"
-        });
-      default:
-        return {
-          functions: mappedFunctions,
-          function_call: { name: toolChoice.toolName }
-        };
-    }
-  }
-  const mappedTools = tools.map((tool) => ({
-    type: "function",
-    function: {
-      name: tool.name,
-      description: tool.description,
-      parameters: tool.parameters,
-      strict: structuredOutputs === true ? true : void 0
-    }
-  }));
-  if (toolChoice == null) {
-    return { tools: mappedTools, tool_choice: void 0 };
-  }
-  const type = toolChoice.type;
-  switch (type) {
-    case "auto":
-    case "none":
-    case "required":
-      return { tools: mappedTools, tool_choice: type };
-    case "tool":
-      return {
-        tools: mappedTools,
-        tool_choice: {
-          type: "function",
-          function: {
-            name: toolChoice.toolName
-          }
-        }
-      };
-    default: {
-      const _exhaustiveCheck = type;
-      throw new Error(`Unsupported tool choice type: ${_exhaustiveCheck}`);
-    }
-  }
-}
 function isReasoningModel(modelId) {
-  return modelId.startsWith("o1-");
+  return modelId === "o1" || modelId.startsWith("o1-") || modelId === "o3" || modelId.startsWith("o3-");
 }
+function isAudioModel(modelId) {
+  return modelId.startsWith("gpt-4o-audio-preview");
+}
+function getSystemMessageMode(modelId) {
+  var _a, _b;
+  if (!isReasoningModel(modelId)) {
+    return "system";
+  }
+  return (_b = (_a = reasoningModels[modelId]) == null ? void 0 : _a.systemMessageMode) != null ? _b : "developer";
+}
+function isStreamingSimulatedByDefault(modelId) {
+  var _a, _b;
+  if (!isReasoningModel(modelId)) {
+    return false;
+  }
+  return (_b = (_a = reasoningModels[modelId]) == null ? void 0 : _a.simulateStreamingByDefault) != null ? _b : true;
+}
+var reasoningModels = {
+  "o1-mini": {
+    systemMessageMode: "remove",
+    simulateStreamingByDefault: false
+  },
+  "o1-mini-2024-09-12": {
+    systemMessageMode: "remove",
+    simulateStreamingByDefault: false
+  },
+  "o1-preview": {
+    systemMessageMode: "remove",
+    simulateStreamingByDefault: false
+  },
+  "o1-preview-2024-09-12": {
+    systemMessageMode: "remove",
+    simulateStreamingByDefault: false
+  },
+  "o3-mini": {
+    systemMessageMode: "developer",
+    simulateStreamingByDefault: false
+  },
+  "o3-mini-2025-01-31": {
+    systemMessageMode: "developer",
+    simulateStreamingByDefault: false
+  }
+};
 
 // src/openai-completion-language-model.ts
-var import_provider4 = __nccwpck_require__(8892);
-var import_provider_utils4 = __nccwpck_require__(127);
-var import_zod3 = __nccwpck_require__(931);
+var import_provider5 = __nccwpck_require__(4069);
+var import_provider_utils4 = __nccwpck_require__(2458);
+var import_zod3 = __nccwpck_require__(6516);
 
 // src/convert-to-openai-completion-prompt.ts
-var import_provider3 = __nccwpck_require__(8892);
+var import_provider4 = __nccwpck_require__(4069);
 function convertToOpenAICompletionPrompt({
   prompt,
   inputFormat,
@@ -4959,7 +5439,7 @@ function convertToOpenAICompletionPrompt({
   for (const { role, content } of prompt) {
     switch (role) {
       case "system": {
-        throw new import_provider3.InvalidPromptError({
+        throw new import_provider4.InvalidPromptError({
           message: "Unexpected system message in prompt: ${content}",
           prompt
         });
@@ -4971,7 +5451,7 @@ function convertToOpenAICompletionPrompt({
               return part.text;
             }
             case "image": {
-              throw new import_provider3.UnsupportedFunctionalityError({
+              throw new import_provider4.UnsupportedFunctionalityError({
                 functionality: "images"
               });
             }
@@ -4990,7 +5470,7 @@ ${userMessage}
               return part.text;
             }
             case "tool-call": {
-              throw new import_provider3.UnsupportedFunctionalityError({
+              throw new import_provider4.UnsupportedFunctionalityError({
                 functionality: "tool-call messages"
               });
             }
@@ -5003,7 +5483,7 @@ ${assistantMessage}
         break;
       }
       case "tool": {
-        throw new import_provider3.UnsupportedFunctionalityError({
+        throw new import_provider4.UnsupportedFunctionalityError({
           functionality: "tool messages"
         });
       }
@@ -5104,24 +5584,24 @@ var OpenAICompletionLanguageModel = class {
     switch (type) {
       case "regular": {
         if ((_a = mode.tools) == null ? void 0 : _a.length) {
-          throw new import_provider4.UnsupportedFunctionalityError({
+          throw new import_provider5.UnsupportedFunctionalityError({
             functionality: "tools"
           });
         }
         if (mode.toolChoice) {
-          throw new import_provider4.UnsupportedFunctionalityError({
+          throw new import_provider5.UnsupportedFunctionalityError({
             functionality: "toolChoice"
           });
         }
         return { args: baseArgs, warnings };
       }
       case "object-json": {
-        throw new import_provider4.UnsupportedFunctionalityError({
+        throw new import_provider5.UnsupportedFunctionalityError({
           functionality: "object-json mode"
         });
       }
       case "object-tool": {
-        throw new import_provider4.UnsupportedFunctionalityError({
+        throw new import_provider5.UnsupportedFunctionalityError({
           functionality: "object-tool mode"
         });
       }
@@ -5142,7 +5622,7 @@ var OpenAICompletionLanguageModel = class {
       body: args,
       failedResponseHandler: openaiFailedResponseHandler,
       successfulResponseHandler: (0, import_provider_utils4.createJsonResponseHandler)(
-        openAICompletionResponseSchema
+        openaiCompletionResponseSchema
       ),
       abortSignal: options.abortSignal,
       fetch: this.config.fetch
@@ -5160,23 +5640,25 @@ var OpenAICompletionLanguageModel = class {
       rawCall: { rawPrompt, rawSettings },
       rawResponse: { headers: responseHeaders },
       response: getResponseMetadata(response),
-      warnings
+      warnings,
+      request: { body: JSON.stringify(args) }
     };
   }
   async doStream(options) {
     const { args, warnings } = this.getArgs(options);
+    const body = {
+      ...args,
+      stream: true,
+      // only include stream_options when in strict compatibility mode:
+      stream_options: this.config.compatibility === "strict" ? { include_usage: true } : void 0
+    };
     const { responseHeaders, value: response } = await (0, import_provider_utils4.postJsonToApi)({
       url: this.config.url({
         path: "/completions",
         modelId: this.modelId
       }),
       headers: (0, import_provider_utils4.combineHeaders)(this.config.headers(), options.headers),
-      body: {
-        ...args,
-        stream: true,
-        // only include stream_options when in strict compatibility mode:
-        stream_options: this.config.compatibility === "strict" ? { include_usage: true } : void 0
-      },
+      body,
       failedResponseHandler: openaiFailedResponseHandler,
       successfulResponseHandler: (0, import_provider_utils4.createEventSourceResponseHandler)(
         openaiCompletionChunkSchema
@@ -5250,11 +5732,12 @@ var OpenAICompletionLanguageModel = class {
       ),
       rawCall: { rawPrompt, rawSettings },
       rawResponse: { headers: responseHeaders },
-      warnings
+      warnings,
+      request: { body: JSON.stringify(body) }
     };
   }
 };
-var openAICompletionResponseSchema = import_zod3.z.object({
+var openaiCompletionResponseSchema = import_zod3.z.object({
   id: import_zod3.z.string().nullish(),
   created: import_zod3.z.number().nullish(),
   model: import_zod3.z.string().nullish(),
@@ -5296,63 +5779,13 @@ var openaiCompletionChunkSchema = import_zod3.z.union([
       completion_tokens: import_zod3.z.number()
     }).nullish()
   }),
-  openAIErrorDataSchema
+  openaiErrorDataSchema
 ]);
 
-// src/openai-facade.ts
-var OpenAI = class {
-  /**
-   * Creates a new OpenAI provider instance.
-   */
-  constructor(options = {}) {
-    var _a, _b;
-    this.baseURL = (_b = (0, import_provider_utils5.withoutTrailingSlash)((_a = options.baseURL) != null ? _a : options.baseUrl)) != null ? _b : "https://api.openai.com/v1";
-    this.apiKey = options.apiKey;
-    this.organization = options.organization;
-    this.project = options.project;
-    this.headers = options.headers;
-  }
-  get baseConfig() {
-    return {
-      organization: this.organization,
-      baseURL: this.baseURL,
-      headers: () => ({
-        Authorization: `Bearer ${(0, import_provider_utils5.loadApiKey)({
-          apiKey: this.apiKey,
-          environmentVariableName: "OPENAI_API_KEY",
-          description: "OpenAI"
-        })}`,
-        "OpenAI-Organization": this.organization,
-        "OpenAI-Project": this.project,
-        ...this.headers
-      })
-    };
-  }
-  chat(modelId, settings = {}) {
-    return new OpenAIChatLanguageModel(modelId, settings, {
-      provider: "openai.chat",
-      ...this.baseConfig,
-      compatibility: "strict",
-      url: ({ path }) => `${this.baseURL}${path}`
-    });
-  }
-  completion(modelId, settings = {}) {
-    return new OpenAICompletionLanguageModel(modelId, settings, {
-      provider: "openai.completion",
-      ...this.baseConfig,
-      compatibility: "strict",
-      url: ({ path }) => `${this.baseURL}${path}`
-    });
-  }
-};
-
-// src/openai-provider.ts
-var import_provider_utils7 = __nccwpck_require__(127);
-
 // src/openai-embedding-model.ts
-var import_provider5 = __nccwpck_require__(8892);
-var import_provider_utils6 = __nccwpck_require__(127);
-var import_zod4 = __nccwpck_require__(931);
+var import_provider6 = __nccwpck_require__(4069);
+var import_provider_utils5 = __nccwpck_require__(2458);
+var import_zod4 = __nccwpck_require__(6516);
 var OpenAIEmbeddingModel = class {
   constructor(modelId, settings, config) {
     this.specificationVersion = "v1";
@@ -5377,19 +5810,19 @@ var OpenAIEmbeddingModel = class {
     abortSignal
   }) {
     if (values.length > this.maxEmbeddingsPerCall) {
-      throw new import_provider5.TooManyEmbeddingValuesForCallError({
+      throw new import_provider6.TooManyEmbeddingValuesForCallError({
         provider: this.provider,
         modelId: this.modelId,
         maxEmbeddingsPerCall: this.maxEmbeddingsPerCall,
         values
       });
     }
-    const { responseHeaders, value: response } = await (0, import_provider_utils6.postJsonToApi)({
+    const { responseHeaders, value: response } = await (0, import_provider_utils5.postJsonToApi)({
       url: this.config.url({
         path: "/embeddings",
         modelId: this.modelId
       }),
-      headers: (0, import_provider_utils6.combineHeaders)(this.config.headers(), headers),
+      headers: (0, import_provider_utils5.combineHeaders)(this.config.headers(), headers),
       body: {
         model: this.modelId,
         input: values,
@@ -5398,7 +5831,7 @@ var OpenAIEmbeddingModel = class {
         user: this.settings.user
       },
       failedResponseHandler: openaiFailedResponseHandler,
-      successfulResponseHandler: (0, import_provider_utils6.createJsonResponseHandler)(
+      successfulResponseHandler: (0, import_provider_utils5.createJsonResponseHandler)(
         openaiTextEmbeddingResponseSchema
       ),
       abortSignal,
@@ -5416,11 +5849,96 @@ var openaiTextEmbeddingResponseSchema = import_zod4.z.object({
   usage: import_zod4.z.object({ prompt_tokens: import_zod4.z.number() }).nullish()
 });
 
+// src/openai-image-model.ts
+var import_provider_utils6 = __nccwpck_require__(2458);
+var import_zod5 = __nccwpck_require__(6516);
+
+// src/openai-image-settings.ts
+var modelMaxImagesPerCall = {
+  "dall-e-3": 1,
+  "dall-e-2": 10
+};
+
+// src/openai-image-model.ts
+var OpenAIImageModel = class {
+  constructor(modelId, settings, config) {
+    this.modelId = modelId;
+    this.settings = settings;
+    this.config = config;
+    this.specificationVersion = "v1";
+  }
+  get maxImagesPerCall() {
+    var _a, _b;
+    return (_b = (_a = this.settings.maxImagesPerCall) != null ? _a : modelMaxImagesPerCall[this.modelId]) != null ? _b : 1;
+  }
+  get provider() {
+    return this.config.provider;
+  }
+  async doGenerate({
+    prompt,
+    n,
+    size,
+    aspectRatio,
+    seed,
+    providerOptions,
+    headers,
+    abortSignal
+  }) {
+    var _a, _b, _c, _d;
+    const warnings = [];
+    if (aspectRatio != null) {
+      warnings.push({
+        type: "unsupported-setting",
+        setting: "aspectRatio",
+        details: "This model does not support aspect ratio. Use `size` instead."
+      });
+    }
+    if (seed != null) {
+      warnings.push({ type: "unsupported-setting", setting: "seed" });
+    }
+    const currentDate = (_c = (_b = (_a = this.config._internal) == null ? void 0 : _a.currentDate) == null ? void 0 : _b.call(_a)) != null ? _c : /* @__PURE__ */ new Date();
+    const { value: response, responseHeaders } = await (0, import_provider_utils6.postJsonToApi)({
+      url: this.config.url({
+        path: "/images/generations",
+        modelId: this.modelId
+      }),
+      headers: (0, import_provider_utils6.combineHeaders)(this.config.headers(), headers),
+      body: {
+        model: this.modelId,
+        prompt,
+        n,
+        size,
+        ...(_d = providerOptions.openai) != null ? _d : {},
+        response_format: "b64_json"
+      },
+      failedResponseHandler: openaiFailedResponseHandler,
+      successfulResponseHandler: (0, import_provider_utils6.createJsonResponseHandler)(
+        openaiImageResponseSchema
+      ),
+      abortSignal,
+      fetch: this.config.fetch
+    });
+    return {
+      images: response.data.map((item) => item.b64_json),
+      warnings,
+      response: {
+        timestamp: currentDate,
+        modelId: this.modelId,
+        headers: responseHeaders
+      }
+    };
+  }
+};
+var openaiImageResponseSchema = import_zod5.z.object({
+  data: import_zod5.z.array(import_zod5.z.object({ b64_json: import_zod5.z.string() }))
+});
+
 // src/openai-provider.ts
 function createOpenAI(options = {}) {
   var _a, _b, _c;
-  const baseURL = (_b = (0, import_provider_utils7.withoutTrailingSlash)((_a = options.baseURL) != null ? _a : options.baseUrl)) != null ? _b : "https://api.openai.com/v1";
-  const compatibility = (_c = options.compatibility) != null ? _c : "compatible";
+  const baseURL = (_a = (0, import_provider_utils7.withoutTrailingSlash)(options.baseURL)) != null ? _a : "https://api.openai.com/v1";
+  const compatibility = (_b = options.compatibility) != null ? _b : "compatible";
+  const providerName = (_c = options.name) != null ? _c : "openai";
   const getHeaders = () => ({
     Authorization: `Bearer ${(0, import_provider_utils7.loadApiKey)({
       apiKey: options.apiKey,
@@ -5432,21 +5950,27 @@ function createOpenAI(options = {}) {
     ...options.headers
   });
   const createChatModel = (modelId, settings = {}) => new OpenAIChatLanguageModel(modelId, settings, {
-    provider: "openai.chat",
+    provider: `${providerName}.chat`,
     url: ({ path }) => `${baseURL}${path}`,
     headers: getHeaders,
     compatibility,
     fetch: options.fetch
   });
   const createCompletionModel = (modelId, settings = {}) => new OpenAICompletionLanguageModel(modelId, settings, {
-    provider: "openai.completion",
+    provider: `${providerName}.completion`,
     url: ({ path }) => `${baseURL}${path}`,
     headers: getHeaders,
     compatibility,
     fetch: options.fetch
   });
   const createEmbeddingModel = (modelId, settings = {}) => new OpenAIEmbeddingModel(modelId, settings, {
-    provider: "openai.embedding",
+    provider: `${providerName}.embedding`,
+    url: ({ path }) => `${baseURL}${path}`,
+    headers: getHeaders,
+    fetch: options.fetch
+  });
+  const createImageModel = (modelId, settings = {}) => new OpenAIImageModel(modelId, settings, {
+    provider: `${providerName}.image`,
     url: ({ path }) => `${baseURL}${path}`,
     headers: getHeaders,
     fetch: options.fetch
@@ -5474,6 +5998,8 @@ function createOpenAI(options = {}) {
   provider.embedding = createEmbeddingModel;
   provider.textEmbedding = createEmbeddingModel;
   provider.textEmbeddingModel = createEmbeddingModel;
+  provider.image = createImageModel;
+  provider.imageModel = createImageModel;
   return provider;
 }
 var openai = createOpenAI({
@@ -5486,7 +6012,7 @@ var openai = createOpenAI({
 
 /***/ }),
 
-/***/ 127:
+/***/ 2458:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -5524,20 +6050,23 @@ var src_exports = {};
 __export(src_exports, {
   asValidator: () => asValidator,
   combineHeaders: () => combineHeaders,
-  convertAsyncGeneratorToReadableStream: () => convertAsyncGeneratorToReadableStream,
+  convertAsyncIteratorToReadableStream: () => convertAsyncIteratorToReadableStream,
   convertBase64ToUint8Array: () => convertBase64ToUint8Array,
   convertUint8ArrayToBase64: () => convertUint8ArrayToBase64,
+  createBinaryResponseHandler: () => createBinaryResponseHandler,
   createEventSourceResponseHandler: () => createEventSourceResponseHandler,
   createIdGenerator: () => createIdGenerator,
   createJsonErrorResponseHandler: () => createJsonErrorResponseHandler,
   createJsonResponseHandler: () => createJsonResponseHandler,
   createJsonStreamResponseHandler: () => createJsonStreamResponseHandler,
+  createStatusCodeErrorResponseHandler: () => createStatusCodeErrorResponseHandler,
+  delay: () => delay,
   extractResponseHeaders: () => extractResponseHeaders,
   generateId: () => generateId,
   getErrorMessage: () => getErrorMessage,
+  getFromApi: () => getFromApi,
   isAbortError: () => isAbortError,
   isParsableJson: () => isParsableJson,
-  isParseableJson: () => isParseableJson,
   isValidator: () => isValidator,
   loadApiKey: () => loadApiKey,
   loadOptionalSetting: () => loadOptionalSetting,
@@ -5545,6 +6074,7 @@ __export(src_exports, {
   parseJSON: () => parseJSON,
   postJsonToApi: () => postJsonToApi,
   postToApi: () => postToApi,
+  resolve: () => resolve,
   safeParseJSON: () => safeParseJSON,
   safeValidateTypes: () => safeValidateTypes,
   validateTypes: () => validateTypes,
@@ -5566,8 +6096,8 @@ function combineHeaders(...headers) {
   );
 }
 
-// src/convert-async-generator-to-readable-stream.ts
-function convertAsyncGeneratorToReadableStream(stream) {
+// src/convert-async-iterator-to-readable-stream.ts
+function convertAsyncIteratorToReadableStream(iterator) {
   return new ReadableStream({
     /**
      * Called when the consumer wants to pull more data from the stream.
@@ -5577,7 +6107,7 @@ function convertAsyncGeneratorToReadableStream(stream) {
      */
     async pull(controller) {
       try {
-        const { value, done } = await stream.next();
+        const { value, done } = await iterator.next();
         if (done) {
           controller.close();
         } else {
@@ -5595,6 +6125,11 @@ function convertAsyncGeneratorToReadableStream(stream) {
   });
 }
 
+// src/delay.ts
+async function delay(delayInMs) {
+  return delayInMs == null ? Promise.resolve() : new Promise((resolve2) => setTimeout(resolve2, delayInMs));
+}
+
 // src/extract-response-headers.ts
 function extractResponseHeaders(response) {
   const headers = {};
@@ -5605,14 +6140,25 @@ function extractResponseHeaders(response) {
 }
 
 // src/generate-id.ts
-var import_non_secure = __nccwpck_require__(7498);
+var import_provider = __nccwpck_require__(4069);
+var import_non_secure = __nccwpck_require__(9707);
 var createIdGenerator = ({
-  prefix = "",
-  size: defaultSize = 7,
-  alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+  prefix,
+  size: defaultSize = 16,
+  alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+  separator = "-"
 } = {}) => {
   const generator = (0, import_non_secure.customAlphabet)(alphabet, defaultSize);
-  return (size) => `${prefix}${generator(size)}`;
+  if (prefix == null) {
+    return generator;
+  }
+  if (alphabet.includes(separator)) {
+    throw new import_provider.InvalidArgumentError({
+      argument: "separator",
+      message: `The separator "${separator}" must not be part of the alphabet "${alphabet}".`
+    });
+  }
+  return (size) => `${prefix}${separator}${generator(size)}`;
 };
 var generateId = createIdGenerator();
 
@@ -5630,13 +6176,104 @@ function getErrorMessage(error) {
   return JSON.stringify(error);
 }
 
+// src/get-from-api.ts
+var import_provider2 = __nccwpck_require__(4069);
+
+// src/remove-undefined-entries.ts
+function removeUndefinedEntries(record) {
+  return Object.fromEntries(
+    Object.entries(record).filter(([_key, value]) => value != null)
+  );
+}
+
 // src/is-abort-error.ts
 function isAbortError(error) {
   return error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError");
 }
 
+// src/get-from-api.ts
+var getOriginalFetch = () => globalThis.fetch;
+var getFromApi = async ({
+  url,
+  headers = {},
+  successfulResponseHandler,
+  failedResponseHandler,
+  abortSignal,
+  fetch = getOriginalFetch()
+}) => {
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: removeUndefinedEntries(headers),
+      signal: abortSignal
+    });
+    const responseHeaders = extractResponseHeaders(response);
+    if (!response.ok) {
+      let errorInformation;
+      try {
+        errorInformation = await failedResponseHandler({
+          response,
+          url,
+          requestBodyValues: {}
+        });
+      } catch (error) {
+        if (isAbortError(error) || import_provider2.APICallError.isInstance(error)) {
+          throw error;
+        }
+        throw new import_provider2.APICallError({
+          message: "Failed to process error response",
+          cause: error,
+          statusCode: response.status,
+          url,
+          responseHeaders,
+          requestBodyValues: {}
+        });
+      }
+      throw errorInformation.value;
+    }
+    try {
+      return await successfulResponseHandler({
+        response,
+        url,
+        requestBodyValues: {}
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        if (isAbortError(error) || import_provider2.APICallError.isInstance(error)) {
+          throw error;
+        }
+      }
+      throw new import_provider2.APICallError({
+        message: "Failed to process successful response",
+        cause: error,
+        statusCode: response.status,
+        url,
+        responseHeaders,
+        requestBodyValues: {}
+      });
+    }
+  } catch (error) {
+    if (isAbortError(error)) {
+      throw error;
+    }
+    if (error instanceof TypeError && error.message === "fetch failed") {
+      const cause = error.cause;
+      if (cause != null) {
+        throw new import_provider2.APICallError({
+          message: `Cannot connect to API: ${cause.message}`,
+          cause,
+          url,
+          isRetryable: true,
+          requestBodyValues: {}
+        });
+      }
+    }
+    throw error;
+  }
+};
+
 // src/load-api-key.ts
-var import_provider = __nccwpck_require__(8892);
+var import_provider3 = __nccwpck_require__(4069);
 function loadApiKey({
   apiKey,
   environmentVariableName,
@@ -5647,62 +6284,27 @@ function loadApiKey({
     return apiKey;
   }
   if (apiKey != null) {
-    throw new import_provider.LoadAPIKeyError({
+    throw new import_provider3.LoadAPIKeyError({
       message: `${description} API key must be a string.`
     });
   }
   if (typeof process === "undefined") {
-    throw new import_provider.LoadAPIKeyError({
+    throw new import_provider3.LoadAPIKeyError({
       message: `${description} API key is missing. Pass it using the '${apiKeyParameterName}' parameter. Environment variables is not supported in this environment.`
     });
   }
   apiKey = process.env[environmentVariableName];
   if (apiKey == null) {
-    throw new import_provider.LoadAPIKeyError({
+    throw new import_provider3.LoadAPIKeyError({
       message: `${description} API key is missing. Pass it using the '${apiKeyParameterName}' parameter or the ${environmentVariableName} environment variable.`
     });
   }
   if (typeof apiKey !== "string") {
-    throw new import_provider.LoadAPIKeyError({
+    throw new import_provider3.LoadAPIKeyError({
       message: `${description} API key must be a string. The value of the ${environmentVariableName} environment variable is not a string.`
     });
   }
   return apiKey;
-}
-
-// src/load-setting.ts
-var import_provider2 = __nccwpck_require__(8892);
-function loadSetting({
-  settingValue,
-  environmentVariableName,
-  settingName,
-  description
-}) {
-  if (typeof settingValue === "string") {
-    return settingValue;
-  }
-  if (settingValue != null) {
-    throw new import_provider2.LoadSettingError({
-      message: `${description} setting must be a string.`
-    });
-  }
-  if (typeof process === "undefined") {
-    throw new import_provider2.LoadSettingError({
-      message: `${description} setting is missing. Pass it using the '${settingName}' parameter. Environment variables is not supported in this environment.`
-    });
-  }
-  settingValue = process.env[environmentVariableName];
-  if (settingValue == null) {
-    throw new import_provider2.LoadSettingError({
-      message: `${description} setting is missing. Pass it using the '${settingName}' parameter or the ${environmentVariableName} environment variable.`
-    });
-  }
-  if (typeof settingValue !== "string") {
-    throw new import_provider2.LoadSettingError({
-      message: `${description} setting must be a string. The value of the ${environmentVariableName} environment variable is not a string.`
-    });
-  }
-  return settingValue;
 }
 
 // src/load-optional-setting.ts
@@ -5723,12 +6325,47 @@ function loadOptionalSetting({
   return settingValue;
 }
 
+// src/load-setting.ts
+var import_provider4 = __nccwpck_require__(4069);
+function loadSetting({
+  settingValue,
+  environmentVariableName,
+  settingName,
+  description
+}) {
+  if (typeof settingValue === "string") {
+    return settingValue;
+  }
+  if (settingValue != null) {
+    throw new import_provider4.LoadSettingError({
+      message: `${description} setting must be a string.`
+    });
+  }
+  if (typeof process === "undefined") {
+    throw new import_provider4.LoadSettingError({
+      message: `${description} setting is missing. Pass it using the '${settingName}' parameter. Environment variables is not supported in this environment.`
+    });
+  }
+  settingValue = process.env[environmentVariableName];
+  if (settingValue == null) {
+    throw new import_provider4.LoadSettingError({
+      message: `${description} setting is missing. Pass it using the '${settingName}' parameter or the ${environmentVariableName} environment variable.`
+    });
+  }
+  if (typeof settingValue !== "string") {
+    throw new import_provider4.LoadSettingError({
+      message: `${description} setting must be a string. The value of the ${environmentVariableName} environment variable is not a string.`
+    });
+  }
+  return settingValue;
+}
+
 // src/parse-json.ts
-var import_provider4 = __nccwpck_require__(8892);
-var import_secure_json_parse = __toESM(__nccwpck_require__(1052));
+var import_provider6 = __nccwpck_require__(4069);
+var import_secure_json_parse = __toESM(__nccwpck_require__(207));
 
 // src/validate-types.ts
-var import_provider3 = __nccwpck_require__(8892);
+var import_provider5 = __nccwpck_require__(4069);
 
 // src/validator.ts
 var validatorSymbol = Symbol.for("vercel.ai.validator");
@@ -5755,7 +6392,7 @@ function validateTypes({
 }) {
   const result = safeValidateTypes({ value, schema: inputSchema });
   if (!result.success) {
-    throw import_provider3.TypeValidationError.wrap({ value, cause: result.error });
+    throw import_provider5.TypeValidationError.wrap({ value, cause: result.error });
   }
   return result.value;
 }
@@ -5774,12 +6411,12 @@ function safeValidateTypes({
     }
     return {
       success: false,
-      error: import_provider3.TypeValidationError.wrap({ value, cause: result.error })
+      error: import_provider5.TypeValidationError.wrap({ value, cause: result.error })
     };
   } catch (error) {
     return {
       success: false,
-      error: import_provider3.TypeValidationError.wrap({ value, cause: error })
+      error: import_provider5.TypeValidationError.wrap({ value, cause: error })
     };
   }
 }
@@ -5796,10 +6433,10 @@ function parseJSON({
     }
     return validateTypes({ value, schema });
   } catch (error) {
-    if (import_provider4.JSONParseError.isJSONParseError(error) || import_provider4.TypeValidationError.isTypeValidationError(error)) {
+    if (import_provider6.JSONParseError.isInstance(error) || import_provider6.TypeValidationError.isInstance(error)) {
       throw error;
     }
-    throw new import_provider4.JSONParseError({ text, cause: error });
+    throw new import_provider6.JSONParseError({ text, cause: error });
   }
 }
 function safeParseJSON({
@@ -5809,16 +6446,14 @@ function safeParseJSON({
   try {
     const value = import_secure_json_parse.default.parse(text);
     if (schema == null) {
-      return {
-        success: true,
-        value
-      };
+      return { success: true, value, rawValue: value };
     }
-    return safeValidateTypes({ value, schema });
+    const validationResult = safeValidateTypes({ value, schema });
+    return validationResult.success ? { ...validationResult, rawValue: value } : validationResult;
   } catch (error) {
     return {
       success: false,
-      error: import_provider4.JSONParseError.isJSONParseError(error) ? error : new import_provider4.JSONParseError({ text, cause: error })
+      error: import_provider6.JSONParseError.isInstance(error) ? error : new import_provider6.JSONParseError({ text, cause: error })
     };
   }
 }
@@ -5830,20 +6465,10 @@ function isParsableJson(input) {
     return false;
   }
 }
-var isParseableJson = isParsableJson;
 
 // src/post-to-api.ts
-var import_provider5 = __nccwpck_require__(8892);
-
-// src/remove-undefined-entries.ts
-function removeUndefinedEntries(record) {
-  return Object.fromEntries(
-    Object.entries(record).filter(([_key, value]) => value != null)
-  );
-}
-
-// src/post-to-api.ts
-var getOriginalFetch = () => globalThis.fetch;
+var import_provider7 = __nccwpck_require__(4069);
+var getOriginalFetch2 = () => globalThis.fetch;
 var postJsonToApi = async ({
   url,
   headers,
@@ -5874,7 +6499,7 @@ var postToApi = async ({
   successfulResponseHandler,
   failedResponseHandler,
   abortSignal,
-  fetch = getOriginalFetch()
+  fetch = getOriginalFetch2()
 }) => {
   try {
     const response = await fetch(url, {
@@ -5893,10 +6518,10 @@ var postToApi = async ({
           requestBodyValues: body.values
         });
       } catch (error) {
-        if (isAbortError(error) || import_provider5.APICallError.isAPICallError(error)) {
+        if (isAbortError(error) || import_provider7.APICallError.isInstance(error)) {
           throw error;
         }
-        throw new import_provider5.APICallError({
+        throw new import_provider7.APICallError({
           message: "Failed to process error response",
           cause: error,
           statusCode: response.status,
@@ -5915,11 +6540,11 @@ var postToApi = async ({
       });
     } catch (error) {
       if (error instanceof Error) {
-        if (isAbortError(error) || import_provider5.APICallError.isAPICallError(error)) {
+        if (isAbortError(error) || import_provider7.APICallError.isInstance(error)) {
           throw error;
         }
       }
-      throw new import_provider5.APICallError({
+      throw new import_provider7.APICallError({
         message: "Failed to process successful response",
         cause: error,
         statusCode: response.status,
@@ -5935,7 +6560,7 @@ var postToApi = async ({
     if (error instanceof TypeError && error.message === "fetch failed") {
       const cause = error.cause;
       if (cause != null) {
-        throw new import_provider5.APICallError({
+        throw new import_provider7.APICallError({
           message: `Cannot connect to API: ${cause.message}`,
           cause,
           url,
@@ -5949,9 +6574,17 @@ var postToApi = async ({
   }
 };
 
+// src/resolve.ts
+async function resolve(value) {
+  if (typeof value === "function") {
+    value = value();
+  }
+  return Promise.resolve(value);
+}
+
 // src/response-handler.ts
-var import_provider6 = __nccwpck_require__(8892);
-var import_stream = __nccwpck_require__(585);
+var import_provider8 = __nccwpck_require__(4069);
+var import_stream = __nccwpck_require__(3005);
 var createJsonErrorResponseHandler = ({
   errorSchema,
   errorToMessage,
@@ -5962,7 +6595,7 @@ var createJsonErrorResponseHandler = ({
   if (responseBody.trim() === "") {
     return {
       responseHeaders,
-      value: new import_provider6.APICallError({
+      value: new import_provider8.APICallError({
         message: response.statusText,
         url,
         requestBodyValues,
@@ -5980,7 +6613,7 @@ var createJsonErrorResponseHandler = ({
     });
     return {
       responseHeaders,
-      value: new import_provider6.APICallError({
+      value: new import_provider8.APICallError({
         message: errorToMessage(parsedError),
         url,
         requestBodyValues,
@@ -5994,7 +6627,7 @@ var createJsonErrorResponseHandler = ({
   } catch (parseError) {
     return {
       responseHeaders,
-      value: new import_provider6.APICallError({
+      value: new import_provider8.APICallError({
         message: response.statusText,
         url,
         requestBodyValues,
@@ -6009,7 +6642,7 @@ var createJsonErrorResponseHandler = ({
 var createEventSourceResponseHandler = (chunkSchema) => async ({ response }) => {
   const responseHeaders = extractResponseHeaders(response);
   if (response.body == null) {
-    throw new import_provider6.EmptyResponseBodyError({});
+    throw new import_provider8.EmptyResponseBodyError({});
   }
   return {
     responseHeaders,
@@ -6033,7 +6666,7 @@ var createEventSourceResponseHandler = (chunkSchema) => async ({ response }) => 
 var createJsonStreamResponseHandler = (chunkSchema) => async ({ response }) => {
   const responseHeaders = extractResponseHeaders(response);
   if (response.body == null) {
-    throw new import_provider6.EmptyResponseBodyError({});
+    throw new import_provider8.EmptyResponseBodyError({});
   }
   let buffer = "";
   return {
@@ -6065,7 +6698,7 @@ var createJsonResponseHandler = (responseSchema) => async ({ response, url, requ
   });
   const responseHeaders = extractResponseHeaders(response);
   if (!parsedResult.success) {
-    throw new import_provider6.APICallError({
+    throw new import_provider8.APICallError({
       message: "Invalid JSON response",
       cause: parsedResult.error,
       statusCode: response.status,
@@ -6077,7 +6710,53 @@ var createJsonResponseHandler = (responseSchema) => async ({ response, url, requ
   }
   return {
     responseHeaders,
-    value: parsedResult.value
+    value: parsedResult.value,
+    rawValue: parsedResult.rawValue
+  };
+};
+var createBinaryResponseHandler = () => async ({ response, url, requestBodyValues }) => {
+  const responseHeaders = extractResponseHeaders(response);
+  if (!response.body) {
+    throw new import_provider8.APICallError({
+      message: "Response body is empty",
+      url,
+      requestBodyValues,
+      statusCode: response.status,
+      responseHeaders,
+      responseBody: void 0
+    });
+  }
+  try {
+    const buffer = await response.arrayBuffer();
+    return {
+      responseHeaders,
+      value: new Uint8Array(buffer)
+    };
+  } catch (error) {
+    throw new import_provider8.APICallError({
+      message: "Failed to read response as array buffer",
+      url,
+      requestBodyValues,
+      statusCode: response.status,
+      responseHeaders,
+      responseBody: void 0,
+      cause: error
+    });
+  }
+};
+var createStatusCodeErrorResponseHandler = () => async ({ response, url, requestBodyValues }) => {
+  const responseHeaders = extractResponseHeaders(response);
+  const responseBody = await response.text();
+  return {
+    responseHeaders,
+    value: new import_provider8.APICallError({
+      message: response.statusText,
+      url,
+      requestBodyValues,
+      statusCode: response.status,
+      responseHeaders,
+      responseBody
+    })
   };
 };
 
@@ -6106,7 +6785,7 @@ function withoutTrailingSlash(url) {
 
 /***/ }),
 
-/***/ 8892:
+/***/ 4069:
 /***/ ((module) => {
 
 "use strict";
@@ -6116,8 +6795,8 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __export = (target, all) => {
-  for (var name13 in all)
-    __defProp(target, name13, { get: all[name13], enumerable: true });
+  for (var name14 in all)
+    __defProp(target, name14, { get: all[name14], enumerable: true });
 };
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") {
@@ -6135,6 +6814,7 @@ __export(src_exports, {
   AISDKError: () => AISDKError,
   APICallError: () => APICallError,
   EmptyResponseBodyError: () => EmptyResponseBodyError,
+  InvalidArgumentError: () => InvalidArgumentError,
   InvalidPromptError: () => InvalidPromptError,
   InvalidResponseDataError: () => InvalidResponseDataError,
   JSONParseError: () => JSONParseError,
@@ -6166,13 +6846,13 @@ var _AISDKError = class _AISDKError extends Error {
    * @param {unknown} [params.cause] - The underlying cause of the error.
    */
   constructor({
-    name: name13,
+    name: name14,
     message,
     cause
   }) {
     super(message);
     this[_a] = true;
-    this.name = name13;
+    this.name = name14;
     this.cause = cause;
   }
   /**
@@ -6183,21 +6863,9 @@ var _AISDKError = class _AISDKError extends Error {
   static isInstance(error) {
     return _AISDKError.hasMarker(error, marker);
   }
-  static hasMarker(error, marker14) {
-    const markerSymbol = Symbol.for(marker14);
+  static hasMarker(error, marker15) {
+    const markerSymbol = Symbol.for(marker15);
     return error != null && typeof error === "object" && markerSymbol in error && typeof error[markerSymbol] === "boolean" && error[markerSymbol] === true;
-  }
-  /**
-   * Returns a JSON representation of the error.
-   * @returns {Object} An object containing the error's name, message, and cause.
-   *
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message
-    };
   }
 };
 _a = symbol;
@@ -6237,29 +6905,6 @@ var APICallError = class extends AISDKError {
   static isInstance(error) {
     return AISDKError.hasMarker(error, marker2);
   }
-  /**
-   * @deprecated Use isInstance instead.
-   */
-  static isAPICallError(error) {
-    return error instanceof Error && error.name === name && typeof error.url === "string" && typeof error.requestBodyValues === "object" && (error.statusCode == null || typeof error.statusCode === "number") && (error.responseHeaders == null || typeof error.responseHeaders === "object") && (error.responseBody == null || typeof error.responseBody === "string") && (error.cause == null || typeof error.cause === "object") && typeof error.isRetryable === "boolean" && (error.data == null || typeof error.data === "object");
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      url: this.url,
-      requestBodyValues: this.requestBodyValues,
-      statusCode: this.statusCode,
-      responseHeaders: this.responseHeaders,
-      responseBody: this.responseBody,
-      cause: this.cause,
-      isRetryable: this.isRetryable,
-      data: this.data
-    };
-  }
 };
 _a2 = symbol2;
 
@@ -6276,12 +6921,6 @@ var EmptyResponseBodyError = class extends AISDKError {
   }
   static isInstance(error) {
     return AISDKError.hasMarker(error, marker3);
-  }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isEmptyResponseBodyError(error) {
-    return error instanceof Error && error.name === name2;
   }
 };
 _a3 = symbol3;
@@ -6300,150 +6939,96 @@ function getErrorMessage(error) {
   return JSON.stringify(error);
 }
 
-// src/errors/invalid-prompt-error.ts
-var name3 = "AI_InvalidPromptError";
+// src/errors/invalid-argument-error.ts
+var name3 = "AI_InvalidArgumentError";
 var marker4 = `vercel.ai.error.${name3}`;
 var symbol4 = Symbol.for(marker4);
 var _a4;
-var InvalidPromptError = class extends AISDKError {
+var InvalidArgumentError = class extends AISDKError {
   constructor({
-    prompt: prompt2,
     message,
-    cause
+    cause,
+    argument
   }) {
-    super({ name: name3, message: `Invalid prompt: ${message}`, cause });
+    super({ name: name3, message, cause });
     this[_a4] = true;
-    this.prompt = prompt2;
+    this.argument = argument;
   }
   static isInstance(error) {
     return AISDKError.hasMarker(error, marker4);
   }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isInvalidPromptError(error) {
-    return error instanceof Error && error.name === name3 && prompt != null;
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      stack: this.stack,
-      prompt: this.prompt
-    };
-  }
 };
 _a4 = symbol4;
 
-// src/errors/invalid-response-data-error.ts
-var name4 = "AI_InvalidResponseDataError";
+// src/errors/invalid-prompt-error.ts
+var name4 = "AI_InvalidPromptError";
 var marker5 = `vercel.ai.error.${name4}`;
 var symbol5 = Symbol.for(marker5);
 var _a5;
+var InvalidPromptError = class extends AISDKError {
+  constructor({
+    prompt,
+    message,
+    cause
+  }) {
+    super({ name: name4, message: `Invalid prompt: ${message}`, cause });
+    this[_a5] = true;
+    this.prompt = prompt;
+  }
+  static isInstance(error) {
+    return AISDKError.hasMarker(error, marker5);
+  }
+};
+_a5 = symbol5;
+
+// src/errors/invalid-response-data-error.ts
+var name5 = "AI_InvalidResponseDataError";
+var marker6 = `vercel.ai.error.${name5}`;
+var symbol6 = Symbol.for(marker6);
+var _a6;
 var InvalidResponseDataError = class extends AISDKError {
   constructor({
     data,
     message = `Invalid response data: ${JSON.stringify(data)}.`
   }) {
-    super({ name: name4, message });
-    this[_a5] = true;
-    this.data = data;
-  }
-  static isInstance(error) {
-    return AISDKError.hasMarker(error, marker5);
-  }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isInvalidResponseDataError(error) {
-    return error instanceof Error && error.name === name4 && error.data != null;
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      stack: this.stack,
-      data: this.data
-    };
-  }
-};
-_a5 = symbol5;
-
-// src/errors/json-parse-error.ts
-var name5 = "AI_JSONParseError";
-var marker6 = `vercel.ai.error.${name5}`;
-var symbol6 = Symbol.for(marker6);
-var _a6;
-var JSONParseError = class extends AISDKError {
-  constructor({ text, cause }) {
-    super({
-      name: name5,
-      message: `JSON parsing failed: Text: ${text}.
-Error message: ${getErrorMessage(cause)}`,
-      cause
-    });
+    super({ name: name5, message });
     this[_a6] = true;
-    this.text = text;
+    this.data = data;
   }
   static isInstance(error) {
     return AISDKError.hasMarker(error, marker6);
   }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isJSONParseError(error) {
-    return error instanceof Error && error.name === name5 && "text" in error && typeof error.text === "string";
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      cause: this.cause,
-      stack: this.stack,
-      valueText: this.text
-    };
-  }
 };
 _a6 = symbol6;
 
-// src/errors/load-api-key-error.ts
-var name6 = "AI_LoadAPIKeyError";
+// src/errors/json-parse-error.ts
+var name6 = "AI_JSONParseError";
 var marker7 = `vercel.ai.error.${name6}`;
 var symbol7 = Symbol.for(marker7);
 var _a7;
-var LoadAPIKeyError = class extends AISDKError {
-  // used in isInstance
-  constructor({ message }) {
-    super({ name: name6, message });
+var JSONParseError = class extends AISDKError {
+  constructor({ text, cause }) {
+    super({
+      name: name6,
+      message: `JSON parsing failed: Text: ${text}.
+Error message: ${getErrorMessage(cause)}`,
+      cause
+    });
     this[_a7] = true;
+    this.text = text;
   }
   static isInstance(error) {
     return AISDKError.hasMarker(error, marker7);
   }
-  /**
-   * @deprecated Use isInstance instead.
-   */
-  static isLoadAPIKeyError(error) {
-    return error instanceof Error && error.name === name6;
-  }
 };
 _a7 = symbol7;
 
-// src/errors/load-setting-error.ts
-var name7 = "AI_LoadSettingError";
+// src/errors/load-api-key-error.ts
+var name7 = "AI_LoadAPIKeyError";
 var marker8 = `vercel.ai.error.${name7}`;
 var symbol8 = Symbol.for(marker8);
 var _a8;
-var LoadSettingError = class extends AISDKError {
+var LoadAPIKeyError = class extends AISDKError {
   // used in isInstance
   constructor({ message }) {
     super({ name: name7, message });
@@ -6452,153 +7037,109 @@ var LoadSettingError = class extends AISDKError {
   static isInstance(error) {
     return AISDKError.hasMarker(error, marker8);
   }
-  /**
-   * @deprecated Use isInstance instead.
-   */
-  static isLoadSettingError(error) {
-    return error instanceof Error && error.name === name7;
-  }
 };
 _a8 = symbol8;
 
-// src/errors/no-content-generated-error.ts
-var name8 = "AI_NoContentGeneratedError";
+// src/errors/load-setting-error.ts
+var name8 = "AI_LoadSettingError";
 var marker9 = `vercel.ai.error.${name8}`;
 var symbol9 = Symbol.for(marker9);
 var _a9;
-var NoContentGeneratedError = class extends AISDKError {
+var LoadSettingError = class extends AISDKError {
   // used in isInstance
-  constructor({
-    message = "No content generated."
-  } = {}) {
+  constructor({ message }) {
     super({ name: name8, message });
     this[_a9] = true;
   }
   static isInstance(error) {
     return AISDKError.hasMarker(error, marker9);
   }
-  /**
-   * @deprecated Use isInstance instead.
-   */
-  static isNoContentGeneratedError(error) {
-    return error instanceof Error && error.name === name8;
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      cause: this.cause,
-      message: this.message,
-      stack: this.stack
-    };
-  }
 };
 _a9 = symbol9;
 
-// src/errors/no-such-model-error.ts
-var name9 = "AI_NoSuchModelError";
+// src/errors/no-content-generated-error.ts
+var name9 = "AI_NoContentGeneratedError";
 var marker10 = `vercel.ai.error.${name9}`;
 var symbol10 = Symbol.for(marker10);
 var _a10;
+var NoContentGeneratedError = class extends AISDKError {
+  // used in isInstance
+  constructor({
+    message = "No content generated."
+  } = {}) {
+    super({ name: name9, message });
+    this[_a10] = true;
+  }
+  static isInstance(error) {
+    return AISDKError.hasMarker(error, marker10);
+  }
+};
+_a10 = symbol10;
+
+// src/errors/no-such-model-error.ts
+var name10 = "AI_NoSuchModelError";
+var marker11 = `vercel.ai.error.${name10}`;
+var symbol11 = Symbol.for(marker11);
+var _a11;
 var NoSuchModelError = class extends AISDKError {
   constructor({
-    errorName = name9,
+    errorName = name10,
     modelId,
     modelType,
     message = `No such ${modelType}: ${modelId}`
   }) {
     super({ name: errorName, message });
-    this[_a10] = true;
+    this[_a11] = true;
     this.modelId = modelId;
     this.modelType = modelType;
   }
   static isInstance(error) {
-    return AISDKError.hasMarker(error, marker10);
-  }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isNoSuchModelError(error) {
-    return error instanceof Error && error.name === name9 && typeof error.modelId === "string" && typeof error.modelType === "string";
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      stack: this.stack,
-      modelId: this.modelId,
-      modelType: this.modelType
-    };
+    return AISDKError.hasMarker(error, marker11);
   }
 };
-_a10 = symbol10;
+_a11 = symbol11;
 
 // src/errors/too-many-embedding-values-for-call-error.ts
-var name10 = "AI_TooManyEmbeddingValuesForCallError";
-var marker11 = `vercel.ai.error.${name10}`;
-var symbol11 = Symbol.for(marker11);
-var _a11;
+var name11 = "AI_TooManyEmbeddingValuesForCallError";
+var marker12 = `vercel.ai.error.${name11}`;
+var symbol12 = Symbol.for(marker12);
+var _a12;
 var TooManyEmbeddingValuesForCallError = class extends AISDKError {
   constructor(options) {
     super({
-      name: name10,
+      name: name11,
       message: `Too many values for a single embedding call. The ${options.provider} model "${options.modelId}" can only embed up to ${options.maxEmbeddingsPerCall} values per call, but ${options.values.length} values were provided.`
     });
-    this[_a11] = true;
+    this[_a12] = true;
     this.provider = options.provider;
     this.modelId = options.modelId;
     this.maxEmbeddingsPerCall = options.maxEmbeddingsPerCall;
     this.values = options.values;
   }
   static isInstance(error) {
-    return AISDKError.hasMarker(error, marker11);
-  }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isTooManyEmbeddingValuesForCallError(error) {
-    return error instanceof Error && error.name === name10 && "provider" in error && typeof error.provider === "string" && "modelId" in error && typeof error.modelId === "string" && "maxEmbeddingsPerCall" in error && typeof error.maxEmbeddingsPerCall === "number" && "values" in error && Array.isArray(error.values);
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      stack: this.stack,
-      provider: this.provider,
-      modelId: this.modelId,
-      maxEmbeddingsPerCall: this.maxEmbeddingsPerCall,
-      values: this.values
-    };
+    return AISDKError.hasMarker(error, marker12);
   }
 };
-_a11 = symbol11;
+_a12 = symbol12;
 
 // src/errors/type-validation-error.ts
-var name11 = "AI_TypeValidationError";
-var marker12 = `vercel.ai.error.${name11}`;
-var symbol12 = Symbol.for(marker12);
-var _a12;
+var name12 = "AI_TypeValidationError";
+var marker13 = `vercel.ai.error.${name12}`;
+var symbol13 = Symbol.for(marker13);
+var _a13;
 var _TypeValidationError = class _TypeValidationError extends AISDKError {
   constructor({ value, cause }) {
     super({
-      name: name11,
+      name: name12,
       message: `Type validation failed: Value: ${JSON.stringify(value)}.
 Error message: ${getErrorMessage(cause)}`,
       cause
     });
-    this[_a12] = true;
+    this[_a13] = true;
     this.value = value;
   }
   static isInstance(error) {
-    return AISDKError.hasMarker(error, marker12);
+    return AISDKError.hasMarker(error, marker13);
   }
   /**
    * Wraps an error into a TypeValidationError.
@@ -6616,64 +7157,29 @@ Error message: ${getErrorMessage(cause)}`,
   }) {
     return _TypeValidationError.isInstance(cause) && cause.value === value ? cause : new _TypeValidationError({ value, cause });
   }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isTypeValidationError(error) {
-    return error instanceof Error && error.name === name11;
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      cause: this.cause,
-      stack: this.stack,
-      value: this.value
-    };
-  }
 };
-_a12 = symbol12;
+_a13 = symbol13;
 var TypeValidationError = _TypeValidationError;
 
 // src/errors/unsupported-functionality-error.ts
-var name12 = "AI_UnsupportedFunctionalityError";
-var marker13 = `vercel.ai.error.${name12}`;
-var symbol13 = Symbol.for(marker13);
-var _a13;
+var name13 = "AI_UnsupportedFunctionalityError";
+var marker14 = `vercel.ai.error.${name13}`;
+var symbol14 = Symbol.for(marker14);
+var _a14;
 var UnsupportedFunctionalityError = class extends AISDKError {
-  constructor({ functionality }) {
-    super({
-      name: name12,
-      message: `'${functionality}' functionality not supported.`
-    });
-    this[_a13] = true;
+  constructor({
+    functionality,
+    message = `'${functionality}' functionality not supported.`
+  }) {
+    super({ name: name13, message });
+    this[_a14] = true;
     this.functionality = functionality;
   }
   static isInstance(error) {
-    return AISDKError.hasMarker(error, marker13);
-  }
-  /**
-   * @deprecated Use isInstance instead.
-   */
-  static isUnsupportedFunctionalityError(error) {
-    return error instanceof Error && error.name === name12 && typeof error.functionality === "string";
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      stack: this.stack,
-      functionality: this.functionality
-    };
+    return AISDKError.hasMarker(error, marker14);
   }
 };
-_a13 = symbol13;
+_a14 = symbol14;
 
 // src/json-value/is-json.ts
 function isJSONValue(value) {
@@ -6704,7 +7210,7 @@ function isJSONObject(value) {
 
 /***/ }),
 
-/***/ 6066:
+/***/ 8715:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -6743,27 +7249,146 @@ __export(src_exports, {
   asSchema: () => asSchema,
   callChatApi: () => callChatApi,
   callCompletionApi: () => callCompletionApi,
-  createChunkDecoder: () => createChunkDecoder,
-  formatStreamPart: () => formatStreamPart,
-  generateId: () => import_provider_utils3.generateId,
+  extractMaxToolInvocationStep: () => extractMaxToolInvocationStep,
+  formatAssistantStreamPart: () => formatAssistantStreamPart,
+  formatDataStreamPart: () => formatDataStreamPart,
+  generateId: () => import_provider_utils4.generateId,
   getTextFromDataUrl: () => getTextFromDataUrl,
   isDeepEqualData: () => isDeepEqualData,
   jsonSchema: () => jsonSchema,
+  parseAssistantStreamPart: () => parseAssistantStreamPart,
+  parseDataStreamPart: () => parseDataStreamPart,
   parsePartialJson: () => parsePartialJson,
-  parseStreamPart: () => parseStreamPart,
-  processChatStream: () => processChatStream,
-  processDataProtocolResponse: () => processDataProtocolResponse,
-  readDataStream: () => readDataStream,
+  prepareAttachmentsForRequest: () => prepareAttachmentsForRequest,
+  processAssistantStream: () => processAssistantStream,
+  processDataStream: () => processDataStream,
+  processTextStream: () => processTextStream,
   zodSchema: () => zodSchema
 });
 module.exports = __toCommonJS(src_exports);
-var import_provider_utils3 = __nccwpck_require__(127);
+var import_provider_utils4 = __nccwpck_require__(2458);
 
-// src/process-data-protocol-response.ts
-var import_provider_utils = __nccwpck_require__(127);
+// src/assistant-stream-parts.ts
+var textStreamPart = {
+  code: "0",
+  name: "text",
+  parse: (value) => {
+    if (typeof value !== "string") {
+      throw new Error('"text" parts expect a string value.');
+    }
+    return { type: "text", value };
+  }
+};
+var errorStreamPart = {
+  code: "3",
+  name: "error",
+  parse: (value) => {
+    if (typeof value !== "string") {
+      throw new Error('"error" parts expect a string value.');
+    }
+    return { type: "error", value };
+  }
+};
+var assistantMessageStreamPart = {
+  code: "4",
+  name: "assistant_message",
+  parse: (value) => {
+    if (value == null || typeof value !== "object" || !("id" in value) || !("role" in value) || !("content" in value) || typeof value.id !== "string" || typeof value.role !== "string" || value.role !== "assistant" || !Array.isArray(value.content) || !value.content.every(
+      (item) => item != null && typeof item === "object" && "type" in item && item.type === "text" && "text" in item && item.text != null && typeof item.text === "object" && "value" in item.text && typeof item.text.value === "string"
+    )) {
+      throw new Error(
+        '"assistant_message" parts expect an object with an "id", "role", and "content" property.'
+      );
+    }
+    return {
+      type: "assistant_message",
+      value
+    };
+  }
+};
+var assistantControlDataStreamPart = {
+  code: "5",
+  name: "assistant_control_data",
+  parse: (value) => {
+    if (value == null || typeof value !== "object" || !("threadId" in value) || !("messageId" in value) || typeof value.threadId !== "string" || typeof value.messageId !== "string") {
+      throw new Error(
+        '"assistant_control_data" parts expect an object with a "threadId" and "messageId" property.'
+      );
+    }
+    return {
+      type: "assistant_control_data",
+      value: {
+        threadId: value.threadId,
+        messageId: value.messageId
+      }
+    };
+  }
+};
+var dataMessageStreamPart = {
+  code: "6",
+  name: "data_message",
+  parse: (value) => {
+    if (value == null || typeof value !== "object" || !("role" in value) || !("data" in value) || typeof value.role !== "string" || value.role !== "data") {
+      throw new Error(
+        '"data_message" parts expect an object with a "role" and "data" property.'
+      );
+    }
+    return {
+      type: "data_message",
+      value
+    };
+  }
+};
+var assistantStreamParts = [
+  textStreamPart,
+  errorStreamPart,
+  assistantMessageStreamPart,
+  assistantControlDataStreamPart,
+  dataMessageStreamPart
+];
+var assistantStreamPartsByCode = {
+  [textStreamPart.code]: textStreamPart,
+  [errorStreamPart.code]: errorStreamPart,
+  [assistantMessageStreamPart.code]: assistantMessageStreamPart,
+  [assistantControlDataStreamPart.code]: assistantControlDataStreamPart,
+  [dataMessageStreamPart.code]: dataMessageStreamPart
+};
+var StreamStringPrefixes = {
+  [textStreamPart.name]: textStreamPart.code,
+  [errorStreamPart.name]: errorStreamPart.code,
+  [assistantMessageStreamPart.name]: assistantMessageStreamPart.code,
+  [assistantControlDataStreamPart.name]: assistantControlDataStreamPart.code,
+  [dataMessageStreamPart.name]: dataMessageStreamPart.code
+};
+var validCodes = assistantStreamParts.map((part) => part.code);
+var parseAssistantStreamPart = (line) => {
+  const firstSeparatorIndex = line.indexOf(":");
+  if (firstSeparatorIndex === -1) {
+    throw new Error("Failed to parse stream string. No separator found.");
+  }
+  const prefix = line.slice(0, firstSeparatorIndex);
+  if (!validCodes.includes(prefix)) {
+    throw new Error(`Failed to parse stream string. Invalid code ${prefix}.`);
+  }
+  const code = prefix;
+  const textValue = line.slice(firstSeparatorIndex + 1);
+  const jsonValue = JSON.parse(textValue);
+  return assistantStreamPartsByCode[code].parse(jsonValue);
+};
+function formatAssistantStreamPart(type, value) {
+  const streamPart = assistantStreamParts.find((part) => part.name === type);
+  if (!streamPart) {
+    throw new Error(`Invalid stream part type: ${type}`);
+  }
+  return `${streamPart.code}:${JSON.stringify(value)}
+`;
+}
+
+// src/process-chat-response.ts
+var import_provider_utils2 = __nccwpck_require__(2458);
 
 // src/parse-partial-json.ts
-var import_secure_json_parse = __toESM(__nccwpck_require__(1052));
+var import_provider_utils = __nccwpck_require__(2458);
 
 // src/fix-json.ts
 function fixJson(input) {
@@ -7088,25 +7713,19 @@ function parsePartialJson(jsonText) {
   if (jsonText === void 0) {
     return { value: void 0, state: "undefined-input" };
   }
-  try {
-    return {
-      value: import_secure_json_parse.default.parse(jsonText),
-      state: "successful-parse"
-    };
-  } catch (ignored) {
-    try {
-      return {
-        value: import_secure_json_parse.default.parse(fixJson(jsonText)),
-        state: "repaired-parse"
-      };
-    } catch (ignored2) {
-    }
+  let result = (0, import_provider_utils.safeParseJSON)({ text: jsonText });
+  if (result.success) {
+    return { value: result.value, state: "successful-parse" };
+  }
+  result = (0, import_provider_utils.safeParseJSON)({ text: fixJson(jsonText) });
+  if (result.success) {
+    return { value: result.value, state: "repaired-parse" };
   }
   return { value: void 0, state: "failed-parse" };
 }
 
-// src/stream-parts.ts
-var textStreamPart = {
+// src/data-stream-parts.ts
+var textStreamPart2 = {
   code: "0",
   name: "text",
   parse: (value) => {
@@ -7114,21 +7733,6 @@ var textStreamPart = {
       throw new Error('"text" parts expect a string value.');
     }
     return { type: "text", value };
-  }
-};
-var functionCallStreamPart = {
-  code: "1",
-  name: "function_call",
-  parse: (value) => {
-    if (value == null || typeof value !== "object" || !("function_call" in value) || typeof value.function_call !== "object" || value.function_call == null || !("name" in value.function_call) || !("arguments" in value.function_call) || typeof value.function_call.name !== "string" || typeof value.function_call.arguments !== "string") {
-      throw new Error(
-        '"function_call" parts expect an object with a "function_call" property.'
-      );
-    }
-    return {
-      type: "function_call",
-      value
-    };
   }
 };
 var dataStreamPart = {
@@ -7141,7 +7745,7 @@ var dataStreamPart = {
     return { type: "data", value };
   }
 };
-var errorStreamPart = {
+var errorStreamPart2 = {
   code: "3",
   name: "error",
   parse: (value) => {
@@ -7149,73 +7753,6 @@ var errorStreamPart = {
       throw new Error('"error" parts expect a string value.');
     }
     return { type: "error", value };
-  }
-};
-var assistantMessageStreamPart = {
-  code: "4",
-  name: "assistant_message",
-  parse: (value) => {
-    if (value == null || typeof value !== "object" || !("id" in value) || !("role" in value) || !("content" in value) || typeof value.id !== "string" || typeof value.role !== "string" || value.role !== "assistant" || !Array.isArray(value.content) || !value.content.every(
-      (item) => item != null && typeof item === "object" && "type" in item && item.type === "text" && "text" in item && item.text != null && typeof item.text === "object" && "value" in item.text && typeof item.text.value === "string"
-    )) {
-      throw new Error(
-        '"assistant_message" parts expect an object with an "id", "role", and "content" property.'
-      );
-    }
-    return {
-      type: "assistant_message",
-      value
-    };
-  }
-};
-var assistantControlDataStreamPart = {
-  code: "5",
-  name: "assistant_control_data",
-  parse: (value) => {
-    if (value == null || typeof value !== "object" || !("threadId" in value) || !("messageId" in value) || typeof value.threadId !== "string" || typeof value.messageId !== "string") {
-      throw new Error(
-        '"assistant_control_data" parts expect an object with a "threadId" and "messageId" property.'
-      );
-    }
-    return {
-      type: "assistant_control_data",
-      value: {
-        threadId: value.threadId,
-        messageId: value.messageId
-      }
-    };
-  }
-};
-var dataMessageStreamPart = {
-  code: "6",
-  name: "data_message",
-  parse: (value) => {
-    if (value == null || typeof value !== "object" || !("role" in value) || !("data" in value) || typeof value.role !== "string" || value.role !== "data") {
-      throw new Error(
-        '"data_message" parts expect an object with a "role" and "data" property.'
-      );
-    }
-    return {
-      type: "data_message",
-      value
-    };
-  }
-};
-var toolCallsStreamPart = {
-  code: "7",
-  name: "tool_calls",
-  parse: (value) => {
-    if (value == null || typeof value !== "object" || !("tool_calls" in value) || typeof value.tool_calls !== "object" || value.tool_calls == null || !Array.isArray(value.tool_calls) || value.tool_calls.some(
-      (tc) => tc == null || typeof tc !== "object" || !("id" in tc) || typeof tc.id !== "string" || !("type" in tc) || typeof tc.type !== "string" || !("function" in tc) || tc.function == null || typeof tc.function !== "object" || !("arguments" in tc.function) || typeof tc.function.name !== "string" || typeof tc.function.arguments !== "string"
-    )) {
-      throw new Error(
-        '"tool_calls" parts expect an object with a ToolCallPayload.'
-      );
-    }
-    return {
-      type: "tool_calls",
-      value
-    };
   }
 };
 var messageAnnotationsStreamPart = {
@@ -7340,74 +7877,92 @@ var finishStepStreamPart = {
     };
   }
 };
-var streamParts = [
-  textStreamPart,
-  functionCallStreamPart,
+var startStepStreamPart = {
+  code: "f",
+  name: "start_step",
+  parse: (value) => {
+    if (value == null || typeof value !== "object" || !("messageId" in value) || typeof value.messageId !== "string") {
+      throw new Error(
+        '"start_step" parts expect an object with an "id" property.'
+      );
+    }
+    return {
+      type: "start_step",
+      value: {
+        messageId: value.messageId
+      }
+    };
+  }
+};
+var reasoningStreamPart = {
+  code: "g",
+  name: "reasoning",
+  parse: (value) => {
+    if (typeof value !== "string") {
+      throw new Error('"reasoning" parts expect a string value.');
+    }
+    return { type: "reasoning", value };
+  }
+};
+var dataStreamParts = [
+  textStreamPart2,
   dataStreamPart,
-  errorStreamPart,
-  assistantMessageStreamPart,
-  assistantControlDataStreamPart,
-  dataMessageStreamPart,
-  toolCallsStreamPart,
+  errorStreamPart2,
   messageAnnotationsStreamPart,
   toolCallStreamPart,
   toolResultStreamPart,
   toolCallStreamingStartStreamPart,
   toolCallDeltaStreamPart,
   finishMessageStreamPart,
-  finishStepStreamPart
+  finishStepStreamPart,
+  startStepStreamPart,
+  reasoningStreamPart
 ];
-var streamPartsByCode = {
-  [textStreamPart.code]: textStreamPart,
-  [functionCallStreamPart.code]: functionCallStreamPart,
+var dataStreamPartsByCode = {
+  [textStreamPart2.code]: textStreamPart2,
   [dataStreamPart.code]: dataStreamPart,
-  [errorStreamPart.code]: errorStreamPart,
-  [assistantMessageStreamPart.code]: assistantMessageStreamPart,
-  [assistantControlDataStreamPart.code]: assistantControlDataStreamPart,
-  [dataMessageStreamPart.code]: dataMessageStreamPart,
-  [toolCallsStreamPart.code]: toolCallsStreamPart,
+  [errorStreamPart2.code]: errorStreamPart2,
   [messageAnnotationsStreamPart.code]: messageAnnotationsStreamPart,
   [toolCallStreamPart.code]: toolCallStreamPart,
   [toolResultStreamPart.code]: toolResultStreamPart,
   [toolCallStreamingStartStreamPart.code]: toolCallStreamingStartStreamPart,
   [toolCallDeltaStreamPart.code]: toolCallDeltaStreamPart,
   [finishMessageStreamPart.code]: finishMessageStreamPart,
-  [finishStepStreamPart.code]: finishStepStreamPart
+  [finishStepStreamPart.code]: finishStepStreamPart,
+  [startStepStreamPart.code]: startStepStreamPart,
+  [reasoningStreamPart.code]: reasoningStreamPart
 };
-var StreamStringPrefixes = {
-  [textStreamPart.name]: textStreamPart.code,
-  [functionCallStreamPart.name]: functionCallStreamPart.code,
+var DataStreamStringPrefixes = {
+  [textStreamPart2.name]: textStreamPart2.code,
   [dataStreamPart.name]: dataStreamPart.code,
-  [errorStreamPart.name]: errorStreamPart.code,
-  [assistantMessageStreamPart.name]: assistantMessageStreamPart.code,
-  [assistantControlDataStreamPart.name]: assistantControlDataStreamPart.code,
-  [dataMessageStreamPart.name]: dataMessageStreamPart.code,
-  [toolCallsStreamPart.name]: toolCallsStreamPart.code,
+  [errorStreamPart2.name]: errorStreamPart2.code,
   [messageAnnotationsStreamPart.name]: messageAnnotationsStreamPart.code,
   [toolCallStreamPart.name]: toolCallStreamPart.code,
   [toolResultStreamPart.name]: toolResultStreamPart.code,
   [toolCallStreamingStartStreamPart.name]: toolCallStreamingStartStreamPart.code,
   [toolCallDeltaStreamPart.name]: toolCallDeltaStreamPart.code,
   [finishMessageStreamPart.name]: finishMessageStreamPart.code,
-  [finishStepStreamPart.name]: finishStepStreamPart.code
+  [finishStepStreamPart.name]: finishStepStreamPart.code,
+  [startStepStreamPart.name]: startStepStreamPart.code,
+  [reasoningStreamPart.name]: reasoningStreamPart.code
 };
-var validCodes = streamParts.map((part) => part.code);
-var parseStreamPart = (line) => {
+var validCodes2 = dataStreamParts.map((part) => part.code);
+var parseDataStreamPart = (line) => {
   const firstSeparatorIndex = line.indexOf(":");
   if (firstSeparatorIndex === -1) {
     throw new Error("Failed to parse stream string. No separator found.");
   }
   const prefix = line.slice(0, firstSeparatorIndex);
-  if (!validCodes.includes(prefix)) {
+  if (!validCodes2.includes(prefix)) {
     throw new Error(`Failed to parse stream string. Invalid code ${prefix}.`);
   }
   const code = prefix;
   const textValue = line.slice(firstSeparatorIndex + 1);
   const jsonValue = JSON.parse(textValue);
-  return streamPartsByCode[code].parse(jsonValue);
+  return dataStreamPartsByCode[code].parse(jsonValue);
 };
-function formatStreamPart(type, value) {
-  const streamPart = streamParts.find((part) => part.name === type);
+function formatDataStreamPart(type, value) {
+  const streamPart = dataStreamParts.find((part) => part.name === type);
   if (!streamPart) {
     throw new Error(`Invalid stream part type: ${type}`);
   }
@@ -7415,7 +7970,7 @@ function formatStreamPart(type, value) {
 `;
 }
 
-// src/read-data-stream.ts
+// src/process-data-stream.ts
 var NEWLINE = "\n".charCodeAt(0);
 function concatChunks(chunks, totalLength) {
   const concatenatedChunks = new Uint8Array(totalLength);
@@ -7427,9 +7982,22 @@ function concatChunks(chunks, totalLength) {
   chunks.length = 0;
   return concatenatedChunks;
 }
-async function* readDataStream(reader, {
-  isAborted
-} = {}) {
+async function processDataStream({
+  stream,
+  onTextPart,
+  onReasoningPart,
+  onDataPart,
+  onErrorPart,
+  onToolCallStreamingStartPart,
+  onToolCallDeltaPart,
+  onToolCallPart,
+  onToolResultPart,
+  onMessageAnnotationsPart,
+  onFinishMessagePart,
+  onFinishStepPart,
+  onStartStepPart
+}) {
+  const reader = stream.getReader();
   const decoder = new TextDecoder();
   const chunks = [];
   let totalLength = 0;
@@ -7447,39 +8015,91 @@ async function* readDataStream(reader, {
     }
     const concatenatedChunks = concatChunks(chunks, totalLength);
     totalLength = 0;
-    const streamParts2 = decoder.decode(concatenatedChunks, { stream: true }).split("\n").filter((line) => line !== "").map(parseStreamPart);
-    for (const streamPart of streamParts2) {
-      yield streamPart;
-    }
-    if (isAborted == null ? void 0 : isAborted()) {
-      reader.cancel();
-      break;
+    const streamParts = decoder.decode(concatenatedChunks, { stream: true }).split("\n").filter((line) => line !== "").map(parseDataStreamPart);
+    for (const { type, value: value2 } of streamParts) {
+      switch (type) {
+        case "text":
+          await (onTextPart == null ? void 0 : onTextPart(value2));
+          break;
+        case "reasoning":
+          await (onReasoningPart == null ? void 0 : onReasoningPart(value2));
+          break;
+        case "data":
+          await (onDataPart == null ? void 0 : onDataPart(value2));
+          break;
+        case "error":
+          await (onErrorPart == null ? void 0 : onErrorPart(value2));
+          break;
+        case "message_annotations":
+          await (onMessageAnnotationsPart == null ? void 0 : onMessageAnnotationsPart(value2));
+          break;
+        case "tool_call_streaming_start":
+          await (onToolCallStreamingStartPart == null ? void 0 : onToolCallStreamingStartPart(value2));
+          break;
+        case "tool_call_delta":
+          await (onToolCallDeltaPart == null ? void 0 : onToolCallDeltaPart(value2));
+          break;
+        case "tool_call":
+          await (onToolCallPart == null ? void 0 : onToolCallPart(value2));
+          break;
+        case "tool_result":
+          await (onToolResultPart == null ? void 0 : onToolResultPart(value2));
+          break;
+        case "finish_message":
+          await (onFinishMessagePart == null ? void 0 : onFinishMessagePart(value2));
+          break;
+        case "finish_step":
+          await (onFinishStepPart == null ? void 0 : onFinishStepPart(value2));
+          break;
+        case "start_step":
+          await (onStartStepPart == null ? void 0 : onStartStepPart(value2));
+          break;
+        default: {
+          const exhaustiveCheck = type;
+          throw new Error(`Unknown stream part type: ${exhaustiveCheck}`);
+        }
+      }
     }
   }
 }
 
-// src/process-data-protocol-response.ts
-function assignAnnotationsToMessage(message, annotations) {
-  if (!message || !annotations || !annotations.length)
-    return message;
-  return { ...message, annotations: [...annotations] };
+// src/duplicated/usage.ts
+function calculateLanguageModelUsage({
+  promptTokens,
+  completionTokens
+}) {
+  return {
+    promptTokens,
+    completionTokens,
+    totalTokens: promptTokens + completionTokens
+  };
 }
-async function processDataProtocolResponse({
-  reader,
-  abortControllerRef,
+
+// src/process-chat-response.ts
+async function processChatResponse({
+  stream,
   update,
   onToolCall,
   onFinish,
-  generateId: generateId2 = import_provider_utils.generateId,
-  getCurrentDate = () => /* @__PURE__ */ new Date()
+  generateId: generateId2 = import_provider_utils2.generateId,
+  getCurrentDate = () => /* @__PURE__ */ new Date(),
+  lastMessage
 }) {
-  var _a;
-  const createdAt = getCurrentDate();
-  let prefixMap = {};
-  let nextPrefixMap = void 0;
-  const previousMessages = [];
+  var _a, _b;
+  const replaceLastMessage = (lastMessage == null ? void 0 : lastMessage.role) === "assistant";
+  let step = replaceLastMessage ? 1 + // find max step in existing tool invocations:
+  ((_b = (_a = lastMessage.toolInvocations) == null ? void 0 : _a.reduce((max, toolInvocation) => {
+    var _a2;
+    return Math.max(max, (_a2 = toolInvocation.step) != null ? _a2 : 0);
+  }, 0)) != null ? _b : 0) : 0;
+  const message = replaceLastMessage ? structuredClone(lastMessage) : {
+    id: generateId2(),
+    createdAt: getCurrentDate(),
+    role: "assistant",
+    content: ""
+  };
   const data = [];
-  let message_annotations = void 0;
+  let messageAnnotations = replaceLastMessage ? lastMessage == null ? void 0 : lastMessage.annotations : void 0;
   const partialToolCalls = {};
   let usage = {
     completionTokens: NaN,
@@ -7487,121 +8107,103 @@ async function processDataProtocolResponse({
     totalTokens: NaN
   };
   let finishReason = "unknown";
-  for await (const { type, value } of readDataStream(reader, {
-    isAborted: () => (abortControllerRef == null ? void 0 : abortControllerRef.current) === null
-  })) {
-    if (type === "error") {
-      throw new Error(value);
+  function execUpdate() {
+    const copiedData = [...data];
+    if (messageAnnotations == null ? void 0 : messageAnnotations.length) {
+      message.annotations = messageAnnotations;
     }
-    if (type === "finish_step") {
-      if (!value.isContinued) {
-        nextPrefixMap = {};
-      }
-      continue;
-    }
-    if (type === "finish_message") {
-      finishReason = value.finishReason;
-      if (value.usage != null) {
-        const { completionTokens, promptTokens } = value.usage;
-        usage = {
-          completionTokens,
-          promptTokens,
-          totalTokens: completionTokens + promptTokens
-        };
-      }
-      continue;
-    }
-    if (nextPrefixMap) {
-      if (prefixMap.text) {
-        previousMessages.push(prefixMap.text);
-      }
-      if (prefixMap.function_call) {
-        previousMessages.push(prefixMap.function_call);
-      }
-      if (prefixMap.tool_calls) {
-        previousMessages.push(prefixMap.tool_calls);
-      }
-      prefixMap = nextPrefixMap;
-      nextPrefixMap = void 0;
-    }
-    if (type === "text") {
-      if (prefixMap["text"]) {
-        prefixMap["text"] = {
-          ...prefixMap["text"],
-          content: (prefixMap["text"].content || "") + value
-        };
-      } else {
-        prefixMap["text"] = {
-          id: generateId2(),
-          role: "assistant",
-          content: value,
-          createdAt
-        };
-      }
-    }
-    if (type === "tool_call_streaming_start") {
-      if (prefixMap.text == null) {
-        prefixMap.text = {
-          id: generateId2(),
-          role: "assistant",
-          content: "",
-          createdAt
-        };
-      }
-      if (prefixMap.text.toolInvocations == null) {
-        prefixMap.text.toolInvocations = [];
+    const copiedMessage = {
+      // deep copy the message to ensure that deep changes (msg attachments) are updated
+      // with SolidJS. SolidJS uses referential integration of sub-objects to detect changes.
+      ...structuredClone(message),
+      // add a revision id to ensure that the message is updated with SWR. SWR uses a
+      // hashing approach by default to detect changes, but it only works for shallow
+      // changes. This is why we need to add a revision id to ensure that the message
+      // is updated with SWR (without it, the changes get stuck in SWR and are not
+      // forwarded to rendering):
+      revisionId: generateId2()
+    };
+    update({
+      message: copiedMessage,
+      data: copiedData,
+      replaceLastMessage
+    });
+  }
+  await processDataStream({
+    stream,
+    onTextPart(value) {
+      message.content += value;
+      execUpdate();
+    },
+    onReasoningPart(value) {
+      var _a2;
+      message.reasoning = ((_a2 = message.reasoning) != null ? _a2 : "") + value;
+      execUpdate();
+    },
+    onToolCallStreamingStartPart(value) {
+      if (message.toolInvocations == null) {
+        message.toolInvocations = [];
       }
       partialToolCalls[value.toolCallId] = {
         text: "",
+        step,
         toolName: value.toolName,
-        prefixMapIndex: prefixMap.text.toolInvocations.length
+        index: message.toolInvocations.length
       };
-      prefixMap.text.toolInvocations.push({
+      message.toolInvocations.push({
         state: "partial-call",
+        step,
         toolCallId: value.toolCallId,
         toolName: value.toolName,
         args: void 0
       });
-    } else if (type === "tool_call_delta") {
+      execUpdate();
+    },
+    onToolCallDeltaPart(value) {
       const partialToolCall = partialToolCalls[value.toolCallId];
       partialToolCall.text += value.argsTextDelta;
       const { value: partialArgs } = parsePartialJson(partialToolCall.text);
-      prefixMap.text.toolInvocations[partialToolCall.prefixMapIndex] = {
+      message.toolInvocations[partialToolCall.index] = {
         state: "partial-call",
+        step: partialToolCall.step,
         toolCallId: value.toolCallId,
         toolName: partialToolCall.toolName,
         args: partialArgs
       };
-      prefixMap.text.internalUpdateId = generateId2();
-    } else if (type === "tool_call") {
+      execUpdate();
+    },
+    async onToolCallPart(value) {
       if (partialToolCalls[value.toolCallId] != null) {
-        prefixMap.text.toolInvocations[partialToolCalls[value.toolCallId].prefixMapIndex] = { state: "call", ...value };
-      } else {
-        if (prefixMap.text == null) {
-          prefixMap.text = {
-            id: generateId2(),
-            role: "assistant",
-            content: "",
-            createdAt
-          };
-        }
-        if (prefixMap.text.toolInvocations == null) {
-          prefixMap.text.toolInvocations = [];
-        }
-        prefixMap.text.toolInvocations.push({
+        message.toolInvocations[partialToolCalls[value.toolCallId].index] = {
           state: "call",
+          step,
+          ...value
+        };
+      } else {
+        if (message.toolInvocations == null) {
+          message.toolInvocations = [];
+        }
+        message.toolInvocations.push({
+          state: "call",
+          step,
           ...value
         });
       }
-      prefixMap.text.internalUpdateId = generateId2();
       if (onToolCall) {
         const result = await onToolCall({ toolCall: value });
         if (result != null) {
-          prefixMap.text.toolInvocations[prefixMap.text.toolInvocations.length - 1] = { state: "result", ...value, result };
+          message.toolInvocations[message.toolInvocations.length - 1] = {
+            state: "result",
+            step,
+            ...value,
+            result
+          };
         }
       }
-    } else if (type === "tool_result") {
-      const toolInvocations = (_a = prefixMap.text) == null ? void 0 : _a.toolInvocations;
+      execUpdate();
+    },
+    onToolResultPart(value) {
+      const toolInvocations = message.toolInvocations;
       if (toolInvocations == null) {
         throw new Error("tool_result must be preceded by a tool_call");
       }
@@ -7618,78 +8220,54 @@ async function processDataProtocolResponse({
         state: "result",
         ...value
       };
-    }
-    let functionCallMessage = null;
-    if (type === "function_call") {
-      prefixMap["function_call"] = {
-        id: generateId2(),
-        role: "assistant",
-        content: "",
-        function_call: value.function_call,
-        name: value.function_call.name,
-        createdAt
-      };
-      functionCallMessage = prefixMap["function_call"];
-    }
-    let toolCallMessage = null;
-    if (type === "tool_calls") {
-      prefixMap["tool_calls"] = {
-        id: generateId2(),
-        role: "assistant",
-        content: "",
-        tool_calls: value.tool_calls,
-        createdAt
-      };
-      toolCallMessage = prefixMap["tool_calls"];
-    }
-    if (type === "data") {
+      execUpdate();
+    },
+    onDataPart(value) {
       data.push(...value);
-    }
-    let responseMessage = prefixMap["text"];
-    if (type === "message_annotations") {
-      if (!message_annotations) {
-        message_annotations = [...value];
+      execUpdate();
+    },
+    onMessageAnnotationsPart(value) {
+      if (messageAnnotations == null) {
+        messageAnnotations = [...value];
       } else {
-        message_annotations.push(...value);
+        messageAnnotations.push(...value);
       }
-      functionCallMessage = assignAnnotationsToMessage(
-        prefixMap["function_call"],
-        message_annotations
-      );
-      toolCallMessage = assignAnnotationsToMessage(
-        prefixMap["tool_calls"],
-        message_annotations
-      );
-      responseMessage = assignAnnotationsToMessage(
-        prefixMap["text"],
-        message_annotations
-      );
+      execUpdate();
+    },
+    onFinishStepPart(value) {
+      step += 1;
+    },
+    onStartStepPart(value) {
+      if (!replaceLastMessage) {
+        message.id = value.messageId;
+      }
+    },
+    onFinishMessagePart(value) {
+      finishReason = value.finishReason;
+      if (value.usage != null) {
+        usage = calculateLanguageModelUsage(value.usage);
+      }
+    },
+    onErrorPart(error) {
+      throw new Error(error);
     }
-    if (message_annotations == null ? void 0 : message_annotations.length) {
-      if (prefixMap.text) {
-        prefixMap.text.annotations = [...message_annotations];
-      }
-      if (prefixMap.function_call) {
-        prefixMap.function_call.annotations = [...message_annotations];
-      }
-      if (prefixMap.tool_calls) {
-        prefixMap.tool_calls.annotations = [...message_annotations];
-      }
+  });
+  onFinish == null ? void 0 : onFinish({ message, finishReason, usage });
+}
+
+// src/process-text-stream.ts
+async function processTextStream({
+  stream,
+  onTextPart
+}) {
+  const reader = stream.pipeThrough(new TextDecoderStream()).getReader();
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) {
+      break;
     }
-    const merged = [functionCallMessage, toolCallMessage, responseMessage].filter(Boolean).map((message) => ({
-      ...assignAnnotationsToMessage(message, message_annotations)
-    }));
-    update([...previousMessages, ...merged], [...data]);
+    await onTextPart(value);
   }
-  onFinish == null ? void 0 : onFinish({ message: prefixMap.text, finishReason, usage });
-  return {
-    messages: [
-      prefixMap.text,
-      prefixMap.function_call,
-      prefixMap.tool_calls
-    ].filter(Boolean),
-    data
-  };
 }
 
 // src/call-chat-api.ts
@@ -7707,7 +8285,8 @@ async function callChatApi({
   onFinish,
   onToolCall,
   generateId: generateId2,
-  fetch: fetch2 = getOriginalFetch()
+  fetch: fetch2 = getOriginalFetch(),
+  lastMessage
 }) {
   var _a, _b;
   const response = await fetch2(api, {
@@ -7739,42 +8318,36 @@ async function callChatApi({
   if (!response.body) {
     throw new Error("The response body is empty.");
   }
-  const reader = response.body.getReader();
   switch (streamProtocol) {
     case "text": {
-      const decoder = createChunkDecoder();
       const resultMessage = {
         id: generateId2(),
         createdAt: /* @__PURE__ */ new Date(),
         role: "assistant",
         content: ""
       };
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) {
-          break;
+      await processTextStream({
+        stream: response.body,
+        onTextPart: (chunk) => {
+          resultMessage.content += chunk;
+          onUpdate({
+            message: { ...resultMessage },
+            data: [],
+            replaceLastMessage: false
+          });
         }
-        resultMessage.content += decoder(value);
-        onUpdate([{ ...resultMessage }], []);
-        if ((abortController == null ? void 0 : abortController()) === null) {
-          reader.cancel();
-          break;
-        }
-      }
+      });
       onFinish == null ? void 0 : onFinish(resultMessage, {
         usage: { completionTokens: NaN, promptTokens: NaN, totalTokens: NaN },
         finishReason: "unknown"
       });
-      return {
-        messages: [resultMessage],
-        data: []
-      };
+      return;
     }
     case "data": {
-      return await processDataProtocolResponse({
-        reader,
-        abortControllerRef: abortController != null ? { current: abortController() } : void 0,
+      await processChatResponse({
+        stream: response.body,
         update: onUpdate,
+        lastMessage,
         onToolCall,
         onFinish({ message, finishReason, usage }) {
           if (onFinish && message != null) {
@@ -7783,6 +8356,7 @@ async function callChatApi({
         },
         generateId: generateId2
       });
+      return;
     }
     default: {
       const exhaustiveCheck = streamProtocol;
@@ -7810,13 +8384,14 @@ async function callCompletionApi({
   onData,
   fetch: fetch2 = getOriginalFetch2()
 }) {
+  var _a;
   try {
     setLoading(true);
     setError(void 0);
     const abortController = new AbortController();
     setAbortController(abortController);
     setCompletion("");
-    const res = await fetch2(api, {
+    const response = await fetch2(api, {
       method: "POST",
       body: JSON.stringify({
         prompt,
@@ -7833,54 +8408,45 @@ async function callCompletionApi({
     });
     if (onResponse) {
       try {
-        await onResponse(res);
+        await onResponse(response);
       } catch (err) {
         throw err;
       }
     }
-    if (!res.ok) {
+    if (!response.ok) {
       throw new Error(
-        await res.text() || "Failed to fetch the chat response."
+        (_a = await response.text()) != null ? _a : "Failed to fetch the chat response."
       );
     }
-    if (!res.body) {
+    if (!response.body) {
       throw new Error("The response body is empty.");
     }
     let result = "";
-    const reader = res.body.getReader();
     switch (streamProtocol) {
       case "text": {
-        const decoder = createChunkDecoder();
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) {
-            break;
+        await processTextStream({
+          stream: response.body,
+          onTextPart: (chunk) => {
+            result += chunk;
+            setCompletion(result);
           }
-          result += decoder(value);
-          setCompletion(result);
-          if (abortController === null) {
-            reader.cancel();
-            break;
-          }
-        }
+        });
         break;
       }
       case "data": {
-        for await (const { type, value } of readDataStream(reader, {
-          isAborted: () => abortController === null
-        })) {
-          switch (type) {
-            case "text": {
-              result += value;
-              setCompletion(result);
-              break;
-            }
-            case "data": {
-              onData == null ? void 0 : onData(value);
-              break;
-            }
+        await processDataStream({
+          stream: response.body,
+          onTextPart(value) {
+            result += value;
+            setCompletion(result);
+          },
+          onDataPart(value) {
+            onData == null ? void 0 : onData(value);
+          },
+          onErrorPart(value) {
+            throw new Error(value);
           }
-        }
+        });
         break;
       }
       default: {
@@ -7909,22 +8475,6 @@ async function callCompletionApi({
   }
 }
 
-// src/create-chunk-decoder.ts
-function createChunkDecoder(complex) {
-  const decoder = new TextDecoder();
-  if (!complex) {
-    return function(chunk) {
-      if (!chunk)
-        return "";
-      return decoder.decode(chunk, { stream: true });
-    };
-  }
-  return function(chunk) {
-    const decoded = decoder.decode(chunk, { stream: true }).split("\n").filter((line) => line !== "");
-    return decoded.map(parseStreamPart).filter(Boolean);
-  };
-}
-
 // src/data-url.ts
 function getTextFromDataUrl(dataUrl) {
   const [header, base64Content] = dataUrl.split(",");
@@ -7937,6 +8487,14 @@ function getTextFromDataUrl(dataUrl) {
   } catch (error) {
     throw new Error(`Error decoding data URL`);
   }
+}
+
+// src/extract-max-tool-invocation-step.ts
+function extractMaxToolInvocationStep(toolInvocations) {
+  return toolInvocations == null ? void 0 : toolInvocations.reduce((max, toolInvocation) => {
+    var _a;
+    return Math.max(max, (_a = toolInvocation.step) != null ? _a : 0);
+  }, 0);
 }
 
 // src/is-deep-equal-data.ts
@@ -7974,125 +8532,126 @@ function isDeepEqualData(obj1, obj2) {
   return true;
 }
 
-// src/process-chat-stream.ts
-async function processChatStream({
-  getStreamedResponse,
-  experimental_onFunctionCall,
-  experimental_onToolCall,
-  updateChatRequest,
-  getCurrentMessages
+// src/prepare-attachments-for-request.ts
+async function prepareAttachmentsForRequest(attachmentsFromOptions) {
+  if (!attachmentsFromOptions) {
+    return [];
+  }
+  if (attachmentsFromOptions instanceof FileList) {
+    return Promise.all(
+      Array.from(attachmentsFromOptions).map(async (attachment) => {
+        const { name, type } = attachment;
+        const dataUrl = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = (readerEvent) => {
+            var _a;
+            resolve((_a = readerEvent.target) == null ? void 0 : _a.result);
+          };
+          reader.onerror = (error) => reject(error);
+          reader.readAsDataURL(attachment);
+        });
+        return {
+          name,
+          contentType: type,
+          url: dataUrl
+        };
+      })
+    );
+  }
+  if (Array.isArray(attachmentsFromOptions)) {
+    return attachmentsFromOptions;
+  }
+  throw new Error("Invalid attachments type");
+}
+
+// src/process-assistant-stream.ts
+var NEWLINE2 = "\n".charCodeAt(0);
+function concatChunks2(chunks, totalLength) {
+  const concatenatedChunks = new Uint8Array(totalLength);
+  let offset = 0;
+  for (const chunk of chunks) {
+    concatenatedChunks.set(chunk, offset);
+    offset += chunk.length;
+  }
+  chunks.length = 0;
+  return concatenatedChunks;
+}
+async function processAssistantStream({
+  stream,
+  onTextPart,
+  onErrorPart,
+  onAssistantMessagePart,
+  onAssistantControlDataPart,
+  onDataMessagePart
 }) {
+  const reader = stream.getReader();
+  const decoder = new TextDecoder();
+  const chunks = [];
+  let totalLength = 0;
   while (true) {
-    const messagesAndDataOrJustMessage = await getStreamedResponse();
-    if ("messages" in messagesAndDataOrJustMessage) {
-      let hasFollowingResponse = false;
-      for (const message of messagesAndDataOrJustMessage.messages) {
-        if ((message.function_call === void 0 || typeof message.function_call === "string") && (message.tool_calls === void 0 || typeof message.tool_calls === "string")) {
-          continue;
-        }
-        hasFollowingResponse = true;
-        if (experimental_onFunctionCall) {
-          const functionCall = message.function_call;
-          if (typeof functionCall !== "object") {
-            console.warn(
-              "experimental_onFunctionCall should not be defined when using tools"
-            );
-            continue;
-          }
-          const functionCallResponse = await experimental_onFunctionCall(
-            getCurrentMessages(),
-            functionCall
-          );
-          if (functionCallResponse === void 0) {
-            hasFollowingResponse = false;
-            break;
-          }
-          updateChatRequest(functionCallResponse);
-        }
-        if (experimental_onToolCall) {
-          const toolCalls = message.tool_calls;
-          if (!Array.isArray(toolCalls) || toolCalls.some((toolCall) => typeof toolCall !== "object")) {
-            console.warn(
-              "experimental_onToolCall should not be defined when using tools"
-            );
-            continue;
-          }
-          const toolCallResponse = await experimental_onToolCall(getCurrentMessages(), toolCalls);
-          if (toolCallResponse === void 0) {
-            hasFollowingResponse = false;
-            break;
-          }
-          updateChatRequest(toolCallResponse);
-        }
+    const { value } = await reader.read();
+    if (value) {
+      chunks.push(value);
+      totalLength += value.length;
+      if (value[value.length - 1] !== NEWLINE2) {
+        continue;
       }
-      if (!hasFollowingResponse) {
-        break;
-      }
-    } else {
-      let fixFunctionCallArguments2 = function(response) {
-        for (const message of response.messages) {
-          if (message.tool_calls !== void 0) {
-            for (const toolCall of message.tool_calls) {
-              if (typeof toolCall === "object") {
-                if (toolCall.function.arguments && typeof toolCall.function.arguments !== "string") {
-                  toolCall.function.arguments = JSON.stringify(
-                    toolCall.function.arguments
-                  );
-                }
-              }
-            }
-          }
-          if (message.function_call !== void 0) {
-            if (typeof message.function_call === "object") {
-              if (message.function_call.arguments && typeof message.function_call.arguments !== "string") {
-                message.function_call.arguments = JSON.stringify(
-                  message.function_call.arguments
-                );
-              }
-            }
-          }
-        }
-      };
-      var fixFunctionCallArguments = fixFunctionCallArguments2;
-      const streamedResponseMessage = messagesAndDataOrJustMessage;
-      if ((streamedResponseMessage.function_call === void 0 || typeof streamedResponseMessage.function_call === "string") && (streamedResponseMessage.tool_calls === void 0 || typeof streamedResponseMessage.tool_calls === "string")) {
-        break;
-      }
-      if (experimental_onFunctionCall) {
-        const functionCall = streamedResponseMessage.function_call;
-        if (!(typeof functionCall === "object")) {
-          console.warn(
-            "experimental_onFunctionCall should not be defined when using tools"
-          );
-          continue;
-        }
-        const functionCallResponse = await experimental_onFunctionCall(getCurrentMessages(), functionCall);
-        if (functionCallResponse === void 0)
+    }
+    if (chunks.length === 0) {
+      break;
+    }
+    const concatenatedChunks = concatChunks2(chunks, totalLength);
+    totalLength = 0;
+    const streamParts = decoder.decode(concatenatedChunks, { stream: true }).split("\n").filter((line) => line !== "").map(parseAssistantStreamPart);
+    for (const { type, value: value2 } of streamParts) {
+      switch (type) {
+        case "text":
+          await (onTextPart == null ? void 0 : onTextPart(value2));
           break;
-        fixFunctionCallArguments2(functionCallResponse);
-        updateChatRequest(functionCallResponse);
-      }
-      if (experimental_onToolCall) {
-        const toolCalls = streamedResponseMessage.tool_calls;
-        if (!(typeof toolCalls === "object")) {
-          console.warn(
-            "experimental_onToolCall should not be defined when using functions"
-          );
-          continue;
-        }
-        const toolCallResponse = await experimental_onToolCall(getCurrentMessages(), toolCalls);
-        if (toolCallResponse === void 0)
+        case "error":
+          await (onErrorPart == null ? void 0 : onErrorPart(value2));
           break;
-        fixFunctionCallArguments2(toolCallResponse);
-        updateChatRequest(toolCallResponse);
+        case "assistant_message":
+          await (onAssistantMessagePart == null ? void 0 : onAssistantMessagePart(value2));
+          break;
+        case "assistant_control_data":
+          await (onAssistantControlDataPart == null ? void 0 : onAssistantControlDataPart(value2));
+          break;
+        case "data_message":
+          await (onDataMessagePart == null ? void 0 : onDataMessagePart(value2));
+          break;
+        default: {
+          const exhaustiveCheck = type;
+          throw new Error(`Unknown stream part type: ${exhaustiveCheck}`);
+        }
       }
     }
   }
 }
 
 // src/schema.ts
-var import_provider_utils2 = __nccwpck_require__(127);
-var import_zod_to_json_schema = __toESM(__nccwpck_require__(4248));
+var import_provider_utils3 = __nccwpck_require__(2458);
+
+// src/zod-schema.ts
+var import_zod_to_json_schema = __toESM(__nccwpck_require__(4499));
+function zodSchema(zodSchema2) {
+  return jsonSchema(
+    (0, import_zod_to_json_schema.default)(zodSchema2, {
+      $refStrategy: "none",
+      // no references (to support openapi conversion for google)
+      target: "jsonSchema7"
+      // note: openai mode breaks various gemini conversions
+    }),
+    {
+      validate: (value) => {
+        const result = zodSchema2.safeParse(value);
+        return result.success ? { success: true, value: result.data } : { success: false, error: result.error };
+      }
+    }
+  );
+}
+
+// src/schema.ts
 var schemaSymbol = Symbol.for("vercel.ai.schema");
 function jsonSchema(jsonSchema2, {
   validate
@@ -8101,7 +8660,7 @@ function jsonSchema(jsonSchema2, {
     [schemaSymbol]: true,
     _type: void 0,
     // should never be used directly
-    [import_provider_utils2.validatorSymbol]: true,
+    [import_provider_utils3.validatorSymbol]: true,
     jsonSchema: jsonSchema2,
     validate
   };
@@ -8112,25 +8671,13 @@ function isSchema(value) {
 function asSchema(schema) {
   return isSchema(schema) ? schema : zodSchema(schema);
 }
-function zodSchema(zodSchema2) {
-  return jsonSchema(
-    // we assume that zodToJsonSchema will return a valid JSONSchema7:
-    (0, import_zod_to_json_schema.default)(zodSchema2),
-    {
-      validate: (value) => {
-        const result = zodSchema2.safeParse(value);
-        return result.success ? { success: true, value: result.data } : { success: false, error: result.error };
-      }
-    }
-  );
-}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (0);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 750:
+/***/ 6962:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -8340,6 +8887,17 @@ exports.FunctionCallingMode = void 0;
     // not passing any function declarations.
     FunctionCallingMode["NONE"] = "NONE";
 })(exports.FunctionCallingMode || (exports.FunctionCallingMode = {}));
+/**
+ * The mode of the predictor to be used in dynamic retrieval.
+ * @public
+ */
+exports.DynamicRetrievalMode = void 0;
+(function (DynamicRetrievalMode) {
+    // Unspecified function calling mode. This value should not be used.
+    DynamicRetrievalMode["MODE_UNSPECIFIED"] = "MODE_UNSPECIFIED";
+    // Run retrieval only when system decides it is necessary.
+    DynamicRetrievalMode["MODE_DYNAMIC"] = "MODE_DYNAMIC";
+})(exports.DynamicRetrievalMode || (exports.DynamicRetrievalMode = {}));
 
 /**
  * @license
@@ -8419,7 +8977,7 @@ const DEFAULT_API_VERSION = "v1beta";
  * We can't `require` package.json if this runs on web. We will use rollup to
  * swap in the version number here at build time.
  */
-const PACKAGE_VERSION = "0.20.0";
+const PACKAGE_VERSION = "0.21.0";
 const PACKAGE_LOG_HEADER = "genai-js";
 var Task;
 (function (Task) {
@@ -8885,6 +9443,8 @@ function aggregateResponses(responses) {
                 // Keep overwriting, the last one will be final
                 aggregatedResponse.candidates[i].citationMetadata =
                     candidate.citationMetadata;
+                aggregatedResponse.candidates[i].groundingMetadata =
+                    candidate.groundingMetadata;
                 aggregatedResponse.candidates[i].finishReason = candidate.finishReason;
                 aggregatedResponse.candidates[i].finishMessage =
                     candidate.finishMessage;
@@ -9590,7 +10150,7 @@ exports.POSSIBLE_ROLES = POSSIBLE_ROLES;
 
 /***/ }),
 
-/***/ 1437:
+/***/ 6602:
 /***/ ((module) => {
 
 "use strict";
@@ -9675,7 +10235,7 @@ var createTokenAuth = function createTokenAuth2(token) {
 
 /***/ }),
 
-/***/ 9968:
+/***/ 6407:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -9704,11 +10264,11 @@ __export(dist_src_exports, {
   Octokit: () => Octokit
 });
 module.exports = __toCommonJS(dist_src_exports);
-var import_universal_user_agent = __nccwpck_require__(3168);
-var import_before_after_hook = __nccwpck_require__(9922);
-var import_request = __nccwpck_require__(6125);
-var import_graphql = __nccwpck_require__(4839);
-var import_auth_token = __nccwpck_require__(1437);
+var import_universal_user_agent = __nccwpck_require__(9279);
+var import_before_after_hook = __nccwpck_require__(8841);
+var import_request = __nccwpck_require__(7382);
+var import_graphql = __nccwpck_require__(5432);
+var import_auth_token = __nccwpck_require__(6602);
 
 // pkg/dist-src/version.js
 var VERSION = "5.2.0";
@@ -9844,7 +10404,7 @@ var Octokit = class {
 
 /***/ }),
 
-/***/ 6267:
+/***/ 9284:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -9875,7 +10435,7 @@ __export(dist_src_exports, {
 module.exports = __toCommonJS(dist_src_exports);
 
 // pkg/dist-src/defaults.js
-var import_universal_user_agent = __nccwpck_require__(3168);
+var import_universal_user_agent = __nccwpck_require__(9279);
 
 // pkg/dist-src/version.js
 var VERSION = "9.0.5";
@@ -10228,7 +10788,7 @@ var endpoint = withDefaults(null, DEFAULTS);
 
 /***/ }),
 
-/***/ 4839:
+/***/ 5432:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -10259,17 +10819,17 @@ __export(dist_src_exports, {
   withCustomRequest: () => withCustomRequest
 });
 module.exports = __toCommonJS(dist_src_exports);
-var import_request3 = __nccwpck_require__(6125);
-var import_universal_user_agent = __nccwpck_require__(3168);
+var import_request3 = __nccwpck_require__(7382);
+var import_universal_user_agent = __nccwpck_require__(9279);
 
 // pkg/dist-src/version.js
 var VERSION = "7.1.0";
 
 // pkg/dist-src/with-defaults.js
-var import_request2 = __nccwpck_require__(6125);
+var import_request2 = __nccwpck_require__(7382);
 
 // pkg/dist-src/graphql.js
-var import_request = __nccwpck_require__(6125);
+var import_request = __nccwpck_require__(7382);
 
 // pkg/dist-src/error.js
 function _buildMessageForResponseErrors(data) {
@@ -10386,7 +10946,7 @@ function withCustomRequest(customRequest) {
 
 /***/ }),
 
-/***/ 4146:
+/***/ 4301:
 /***/ ((module) => {
 
 "use strict";
@@ -10787,7 +11347,7 @@ paginateRest.VERSION = VERSION;
 
 /***/ }),
 
-/***/ 1756:
+/***/ 869:
 /***/ ((module) => {
 
 "use strict";
@@ -12957,7 +13517,7 @@ legacyRestEndpointMethods.VERSION = VERSION;
 
 /***/ }),
 
-/***/ 2637:
+/***/ 2534:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -12996,8 +13556,8 @@ __export(dist_src_exports, {
   RequestError: () => RequestError
 });
 module.exports = __toCommonJS(dist_src_exports);
-var import_deprecation = __nccwpck_require__(6933);
-var import_once = __toESM(__nccwpck_require__(9745));
+var import_deprecation = __nccwpck_require__(5546);
+var import_once = __toESM(__nccwpck_require__(8068));
 var logOnceCode = (0, import_once.default)((deprecation) => console.warn(deprecation));
 var logOnceHeaders = (0, import_once.default)((deprecation) => console.warn(deprecation));
 var RequestError = class extends Error {
@@ -13055,7 +13615,7 @@ var RequestError = class extends Error {
 
 /***/ }),
 
-/***/ 6125:
+/***/ 7382:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -13084,8 +13644,8 @@ __export(dist_src_exports, {
   request: () => request
 });
 module.exports = __toCommonJS(dist_src_exports);
-var import_endpoint = __nccwpck_require__(6267);
-var import_universal_user_agent = __nccwpck_require__(3168);
+var import_endpoint = __nccwpck_require__(9284);
+var import_universal_user_agent = __nccwpck_require__(9279);
 
 // pkg/dist-src/version.js
 var VERSION = "8.4.0";
@@ -13104,7 +13664,7 @@ function isPlainObject(value) {
 }
 
 // pkg/dist-src/fetch-wrapper.js
-var import_request_error = __nccwpck_require__(2637);
+var import_request_error = __nccwpck_require__(2534);
 
 // pkg/dist-src/get-buffer-response.js
 function getBufferResponse(response) {
@@ -13285,7 +13845,7 @@ var request = withDefaults(import_endpoint.endpoint, {
 
 /***/ }),
 
-/***/ 1767:
+/***/ 56:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -13307,9 +13867,9 @@ var request = withDefaults(import_endpoint.endpoint, {
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ContextAPI = void 0;
-const NoopContextManager_1 = __nccwpck_require__(3725);
-const global_utils_1 = __nccwpck_require__(3074);
-const diag_1 = __nccwpck_require__(2861);
+const NoopContextManager_1 = __nccwpck_require__(9452);
+const global_utils_1 = __nccwpck_require__(373);
+const diag_1 = __nccwpck_require__(7764);
 const API_NAME = 'context';
 const NOOP_CONTEXT_MANAGER = new NoopContextManager_1.NoopContextManager();
 /**
@@ -13373,7 +13933,7 @@ exports.ContextAPI = ContextAPI;
 
 /***/ }),
 
-/***/ 2861:
+/***/ 7764:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -13395,10 +13955,10 @@ exports.ContextAPI = ContextAPI;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DiagAPI = void 0;
-const ComponentLogger_1 = __nccwpck_require__(7024);
-const logLevelLogger_1 = __nccwpck_require__(6977);
-const types_1 = __nccwpck_require__(2190);
-const global_utils_1 = __nccwpck_require__(3074);
+const ComponentLogger_1 = __nccwpck_require__(4285);
+const logLevelLogger_1 = __nccwpck_require__(4756);
+const types_1 = __nccwpck_require__(6527);
+const global_utils_1 = __nccwpck_require__(373);
 const API_NAME = 'diag';
 /**
  * Singleton object which represents the entry point to the OpenTelemetry internal
@@ -13473,7 +14033,7 @@ exports.DiagAPI = DiagAPI;
 
 /***/ }),
 
-/***/ 4581:
+/***/ 4742:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -13495,9 +14055,9 @@ exports.DiagAPI = DiagAPI;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.MetricsAPI = void 0;
-const NoopMeterProvider_1 = __nccwpck_require__(4577);
-const global_utils_1 = __nccwpck_require__(3074);
-const diag_1 = __nccwpck_require__(2861);
+const NoopMeterProvider_1 = __nccwpck_require__(9482);
+const global_utils_1 = __nccwpck_require__(373);
+const diag_1 = __nccwpck_require__(7764);
 const API_NAME = 'metrics';
 /**
  * Singleton object which represents the entry point to the OpenTelemetry Metrics API
@@ -13541,7 +14101,7 @@ exports.MetricsAPI = MetricsAPI;
 
 /***/ }),
 
-/***/ 2110:
+/***/ 633:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -13563,12 +14123,12 @@ exports.MetricsAPI = MetricsAPI;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PropagationAPI = void 0;
-const global_utils_1 = __nccwpck_require__(3074);
-const NoopTextMapPropagator_1 = __nccwpck_require__(648);
-const TextMapPropagator_1 = __nccwpck_require__(4892);
-const context_helpers_1 = __nccwpck_require__(437);
-const utils_1 = __nccwpck_require__(955);
-const diag_1 = __nccwpck_require__(2861);
+const global_utils_1 = __nccwpck_require__(373);
+const NoopTextMapPropagator_1 = __nccwpck_require__(1096);
+const TextMapPropagator_1 = __nccwpck_require__(4119);
+const context_helpers_1 = __nccwpck_require__(3670);
+const utils_1 = __nccwpck_require__(6144);
+const diag_1 = __nccwpck_require__(7764);
 const API_NAME = 'propagation';
 const NOOP_TEXT_MAP_PROPAGATOR = new NoopTextMapPropagator_1.NoopTextMapPropagator();
 /**
@@ -13637,7 +14197,7 @@ exports.PropagationAPI = PropagationAPI;
 
 /***/ }),
 
-/***/ 2957:
+/***/ 9738:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -13659,11 +14219,11 @@ exports.PropagationAPI = PropagationAPI;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.TraceAPI = void 0;
-const global_utils_1 = __nccwpck_require__(3074);
-const ProxyTracerProvider_1 = __nccwpck_require__(9729);
-const spancontext_utils_1 = __nccwpck_require__(5354);
-const context_utils_1 = __nccwpck_require__(3226);
-const diag_1 = __nccwpck_require__(2861);
+const global_utils_1 = __nccwpck_require__(373);
+const ProxyTracerProvider_1 = __nccwpck_require__(3418);
+const spancontext_utils_1 = __nccwpck_require__(8933);
+const context_utils_1 = __nccwpck_require__(6081);
+const diag_1 = __nccwpck_require__(7764);
 const API_NAME = 'trace';
 /**
  * Singleton object which represents the entry point to the OpenTelemetry Tracing API
@@ -13723,7 +14283,7 @@ exports.TraceAPI = TraceAPI;
 
 /***/ }),
 
-/***/ 437:
+/***/ 3670:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -13745,8 +14305,8 @@ exports.TraceAPI = TraceAPI;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.deleteBaggage = exports.setBaggage = exports.getActiveBaggage = exports.getBaggage = void 0;
-const context_1 = __nccwpck_require__(1767);
-const context_2 = __nccwpck_require__(4912);
+const context_1 = __nccwpck_require__(56);
+const context_2 = __nccwpck_require__(3567);
 /**
  * Baggage key
  */
@@ -13793,7 +14353,7 @@ exports.deleteBaggage = deleteBaggage;
 
 /***/ }),
 
-/***/ 4759:
+/***/ 2544:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13855,7 +14415,7 @@ exports.BaggageImpl = BaggageImpl;
 
 /***/ }),
 
-/***/ 5348:
+/***/ 3519:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -13885,7 +14445,7 @@ exports.baggageEntryMetadataSymbol = Symbol('BaggageEntryMetadata');
 
 /***/ }),
 
-/***/ 955:
+/***/ 6144:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -13907,9 +14467,9 @@ exports.baggageEntryMetadataSymbol = Symbol('BaggageEntryMetadata');
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.baggageEntryMetadataFromString = exports.createBaggage = void 0;
-const diag_1 = __nccwpck_require__(2861);
-const baggage_impl_1 = __nccwpck_require__(4759);
-const symbol_1 = __nccwpck_require__(5348);
+const diag_1 = __nccwpck_require__(7764);
+const baggage_impl_1 = __nccwpck_require__(2544);
+const symbol_1 = __nccwpck_require__(3519);
 const diag = diag_1.DiagAPI.instance();
 /**
  * Create a new Baggage with optional entries
@@ -13943,7 +14503,7 @@ exports.baggageEntryMetadataFromString = baggageEntryMetadataFromString;
 
 /***/ }),
 
-/***/ 9237:
+/***/ 2402:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -13967,14 +14527,14 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.context = void 0;
 // Split module-level variable definition into separate files to allow
 // tree-shaking on each api instance.
-const context_1 = __nccwpck_require__(1767);
+const context_1 = __nccwpck_require__(56);
 /** Entrypoint for context API */
 exports.context = context_1.ContextAPI.getInstance();
 //# sourceMappingURL=context-api.js.map
 
 /***/ }),
 
-/***/ 3725:
+/***/ 9452:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -13996,7 +14556,7 @@ exports.context = context_1.ContextAPI.getInstance();
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.NoopContextManager = void 0;
-const context_1 = __nccwpck_require__(4912);
+const context_1 = __nccwpck_require__(3567);
 class NoopContextManager {
     active() {
         return context_1.ROOT_CONTEXT;
@@ -14019,7 +14579,7 @@ exports.NoopContextManager = NoopContextManager;
 
 /***/ }),
 
-/***/ 4912:
+/***/ 3567:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14081,7 +14641,7 @@ exports.ROOT_CONTEXT = new BaseContext();
 
 /***/ }),
 
-/***/ 7625:
+/***/ 7904:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -14105,7 +14665,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.diag = void 0;
 // Split module-level variable definition into separate files to allow
 // tree-shaking on each api instance.
-const diag_1 = __nccwpck_require__(2861);
+const diag_1 = __nccwpck_require__(7764);
 /**
  * Entrypoint for Diag API.
  * Defines Diagnostic handler used for internal diagnostic logging operations.
@@ -14117,7 +14677,7 @@ exports.diag = diag_1.DiagAPI.instance();
 
 /***/ }),
 
-/***/ 7024:
+/***/ 4285:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -14139,7 +14699,7 @@ exports.diag = diag_1.DiagAPI.instance();
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DiagComponentLogger = void 0;
-const global_utils_1 = __nccwpck_require__(3074);
+const global_utils_1 = __nccwpck_require__(373);
 /**
  * Component Logger which is meant to be used as part of any component which
  * will add automatically additional namespace in front of the log message.
@@ -14183,7 +14743,7 @@ function logProxy(funcName, namespace, args) {
 
 /***/ }),
 
-/***/ 5822:
+/***/ 8059:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14247,7 +14807,7 @@ exports.DiagConsoleLogger = DiagConsoleLogger;
 
 /***/ }),
 
-/***/ 6977:
+/***/ 4756:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -14269,7 +14829,7 @@ exports.DiagConsoleLogger = DiagConsoleLogger;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createLogLevelDiagLogger = void 0;
-const types_1 = __nccwpck_require__(2190);
+const types_1 = __nccwpck_require__(6527);
 function createLogLevelDiagLogger(maxLevel, logger) {
     if (maxLevel < types_1.DiagLogLevel.NONE) {
         maxLevel = types_1.DiagLogLevel.NONE;
@@ -14299,7 +14859,7 @@ exports.createLogLevelDiagLogger = createLogLevelDiagLogger;
 
 /***/ }),
 
-/***/ 2190:
+/***/ 6527:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14350,7 +14910,7 @@ var DiagLogLevel;
 
 /***/ }),
 
-/***/ 7743:
+/***/ 4176:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -14372,59 +14932,59 @@ var DiagLogLevel;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.trace = exports.propagation = exports.metrics = exports.diag = exports.context = exports.INVALID_SPAN_CONTEXT = exports.INVALID_TRACEID = exports.INVALID_SPANID = exports.isValidSpanId = exports.isValidTraceId = exports.isSpanContextValid = exports.createTraceState = exports.TraceFlags = exports.SpanStatusCode = exports.SpanKind = exports.SamplingDecision = exports.ProxyTracerProvider = exports.ProxyTracer = exports.defaultTextMapSetter = exports.defaultTextMapGetter = exports.ValueType = exports.createNoopMeter = exports.DiagLogLevel = exports.DiagConsoleLogger = exports.ROOT_CONTEXT = exports.createContextKey = exports.baggageEntryMetadataFromString = void 0;
-var utils_1 = __nccwpck_require__(955);
+var utils_1 = __nccwpck_require__(6144);
 Object.defineProperty(exports, "baggageEntryMetadataFromString", ({ enumerable: true, get: function () { return utils_1.baggageEntryMetadataFromString; } }));
 // Context APIs
-var context_1 = __nccwpck_require__(4912);
+var context_1 = __nccwpck_require__(3567);
 Object.defineProperty(exports, "createContextKey", ({ enumerable: true, get: function () { return context_1.createContextKey; } }));
 Object.defineProperty(exports, "ROOT_CONTEXT", ({ enumerable: true, get: function () { return context_1.ROOT_CONTEXT; } }));
 // Diag APIs
-var consoleLogger_1 = __nccwpck_require__(5822);
+var consoleLogger_1 = __nccwpck_require__(8059);
 Object.defineProperty(exports, "DiagConsoleLogger", ({ enumerable: true, get: function () { return consoleLogger_1.DiagConsoleLogger; } }));
-var types_1 = __nccwpck_require__(2190);
+var types_1 = __nccwpck_require__(6527);
 Object.defineProperty(exports, "DiagLogLevel", ({ enumerable: true, get: function () { return types_1.DiagLogLevel; } }));
 // Metrics APIs
-var NoopMeter_1 = __nccwpck_require__(9364);
+var NoopMeter_1 = __nccwpck_require__(2859);
 Object.defineProperty(exports, "createNoopMeter", ({ enumerable: true, get: function () { return NoopMeter_1.createNoopMeter; } }));
-var Metric_1 = __nccwpck_require__(9769);
+var Metric_1 = __nccwpck_require__(8412);
 Object.defineProperty(exports, "ValueType", ({ enumerable: true, get: function () { return Metric_1.ValueType; } }));
 // Propagation APIs
-var TextMapPropagator_1 = __nccwpck_require__(4892);
+var TextMapPropagator_1 = __nccwpck_require__(4119);
 Object.defineProperty(exports, "defaultTextMapGetter", ({ enumerable: true, get: function () { return TextMapPropagator_1.defaultTextMapGetter; } }));
 Object.defineProperty(exports, "defaultTextMapSetter", ({ enumerable: true, get: function () { return TextMapPropagator_1.defaultTextMapSetter; } }));
-var ProxyTracer_1 = __nccwpck_require__(3860);
+var ProxyTracer_1 = __nccwpck_require__(7067);
 Object.defineProperty(exports, "ProxyTracer", ({ enumerable: true, get: function () { return ProxyTracer_1.ProxyTracer; } }));
-var ProxyTracerProvider_1 = __nccwpck_require__(9729);
+var ProxyTracerProvider_1 = __nccwpck_require__(3418);
 Object.defineProperty(exports, "ProxyTracerProvider", ({ enumerable: true, get: function () { return ProxyTracerProvider_1.ProxyTracerProvider; } }));
-var SamplingResult_1 = __nccwpck_require__(5481);
+var SamplingResult_1 = __nccwpck_require__(2864);
 Object.defineProperty(exports, "SamplingDecision", ({ enumerable: true, get: function () { return SamplingResult_1.SamplingDecision; } }));
-var span_kind_1 = __nccwpck_require__(3133);
+var span_kind_1 = __nccwpck_require__(9597);
 Object.defineProperty(exports, "SpanKind", ({ enumerable: true, get: function () { return span_kind_1.SpanKind; } }));
-var status_1 = __nccwpck_require__(5215);
+var status_1 = __nccwpck_require__(8726);
 Object.defineProperty(exports, "SpanStatusCode", ({ enumerable: true, get: function () { return status_1.SpanStatusCode; } }));
-var trace_flags_1 = __nccwpck_require__(4996);
+var trace_flags_1 = __nccwpck_require__(2515);
 Object.defineProperty(exports, "TraceFlags", ({ enumerable: true, get: function () { return trace_flags_1.TraceFlags; } }));
-var utils_2 = __nccwpck_require__(6842);
+var utils_2 = __nccwpck_require__(8511);
 Object.defineProperty(exports, "createTraceState", ({ enumerable: true, get: function () { return utils_2.createTraceState; } }));
-var spancontext_utils_1 = __nccwpck_require__(5354);
+var spancontext_utils_1 = __nccwpck_require__(8933);
 Object.defineProperty(exports, "isSpanContextValid", ({ enumerable: true, get: function () { return spancontext_utils_1.isSpanContextValid; } }));
 Object.defineProperty(exports, "isValidTraceId", ({ enumerable: true, get: function () { return spancontext_utils_1.isValidTraceId; } }));
 Object.defineProperty(exports, "isValidSpanId", ({ enumerable: true, get: function () { return spancontext_utils_1.isValidSpanId; } }));
-var invalid_span_constants_1 = __nccwpck_require__(3383);
+var invalid_span_constants_1 = __nccwpck_require__(6098);
 Object.defineProperty(exports, "INVALID_SPANID", ({ enumerable: true, get: function () { return invalid_span_constants_1.INVALID_SPANID; } }));
 Object.defineProperty(exports, "INVALID_TRACEID", ({ enumerable: true, get: function () { return invalid_span_constants_1.INVALID_TRACEID; } }));
 Object.defineProperty(exports, "INVALID_SPAN_CONTEXT", ({ enumerable: true, get: function () { return invalid_span_constants_1.INVALID_SPAN_CONTEXT; } }));
 // Split module-level variable definition into separate files to allow
 // tree-shaking on each api instance.
-const context_api_1 = __nccwpck_require__(9237);
+const context_api_1 = __nccwpck_require__(2402);
 Object.defineProperty(exports, "context", ({ enumerable: true, get: function () { return context_api_1.context; } }));
-const diag_api_1 = __nccwpck_require__(7625);
+const diag_api_1 = __nccwpck_require__(7904);
 Object.defineProperty(exports, "diag", ({ enumerable: true, get: function () { return diag_api_1.diag; } }));
-const metrics_api_1 = __nccwpck_require__(5779);
+const metrics_api_1 = __nccwpck_require__(7208);
 Object.defineProperty(exports, "metrics", ({ enumerable: true, get: function () { return metrics_api_1.metrics; } }));
-const propagation_api_1 = __nccwpck_require__(4084);
+const propagation_api_1 = __nccwpck_require__(7099);
 Object.defineProperty(exports, "propagation", ({ enumerable: true, get: function () { return propagation_api_1.propagation; } }));
-const trace_api_1 = __nccwpck_require__(1735);
+const trace_api_1 = __nccwpck_require__(6184);
 Object.defineProperty(exports, "trace", ({ enumerable: true, get: function () { return trace_api_1.trace; } }));
 // Default export.
 exports["default"] = {
@@ -14438,7 +14998,7 @@ exports["default"] = {
 
 /***/ }),
 
-/***/ 3074:
+/***/ 373:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -14460,9 +15020,9 @@ exports["default"] = {
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.unregisterGlobal = exports.getGlobal = exports.registerGlobal = void 0;
-const platform_1 = __nccwpck_require__(9203);
-const version_1 = __nccwpck_require__(1615);
-const semver_1 = __nccwpck_require__(7217);
+const platform_1 = __nccwpck_require__(3222);
+const version_1 = __nccwpck_require__(284);
+const semver_1 = __nccwpck_require__(9086);
 const major = version_1.VERSION.split('.')[0];
 const GLOBAL_OPENTELEMETRY_API_KEY = Symbol.for(`opentelemetry.js.api.${major}`);
 const _global = platform_1._globalThis;
@@ -14509,7 +15069,7 @@ exports.unregisterGlobal = unregisterGlobal;
 
 /***/ }),
 
-/***/ 7217:
+/***/ 9086:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -14531,7 +15091,7 @@ exports.unregisterGlobal = unregisterGlobal;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.isCompatible = exports._makeCompatibilityCheck = void 0;
-const version_1 = __nccwpck_require__(1615);
+const version_1 = __nccwpck_require__(284);
 const re = /^(\d+)\.(\d+)\.(\d+)(-(.+))?$/;
 /**
  * Create a function to test an API version to see if it is compatible with the provided ownVersion.
@@ -14638,7 +15198,7 @@ exports.isCompatible = _makeCompatibilityCheck(version_1.VERSION);
 
 /***/ }),
 
-/***/ 5779:
+/***/ 7208:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -14662,14 +15222,14 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.metrics = void 0;
 // Split module-level variable definition into separate files to allow
 // tree-shaking on each api instance.
-const metrics_1 = __nccwpck_require__(4581);
+const metrics_1 = __nccwpck_require__(4742);
 /** Entrypoint for metrics API */
 exports.metrics = metrics_1.MetricsAPI.getInstance();
 //# sourceMappingURL=metrics-api.js.map
 
 /***/ }),
 
-/***/ 9769:
+/***/ 8412:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14701,7 +15261,7 @@ var ValueType;
 
 /***/ }),
 
-/***/ 9364:
+/***/ 2859:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14835,7 +15395,7 @@ exports.createNoopMeter = createNoopMeter;
 
 /***/ }),
 
-/***/ 4577:
+/***/ 9482:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -14857,7 +15417,7 @@ exports.createNoopMeter = createNoopMeter;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.NOOP_METER_PROVIDER = exports.NoopMeterProvider = void 0;
-const NoopMeter_1 = __nccwpck_require__(9364);
+const NoopMeter_1 = __nccwpck_require__(2859);
 /**
  * An implementation of the {@link MeterProvider} which returns an impotent Meter
  * for all calls to `getMeter`
@@ -14873,7 +15433,7 @@ exports.NOOP_METER_PROVIDER = new NoopMeterProvider();
 
 /***/ }),
 
-/***/ 9203:
+/***/ 3222:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -14904,12 +15464,12 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(7372), exports);
+__exportStar(__nccwpck_require__(9283), exports);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 6765:
+/***/ 7948:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -14938,7 +15498,7 @@ exports._globalThis = typeof globalThis === 'object' ? globalThis : global;
 
 /***/ }),
 
-/***/ 7372:
+/***/ 9283:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -14969,12 +15529,12 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(6765), exports);
+__exportStar(__nccwpck_require__(7948), exports);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 4084:
+/***/ 7099:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -14998,14 +15558,14 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.propagation = void 0;
 // Split module-level variable definition into separate files to allow
 // tree-shaking on each api instance.
-const propagation_1 = __nccwpck_require__(2110);
+const propagation_1 = __nccwpck_require__(633);
 /** Entrypoint for propagation API */
 exports.propagation = propagation_1.PropagationAPI.getInstance();
 //# sourceMappingURL=propagation-api.js.map
 
 /***/ }),
 
-/***/ 648:
+/***/ 1096:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15046,7 +15606,7 @@ exports.NoopTextMapPropagator = NoopTextMapPropagator;
 
 /***/ }),
 
-/***/ 4892:
+/***/ 4119:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15094,7 +15654,7 @@ exports.defaultTextMapSetter = {
 
 /***/ }),
 
-/***/ 1735:
+/***/ 6184:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -15118,14 +15678,14 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.trace = void 0;
 // Split module-level variable definition into separate files to allow
 // tree-shaking on each api instance.
-const trace_1 = __nccwpck_require__(2957);
+const trace_1 = __nccwpck_require__(9738);
 /** Entrypoint for trace API */
 exports.trace = trace_1.TraceAPI.getInstance();
 //# sourceMappingURL=trace-api.js.map
 
 /***/ }),
 
-/***/ 1695:
+/***/ 3014:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -15147,7 +15707,7 @@ exports.trace = trace_1.TraceAPI.getInstance();
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.NonRecordingSpan = void 0;
-const invalid_span_constants_1 = __nccwpck_require__(3383);
+const invalid_span_constants_1 = __nccwpck_require__(6098);
 /**
  * The NonRecordingSpan is the default {@link Span} that is used when no Span
  * implementation is available. All operations are no-op including context
@@ -15201,7 +15761,7 @@ exports.NonRecordingSpan = NonRecordingSpan;
 
 /***/ }),
 
-/***/ 5156:
+/***/ 9149:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -15223,10 +15783,10 @@ exports.NonRecordingSpan = NonRecordingSpan;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.NoopTracer = void 0;
-const context_1 = __nccwpck_require__(1767);
-const context_utils_1 = __nccwpck_require__(3226);
-const NonRecordingSpan_1 = __nccwpck_require__(1695);
-const spancontext_utils_1 = __nccwpck_require__(5354);
+const context_1 = __nccwpck_require__(56);
+const context_utils_1 = __nccwpck_require__(6081);
+const NonRecordingSpan_1 = __nccwpck_require__(3014);
+const spancontext_utils_1 = __nccwpck_require__(8933);
 const contextApi = context_1.ContextAPI.getInstance();
 /**
  * No-op implementations of {@link Tracer}.
@@ -15283,7 +15843,7 @@ function isSpanContext(spanContext) {
 
 /***/ }),
 
-/***/ 7329:
+/***/ 5892:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -15305,7 +15865,7 @@ function isSpanContext(spanContext) {
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.NoopTracerProvider = void 0;
-const NoopTracer_1 = __nccwpck_require__(5156);
+const NoopTracer_1 = __nccwpck_require__(9149);
 /**
  * An implementation of the {@link TracerProvider} which returns an impotent
  * Tracer for all calls to `getTracer`.
@@ -15322,7 +15882,7 @@ exports.NoopTracerProvider = NoopTracerProvider;
 
 /***/ }),
 
-/***/ 3860:
+/***/ 7067:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -15344,7 +15904,7 @@ exports.NoopTracerProvider = NoopTracerProvider;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ProxyTracer = void 0;
-const NoopTracer_1 = __nccwpck_require__(5156);
+const NoopTracer_1 = __nccwpck_require__(9149);
 const NOOP_TRACER = new NoopTracer_1.NoopTracer();
 /**
  * Proxy tracer provided by the proxy tracer provider
@@ -15384,7 +15944,7 @@ exports.ProxyTracer = ProxyTracer;
 
 /***/ }),
 
-/***/ 9729:
+/***/ 3418:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -15406,8 +15966,8 @@ exports.ProxyTracer = ProxyTracer;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ProxyTracerProvider = void 0;
-const ProxyTracer_1 = __nccwpck_require__(3860);
-const NoopTracerProvider_1 = __nccwpck_require__(7329);
+const ProxyTracer_1 = __nccwpck_require__(7067);
+const NoopTracerProvider_1 = __nccwpck_require__(5892);
 const NOOP_TRACER_PROVIDER = new NoopTracerProvider_1.NoopTracerProvider();
 /**
  * Tracer provider which provides {@link ProxyTracer}s.
@@ -15445,7 +16005,7 @@ exports.ProxyTracerProvider = ProxyTracerProvider;
 
 /***/ }),
 
-/***/ 5481:
+/***/ 2864:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15494,7 +16054,7 @@ var SamplingDecision;
 
 /***/ }),
 
-/***/ 3226:
+/***/ 6081:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -15516,9 +16076,9 @@ var SamplingDecision;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getSpanContext = exports.setSpanContext = exports.deleteSpan = exports.setSpan = exports.getActiveSpan = exports.getSpan = void 0;
-const context_1 = __nccwpck_require__(4912);
-const NonRecordingSpan_1 = __nccwpck_require__(1695);
-const context_2 = __nccwpck_require__(1767);
+const context_1 = __nccwpck_require__(3567);
+const NonRecordingSpan_1 = __nccwpck_require__(3014);
+const context_2 = __nccwpck_require__(56);
 /**
  * span key
  */
@@ -15583,7 +16143,7 @@ exports.getSpanContext = getSpanContext;
 
 /***/ }),
 
-/***/ 3120:
+/***/ 9957:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -15605,7 +16165,7 @@ exports.getSpanContext = getSpanContext;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.TraceStateImpl = void 0;
-const tracestate_validators_1 = __nccwpck_require__(9421);
+const tracestate_validators_1 = __nccwpck_require__(4736);
 const MAX_TRACE_STATE_ITEMS = 32;
 const MAX_TRACE_STATE_LEN = 512;
 const LIST_MEMBERS_SEPARATOR = ',';
@@ -15693,7 +16253,7 @@ exports.TraceStateImpl = TraceStateImpl;
 
 /***/ }),
 
-/***/ 9421:
+/***/ 4736:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15746,7 +16306,7 @@ exports.validateValue = validateValue;
 
 /***/ }),
 
-/***/ 6842:
+/***/ 8511:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -15768,7 +16328,7 @@ exports.validateValue = validateValue;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createTraceState = void 0;
-const tracestate_impl_1 = __nccwpck_require__(3120);
+const tracestate_impl_1 = __nccwpck_require__(9957);
 function createTraceState(rawTraceState) {
     return new tracestate_impl_1.TraceStateImpl(rawTraceState);
 }
@@ -15777,7 +16337,7 @@ exports.createTraceState = createTraceState;
 
 /***/ }),
 
-/***/ 3383:
+/***/ 6098:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -15799,7 +16359,7 @@ exports.createTraceState = createTraceState;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.INVALID_SPAN_CONTEXT = exports.INVALID_TRACEID = exports.INVALID_SPANID = void 0;
-const trace_flags_1 = __nccwpck_require__(4996);
+const trace_flags_1 = __nccwpck_require__(2515);
 exports.INVALID_SPANID = '0000000000000000';
 exports.INVALID_TRACEID = '00000000000000000000000000000000';
 exports.INVALID_SPAN_CONTEXT = {
@@ -15811,7 +16371,7 @@ exports.INVALID_SPAN_CONTEXT = {
 
 /***/ }),
 
-/***/ 3133:
+/***/ 9597:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15864,7 +16424,7 @@ var SpanKind;
 
 /***/ }),
 
-/***/ 5354:
+/***/ 8933:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -15886,8 +16446,8 @@ exports.wrapSpanContext = exports.isSpanContextValid = exports.isValidSpanId = e
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const invalid_span_constants_1 = __nccwpck_require__(3383);
-const NonRecordingSpan_1 = __nccwpck_require__(1695);
+const invalid_span_constants_1 = __nccwpck_require__(6098);
+const NonRecordingSpan_1 = __nccwpck_require__(3014);
 const VALID_TRACEID_REGEX = /^([0-9a-f]{32})$/i;
 const VALID_SPANID_REGEX = /^[0-9a-f]{16}$/i;
 function isValidTraceId(traceId) {
@@ -15920,7 +16480,7 @@ exports.wrapSpanContext = wrapSpanContext;
 
 /***/ }),
 
-/***/ 5215:
+/***/ 8726:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15950,7 +16510,7 @@ var SpanStatusCode;
 
 /***/ }),
 
-/***/ 4996:
+/***/ 2515:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -15983,7 +16543,7 @@ var TraceFlags;
 
 /***/ }),
 
-/***/ 1615:
+/***/ 284:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -16011,7 +16571,7 @@ exports.VERSION = '1.9.0';
 
 /***/ }),
 
-/***/ 4455:
+/***/ 3593:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -16021,8 +16581,8 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __export = (target, all) => {
-  for (var name11 in all)
-    __defProp(target, name11, { get: all[name11], enumerable: true });
+  for (var name15 in all)
+    __defProp(target, name15, { get: all[name15], enumerable: true });
 };
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") {
@@ -16037,137 +16597,311 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // streams/index.ts
 var streams_exports = {};
 __export(streams_exports, {
-  AISDKError: () => import_provider13.AISDKError,
-  AIStream: () => AIStream,
-  APICallError: () => import_provider13.APICallError,
-  AWSBedrockAnthropicMessagesStream: () => AWSBedrockAnthropicMessagesStream,
-  AWSBedrockAnthropicStream: () => AWSBedrockAnthropicStream,
-  AWSBedrockCohereStream: () => AWSBedrockCohereStream,
-  AWSBedrockLlama2Stream: () => AWSBedrockLlama2Stream,
-  AWSBedrockStream: () => AWSBedrockStream,
-  AnthropicStream: () => AnthropicStream,
+  AISDKError: () => import_provider17.AISDKError,
+  APICallError: () => import_provider17.APICallError,
   AssistantResponse: () => AssistantResponse,
-  CohereStream: () => CohereStream,
   DownloadError: () => DownloadError,
-  EmptyResponseBodyError: () => import_provider13.EmptyResponseBodyError,
-  GoogleGenerativeAIStream: () => GoogleGenerativeAIStream,
-  HuggingFaceStream: () => HuggingFaceStream,
-  InkeepStream: () => InkeepStream,
+  EmptyResponseBodyError: () => import_provider17.EmptyResponseBodyError,
   InvalidArgumentError: () => InvalidArgumentError,
   InvalidDataContentError: () => InvalidDataContentError,
   InvalidMessageRoleError: () => InvalidMessageRoleError,
-  InvalidPromptError: () => import_provider13.InvalidPromptError,
-  InvalidResponseDataError: () => import_provider13.InvalidResponseDataError,
+  InvalidPromptError: () => import_provider17.InvalidPromptError,
+  InvalidResponseDataError: () => import_provider17.InvalidResponseDataError,
   InvalidToolArgumentsError: () => InvalidToolArgumentsError,
-  JSONParseError: () => import_provider13.JSONParseError,
+  JSONParseError: () => import_provider17.JSONParseError,
   LangChainAdapter: () => langchain_adapter_exports,
-  LangChainStream: () => LangChainStream,
   LlamaIndexAdapter: () => llamaindex_adapter_exports,
-  LoadAPIKeyError: () => import_provider13.LoadAPIKeyError,
+  LoadAPIKeyError: () => import_provider17.LoadAPIKeyError,
   MessageConversionError: () => MessageConversionError,
-  MistralStream: () => MistralStream,
-  NoContentGeneratedError: () => import_provider13.NoContentGeneratedError,
+  NoContentGeneratedError: () => import_provider17.NoContentGeneratedError,
+  NoImageGeneratedError: () => NoImageGeneratedError,
   NoObjectGeneratedError: () => NoObjectGeneratedError,
-  NoSuchModelError: () => import_provider13.NoSuchModelError,
+  NoOutputSpecifiedError: () => NoOutputSpecifiedError,
+  NoSuchModelError: () => import_provider17.NoSuchModelError,
   NoSuchProviderError: () => NoSuchProviderError,
   NoSuchToolError: () => NoSuchToolError,
-  OpenAIStream: () => OpenAIStream,
-  ReplicateStream: () => ReplicateStream,
+  Output: () => output_exports,
   RetryError: () => RetryError,
-  StreamData: () => StreamData2,
-  StreamingTextResponse: () => StreamingTextResponse,
-  TypeValidationError: () => import_provider13.TypeValidationError,
-  UnsupportedFunctionalityError: () => import_provider13.UnsupportedFunctionalityError,
+  StreamData: () => StreamData,
+  ToolCallRepairError: () => ToolCallRepairError,
+  ToolExecutionError: () => ToolExecutionError,
+  TypeValidationError: () => import_provider17.TypeValidationError,
+  UnsupportedFunctionalityError: () => import_provider17.UnsupportedFunctionalityError,
+  appendClientMessage: () => appendClientMessage,
+  appendResponseMessages: () => appendResponseMessages,
   convertToCoreMessages: () => convertToCoreMessages,
+  coreAssistantMessageSchema: () => coreAssistantMessageSchema,
+  coreMessageSchema: () => coreMessageSchema,
+  coreSystemMessageSchema: () => coreSystemMessageSchema,
+  coreToolMessageSchema: () => coreToolMessageSchema,
+  coreUserMessageSchema: () => coreUserMessageSchema,
   cosineSimilarity: () => cosineSimilarity,
-  createCallbacksTransformer: () => createCallbacksTransformer,
-  createEventStreamTransformer: () => createEventStreamTransformer,
-  createStreamDataTransformer: () => createStreamDataTransformer,
+  createDataStream: () => createDataStream,
+  createDataStreamResponse: () => createDataStreamResponse,
+  createIdGenerator: () => import_provider_utils14.createIdGenerator,
+  customProvider: () => customProvider,
   embed: () => embed,
   embedMany: () => embedMany,
-  experimental_AssistantResponse: () => experimental_AssistantResponse,
-  experimental_StreamData: () => experimental_StreamData,
-  experimental_createModelRegistry: () => experimental_createModelRegistry,
   experimental_createProviderRegistry: () => experimental_createProviderRegistry,
   experimental_customProvider: () => experimental_customProvider,
-  experimental_generateObject: () => experimental_generateObject,
-  experimental_generateText: () => experimental_generateText,
-  experimental_streamObject: () => experimental_streamObject,
-  experimental_streamText: () => experimental_streamText,
+  experimental_generateImage: () => generateImage,
   experimental_wrapLanguageModel: () => experimental_wrapLanguageModel,
-  formatStreamPart: () => import_ui_utils10.formatStreamPart,
-  generateId: () => generateId2,
+  extractReasoningMiddleware: () => extractReasoningMiddleware,
+  formatAssistantStreamPart: () => import_ui_utils10.formatAssistantStreamPart,
+  formatDataStreamPart: () => import_ui_utils10.formatDataStreamPart,
+  generateId: () => import_provider_utils14.generateId,
   generateObject: () => generateObject,
   generateText: () => generateText,
-  jsonSchema: () => import_ui_utils6.jsonSchema,
-  nanoid: () => nanoid,
-  parseStreamPart: () => import_ui_utils10.parseStreamPart,
-  processDataProtocolResponse: () => import_ui_utils10.processDataProtocolResponse,
-  readDataStream: () => import_ui_utils10.readDataStream,
-  readableFromAsyncIterable: () => readableFromAsyncIterable,
+  jsonSchema: () => import_ui_utils10.jsonSchema,
+  parseAssistantStreamPart: () => import_ui_utils10.parseAssistantStreamPart,
+  parseDataStreamPart: () => import_ui_utils10.parseDataStreamPart,
+  pipeDataStreamToResponse: () => pipeDataStreamToResponse,
+  processDataStream: () => import_ui_utils10.processDataStream,
+  processTextStream: () => import_ui_utils10.processTextStream,
+  simulateReadableStream: () => simulateReadableStream,
+  smoothStream: () => smoothStream,
   streamObject: () => streamObject,
   streamText: () => streamText,
-  streamToResponse: () => streamToResponse,
   tool: () => tool,
-  trimStartOfStreamHelper: () => trimStartOfStreamHelper
+  wrapLanguageModel: () => wrapLanguageModel
 });
 module.exports = __toCommonJS(streams_exports);
-var import_ui_utils10 = __nccwpck_require__(6066);
-var import_provider_utils11 = __nccwpck_require__(127);
 
 // core/index.ts
-var import_ui_utils6 = __nccwpck_require__(6066);
+var import_provider_utils14 = __nccwpck_require__(2458);
+var import_ui_utils10 = __nccwpck_require__(8715);
 
-// util/retry-with-exponential-backoff.ts
-var import_provider2 = __nccwpck_require__(8892);
-var import_provider_utils = __nccwpck_require__(127);
-
-// util/delay.ts
-async function delay(delayInMs) {
-  return delayInMs === void 0 ? Promise.resolve() : new Promise((resolve) => setTimeout(resolve, delayInMs));
+// core/data-stream/create-data-stream.ts
+var import_ui_utils = __nccwpck_require__(8715);
+function createDataStream({
+  execute,
+  onError = () => "An error occurred."
+  // mask error messages for safety by default
+}) {
+  let controller;
+  const ongoingStreamPromises = [];
+  const stream = new ReadableStream({
+    start(controllerArg) {
+      controller = controllerArg;
+    }
+  });
+  function safeEnqueue(data) {
+    try {
+      controller.enqueue(data);
+    } catch (error) {
+    }
+  }
+  try {
+    const result = execute({
+      write(data) {
+        safeEnqueue(data);
+      },
+      writeData(data) {
+        safeEnqueue((0, import_ui_utils.formatDataStreamPart)("data", [data]));
+      },
+      writeMessageAnnotation(annotation) {
+        safeEnqueue((0, import_ui_utils.formatDataStreamPart)("message_annotations", [annotation]));
+      },
+      merge(streamArg) {
+        ongoingStreamPromises.push(
+          (async () => {
+            const reader = streamArg.getReader();
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done)
+                break;
+              safeEnqueue(value);
+            }
+          })().catch((error) => {
+            safeEnqueue((0, import_ui_utils.formatDataStreamPart)("error", onError(error)));
+          })
+        );
+      },
+      onError
+    });
+    if (result) {
+      ongoingStreamPromises.push(
+        result.catch((error) => {
+          safeEnqueue((0, import_ui_utils.formatDataStreamPart)("error", onError(error)));
+        })
+      );
+    }
+  } catch (error) {
+    safeEnqueue((0, import_ui_utils.formatDataStreamPart)("error", onError(error)));
+  }
+  const waitForStreams = new Promise(async (resolve) => {
+    while (ongoingStreamPromises.length > 0) {
+      await ongoingStreamPromises.shift();
+    }
+    resolve();
+  });
+  waitForStreams.finally(() => {
+    try {
+      controller.close();
+    } catch (error) {
+    }
+  });
+  return stream;
 }
 
-// util/retry-error.ts
-var import_provider = __nccwpck_require__(8892);
-var name = "AI_RetryError";
+// core/util/prepare-response-headers.ts
+function prepareResponseHeaders(headers, {
+  contentType,
+  dataStreamVersion
+}) {
+  const responseHeaders = new Headers(headers != null ? headers : {});
+  if (!responseHeaders.has("Content-Type")) {
+    responseHeaders.set("Content-Type", contentType);
+  }
+  if (dataStreamVersion !== void 0) {
+    responseHeaders.set("X-Vercel-AI-Data-Stream", dataStreamVersion);
+  }
+  return responseHeaders;
+}
+
+// core/data-stream/create-data-stream-response.ts
+function createDataStreamResponse({
+  status,
+  statusText,
+  headers,
+  execute,
+  onError
+}) {
+  return new Response(
+    createDataStream({ execute, onError }).pipeThrough(new TextEncoderStream()),
+    {
+      status,
+      statusText,
+      headers: prepareResponseHeaders(headers, {
+        contentType: "text/plain; charset=utf-8",
+        dataStreamVersion: "v1"
+      })
+    }
+  );
+}
+
+// core/util/prepare-outgoing-http-headers.ts
+function prepareOutgoingHttpHeaders(headers, {
+  contentType,
+  dataStreamVersion
+}) {
+  const outgoingHeaders = {};
+  if (headers != null) {
+    for (const [key, value] of Object.entries(headers)) {
+      outgoingHeaders[key] = value;
+    }
+  }
+  if (outgoingHeaders["Content-Type"] == null) {
+    outgoingHeaders["Content-Type"] = contentType;
+  }
+  if (dataStreamVersion !== void 0) {
+    outgoingHeaders["X-Vercel-AI-Data-Stream"] = dataStreamVersion;
+  }
+  return outgoingHeaders;
+}
+
+// core/util/write-to-server-response.ts
+function writeToServerResponse({
+  response,
+  status,
+  statusText,
+  headers,
+  stream
+}) {
+  response.writeHead(status != null ? status : 200, statusText, headers);
+  const reader = stream.getReader();
+  const read = async () => {
+    try {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done)
+          break;
+        response.write(value);
+      }
+    } catch (error) {
+      throw error;
+    } finally {
+      response.end();
+    }
+  };
+  read();
+}
+
+// core/data-stream/pipe-data-stream-to-response.ts
+function pipeDataStreamToResponse(response, {
+  status,
+  statusText,
+  headers,
+  execute,
+  onError
+}) {
+  writeToServerResponse({
+    response,
+    status,
+    statusText,
+    headers: prepareOutgoingHttpHeaders(headers, {
+      contentType: "text/plain; charset=utf-8",
+      dataStreamVersion: "v1"
+    }),
+    stream: createDataStream({ execute, onError }).pipeThrough(
+      new TextEncoderStream()
+    )
+  });
+}
+
+// errors/invalid-argument-error.ts
+var import_provider = __nccwpck_require__(4069);
+var name = "AI_InvalidArgumentError";
 var marker = `vercel.ai.error.${name}`;
 var symbol = Symbol.for(marker);
 var _a;
-var RetryError = class extends import_provider.AISDKError {
+var InvalidArgumentError = class extends import_provider.AISDKError {
+  constructor({
+    parameter,
+    value,
+    message
+  }) {
+    super({
+      name,
+      message: `Invalid argument for parameter ${parameter}: ${message}`
+    });
+    this[_a] = true;
+    this.parameter = parameter;
+    this.value = value;
+  }
+  static isInstance(error) {
+    return import_provider.AISDKError.hasMarker(error, marker);
+  }
+};
+_a = symbol;
+
+// util/retry-with-exponential-backoff.ts
+var import_provider3 = __nccwpck_require__(4069);
+var import_provider_utils = __nccwpck_require__(2458);
+
+// util/retry-error.ts
+var import_provider2 = __nccwpck_require__(4069);
+var name2 = "AI_RetryError";
+var marker2 = `vercel.ai.error.${name2}`;
+var symbol2 = Symbol.for(marker2);
+var _a2;
+var RetryError = class extends import_provider2.AISDKError {
   constructor({
     message,
     reason,
     errors
   }) {
-    super({ name, message });
-    this[_a] = true;
+    super({ name: name2, message });
+    this[_a2] = true;
     this.reason = reason;
     this.errors = errors;
     this.lastError = errors[errors.length - 1];
   }
   static isInstance(error) {
-    return import_provider.AISDKError.hasMarker(error, marker);
-  }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isRetryError(error) {
-    return error instanceof Error && error.name === name && typeof error.reason === "string" && Array.isArray(error.errors);
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      reason: this.reason,
-      lastError: this.lastError,
-      errors: this.errors
-    };
+    return import_provider2.AISDKError.hasMarker(error, marker2);
   }
 };
-_a = symbol;
+_a2 = symbol2;
 
 // util/retry-with-exponential-backoff.ts
 var retryWithExponentialBackoff = ({
@@ -16203,8 +16937,8 @@ async function _retryWithExponentialBackoff(f, {
         errors: newErrors
       });
     }
-    if (error instanceof Error && import_provider2.APICallError.isAPICallError(error) && error.isRetryable === true && tryNumber <= maxRetries) {
-      await delay(delayInMs);
+    if (error instanceof Error && import_provider3.APICallError.isInstance(error) && error.isRetryable === true && tryNumber <= maxRetries) {
+      await (0, import_provider_utils.delay)(delayInMs);
       return _retryWithExponentialBackoff(
         f,
         { maxRetries, delayInMs: backoffFactor * delayInMs, backoffFactor },
@@ -16220,6 +16954,33 @@ async function _retryWithExponentialBackoff(f, {
       errors: newErrors
     });
   }
+}
+
+// core/prompt/prepare-retries.ts
+function prepareRetries({
+  maxRetries
+}) {
+  if (maxRetries != null) {
+    if (!Number.isInteger(maxRetries)) {
+      throw new InvalidArgumentError({
+        parameter: "maxRetries",
+        value: maxRetries,
+        message: "maxRetries must be an integer"
+      });
+    }
+    if (maxRetries < 0) {
+      throw new InvalidArgumentError({
+        parameter: "maxRetries",
+        value: maxRetries,
+        message: "maxRetries must be >= 0"
+      });
+    }
+  }
+  const maxRetriesResult = maxRetries != null ? maxRetries : 2;
+  return {
+    maxRetries: maxRetriesResult,
+    retry: retryWithExponentialBackoff({ maxRetries: maxRetriesResult })
+  };
 }
 
 // core/telemetry/assemble-operation-name.ts
@@ -16244,7 +17005,7 @@ function getBaseTelemetryAttributes({
   telemetry,
   headers
 }) {
-  var _a11;
+  var _a15;
   return {
     "ai.model.provider": model.provider,
     "ai.model.id": model.modelId,
@@ -16254,7 +17015,7 @@ function getBaseTelemetryAttributes({
       return attributes;
     }, {}),
     // add metadata as attributes:
-    ...Object.entries((_a11 = telemetry == null ? void 0 : telemetry.metadata) != null ? _a11 : {}).reduce(
+    ...Object.entries((_a15 = telemetry == null ? void 0 : telemetry.metadata) != null ? _a15 : {}).reduce(
       (attributes, [key, value]) => {
         attributes[`ai.telemetry.metadata.${key}`] = value;
         return attributes;
@@ -16272,14 +17033,14 @@ function getBaseTelemetryAttributes({
 }
 
 // core/telemetry/get-tracer.ts
-var import_api = __nccwpck_require__(7743);
+var import_api = __nccwpck_require__(4176);
 
 // core/telemetry/noop-tracer.ts
 var noopTracer = {
   startSpan() {
     return noopSpan;
   },
-  startActiveSpan(name11, arg1, arg2, arg3) {
+  startActiveSpan(name15, arg1, arg2, arg3) {
     if (typeof arg1 === "function") {
       return arg1(noopSpan);
     }
@@ -16333,27 +17094,29 @@ var noopSpanContext = {
 };
 
 // core/telemetry/get-tracer.ts
-var testTracer = void 0;
-function getTracer({ isEnabled }) {
+function getTracer({
+  isEnabled = false,
+  tracer
+} = {}) {
   if (!isEnabled) {
     return noopTracer;
   }
-  if (testTracer) {
-    return testTracer;
+  if (tracer) {
+    return tracer;
   }
   return import_api.trace.getTracer("ai");
 }
 
 // core/telemetry/record-span.ts
-var import_api2 = __nccwpck_require__(7743);
+var import_api2 = __nccwpck_require__(4176);
 function recordSpan({
-  name: name11,
+  name: name15,
   tracer,
   attributes,
   fn,
   endWhenDone = true
 }) {
-  return tracer.startActiveSpan(name11, { attributes }, async (span) => {
+  return tracer.startActiveSpan(name15, { attributes }, async (span) => {
     try {
       const result = await fn(span);
       if (endWhenDone) {
@@ -16388,6 +17151,9 @@ function selectTelemetryAttributes({
   telemetry,
   attributes
 }) {
+  if ((telemetry == null ? void 0 : telemetry.isEnabled) !== true) {
+    return {};
+  }
   return Object.entries(attributes).reduce((attributes2, [key, value]) => {
     if (value === void 0) {
       return attributes2;
@@ -16414,19 +17180,19 @@ function selectTelemetryAttributes({
 async function embed({
   model,
   value,
-  maxRetries,
+  maxRetries: maxRetriesArg,
   abortSignal,
   headers,
   experimental_telemetry: telemetry
 }) {
-  var _a11;
+  const { maxRetries, retry } = prepareRetries({ maxRetries: maxRetriesArg });
   const baseTelemetryAttributes = getBaseTelemetryAttributes({
     model,
     telemetry,
     headers,
     settings: { maxRetries }
   });
-  const tracer = getTracer({ isEnabled: (_a11 = telemetry == null ? void 0 : telemetry.isEnabled) != null ? _a11 : false });
+  const tracer = getTracer(telemetry);
   return recordSpan({
     name: "ai.embed",
     attributes: selectTelemetryAttributes({
@@ -16439,7 +17205,6 @@ async function embed({
     }),
     tracer,
     fn: async (span) => {
-      const retry = retryWithExponentialBackoff({ maxRetries });
       const { embedding, usage, rawResponse } = await retry(
         () => (
           // nested spans to align with the embedMany telemetry data:
@@ -16459,14 +17224,14 @@ async function embed({
             }),
             tracer,
             fn: async (doEmbedSpan) => {
-              var _a12;
+              var _a15;
               const modelResponse = await model.doEmbed({
                 values: [value],
                 abortSignal,
                 headers
               });
               const embedding2 = modelResponse.embeddings[0];
-              const usage2 = (_a12 = modelResponse.usage) != null ? _a12 : { tokens: NaN };
+              const usage2 = (_a15 = modelResponse.usage) != null ? _a15 : { tokens: NaN };
               doEmbedSpan.setAttributes(
                 selectTelemetryAttributes({
                   telemetry,
@@ -16527,19 +17292,19 @@ function splitArray(array, chunkSize) {
 async function embedMany({
   model,
   values,
-  maxRetries,
+  maxRetries: maxRetriesArg,
   abortSignal,
   headers,
   experimental_telemetry: telemetry
 }) {
-  var _a11;
+  const { maxRetries, retry } = prepareRetries({ maxRetries: maxRetriesArg });
   const baseTelemetryAttributes = getBaseTelemetryAttributes({
     model,
     telemetry,
     headers,
     settings: { maxRetries }
   });
-  const tracer = getTracer({ isEnabled: (_a11 = telemetry == null ? void 0 : telemetry.isEnabled) != null ? _a11 : false });
+  const tracer = getTracer(telemetry);
   return recordSpan({
     name: "ai.embedMany",
     attributes: selectTelemetryAttributes({
@@ -16555,7 +17320,6 @@ async function embedMany({
     }),
     tracer,
     fn: async (span) => {
-      const retry = retryWithExponentialBackoff({ maxRetries });
       const maxEmbeddingsPerCall = model.maxEmbeddingsPerCall;
       if (maxEmbeddingsPerCall == null) {
         const { embeddings: embeddings2, usage } = await retry(() => {
@@ -16577,14 +17341,14 @@ async function embedMany({
             }),
             tracer,
             fn: async (doEmbedSpan) => {
-              var _a12;
+              var _a15;
               const modelResponse = await model.doEmbed({
                 values,
                 abortSignal,
                 headers
               });
               const embeddings3 = modelResponse.embeddings;
-              const usage2 = (_a12 = modelResponse.usage) != null ? _a12 : { tokens: NaN };
+              const usage2 = (_a15 = modelResponse.usage) != null ? _a15 : { tokens: NaN };
               doEmbedSpan.setAttributes(
                 selectTelemetryAttributes({
                   telemetry,
@@ -16636,14 +17400,14 @@ async function embedMany({
             }),
             tracer,
             fn: async (doEmbedSpan) => {
-              var _a12;
+              var _a15;
               const modelResponse = await model.doEmbed({
                 values: chunk,
                 abortSignal,
                 headers
               });
               const embeddings2 = modelResponse.embeddings;
-              const usage2 = (_a12 = modelResponse.usage) != null ? _a12 : { tokens: NaN };
+              const usage2 = (_a15 = modelResponse.usage) != null ? _a15 : { tokens: NaN };
               doEmbedSpan.setAttributes(
                 selectTelemetryAttributes({
                   telemetry,
@@ -16689,19 +17453,157 @@ var DefaultEmbedManyResult = class {
   }
 };
 
-// core/generate-object/generate-object.ts
-var import_provider_utils6 = __nccwpck_require__(127);
+// core/generate-image/generate-image.ts
+var import_provider_utils2 = __nccwpck_require__(2458);
 
-// core/prompt/convert-to-language-model-prompt.ts
-var import_provider_utils3 = __nccwpck_require__(127);
+// errors/no-image-generated-error.ts
+var import_provider4 = __nccwpck_require__(4069);
+var name3 = "AI_NoImageGeneratedError";
+var marker3 = `vercel.ai.error.${name3}`;
+var symbol3 = Symbol.for(marker3);
+var _a3;
+var NoImageGeneratedError = class extends import_provider4.AISDKError {
+  constructor({
+    message = "No image generated.",
+    cause,
+    responses
+  }) {
+    super({ name: name3, message, cause });
+    this[_a3] = true;
+    this.responses = responses;
+  }
+  static isInstance(error) {
+    return import_provider4.AISDKError.hasMarker(error, marker3);
+  }
+};
+_a3 = symbol3;
+
+// core/generate-image/generate-image.ts
+async function generateImage({
+  model,
+  prompt,
+  n = 1,
+  size,
+  aspectRatio,
+  seed,
+  providerOptions,
+  maxRetries: maxRetriesArg,
+  abortSignal,
+  headers,
+  _internal = {
+    currentDate: () => /* @__PURE__ */ new Date()
+  }
+}) {
+  var _a15;
+  const { retry } = prepareRetries({ maxRetries: maxRetriesArg });
+  const maxImagesPerCall = (_a15 = model.maxImagesPerCall) != null ? _a15 : 1;
+  const callCount = Math.ceil(n / maxImagesPerCall);
+  const callImageCounts = Array.from({ length: callCount }, (_, i) => {
+    if (i < callCount - 1) {
+      return maxImagesPerCall;
+    }
+    const remainder = n % maxImagesPerCall;
+    return remainder === 0 ? maxImagesPerCall : remainder;
+  });
+  const results = await Promise.all(
+    callImageCounts.map(
+      async (callImageCount) => retry(
+        () => model.doGenerate({
+          prompt,
+          n: callImageCount,
+          abortSignal,
+          headers,
+          size,
+          aspectRatio,
+          seed,
+          providerOptions: providerOptions != null ? providerOptions : {}
+        })
+      )
+    )
+  );
+  const images = [];
+  const warnings = [];
+  const responses = [];
+  for (const result of results) {
+    images.push(
+      ...result.images.map((image) => new DefaultGeneratedImage({ image }))
+    );
+    warnings.push(...result.warnings);
+    responses.push(result.response);
+  }
+  if (!images.length) {
+    throw new NoImageGeneratedError({ responses });
+  }
+  return new DefaultGenerateImageResult({ images, warnings, responses });
+}
+var DefaultGenerateImageResult = class {
+  constructor(options) {
+    this.images = options.images;
+    this.warnings = options.warnings;
+    this.responses = options.responses;
+  }
+  get image() {
+    return this.images[0];
+  }
+};
+var DefaultGeneratedImage = class {
+  constructor({ image }) {
+    const isUint8Array = image instanceof Uint8Array;
+    this.base64Data = isUint8Array ? void 0 : image;
+    this.uint8ArrayData = isUint8Array ? image : void 0;
+  }
+  // lazy conversion with caching to avoid unnecessary conversion overhead:
+  get base64() {
+    if (this.base64Data == null) {
+      this.base64Data = (0, import_provider_utils2.convertUint8ArrayToBase64)(this.uint8ArrayData);
+    }
+    return this.base64Data;
+  }
+  // lazy conversion with caching to avoid unnecessary conversion overhead:
+  get uint8Array() {
+    if (this.uint8ArrayData == null) {
+      this.uint8ArrayData = (0, import_provider_utils2.convertBase64ToUint8Array)(this.base64Data);
+    }
+    return this.uint8ArrayData;
+  }
+};
+
+// core/generate-object/generate-object.ts
+var import_provider_utils6 = __nccwpck_require__(2458);
+
+// errors/no-object-generated-error.ts
+var import_provider5 = __nccwpck_require__(4069);
+var name4 = "AI_NoObjectGeneratedError";
+var marker4 = `vercel.ai.error.${name4}`;
+var symbol4 = Symbol.for(marker4);
+var _a4;
+var NoObjectGeneratedError = class extends import_provider5.AISDKError {
+  constructor({
+    message = "No object generated.",
+    cause,
+    text: text2,
+    response,
+    usage
+  }) {
+    super({ name: name4, message, cause });
+    this[_a4] = true;
+    this.text = text2;
+    this.response = response;
+    this.usage = usage;
+  }
+  static isInstance(error) {
+    return import_provider5.AISDKError.hasMarker(error, marker4);
+  }
+};
+_a4 = symbol4;
 
 // util/download-error.ts
-var import_provider3 = __nccwpck_require__(8892);
-var name2 = "AI_DownloadError";
-var marker2 = `vercel.ai.error.${name2}`;
-var symbol2 = Symbol.for(marker2);
-var _a2;
-var DownloadError = class extends import_provider3.AISDKError {
+var import_provider6 = __nccwpck_require__(4069);
+var name5 = "AI_DownloadError";
+var marker5 = `vercel.ai.error.${name5}`;
+var symbol5 = Symbol.for(marker5);
+var _a5;
+var DownloadError = class extends import_provider6.AISDKError {
   constructor({
     url,
     statusCode,
@@ -16709,43 +17611,24 @@ var DownloadError = class extends import_provider3.AISDKError {
     cause,
     message = cause == null ? `Failed to download ${url}: ${statusCode} ${statusText}` : `Failed to download ${url}: ${cause}`
   }) {
-    super({ name: name2, message, cause });
-    this[_a2] = true;
+    super({ name: name5, message, cause });
+    this[_a5] = true;
     this.url = url;
     this.statusCode = statusCode;
     this.statusText = statusText;
   }
   static isInstance(error) {
-    return import_provider3.AISDKError.hasMarker(error, marker2);
-  }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isDownloadError(error) {
-    return error instanceof Error && error.name === name2 && typeof error.url === "string" && (error.statusCode == null || typeof error.statusCode === "number") && (error.statusText == null || typeof error.statusText === "string");
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      url: this.url,
-      statusCode: this.statusCode,
-      statusText: this.statusText,
-      cause: this.cause
-    };
+    return import_provider6.AISDKError.hasMarker(error, marker5);
   }
 };
-_a2 = symbol2;
+_a5 = symbol5;
 
 // util/download.ts
 async function download({
   url,
   fetchImplementation = fetch
 }) {
-  var _a11;
+  var _a15;
   const urlText = url.toString();
   try {
     const response = await fetchImplementation(urlText);
@@ -16758,7 +17641,7 @@ async function download({
     }
     return {
       data: new Uint8Array(await response.arrayBuffer()),
-      mimeType: (_a11 = response.headers.get("content-type")) != null ? _a11 : void 0
+      mimeType: (_a15 = response.headers.get("content-type")) != null ? _a15 : void 0
     };
   } catch (error) {
     if (DownloadError.isInstance(error)) {
@@ -16785,50 +17668,32 @@ function detectImageMimeType(image) {
 }
 
 // core/prompt/data-content.ts
-var import_provider_utils2 = __nccwpck_require__(127);
+var import_provider_utils3 = __nccwpck_require__(2458);
 
 // core/prompt/invalid-data-content-error.ts
-var import_provider4 = __nccwpck_require__(8892);
-var name3 = "AI_InvalidDataContentError";
-var marker3 = `vercel.ai.error.${name3}`;
-var symbol3 = Symbol.for(marker3);
-var _a3;
-var InvalidDataContentError = class extends import_provider4.AISDKError {
+var import_provider7 = __nccwpck_require__(4069);
+var name6 = "AI_InvalidDataContentError";
+var marker6 = `vercel.ai.error.${name6}`;
+var symbol6 = Symbol.for(marker6);
+var _a6;
+var InvalidDataContentError = class extends import_provider7.AISDKError {
   constructor({
     content,
     cause,
     message = `Invalid data content. Expected a base64 string, Uint8Array, ArrayBuffer, or Buffer, but got ${typeof content}.`
   }) {
-    super({ name: name3, message, cause });
-    this[_a3] = true;
+    super({ name: name6, message, cause });
+    this[_a6] = true;
     this.content = content;
   }
   static isInstance(error) {
-    return import_provider4.AISDKError.hasMarker(error, marker3);
-  }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isInvalidDataContentError(error) {
-    return error instanceof Error && error.name === name3 && error.content != null;
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      stack: this.stack,
-      cause: this.cause,
-      content: this.content
-    };
+    return import_provider7.AISDKError.hasMarker(error, marker6);
   }
 };
-_a3 = symbol3;
+_a6 = symbol6;
 
 // core/prompt/data-content.ts
-var import_zod = __nccwpck_require__(931);
+var import_zod = __nccwpck_require__(6516);
 var dataContentSchema = import_zod.z.union([
   import_zod.z.string(),
   import_zod.z.instanceof(Uint8Array),
@@ -16836,8 +17701,8 @@ var dataContentSchema = import_zod.z.union([
   import_zod.z.custom(
     // Buffer might not be available in some environments such as CloudFlare:
     (value) => {
-      var _a11, _b;
-      return (_b = (_a11 = globalThis.Buffer) == null ? void 0 : _a11.isBuffer(value)) != null ? _b : false;
+      var _a15, _b;
+      return (_b = (_a15 = globalThis.Buffer) == null ? void 0 : _a15.isBuffer(value)) != null ? _b : false;
     },
     { message: "Must be a Buffer" }
   )
@@ -16847,9 +17712,9 @@ function convertDataContentToBase64String(content) {
     return content;
   }
   if (content instanceof ArrayBuffer) {
-    return (0, import_provider_utils2.convertUint8ArrayToBase64)(new Uint8Array(content));
+    return (0, import_provider_utils3.convertUint8ArrayToBase64)(new Uint8Array(content));
   }
-  return (0, import_provider_utils2.convertUint8ArrayToBase64)(content);
+  return (0, import_provider_utils3.convertUint8ArrayToBase64)(content);
 }
 function convertDataContentToUint8Array(content) {
   if (content instanceof Uint8Array) {
@@ -16857,7 +17722,7 @@ function convertDataContentToUint8Array(content) {
   }
   if (typeof content === "string") {
     try {
-      return (0, import_provider_utils2.convertBase64ToUint8Array)(content);
+      return (0, import_provider_utils3.convertBase64ToUint8Array)(content);
     } catch (error) {
       throw new InvalidDataContentError({
         message: "Invalid data content. Content string is not a base64-encoded media.",
@@ -16880,42 +17745,25 @@ function convertUint8ArrayToText(uint8Array) {
 }
 
 // core/prompt/invalid-message-role-error.ts
-var import_provider5 = __nccwpck_require__(8892);
-var name4 = "AI_InvalidMessageRoleError";
-var marker4 = `vercel.ai.error.${name4}`;
-var symbol4 = Symbol.for(marker4);
-var _a4;
-var InvalidMessageRoleError = class extends import_provider5.AISDKError {
+var import_provider8 = __nccwpck_require__(4069);
+var name7 = "AI_InvalidMessageRoleError";
+var marker7 = `vercel.ai.error.${name7}`;
+var symbol7 = Symbol.for(marker7);
+var _a7;
+var InvalidMessageRoleError = class extends import_provider8.AISDKError {
   constructor({
     role,
     message = `Invalid message role: '${role}'. Must be one of: "system", "user", "assistant", "tool".`
   }) {
-    super({ name: name4, message });
-    this[_a4] = true;
+    super({ name: name7, message });
+    this[_a7] = true;
     this.role = role;
   }
   static isInstance(error) {
-    return import_provider5.AISDKError.hasMarker(error, marker4);
-  }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isInvalidMessageRoleError(error) {
-    return error instanceof Error && error.name === name4 && typeof error.role === "string";
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      stack: this.stack,
-      role: this.role
-    };
+    return import_provider8.AISDKError.hasMarker(error, marker7);
   }
 };
-_a4 = symbol4;
+_a7 = symbol7;
 
 // core/prompt/split-data-url.ts
 function splitDataUrl(dataUrl) {
@@ -16937,45 +17785,31 @@ function splitDataUrl(dataUrl) {
 async function convertToLanguageModelPrompt({
   prompt,
   modelSupportsImageUrls = true,
+  modelSupportsUrl = () => false,
   downloadImplementation = download
 }) {
-  const languageModelMessages = [];
-  if (prompt.system != null) {
-    languageModelMessages.push({ role: "system", content: prompt.system });
-  }
-  const downloadedAssets = modelSupportsImageUrls || prompt.messages == null ? null : await downloadAssets(prompt.messages, downloadImplementation);
-  const promptType = prompt.type;
-  switch (promptType) {
-    case "prompt": {
-      languageModelMessages.push({
-        role: "user",
-        content: [{ type: "text", text: prompt.prompt }]
-      });
-      break;
-    }
-    case "messages": {
-      languageModelMessages.push(
-        ...prompt.messages.map(
-          (message) => convertToLanguageModelMessage(message, downloadedAssets)
-        )
-      );
-      break;
-    }
-    default: {
-      const _exhaustiveCheck = promptType;
-      throw new Error(`Unsupported prompt type: ${_exhaustiveCheck}`);
-    }
-  }
-  return languageModelMessages;
+  const downloadedAssets = await downloadAssets(
+    prompt.messages,
+    downloadImplementation,
+    modelSupportsImageUrls,
+    modelSupportsUrl
+  );
+  return [
+    ...prompt.system != null ? [{ role: "system", content: prompt.system }] : [],
+    ...prompt.messages.map(
+      (message) => convertToLanguageModelMessage(message, downloadedAssets)
+    )
+  ];
 }
 function convertToLanguageModelMessage(message, downloadedAssets) {
+  var _a15, _b, _c, _d, _e, _f;
   const role = message.role;
   switch (role) {
     case "system": {
       return {
         role: "system",
         content: message.content,
-        providerMetadata: message.experimental_providerMetadata
+        providerMetadata: (_a15 = message.providerOptions) != null ? _a15 : message.experimental_providerMetadata
       };
     }
     case "user": {
@@ -16983,184 +17817,13 @@ function convertToLanguageModelMessage(message, downloadedAssets) {
         return {
           role: "user",
           content: [{ type: "text", text: message.content }],
-          providerMetadata: message.experimental_providerMetadata
+          providerMetadata: (_b = message.providerOptions) != null ? _b : message.experimental_providerMetadata
         };
       }
       return {
         role: "user",
-        content: message.content.map(
-          (part) => {
-            var _a11, _b, _c, _d, _e;
-            switch (part.type) {
-              case "text": {
-                return {
-                  type: "text",
-                  text: part.text,
-                  providerMetadata: part.experimental_providerMetadata
-                };
-              }
-              case "image": {
-                if (part.image instanceof URL) {
-                  if (downloadedAssets == null) {
-                    return {
-                      type: "image",
-                      image: part.image,
-                      mimeType: part.mimeType,
-                      providerMetadata: part.experimental_providerMetadata
-                    };
-                  } else {
-                    const downloadedImage = downloadedAssets[part.image.toString()];
-                    return {
-                      type: "image",
-                      image: downloadedImage.data,
-                      mimeType: (_a11 = part.mimeType) != null ? _a11 : downloadedImage.mimeType,
-                      providerMetadata: part.experimental_providerMetadata
-                    };
-                  }
-                }
-                if (typeof part.image === "string") {
-                  try {
-                    const url = new URL(part.image);
-                    switch (url.protocol) {
-                      case "http:":
-                      case "https:": {
-                        if (downloadedAssets == null) {
-                          return {
-                            type: "image",
-                            image: url,
-                            mimeType: part.mimeType,
-                            providerMetadata: part.experimental_providerMetadata
-                          };
-                        } else {
-                          const downloadedImage = downloadedAssets[url.toString()];
-                          return {
-                            type: "image",
-                            image: downloadedImage.data,
-                            mimeType: (_b = part.mimeType) != null ? _b : downloadedImage.mimeType,
-                            providerMetadata: part.experimental_providerMetadata
-                          };
-                        }
-                      }
-                      case "data:": {
-                        try {
-                          const { mimeType, base64Content } = splitDataUrl(
-                            part.image
-                          );
-                          if (mimeType == null || base64Content == null) {
-                            throw new Error("Invalid data URL format");
-                          }
-                          return {
-                            type: "image",
-                            image: convertDataContentToUint8Array(base64Content),
-                            mimeType,
-                            providerMetadata: part.experimental_providerMetadata
-                          };
-                        } catch (error) {
-                          throw new Error(
-                            `Error processing data URL: ${(0, import_provider_utils3.getErrorMessage)(
-                              message
-                            )}`
-                          );
-                        }
-                      }
-                    }
-                  } catch (_ignored) {
-                  }
-                }
-                const imageUint8 = convertDataContentToUint8Array(part.image);
-                return {
-                  type: "image",
-                  image: imageUint8,
-                  mimeType: (_c = part.mimeType) != null ? _c : detectImageMimeType(imageUint8),
-                  providerMetadata: part.experimental_providerMetadata
-                };
-              }
-              case "file": {
-                if (part.data instanceof URL) {
-                  if (downloadedAssets == null) {
-                    return {
-                      type: "file",
-                      data: part.data,
-                      mimeType: part.mimeType,
-                      providerMetadata: part.experimental_providerMetadata
-                    };
-                  } else {
-                    const downloadedImage = downloadedAssets[part.data.toString()];
-                    return {
-                      type: "file",
-                      data: (0, import_provider_utils3.convertUint8ArrayToBase64)(downloadedImage.data),
-                      mimeType: (_d = part.mimeType) != null ? _d : downloadedImage.mimeType,
-                      providerMetadata: part.experimental_providerMetadata
-                    };
-                  }
-                }
-                if (typeof part.data === "string") {
-                  try {
-                    const url = new URL(part.data);
-                    switch (url.protocol) {
-                      case "http:":
-                      case "https:": {
-                        if (downloadedAssets == null) {
-                          return {
-                            type: "file",
-                            data: url,
-                            mimeType: part.mimeType,
-                            providerMetadata: part.experimental_providerMetadata
-                          };
-                        } else {
-                          const downloadedImage = downloadedAssets[url.toString()];
-                          return {
-                            type: "file",
-                            data: (0, import_provider_utils3.convertUint8ArrayToBase64)(
-                              downloadedImage.data
-                            ),
-                            mimeType: (_e = part.mimeType) != null ? _e : downloadedImage.mimeType,
-                            providerMetadata: part.experimental_providerMetadata
-                          };
-                        }
-                      }
-                      case "data:": {
-                        try {
-                          const { mimeType, base64Content } = splitDataUrl(
-                            part.data
-                          );
-                          if (mimeType == null || base64Content == null) {
-                            throw new Error("Invalid data URL format");
-                          }
-                          return {
-                            type: "file",
-                            data: convertDataContentToBase64String(
-                              base64Content
-                            ),
-                            mimeType,
-                            providerMetadata: part.experimental_providerMetadata
-                          };
-                        } catch (error) {
-                          throw new Error(
-                            `Error processing data URL: ${(0, import_provider_utils3.getErrorMessage)(
-                              message
-                            )}`
-                          );
-                        }
-                      }
-                    }
-                  } catch (_ignored) {
-                  }
-                }
-                const imageBase64 = convertDataContentToBase64String(
-                  part.data
-                );
-                return {
-                  type: "file",
-                  data: imageBase64,
-                  mimeType: part.mimeType,
-                  providerMetadata: part.experimental_providerMetadata
-                };
-              }
-            }
-          }
-        ).filter((part) => part.type !== "text" || part.text !== ""),
-        providerMetadata: message.experimental_providerMetadata
+        content: message.content.map((part) => convertPartToLanguageModelPart(part, downloadedAssets)).filter((part) => part.type !== "text" || part.text !== ""),
+        providerMetadata: (_c = message.providerOptions) != null ? _c : message.experimental_providerMetadata
       };
     }
     case "assistant": {
@@ -17168,7 +17831,7 @@ function convertToLanguageModelMessage(message, downloadedAssets) {
         return {
           role: "assistant",
           content: [{ type: "text", text: message.content }],
-          providerMetadata: message.experimental_providerMetadata
+          providerMetadata: (_d = message.providerOptions) != null ? _d : message.experimental_providerMetadata
         };
       }
       return {
@@ -17177,26 +17840,31 @@ function convertToLanguageModelMessage(message, downloadedAssets) {
           // remove empty text parts:
           (part) => part.type !== "text" || part.text !== ""
         ).map((part) => {
-          const { experimental_providerMetadata, ...rest } = part;
+          const { experimental_providerMetadata, providerOptions, ...rest } = part;
           return {
             ...rest,
-            providerMetadata: experimental_providerMetadata
+            providerMetadata: providerOptions != null ? providerOptions : experimental_providerMetadata
           };
         }),
-        providerMetadata: message.experimental_providerMetadata
+        providerMetadata: (_e = message.providerOptions) != null ? _e : message.experimental_providerMetadata
       };
     }
     case "tool": {
       return {
         role: "tool",
-        content: message.content.map((part) => ({
-          type: "tool-result",
-          toolCallId: part.toolCallId,
-          toolName: part.toolName,
-          result: part.result,
-          providerMetadata: part.experimental_providerMetadata
-        })),
-        providerMetadata: message.experimental_providerMetadata
+        content: message.content.map((part) => {
+          var _a16;
+          return {
+            type: "tool-result",
+            toolCallId: part.toolCallId,
+            toolName: part.toolName,
+            result: part.result,
+            content: part.experimental_content,
+            isError: part.isError,
+            providerMetadata: (_a16 = part.providerOptions) != null ? _a16 : part.experimental_providerMetadata
+          };
+        }),
+        providerMetadata: (_f = message.providerOptions) != null ? _f : message.experimental_providerMetadata
       };
     }
     default: {
@@ -17205,17 +17873,19 @@ function convertToLanguageModelMessage(message, downloadedAssets) {
     }
   }
 }
-async function downloadAssets(messages, downloadImplementation) {
+async function downloadAssets(messages, downloadImplementation, modelSupportsImageUrls, modelSupportsUrl) {
   const urls = messages.filter((message) => message.role === "user").map((message) => message.content).filter(
     (content) => Array.isArray(content)
   ).flat().filter(
     (part) => part.type === "image" || part.type === "file"
+  ).filter(
+    (part) => !(part.type === "image" && modelSupportsImageUrls === true)
   ).map((part) => part.type === "image" ? part.image : part.data).map(
     (part) => (
       // support string urls:
       typeof part === "string" && (part.startsWith("http:") || part.startsWith("https:")) ? new URL(part) : part
     )
-  ).filter((image) => image instanceof URL);
+  ).filter((image) => image instanceof URL).filter((url) => !modelSupportsUrl(url));
   const downloadedImages = await Promise.all(
     urls.map(async (url) => ({
       url,
@@ -17226,47 +17896,82 @@ async function downloadAssets(messages, downloadImplementation) {
     downloadedImages.map(({ url, data }) => [url.toString(), data])
   );
 }
-
-// errors/invalid-argument-error.ts
-var import_provider6 = __nccwpck_require__(8892);
-var name5 = "AI_InvalidArgumentError";
-var marker5 = `vercel.ai.error.${name5}`;
-var symbol5 = Symbol.for(marker5);
-var _a5;
-var InvalidArgumentError = class extends import_provider6.AISDKError {
-  constructor({
-    parameter,
-    value,
-    message
-  }) {
-    super({
-      name: name5,
-      message: `Invalid argument for parameter ${parameter}: ${message}`
-    });
-    this[_a5] = true;
-    this.parameter = parameter;
-    this.value = value;
-  }
-  static isInstance(error) {
-    return import_provider6.AISDKError.hasMarker(error, marker5);
-  }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isInvalidArgumentError(error) {
-    return error instanceof Error && error.name === name5 && typeof error.parameter === "string" && typeof error.value === "string";
-  }
-  toJSON() {
+function convertPartToLanguageModelPart(part, downloadedAssets) {
+  var _a15;
+  if (part.type === "text") {
     return {
-      name: this.name,
-      message: this.message,
-      stack: this.stack,
-      parameter: this.parameter,
-      value: this.value
+      type: "text",
+      text: part.text,
+      providerMetadata: part.experimental_providerMetadata
     };
   }
-};
-_a5 = symbol5;
+  let mimeType = part.mimeType;
+  let data;
+  let content;
+  let normalizedData;
+  const type = part.type;
+  switch (type) {
+    case "image":
+      data = part.image;
+      break;
+    case "file":
+      data = part.data;
+      break;
+    default:
+      throw new Error(`Unsupported part type: ${type}`);
+  }
+  try {
+    content = typeof data === "string" ? new URL(data) : data;
+  } catch (error) {
+    content = data;
+  }
+  if (content instanceof URL) {
+    if (content.protocol === "data:") {
+      const { mimeType: dataUrlMimeType, base64Content } = splitDataUrl(
+        content.toString()
+      );
+      if (dataUrlMimeType == null || base64Content == null) {
+        throw new Error(`Invalid data URL format in part ${type}`);
+      }
+      mimeType = dataUrlMimeType;
+      normalizedData = convertDataContentToUint8Array(base64Content);
+    } else {
+      const downloadedFile = downloadedAssets[content.toString()];
+      if (downloadedFile) {
+        normalizedData = downloadedFile.data;
+        mimeType != null ? mimeType : mimeType = downloadedFile.mimeType;
+      } else {
+        normalizedData = content;
+      }
+    }
+  } else {
+    normalizedData = convertDataContentToUint8Array(content);
+  }
+  switch (type) {
+    case "image": {
+      if (normalizedData instanceof Uint8Array) {
+        mimeType = (_a15 = detectImageMimeType(normalizedData)) != null ? _a15 : mimeType;
+      }
+      return {
+        type: "image",
+        image: normalizedData,
+        mimeType,
+        providerMetadata: part.experimental_providerMetadata
+      };
+    }
+    case "file": {
+      if (mimeType == null) {
+        throw new Error(`Mime type is missing for file part`);
+      }
+      return {
+        type: "file",
+        data: normalizedData instanceof Uint8Array ? convertDataContentToBase64String(normalizedData) : normalizedData,
+        mimeType,
+        providerMetadata: part.experimental_providerMetadata
+      };
+    }
+  }
+}
 
 // core/prompt/prepare-call-settings.ts
 function prepareCallSettings({
@@ -17277,8 +17982,7 @@ function prepareCallSettings({
   presencePenalty,
   frequencyPenalty,
   stopSequences,
-  seed,
-  maxRetries
+  seed
 }) {
   if (maxTokens != null) {
     if (!Number.isInteger(maxTokens)) {
@@ -17350,22 +18054,6 @@ function prepareCallSettings({
       });
     }
   }
-  if (maxRetries != null) {
-    if (!Number.isInteger(maxRetries)) {
-      throw new InvalidArgumentError({
-        parameter: "maxRetries",
-        value: maxRetries,
-        message: "maxRetries must be an integer"
-      });
-    }
-    if (maxRetries < 0) {
-      throw new InvalidArgumentError({
-        parameter: "maxRetries",
-        value: maxRetries,
-        message: "maxRetries must be >= 0"
-      });
-    }
-  }
   return {
     maxTokens,
     temperature: temperature != null ? temperature : 0,
@@ -17374,24 +18062,262 @@ function prepareCallSettings({
     presencePenalty,
     frequencyPenalty,
     stopSequences: stopSequences != null && stopSequences.length > 0 ? stopSequences : void 0,
-    seed,
-    maxRetries: maxRetries != null ? maxRetries : 2
+    seed
   };
 }
 
-// core/prompt/validate-prompt.ts
-var import_provider7 = __nccwpck_require__(8892);
-var import_provider_utils4 = __nccwpck_require__(127);
-var import_zod6 = __nccwpck_require__(931);
+// core/prompt/standardize-prompt.ts
+var import_provider10 = __nccwpck_require__(4069);
+var import_provider_utils4 = __nccwpck_require__(2458);
+var import_zod7 = __nccwpck_require__(6516);
+
+// core/prompt/attachments-to-parts.ts
+function attachmentsToParts(attachments) {
+  var _a15, _b, _c;
+  const parts = [];
+  for (const attachment of attachments) {
+    let url;
+    try {
+      url = new URL(attachment.url);
+    } catch (error) {
+      throw new Error(`Invalid URL: ${attachment.url}`);
+    }
+    switch (url.protocol) {
+      case "http:":
+      case "https:": {
+        if ((_a15 = attachment.contentType) == null ? void 0 : _a15.startsWith("image/")) {
+          parts.push({ type: "image", image: url });
+        } else {
+          if (!attachment.contentType) {
+            throw new Error(
+              "If the attachment is not an image, it must specify a content type"
+            );
+          }
+          parts.push({
+            type: "file",
+            data: url,
+            mimeType: attachment.contentType
+          });
+        }
+        break;
+      }
+      case "data:": {
+        let header;
+        let base64Content;
+        let mimeType;
+        try {
+          [header, base64Content] = attachment.url.split(",");
+          mimeType = header.split(";")[0].split(":")[1];
+        } catch (error) {
+          throw new Error(`Error processing data URL: ${attachment.url}`);
+        }
+        if (mimeType == null || base64Content == null) {
+          throw new Error(`Invalid data URL format: ${attachment.url}`);
+        }
+        if ((_b = attachment.contentType) == null ? void 0 : _b.startsWith("image/")) {
+          parts.push({
+            type: "image",
+            image: convertDataContentToUint8Array(base64Content)
+          });
+        } else if ((_c = attachment.contentType) == null ? void 0 : _c.startsWith("text/")) {
+          parts.push({
+            type: "text",
+            text: convertUint8ArrayToText(
+              convertDataContentToUint8Array(base64Content)
+            )
+          });
+        } else {
+          if (!attachment.contentType) {
+            throw new Error(
+              "If the attachment is not an image or text, it must specify a content type"
+            );
+          }
+          parts.push({
+            type: "file",
+            data: base64Content,
+            mimeType: attachment.contentType
+          });
+        }
+        break;
+      }
+      default: {
+        throw new Error(`Unsupported URL protocol: ${url.protocol}`);
+      }
+    }
+  }
+  return parts;
+}
+
+// core/prompt/message-conversion-error.ts
+var import_provider9 = __nccwpck_require__(4069);
+var name8 = "AI_MessageConversionError";
+var marker8 = `vercel.ai.error.${name8}`;
+var symbol8 = Symbol.for(marker8);
+var _a8;
+var MessageConversionError = class extends import_provider9.AISDKError {
+  constructor({
+    originalMessage,
+    message
+  }) {
+    super({ name: name8, message });
+    this[_a8] = true;
+    this.originalMessage = originalMessage;
+  }
+  static isInstance(error) {
+    return import_provider9.AISDKError.hasMarker(error, marker8);
+  }
+};
+_a8 = symbol8;
+
+// core/prompt/convert-to-core-messages.ts
+function convertToCoreMessages(messages, options) {
+  var _a15;
+  const tools = (_a15 = options == null ? void 0 : options.tools) != null ? _a15 : {};
+  const coreMessages = [];
+  for (let i = 0; i < messages.length; i++) {
+    const message = messages[i];
+    const isLastMessage = i === messages.length - 1;
+    const { role, content, toolInvocations, experimental_attachments } = message;
+    switch (role) {
+      case "system": {
+        coreMessages.push({
+          role: "system",
+          content
+        });
+        break;
+      }
+      case "user": {
+        coreMessages.push({
+          role: "user",
+          content: experimental_attachments ? [
+            { type: "text", text: content },
+            ...attachmentsToParts(experimental_attachments)
+          ] : content
+        });
+        break;
+      }
+      case "assistant": {
+        if (toolInvocations == null || toolInvocations.length === 0) {
+          coreMessages.push({ role: "assistant", content });
+          break;
+        }
+        const maxStep = toolInvocations.reduce((max, toolInvocation) => {
+          var _a16;
+          return Math.max(max, (_a16 = toolInvocation.step) != null ? _a16 : 0);
+        }, 0);
+        for (let i2 = 0; i2 <= maxStep; i2++) {
+          const stepInvocations = toolInvocations.filter(
+            (toolInvocation) => {
+              var _a16;
+              return ((_a16 = toolInvocation.step) != null ? _a16 : 0) === i2;
+            }
+          );
+          if (stepInvocations.length === 0) {
+            continue;
+          }
+          coreMessages.push({
+            role: "assistant",
+            content: [
+              ...isLastMessage && content && i2 === 0 ? [{ type: "text", text: content }] : [],
+              ...stepInvocations.map(
+                ({ toolCallId, toolName, args }) => ({
+                  type: "tool-call",
+                  toolCallId,
+                  toolName,
+                  args
+                })
+              )
+            ]
+          });
+          coreMessages.push({
+            role: "tool",
+            content: stepInvocations.map((toolInvocation) => {
+              if (!("result" in toolInvocation)) {
+                throw new MessageConversionError({
+                  originalMessage: message,
+                  message: "ToolInvocation must have a result: " + JSON.stringify(toolInvocation)
+                });
+              }
+              const { toolCallId, toolName, result } = toolInvocation;
+              const tool2 = tools[toolName];
+              return (tool2 == null ? void 0 : tool2.experimental_toToolResultContent) != null ? {
+                type: "tool-result",
+                toolCallId,
+                toolName,
+                result: tool2.experimental_toToolResultContent(result),
+                experimental_content: tool2.experimental_toToolResultContent(result)
+              } : {
+                type: "tool-result",
+                toolCallId,
+                toolName,
+                result
+              };
+            })
+          });
+        }
+        if (content && !isLastMessage) {
+          coreMessages.push({ role: "assistant", content });
+        }
+        break;
+      }
+      case "data": {
+        break;
+      }
+      default: {
+        const _exhaustiveCheck = role;
+        throw new MessageConversionError({
+          originalMessage: message,
+          message: `Unsupported role: ${_exhaustiveCheck}`
+        });
+      }
+    }
+  }
+  return coreMessages;
+}
+
+// core/prompt/detect-prompt-type.ts
+function detectPromptType(prompt) {
+  if (!Array.isArray(prompt)) {
+    return "other";
+  }
+  if (prompt.length === 0) {
+    return "messages";
+  }
+  const characteristics = prompt.map(detectSingleMessageCharacteristics);
+  if (characteristics.some((c) => c === "has-ui-specific-parts")) {
+    return "ui-messages";
+  } else if (characteristics.every(
+    (c) => c === "has-core-specific-parts" || c === "message"
+  )) {
+    return "messages";
+  } else {
+    return "other";
+  }
+}
+function detectSingleMessageCharacteristics(message) {
+  if (typeof message === "object" && message !== null && (message.role === "function" || // UI-only role
+  message.role === "data" || // UI-only role
+  "toolInvocations" in message || // UI-specific field
+  "experimental_attachments" in message)) {
+    return "has-ui-specific-parts";
+  } else if (typeof message === "object" && message !== null && "content" in message && (Array.isArray(message.content) || // Core messages can have array content
+  "experimental_providerMetadata" in message || "providerOptions" in message)) {
+    return "has-core-specific-parts";
+  } else if (typeof message === "object" && message !== null && "role" in message && "content" in message && typeof message.content === "string" && ["system", "user", "assistant", "tool"].includes(message.role)) {
+    return "message";
+  } else {
+    return "other";
+  }
+}
 
 // core/prompt/message.ts
-var import_zod5 = __nccwpck_require__(931);
+var import_zod6 = __nccwpck_require__(6516);
 
 // core/types/provider-metadata.ts
-var import_zod3 = __nccwpck_require__(931);
+var import_zod3 = __nccwpck_require__(6516);
 
 // core/types/json-value.ts
-var import_zod2 = __nccwpck_require__(931);
+var import_zod2 = __nccwpck_require__(6516);
 var jsonValueSchema = import_zod2.z.lazy(
   () => import_zod2.z.union([
     import_zod2.z.null(),
@@ -17410,124 +18336,165 @@ var providerMetadataSchema = import_zod3.z.record(
 );
 
 // core/prompt/content-part.ts
-var import_zod4 = __nccwpck_require__(931);
-var textPartSchema = import_zod4.z.object({
-  type: import_zod4.z.literal("text"),
-  text: import_zod4.z.string(),
+var import_zod5 = __nccwpck_require__(6516);
+
+// core/prompt/tool-result-content.ts
+var import_zod4 = __nccwpck_require__(6516);
+var toolResultContentSchema = import_zod4.z.array(
+  import_zod4.z.union([
+    import_zod4.z.object({ type: import_zod4.z.literal("text"), text: import_zod4.z.string() }),
+    import_zod4.z.object({
+      type: import_zod4.z.literal("image"),
+      data: import_zod4.z.string(),
+      mimeType: import_zod4.z.string().optional()
+    })
+  ])
+);
+
+// core/prompt/content-part.ts
+var textPartSchema = import_zod5.z.object({
+  type: import_zod5.z.literal("text"),
+  text: import_zod5.z.string(),
+  providerOptions: providerMetadataSchema.optional(),
   experimental_providerMetadata: providerMetadataSchema.optional()
 });
-var imagePartSchema = import_zod4.z.object({
-  type: import_zod4.z.literal("image"),
-  image: import_zod4.z.union([dataContentSchema, import_zod4.z.instanceof(URL)]),
-  mimeType: import_zod4.z.string().optional(),
+var imagePartSchema = import_zod5.z.object({
+  type: import_zod5.z.literal("image"),
+  image: import_zod5.z.union([dataContentSchema, import_zod5.z.instanceof(URL)]),
+  mimeType: import_zod5.z.string().optional(),
+  providerOptions: providerMetadataSchema.optional(),
   experimental_providerMetadata: providerMetadataSchema.optional()
 });
-var filePartSchema = import_zod4.z.object({
-  type: import_zod4.z.literal("file"),
-  data: import_zod4.z.union([dataContentSchema, import_zod4.z.instanceof(URL)]),
-  mimeType: import_zod4.z.string(),
+var filePartSchema = import_zod5.z.object({
+  type: import_zod5.z.literal("file"),
+  data: import_zod5.z.union([dataContentSchema, import_zod5.z.instanceof(URL)]),
+  mimeType: import_zod5.z.string(),
+  providerOptions: providerMetadataSchema.optional(),
   experimental_providerMetadata: providerMetadataSchema.optional()
 });
-var toolCallPartSchema = import_zod4.z.object({
-  type: import_zod4.z.literal("tool-call"),
-  toolCallId: import_zod4.z.string(),
-  toolName: import_zod4.z.string(),
-  args: import_zod4.z.unknown()
+var toolCallPartSchema = import_zod5.z.object({
+  type: import_zod5.z.literal("tool-call"),
+  toolCallId: import_zod5.z.string(),
+  toolName: import_zod5.z.string(),
+  args: import_zod5.z.unknown(),
+  providerOptions: providerMetadataSchema.optional(),
+  experimental_providerMetadata: providerMetadataSchema.optional()
 });
-var toolResultPartSchema = import_zod4.z.object({
-  type: import_zod4.z.literal("tool-result"),
-  toolCallId: import_zod4.z.string(),
-  toolName: import_zod4.z.string(),
-  result: import_zod4.z.unknown(),
-  isError: import_zod4.z.boolean().optional(),
+var toolResultPartSchema = import_zod5.z.object({
+  type: import_zod5.z.literal("tool-result"),
+  toolCallId: import_zod5.z.string(),
+  toolName: import_zod5.z.string(),
+  result: import_zod5.z.unknown(),
+  content: toolResultContentSchema.optional(),
+  isError: import_zod5.z.boolean().optional(),
+  providerOptions: providerMetadataSchema.optional(),
   experimental_providerMetadata: providerMetadataSchema.optional()
 });
 
 // core/prompt/message.ts
-var coreSystemMessageSchema = import_zod5.z.object({
-  role: import_zod5.z.literal("system"),
-  content: import_zod5.z.string(),
+var coreSystemMessageSchema = import_zod6.z.object({
+  role: import_zod6.z.literal("system"),
+  content: import_zod6.z.string(),
+  providerOptions: providerMetadataSchema.optional(),
   experimental_providerMetadata: providerMetadataSchema.optional()
 });
-var coreUserMessageSchema = import_zod5.z.object({
-  role: import_zod5.z.literal("user"),
-  content: import_zod5.z.union([
-    import_zod5.z.string(),
-    import_zod5.z.array(import_zod5.z.union([textPartSchema, imagePartSchema, filePartSchema]))
+var coreUserMessageSchema = import_zod6.z.object({
+  role: import_zod6.z.literal("user"),
+  content: import_zod6.z.union([
+    import_zod6.z.string(),
+    import_zod6.z.array(import_zod6.z.union([textPartSchema, imagePartSchema, filePartSchema]))
   ]),
+  providerOptions: providerMetadataSchema.optional(),
   experimental_providerMetadata: providerMetadataSchema.optional()
 });
-var coreAssistantMessageSchema = import_zod5.z.object({
-  role: import_zod5.z.literal("assistant"),
-  content: import_zod5.z.union([
-    import_zod5.z.string(),
-    import_zod5.z.array(import_zod5.z.union([textPartSchema, toolCallPartSchema]))
+var coreAssistantMessageSchema = import_zod6.z.object({
+  role: import_zod6.z.literal("assistant"),
+  content: import_zod6.z.union([
+    import_zod6.z.string(),
+    import_zod6.z.array(import_zod6.z.union([textPartSchema, toolCallPartSchema]))
   ]),
+  providerOptions: providerMetadataSchema.optional(),
   experimental_providerMetadata: providerMetadataSchema.optional()
 });
-var coreToolMessageSchema = import_zod5.z.object({
-  role: import_zod5.z.literal("tool"),
-  content: import_zod5.z.array(toolResultPartSchema),
+var coreToolMessageSchema = import_zod6.z.object({
+  role: import_zod6.z.literal("tool"),
+  content: import_zod6.z.array(toolResultPartSchema),
+  providerOptions: providerMetadataSchema.optional(),
   experimental_providerMetadata: providerMetadataSchema.optional()
 });
-var coreMessageSchema = import_zod5.z.union([
+var coreMessageSchema = import_zod6.z.union([
   coreSystemMessageSchema,
   coreUserMessageSchema,
   coreAssistantMessageSchema,
   coreToolMessageSchema
 ]);
 
-// core/prompt/validate-prompt.ts
-function validatePrompt(prompt) {
+// core/prompt/standardize-prompt.ts
+function standardizePrompt({
+  prompt,
+  tools
+}) {
   if (prompt.prompt == null && prompt.messages == null) {
-    throw new import_provider7.InvalidPromptError({
+    throw new import_provider10.InvalidPromptError({
       prompt,
       message: "prompt or messages must be defined"
     });
   }
   if (prompt.prompt != null && prompt.messages != null) {
-    throw new import_provider7.InvalidPromptError({
+    throw new import_provider10.InvalidPromptError({
       prompt,
       message: "prompt and messages cannot be defined at the same time"
     });
   }
   if (prompt.system != null && typeof prompt.system !== "string") {
-    throw new import_provider7.InvalidPromptError({
+    throw new import_provider10.InvalidPromptError({
       prompt,
       message: "system must be a string"
     });
   }
   if (prompt.prompt != null) {
     if (typeof prompt.prompt !== "string") {
-      throw new import_provider7.InvalidPromptError({
+      throw new import_provider10.InvalidPromptError({
         prompt,
         message: "prompt must be a string"
       });
     }
     return {
       type: "prompt",
-      prompt: prompt.prompt,
-      messages: void 0,
-      system: prompt.system
+      system: prompt.system,
+      messages: [
+        {
+          role: "user",
+          content: prompt.prompt
+        }
+      ]
     };
   }
   if (prompt.messages != null) {
+    const promptType = detectPromptType(prompt.messages);
+    if (promptType === "other") {
+      throw new import_provider10.InvalidPromptError({
+        prompt,
+        message: "messages must be an array of CoreMessage or UIMessage"
+      });
+    }
+    const messages = promptType === "ui-messages" ? convertToCoreMessages(prompt.messages, {
+      tools
+    }) : prompt.messages;
     const validationResult = (0, import_provider_utils4.safeValidateTypes)({
-      value: prompt.messages,
-      schema: import_zod6.z.array(coreMessageSchema)
+      value: messages,
+      schema: import_zod7.z.array(coreMessageSchema)
     });
     if (!validationResult.success) {
-      throw new import_provider7.InvalidPromptError({
+      throw new import_provider10.InvalidPromptError({
         prompt,
-        message: "messages must be an array of CoreMessage",
+        message: "messages must be an array of CoreMessage or UIMessage",
         cause: validationResult.error
       });
     }
     return {
       type: "messages",
-      prompt: void 0,
-      messages: prompt.messages,
-      // only possible case bc of checks above
+      messages,
       system: prompt.system
     };
   }
@@ -17535,28 +18502,22 @@ function validatePrompt(prompt) {
 }
 
 // core/types/usage.ts
-function calculateLanguageModelUsage(usage) {
+function calculateLanguageModelUsage({
+  promptTokens,
+  completionTokens
+}) {
   return {
-    promptTokens: usage.promptTokens,
-    completionTokens: usage.completionTokens,
-    totalTokens: usage.promptTokens + usage.completionTokens
+    promptTokens,
+    completionTokens,
+    totalTokens: promptTokens + completionTokens
   };
 }
-
-// core/util/prepare-response-headers.ts
-function prepareResponseHeaders(init, {
-  contentType,
-  dataStreamVersion
-}) {
-  var _a11;
-  const headers = new Headers((_a11 = init == null ? void 0 : init.headers) != null ? _a11 : {});
-  if (!headers.has("Content-Type")) {
-    headers.set("Content-Type", contentType);
-  }
-  if (dataStreamVersion !== void 0) {
-    headers.set("X-Vercel-AI-Data-Stream", dataStreamVersion);
-  }
-  return headers;
+function addLanguageModelUsage(usage1, usage2) {
+  return {
+    promptTokens: usage1.promptTokens + usage2.promptTokens,
+    completionTokens: usage1.completionTokens + usage2.completionTokens,
+    totalTokens: usage1.totalTokens + usage2.totalTokens
+  };
 }
 
 // core/generate-object/inject-json-instruction.ts
@@ -17579,53 +18540,16 @@ function injectJsonInstruction({
   ].filter((line) => line != null).join("\n");
 }
 
-// core/generate-object/no-object-generated-error.ts
-var import_provider8 = __nccwpck_require__(8892);
-var name6 = "AI_NoObjectGeneratedError";
-var marker6 = `vercel.ai.error.${name6}`;
-var symbol6 = Symbol.for(marker6);
-var _a6;
-var NoObjectGeneratedError = class extends import_provider8.AISDKError {
-  // used in isInstance
-  constructor({ message = "No object generated." } = {}) {
-    super({ name: name6, message });
-    this[_a6] = true;
-  }
-  static isInstance(error) {
-    return import_provider8.AISDKError.hasMarker(error, marker6);
-  }
-  /**
-   * @deprecated Use isInstance instead.
-   */
-  static isNoObjectGeneratedError(error) {
-    return error instanceof Error && error.name === name6;
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      cause: this.cause,
-      message: this.message,
-      stack: this.stack
-    };
-  }
-};
-_a6 = symbol6;
-
 // core/generate-object/output-strategy.ts
-var import_provider9 = __nccwpck_require__(8892);
-var import_provider_utils5 = __nccwpck_require__(127);
-var import_ui_utils = __nccwpck_require__(6066);
+var import_provider11 = __nccwpck_require__(4069);
+var import_provider_utils5 = __nccwpck_require__(2458);
+var import_ui_utils2 = __nccwpck_require__(8715);
 
 // core/util/async-iterable-stream.ts
-function createAsyncIterableStream(source, transformer) {
-  const transformedStream = source.pipeThrough(
-    new TransformStream(transformer)
-  );
-  transformedStream[Symbol.asyncIterator] = () => {
-    const reader = transformedStream.getReader();
+function createAsyncIterableStream(source) {
+  const stream = source.pipeThrough(new TransformStream());
+  stream[Symbol.asyncIterator] = () => {
+    const reader = stream.getReader();
     return {
       async next() {
         const { done, value } = await reader.read();
@@ -17633,7 +18557,7 @@ function createAsyncIterableStream(source, transformer) {
       }
     };
   };
-  return transformedStream;
+  return stream;
 }
 
 // core/generate-object/output-strategy.ts
@@ -17643,11 +18567,19 @@ var noSchemaOutputStrategy = {
   validatePartialResult({ value, textDelta }) {
     return { success: true, value: { partial: value, textDelta } };
   },
-  validateFinalResult(value) {
-    return value === void 0 ? { success: false, error: new NoObjectGeneratedError() } : { success: true, value };
+  validateFinalResult(value, context) {
+    return value === void 0 ? {
+      success: false,
+      error: new NoObjectGeneratedError({
+        message: "No object generated: response did not match schema.",
+        text: context.text,
+        response: context.response,
+        usage: context.usage
+      })
+    } : { success: true, value };
   },
   createElementStream() {
-    throw new import_provider9.UnsupportedFunctionalityError({
+    throw new import_provider11.UnsupportedFunctionalityError({
       functionality: "element streams in no-schema mode"
     });
   }
@@ -17669,7 +18601,7 @@ var objectOutputStrategy = (schema) => ({
     return (0, import_provider_utils5.safeValidateTypes)({ value, schema });
   },
   createElementStream() {
-    throw new import_provider9.UnsupportedFunctionalityError({
+    throw new import_provider11.UnsupportedFunctionalityError({
       functionality: "element streams in object mode"
     });
   }
@@ -17691,11 +18623,11 @@ var arrayOutputStrategy = (schema) => {
       additionalProperties: false
     },
     validatePartialResult({ value, latestObject, isFirstDelta, isFinalDelta }) {
-      var _a11;
-      if (!(0, import_provider9.isJSONObject)(value) || !(0, import_provider9.isJSONArray)(value.elements)) {
+      var _a15;
+      if (!(0, import_provider11.isJSONObject)(value) || !(0, import_provider11.isJSONArray)(value.elements)) {
         return {
           success: false,
-          error: new import_provider9.TypeValidationError({
+          error: new import_provider11.TypeValidationError({
             value,
             cause: "value must be an object that contains an array of elements"
           })
@@ -17714,7 +18646,7 @@ var arrayOutputStrategy = (schema) => {
         }
         resultArray.push(result.value);
       }
-      const publishedElementCount = (_a11 = latestObject == null ? void 0 : latestObject.length) != null ? _a11 : 0;
+      const publishedElementCount = (_a15 = latestObject == null ? void 0 : latestObject.length) != null ? _a15 : 0;
       let textDelta = "";
       if (isFirstDelta) {
         textDelta += "[";
@@ -17735,10 +18667,10 @@ var arrayOutputStrategy = (schema) => {
       };
     },
     validateFinalResult(value) {
-      if (!(0, import_provider9.isJSONObject)(value) || !(0, import_provider9.isJSONArray)(value.elements)) {
+      if (!(0, import_provider11.isJSONObject)(value) || !(0, import_provider11.isJSONArray)(value.elements)) {
         return {
           success: false,
-          error: new import_provider9.TypeValidationError({
+          error: new import_provider11.TypeValidationError({
             value,
             cause: "value must be an object that contains an array of elements"
           })
@@ -17755,29 +18687,35 @@ var arrayOutputStrategy = (schema) => {
     },
     createElementStream(originalStream) {
       let publishedElements = 0;
-      return createAsyncIterableStream(originalStream, {
-        transform(chunk, controller) {
-          switch (chunk.type) {
-            case "object": {
-              const array = chunk.object;
-              for (; publishedElements < array.length; publishedElements++) {
-                controller.enqueue(array[publishedElements]);
+      return createAsyncIterableStream(
+        originalStream.pipeThrough(
+          new TransformStream({
+            transform(chunk, controller) {
+              switch (chunk.type) {
+                case "object": {
+                  const array = chunk.object;
+                  for (; publishedElements < array.length; publishedElements++) {
+                    controller.enqueue(array[publishedElements]);
+                  }
+                  break;
+                }
+                case "text-delta":
+                case "finish":
+                  break;
+                case "error":
+                  controller.error(chunk.error);
+                  break;
+                default: {
+                  const _exhaustiveCheck = chunk;
+                  throw new Error(
+                    `Unsupported chunk type: ${_exhaustiveCheck}`
+                  );
+                }
               }
-              break;
             }
-            case "text-delta":
-            case "finish":
-              break;
-            case "error":
-              controller.error(chunk.error);
-              break;
-            default: {
-              const _exhaustiveCheck = chunk;
-              throw new Error(`Unsupported chunk type: ${_exhaustiveCheck}`);
-            }
-          }
-        }
-      });
+          })
+        )
+      );
     }
   };
 };
@@ -17797,10 +18735,10 @@ var enumOutputStrategy = (enumValues) => {
       additionalProperties: false
     },
     validateFinalResult(value) {
-      if (!(0, import_provider9.isJSONObject)(value) || typeof value.result !== "string") {
+      if (!(0, import_provider11.isJSONObject)(value) || typeof value.result !== "string") {
         return {
           success: false,
-          error: new import_provider9.TypeValidationError({
+          error: new import_provider11.TypeValidationError({
             value,
             cause: 'value must be an object that contains a string in the "result" property.'
           })
@@ -17809,19 +18747,19 @@ var enumOutputStrategy = (enumValues) => {
       const result = value.result;
       return enumValues.includes(result) ? { success: true, value: result } : {
         success: false,
-        error: new import_provider9.TypeValidationError({
+        error: new import_provider11.TypeValidationError({
           value,
           cause: "value must be a string in the enum"
         })
       };
     },
     validatePartialResult() {
-      throw new import_provider9.UnsupportedFunctionalityError({
+      throw new import_provider11.UnsupportedFunctionalityError({
         functionality: "partial results in enum mode"
       });
     },
     createElementStream() {
-      throw new import_provider9.UnsupportedFunctionalityError({
+      throw new import_provider11.UnsupportedFunctionalityError({
         functionality: "element streams in enum mode"
       });
     }
@@ -17834,9 +18772,9 @@ function getOutputStrategy({
 }) {
   switch (output) {
     case "object":
-      return objectOutputStrategy((0, import_ui_utils.asSchema)(schema));
+      return objectOutputStrategy((0, import_ui_utils2.asSchema)(schema));
     case "array":
-      return arrayOutputStrategy((0, import_ui_utils.asSchema)(schema));
+      return arrayOutputStrategy((0, import_ui_utils2.asSchema)(schema));
     case "enum":
       return enumOutputStrategy(enumValues);
     case "no-schema":
@@ -17975,7 +18913,7 @@ function validateObjectGenerationInput({
 }
 
 // core/generate-object/generate-object.ts
-var originalGenerateId = (0, import_provider_utils6.createIdGenerator)({ prefix: "aiobj-", size: 24 });
+var originalGenerateId = (0, import_provider_utils6.createIdGenerator)({ prefix: "aiobj", size: 24 });
 async function generateObject({
   model,
   enum: enumValues,
@@ -17988,18 +18926,18 @@ async function generateObject({
   system,
   prompt,
   messages,
-  maxRetries,
+  maxRetries: maxRetriesArg,
   abortSignal,
   headers,
   experimental_telemetry: telemetry,
-  experimental_providerMetadata: providerMetadata,
+  experimental_providerMetadata,
+  providerOptions = experimental_providerMetadata,
   _internal: {
     generateId: generateId3 = originalGenerateId,
     currentDate = () => /* @__PURE__ */ new Date()
   } = {},
   ...settings
 }) {
-  var _a11;
   validateObjectGenerationInput({
     output,
     mode,
@@ -18008,6 +18946,7 @@ async function generateObject({
     schemaDescription,
     enumValues
   });
+  const { maxRetries, retry } = prepareRetries({ maxRetries: maxRetriesArg });
   const outputStrategy = getOutputStrategy({
     output,
     schema: inputSchema,
@@ -18022,7 +18961,7 @@ async function generateObject({
     headers,
     settings: { ...settings, maxRetries }
   });
-  const tracer = getTracer({ isEnabled: (_a11 = telemetry == null ? void 0 : telemetry.isEnabled) != null ? _a11 : false });
+  const tracer = getTracer(telemetry);
   return recordSpan({
     name: "ai.generateObject",
     attributes: selectTelemetryAttributes({
@@ -18046,7 +18985,7 @@ async function generateObject({
     }),
     tracer,
     fn: async (span) => {
-      const retry = retryWithExponentialBackoff({ maxRetries });
+      var _a15, _b, _c, _d;
       if (mode === "auto" || mode == null) {
         mode = model.defaultObjectGenerationMode;
       }
@@ -18056,23 +18995,28 @@ async function generateObject({
       let warnings;
       let rawResponse;
       let response;
+      let request;
       let logprobs;
       let resultProviderMetadata;
       switch (mode) {
         case "json": {
-          const validatedPrompt = validatePrompt({
-            system: outputStrategy.jsonSchema == null ? injectJsonInstruction({ prompt: system }) : model.supportsStructuredOutputs ? system : injectJsonInstruction({
-              prompt: system,
-              schema: outputStrategy.jsonSchema
-            }),
-            prompt,
-            messages
+          const standardizedPrompt = standardizePrompt({
+            prompt: {
+              system: outputStrategy.jsonSchema == null ? injectJsonInstruction({ prompt: system }) : model.supportsStructuredOutputs ? system : injectJsonInstruction({
+                prompt: system,
+                schema: outputStrategy.jsonSchema
+              }),
+              prompt,
+              messages
+            },
+            tools: void 0
           });
           const promptMessages = await convertToLanguageModelPrompt({
-            prompt: validatedPrompt,
-            modelSupportsImageUrls: model.supportsImageUrls
+            prompt: standardizedPrompt,
+            modelSupportsImageUrls: model.supportsImageUrls,
+            modelSupportsUrl: (_a15 = model.supportsUrl) == null ? void 0 : _a15.bind(model)
+            // support 'this' context
           });
-          const inputFormat = validatedPrompt.type;
           const generateResult = await retry(
             () => recordSpan({
               name: "ai.generateObject.doGenerate",
@@ -18085,7 +19029,7 @@ async function generateObject({
                   }),
                   ...baseTelemetryAttributes,
                   "ai.prompt.format": {
-                    input: () => inputFormat
+                    input: () => standardizedPrompt.type
                   },
                   "ai.prompt.messages": {
                     input: () => JSON.stringify(promptMessages)
@@ -18104,7 +19048,7 @@ async function generateObject({
               }),
               tracer,
               fn: async (span2) => {
-                var _a12, _b, _c, _d, _e, _f;
+                var _a16, _b2, _c2, _d2, _e, _f;
                 const result2 = await model.doGenerate({
                   mode: {
                     type: "object-json",
@@ -18113,20 +19057,24 @@ async function generateObject({
                     description: schemaDescription
                   },
                   ...prepareCallSettings(settings),
-                  inputFormat,
+                  inputFormat: standardizedPrompt.type,
                   prompt: promptMessages,
-                  providerMetadata,
+                  providerMetadata: providerOptions,
                   abortSignal,
                   headers
                 });
-                if (result2.text === void 0) {
-                  throw new NoObjectGeneratedError();
-                }
                 const responseData = {
-                  id: (_b = (_a12 = result2.response) == null ? void 0 : _a12.id) != null ? _b : generateId3(),
-                  timestamp: (_d = (_c = result2.response) == null ? void 0 : _c.timestamp) != null ? _d : currentDate(),
+                  id: (_b2 = (_a16 = result2.response) == null ? void 0 : _a16.id) != null ? _b2 : generateId3(),
+                  timestamp: (_d2 = (_c2 = result2.response) == null ? void 0 : _c2.timestamp) != null ? _d2 : currentDate(),
                   modelId: (_f = (_e = result2.response) == null ? void 0 : _e.modelId) != null ? _f : model.modelId
                 };
+                if (result2.text === void 0) {
+                  throw new NoObjectGeneratedError({
+                    message: "No object generated: the model did not return a response.",
+                    response: responseData,
+                    usage: calculateLanguageModelUsage(result2.usage)
+                  });
+                }
                 span2.setAttributes(
                   selectTelemetryAttributes({
                     telemetry,
@@ -18138,9 +19086,6 @@ async function generateObject({
                       "ai.response.timestamp": responseData.timestamp.toISOString(),
                       "ai.usage.promptTokens": result2.usage.promptTokens,
                       "ai.usage.completionTokens": result2.usage.completionTokens,
-                      // deprecated:
-                      "ai.finishReason": result2.finishReason,
-                      "ai.result.object": { output: () => result2.text },
                       // standardized gen-ai llm span attributes:
                       "gen_ai.response.finish_reasons": [result2.finishReason],
                       "gen_ai.response.id": responseData.id,
@@ -18161,20 +19106,22 @@ async function generateObject({
           rawResponse = generateResult.rawResponse;
           logprobs = generateResult.logprobs;
           resultProviderMetadata = generateResult.providerMetadata;
+          request = (_b = generateResult.request) != null ? _b : {};
           response = generateResult.responseData;
           break;
         }
         case "tool": {
-          const validatedPrompt = validatePrompt({
-            system,
-            prompt,
-            messages
+          const standardizedPrompt = standardizePrompt({
+            prompt: { system, prompt, messages },
+            tools: void 0
           });
           const promptMessages = await convertToLanguageModelPrompt({
-            prompt: validatedPrompt,
-            modelSupportsImageUrls: model.supportsImageUrls
+            prompt: standardizedPrompt,
+            modelSupportsImageUrls: model.supportsImageUrls,
+            modelSupportsUrl: (_c = model.supportsUrl) == null ? void 0 : _c.bind(model)
+            // support 'this' context,
           });
-          const inputFormat = validatedPrompt.type;
+          const inputFormat = standardizedPrompt.type;
           const generateResult = await retry(
             () => recordSpan({
               name: "ai.generateObject.doGenerate",
@@ -18206,7 +19153,7 @@ async function generateObject({
               }),
               tracer,
               fn: async (span2) => {
-                var _a12, _b, _c, _d, _e, _f, _g, _h;
+                var _a16, _b2, _c2, _d2, _e, _f, _g, _h;
                 const result2 = await model.doGenerate({
                   mode: {
                     type: "object-tool",
@@ -18220,19 +19167,23 @@ async function generateObject({
                   ...prepareCallSettings(settings),
                   inputFormat,
                   prompt: promptMessages,
-                  providerMetadata,
+                  providerMetadata: providerOptions,
                   abortSignal,
                   headers
                 });
-                const objectText = (_b = (_a12 = result2.toolCalls) == null ? void 0 : _a12[0]) == null ? void 0 : _b.args;
-                if (objectText === void 0) {
-                  throw new NoObjectGeneratedError();
-                }
+                const objectText = (_b2 = (_a16 = result2.toolCalls) == null ? void 0 : _a16[0]) == null ? void 0 : _b2.args;
                 const responseData = {
-                  id: (_d = (_c = result2.response) == null ? void 0 : _c.id) != null ? _d : generateId3(),
+                  id: (_d2 = (_c2 = result2.response) == null ? void 0 : _c2.id) != null ? _d2 : generateId3(),
                   timestamp: (_f = (_e = result2.response) == null ? void 0 : _e.timestamp) != null ? _f : currentDate(),
                   modelId: (_h = (_g = result2.response) == null ? void 0 : _g.modelId) != null ? _h : model.modelId
                 };
+                if (objectText === void 0) {
+                  throw new NoObjectGeneratedError({
+                    message: "No object generated: the tool was not called.",
+                    response: responseData,
+                    usage: calculateLanguageModelUsage(result2.usage)
+                  });
+                }
                 span2.setAttributes(
                   selectTelemetryAttributes({
                     telemetry,
@@ -18244,9 +19195,6 @@ async function generateObject({
                       "ai.response.timestamp": responseData.timestamp.toISOString(),
                       "ai.usage.promptTokens": result2.usage.promptTokens,
                       "ai.usage.completionTokens": result2.usage.completionTokens,
-                      // deprecated:
-                      "ai.finishReason": result2.finishReason,
-                      "ai.result.object": { output: () => objectText },
                       // standardized gen-ai llm span attributes:
                       "gen_ai.response.finish_reasons": [result2.finishReason],
                       "gen_ai.response.id": responseData.id,
@@ -18267,6 +19215,7 @@ async function generateObject({
           rawResponse = generateResult.rawResponse;
           logprobs = generateResult.logprobs;
           resultProviderMetadata = generateResult.providerMetadata;
+          request = (_d = generateResult.request) != null ? _d : {};
           response = generateResult.responseData;
           break;
         }
@@ -18282,13 +19231,30 @@ async function generateObject({
       }
       const parseResult = (0, import_provider_utils6.safeParseJSON)({ text: result });
       if (!parseResult.success) {
-        throw parseResult.error;
+        throw new NoObjectGeneratedError({
+          message: "No object generated: could not parse the response.",
+          cause: parseResult.error,
+          text: result,
+          response,
+          usage: calculateLanguageModelUsage(usage)
+        });
       }
       const validationResult = outputStrategy.validateFinalResult(
-        parseResult.value
+        parseResult.value,
+        {
+          text: result,
+          response,
+          usage: calculateLanguageModelUsage(usage)
+        }
       );
       if (!validationResult.success) {
-        throw validationResult.error;
+        throw new NoObjectGeneratedError({
+          message: "No object generated: response did not match schema.",
+          cause: validationResult.error,
+          text: result,
+          response,
+          usage: calculateLanguageModelUsage(usage)
+        });
       }
       span.setAttributes(
         selectTelemetryAttributes({
@@ -18299,12 +19265,7 @@ async function generateObject({
               output: () => JSON.stringify(validationResult.value)
             },
             "ai.usage.promptTokens": usage.promptTokens,
-            "ai.usage.completionTokens": usage.completionTokens,
-            // deprecated:
-            "ai.finishReason": finishReason,
-            "ai.result.object": {
-              output: () => JSON.stringify(validationResult.value)
-            }
+            "ai.usage.completionTokens": usage.completionTokens
           }
         })
       );
@@ -18313,6 +19274,7 @@ async function generateObject({
         finishReason,
         usage: calculateLanguageModelUsage(usage),
         warnings,
+        request,
         response: {
           ...response,
           headers: rawResponse == null ? void 0 : rawResponse.headers
@@ -18331,40 +19293,23 @@ var DefaultGenerateObjectResult = class {
     this.warnings = options.warnings;
     this.experimental_providerMetadata = options.providerMetadata;
     this.response = options.response;
-    this.rawResponse = {
-      headers: options.response.headers
-    };
+    this.request = options.request;
     this.logprobs = options.logprobs;
   }
   toJsonResponse(init) {
-    var _a11;
+    var _a15;
     return new Response(JSON.stringify(this.object), {
-      status: (_a11 = init == null ? void 0 : init.status) != null ? _a11 : 200,
-      headers: prepareResponseHeaders(init, {
+      status: (_a15 = init == null ? void 0 : init.status) != null ? _a15 : 200,
+      headers: prepareResponseHeaders(init == null ? void 0 : init.headers, {
         contentType: "application/json; charset=utf-8"
       })
     });
   }
 };
-var experimental_generateObject = generateObject;
 
 // core/generate-object/stream-object.ts
-var import_ui_utils2 = __nccwpck_require__(6066);
-
-// util/create-resolvable-promise.ts
-function createResolvablePromise() {
-  let resolve;
-  let reject;
-  const promise = new Promise((res, rej) => {
-    resolve = res;
-    reject = rej;
-  });
-  return {
-    promise,
-    resolve,
-    reject
-  };
-}
+var import_provider_utils7 = __nccwpck_require__(2458);
+var import_ui_utils3 = __nccwpck_require__(8715);
 
 // util/delayed-promise.ts
 var DelayedPromise = class {
@@ -18389,1197 +19334,51 @@ var DelayedPromise = class {
     return this.promise;
   }
   resolve(value) {
-    var _a11;
+    var _a15;
     this.status = { type: "resolved", value };
     if (this.promise) {
-      (_a11 = this._resolve) == null ? void 0 : _a11.call(this, value);
+      (_a15 = this._resolve) == null ? void 0 : _a15.call(this, value);
     }
   }
   reject(error) {
-    var _a11;
+    var _a15;
     this.status = { type: "rejected", error };
     if (this.promise) {
-      (_a11 = this._reject) == null ? void 0 : _a11.call(this, error);
+      (_a15 = this._reject) == null ? void 0 : _a15.call(this, error);
     }
   }
 };
 
-// core/util/now.ts
-function now() {
-  var _a11, _b;
-  return (_b = (_a11 = globalThis == null ? void 0 : globalThis.performance) == null ? void 0 : _a11.now()) != null ? _b : Date.now();
-}
-
-// core/generate-object/stream-object.ts
-var import_provider_utils7 = __nccwpck_require__(127);
-
-// core/util/prepare-outgoing-http-headers.ts
-function prepareOutgoingHttpHeaders(init, {
-  contentType,
-  dataStreamVersion
-}) {
-  const headers = {};
-  if ((init == null ? void 0 : init.headers) != null) {
-    for (const [key, value] of Object.entries(init.headers)) {
-      headers[key] = value;
-    }
-  }
-  if (headers["Content-Type"] == null) {
-    headers["Content-Type"] = contentType;
-  }
-  if (dataStreamVersion !== void 0) {
-    headers["X-Vercel-AI-Data-Stream"] = dataStreamVersion;
-  }
-  return headers;
-}
-
-// core/util/write-to-server-response.ts
-function writeToServerResponse({
-  response,
-  status,
-  statusText,
-  headers,
-  stream
-}) {
-  response.writeHead(status != null ? status : 200, statusText, headers);
-  const reader = stream.getReader();
-  const read = async () => {
-    try {
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done)
-          break;
-        response.write(value);
-      }
-    } catch (error) {
-      throw error;
-    } finally {
-      response.end();
-    }
-  };
-  read();
-}
-
-// core/generate-object/stream-object.ts
-var originalGenerateId2 = (0, import_provider_utils7.createIdGenerator)({ prefix: "aiobj-", size: 24 });
-async function streamObject({
-  model,
-  schema: inputSchema,
-  schemaName,
-  schemaDescription,
-  mode,
-  output = "object",
-  system,
-  prompt,
-  messages,
-  maxRetries,
-  abortSignal,
-  headers,
-  experimental_telemetry: telemetry,
-  experimental_providerMetadata: providerMetadata,
-  onFinish,
-  _internal: {
-    generateId: generateId3 = originalGenerateId2,
-    currentDate = () => /* @__PURE__ */ new Date(),
-    now: now2 = now
-  } = {},
-  ...settings
-}) {
-  var _a11;
-  validateObjectGenerationInput({
-    output,
-    mode,
-    schema: inputSchema,
-    schemaName,
-    schemaDescription
+// util/create-resolvable-promise.ts
+function createResolvablePromise() {
+  let resolve;
+  let reject;
+  const promise = new Promise((res, rej) => {
+    resolve = res;
+    reject = rej;
   });
-  const outputStrategy = getOutputStrategy({ output, schema: inputSchema });
-  if (outputStrategy.type === "no-schema" && mode === void 0) {
-    mode = "json";
-  }
-  const baseTelemetryAttributes = getBaseTelemetryAttributes({
-    model,
-    telemetry,
-    headers,
-    settings: { ...settings, maxRetries }
-  });
-  const tracer = getTracer({ isEnabled: (_a11 = telemetry == null ? void 0 : telemetry.isEnabled) != null ? _a11 : false });
-  const retry = retryWithExponentialBackoff({ maxRetries });
-  return recordSpan({
-    name: "ai.streamObject",
-    attributes: selectTelemetryAttributes({
-      telemetry,
-      attributes: {
-        ...assembleOperationName({
-          operationId: "ai.streamObject",
-          telemetry
-        }),
-        ...baseTelemetryAttributes,
-        // specific settings that only make sense on the outer level:
-        "ai.prompt": {
-          input: () => JSON.stringify({ system, prompt, messages })
-        },
-        "ai.schema": outputStrategy.jsonSchema != null ? { input: () => JSON.stringify(outputStrategy.jsonSchema) } : void 0,
-        "ai.schema.name": schemaName,
-        "ai.schema.description": schemaDescription,
-        "ai.settings.output": outputStrategy.type,
-        "ai.settings.mode": mode
-      }
-    }),
-    tracer,
-    endWhenDone: false,
-    fn: async (rootSpan) => {
-      if (mode === "auto" || mode == null) {
-        mode = model.defaultObjectGenerationMode;
-      }
-      let callOptions;
-      let transformer;
-      switch (mode) {
-        case "json": {
-          const validatedPrompt = validatePrompt({
-            system: outputStrategy.jsonSchema == null ? injectJsonInstruction({ prompt: system }) : model.supportsStructuredOutputs ? system : injectJsonInstruction({
-              prompt: system,
-              schema: outputStrategy.jsonSchema
-            }),
-            prompt,
-            messages
-          });
-          callOptions = {
-            mode: {
-              type: "object-json",
-              schema: outputStrategy.jsonSchema,
-              name: schemaName,
-              description: schemaDescription
-            },
-            ...prepareCallSettings(settings),
-            inputFormat: validatedPrompt.type,
-            prompt: await convertToLanguageModelPrompt({
-              prompt: validatedPrompt,
-              modelSupportsImageUrls: model.supportsImageUrls
-            }),
-            providerMetadata,
-            abortSignal,
-            headers
-          };
-          transformer = {
-            transform: (chunk, controller) => {
-              switch (chunk.type) {
-                case "text-delta":
-                  controller.enqueue(chunk.textDelta);
-                  break;
-                case "response-metadata":
-                case "finish":
-                case "error":
-                  controller.enqueue(chunk);
-                  break;
-              }
-            }
-          };
-          break;
-        }
-        case "tool": {
-          const validatedPrompt = validatePrompt({
-            system,
-            prompt,
-            messages
-          });
-          callOptions = {
-            mode: {
-              type: "object-tool",
-              tool: {
-                type: "function",
-                name: schemaName != null ? schemaName : "json",
-                description: schemaDescription != null ? schemaDescription : "Respond with a JSON object.",
-                parameters: outputStrategy.jsonSchema
-              }
-            },
-            ...prepareCallSettings(settings),
-            inputFormat: validatedPrompt.type,
-            prompt: await convertToLanguageModelPrompt({
-              prompt: validatedPrompt,
-              modelSupportsImageUrls: model.supportsImageUrls
-            }),
-            providerMetadata,
-            abortSignal,
-            headers
-          };
-          transformer = {
-            transform(chunk, controller) {
-              switch (chunk.type) {
-                case "tool-call-delta":
-                  controller.enqueue(chunk.argsTextDelta);
-                  break;
-                case "response-metadata":
-                case "finish":
-                case "error":
-                  controller.enqueue(chunk);
-                  break;
-              }
-            }
-          };
-          break;
-        }
-        case void 0: {
-          throw new Error(
-            "Model does not have a default object generation mode."
-          );
-        }
-        default: {
-          const _exhaustiveCheck = mode;
-          throw new Error(`Unsupported mode: ${_exhaustiveCheck}`);
-        }
-      }
-      const {
-        result: { stream, warnings, rawResponse },
-        doStreamSpan,
-        startTimestampMs
-      } = await retry(
-        () => recordSpan({
-          name: "ai.streamObject.doStream",
-          attributes: selectTelemetryAttributes({
-            telemetry,
-            attributes: {
-              ...assembleOperationName({
-                operationId: "ai.streamObject.doStream",
-                telemetry
-              }),
-              ...baseTelemetryAttributes,
-              "ai.prompt.format": {
-                input: () => callOptions.inputFormat
-              },
-              "ai.prompt.messages": {
-                input: () => JSON.stringify(callOptions.prompt)
-              },
-              "ai.settings.mode": mode,
-              // standardized gen-ai llm span attributes:
-              "gen_ai.system": model.provider,
-              "gen_ai.request.model": model.modelId,
-              "gen_ai.request.frequency_penalty": settings.frequencyPenalty,
-              "gen_ai.request.max_tokens": settings.maxTokens,
-              "gen_ai.request.presence_penalty": settings.presencePenalty,
-              "gen_ai.request.temperature": settings.temperature,
-              "gen_ai.request.top_k": settings.topK,
-              "gen_ai.request.top_p": settings.topP
-            }
-          }),
-          tracer,
-          endWhenDone: false,
-          fn: async (doStreamSpan2) => ({
-            startTimestampMs: now2(),
-            doStreamSpan: doStreamSpan2,
-            result: await model.doStream(callOptions)
-          })
-        })
-      );
-      return new DefaultStreamObjectResult({
-        outputStrategy,
-        stream: stream.pipeThrough(new TransformStream(transformer)),
-        warnings,
-        rawResponse,
-        onFinish,
-        rootSpan,
-        doStreamSpan,
-        telemetry,
-        startTimestampMs,
-        modelId: model.modelId,
-        now: now2,
-        currentDate,
-        generateId: generateId3
-      });
-    }
-  });
-}
-var DefaultStreamObjectResult = class {
-  constructor({
-    stream,
-    warnings,
-    rawResponse,
-    outputStrategy,
-    onFinish,
-    rootSpan,
-    doStreamSpan,
-    telemetry,
-    startTimestampMs,
-    modelId,
-    now: now2,
-    currentDate,
-    generateId: generateId3
-  }) {
-    this.warnings = warnings;
-    this.rawResponse = rawResponse;
-    this.outputStrategy = outputStrategy;
-    this.objectPromise = new DelayedPromise();
-    const { resolve: resolveUsage, promise: usagePromise } = createResolvablePromise();
-    this.usage = usagePromise;
-    const { resolve: resolveResponse, promise: responsePromise } = createResolvablePromise();
-    this.response = responsePromise;
-    const {
-      resolve: resolveProviderMetadata,
-      promise: providerMetadataPromise
-    } = createResolvablePromise();
-    this.experimental_providerMetadata = providerMetadataPromise;
-    let usage;
-    let finishReason;
-    let providerMetadata;
-    let object;
-    let error;
-    let accumulatedText = "";
-    let textDelta = "";
-    let response = {
-      id: generateId3(),
-      timestamp: currentDate(),
-      modelId
-    };
-    let latestObjectJson = void 0;
-    let latestObject = void 0;
-    let isFirstChunk = true;
-    let isFirstDelta = true;
-    const self = this;
-    this.originalStream = stream.pipeThrough(
-      new TransformStream({
-        async transform(chunk, controller) {
-          var _a11, _b, _c;
-          if (isFirstChunk) {
-            const msToFirstChunk = now2() - startTimestampMs;
-            isFirstChunk = false;
-            doStreamSpan.addEvent("ai.stream.firstChunk", {
-              "ai.stream.msToFirstChunk": msToFirstChunk
-            });
-            doStreamSpan.setAttributes({
-              "ai.stream.msToFirstChunk": msToFirstChunk
-            });
-          }
-          if (typeof chunk === "string") {
-            accumulatedText += chunk;
-            textDelta += chunk;
-            const { value: currentObjectJson, state: parseState } = (0, import_ui_utils2.parsePartialJson)(accumulatedText);
-            if (currentObjectJson !== void 0 && !(0, import_ui_utils2.isDeepEqualData)(latestObjectJson, currentObjectJson)) {
-              const validationResult = outputStrategy.validatePartialResult({
-                value: currentObjectJson,
-                textDelta,
-                latestObject,
-                isFirstDelta,
-                isFinalDelta: parseState === "successful-parse"
-              });
-              if (validationResult.success && !(0, import_ui_utils2.isDeepEqualData)(latestObject, validationResult.value.partial)) {
-                latestObjectJson = currentObjectJson;
-                latestObject = validationResult.value.partial;
-                controller.enqueue({
-                  type: "object",
-                  object: latestObject
-                });
-                controller.enqueue({
-                  type: "text-delta",
-                  textDelta: validationResult.value.textDelta
-                });
-                textDelta = "";
-                isFirstDelta = false;
-              }
-            }
-            return;
-          }
-          switch (chunk.type) {
-            case "response-metadata": {
-              response = {
-                id: (_a11 = chunk.id) != null ? _a11 : response.id,
-                timestamp: (_b = chunk.timestamp) != null ? _b : response.timestamp,
-                modelId: (_c = chunk.modelId) != null ? _c : response.modelId
-              };
-              break;
-            }
-            case "finish": {
-              if (textDelta !== "") {
-                controller.enqueue({ type: "text-delta", textDelta });
-              }
-              finishReason = chunk.finishReason;
-              usage = calculateLanguageModelUsage(chunk.usage);
-              providerMetadata = chunk.providerMetadata;
-              controller.enqueue({ ...chunk, usage, response });
-              resolveUsage(usage);
-              resolveProviderMetadata(providerMetadata);
-              resolveResponse({
-                ...response,
-                headers: rawResponse == null ? void 0 : rawResponse.headers
-              });
-              const validationResult = outputStrategy.validateFinalResult(latestObjectJson);
-              if (validationResult.success) {
-                object = validationResult.value;
-                self.objectPromise.resolve(object);
-              } else {
-                error = validationResult.error;
-                self.objectPromise.reject(error);
-              }
-              break;
-            }
-            default: {
-              controller.enqueue(chunk);
-              break;
-            }
-          }
-        },
-        // invoke onFinish callback and resolve toolResults promise when the stream is about to close:
-        async flush(controller) {
-          try {
-            const finalUsage = usage != null ? usage : {
-              promptTokens: NaN,
-              completionTokens: NaN,
-              totalTokens: NaN
-            };
-            doStreamSpan.setAttributes(
-              selectTelemetryAttributes({
-                telemetry,
-                attributes: {
-                  "ai.response.finishReason": finishReason,
-                  "ai.response.object": {
-                    output: () => JSON.stringify(object)
-                  },
-                  "ai.response.id": response.id,
-                  "ai.response.model": response.modelId,
-                  "ai.response.timestamp": response.timestamp.toISOString(),
-                  "ai.usage.promptTokens": finalUsage.promptTokens,
-                  "ai.usage.completionTokens": finalUsage.completionTokens,
-                  // deprecated
-                  "ai.finishReason": finishReason,
-                  "ai.result.object": { output: () => JSON.stringify(object) },
-                  // standardized gen-ai llm span attributes:
-                  "gen_ai.response.finish_reasons": [finishReason],
-                  "gen_ai.response.id": response.id,
-                  "gen_ai.response.model": response.modelId,
-                  "gen_ai.usage.input_tokens": finalUsage.promptTokens,
-                  "gen_ai.usage.output_tokens": finalUsage.completionTokens
-                }
-              })
-            );
-            doStreamSpan.end();
-            rootSpan.setAttributes(
-              selectTelemetryAttributes({
-                telemetry,
-                attributes: {
-                  "ai.usage.promptTokens": finalUsage.promptTokens,
-                  "ai.usage.completionTokens": finalUsage.completionTokens,
-                  "ai.response.object": {
-                    output: () => JSON.stringify(object)
-                  },
-                  // deprecated
-                  "ai.result.object": { output: () => JSON.stringify(object) }
-                }
-              })
-            );
-            await (onFinish == null ? void 0 : onFinish({
-              usage: finalUsage,
-              object,
-              error,
-              rawResponse,
-              response: {
-                ...response,
-                headers: rawResponse == null ? void 0 : rawResponse.headers
-              },
-              warnings,
-              experimental_providerMetadata: providerMetadata
-            }));
-          } catch (error2) {
-            controller.error(error2);
-          } finally {
-            rootSpan.end();
-          }
-        }
-      })
-    );
-  }
-  get object() {
-    return this.objectPromise.value;
-  }
-  get partialObjectStream() {
-    return createAsyncIterableStream(this.originalStream, {
-      transform(chunk, controller) {
-        switch (chunk.type) {
-          case "object":
-            controller.enqueue(chunk.object);
-            break;
-          case "text-delta":
-          case "finish":
-            break;
-          case "error":
-            controller.error(chunk.error);
-            break;
-          default: {
-            const _exhaustiveCheck = chunk;
-            throw new Error(`Unsupported chunk type: ${_exhaustiveCheck}`);
-          }
-        }
-      }
-    });
-  }
-  get elementStream() {
-    return this.outputStrategy.createElementStream(this.originalStream);
-  }
-  get textStream() {
-    return createAsyncIterableStream(this.originalStream, {
-      transform(chunk, controller) {
-        switch (chunk.type) {
-          case "text-delta":
-            controller.enqueue(chunk.textDelta);
-            break;
-          case "object":
-          case "finish":
-            break;
-          case "error":
-            controller.error(chunk.error);
-            break;
-          default: {
-            const _exhaustiveCheck = chunk;
-            throw new Error(`Unsupported chunk type: ${_exhaustiveCheck}`);
-          }
-        }
-      }
-    });
-  }
-  get fullStream() {
-    return createAsyncIterableStream(this.originalStream, {
-      transform(chunk, controller) {
-        controller.enqueue(chunk);
-      }
-    });
-  }
-  pipeTextStreamToResponse(response, init) {
-    writeToServerResponse({
-      response,
-      status: init == null ? void 0 : init.status,
-      statusText: init == null ? void 0 : init.statusText,
-      headers: prepareOutgoingHttpHeaders(init, {
-        contentType: "text/plain; charset=utf-8"
-      }),
-      stream: this.textStream.pipeThrough(new TextEncoderStream())
-    });
-  }
-  toTextStreamResponse(init) {
-    var _a11;
-    return new Response(this.textStream.pipeThrough(new TextEncoderStream()), {
-      status: (_a11 = init == null ? void 0 : init.status) != null ? _a11 : 200,
-      headers: prepareResponseHeaders(init, {
-        contentType: "text/plain; charset=utf-8"
-      })
-    });
-  }
-};
-var experimental_streamObject = streamObject;
-
-// core/generate-text/generate-text.ts
-var import_provider_utils9 = __nccwpck_require__(127);
-
-// errors/index.ts
-var import_provider13 = __nccwpck_require__(8892);
-
-// errors/invalid-tool-arguments-error.ts
-var import_provider10 = __nccwpck_require__(8892);
-var name7 = "AI_InvalidToolArgumentsError";
-var marker7 = `vercel.ai.error.${name7}`;
-var symbol7 = Symbol.for(marker7);
-var _a7;
-var InvalidToolArgumentsError = class extends import_provider10.AISDKError {
-  constructor({
-    toolArgs,
-    toolName,
-    cause,
-    message = `Invalid arguments for tool ${toolName}: ${(0, import_provider10.getErrorMessage)(
-      cause
-    )}`
-  }) {
-    super({ name: name7, message, cause });
-    this[_a7] = true;
-    this.toolArgs = toolArgs;
-    this.toolName = toolName;
-  }
-  static isInstance(error) {
-    return import_provider10.AISDKError.hasMarker(error, marker7);
-  }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isInvalidToolArgumentsError(error) {
-    return error instanceof Error && error.name === name7 && typeof error.toolName === "string" && typeof error.toolArgs === "string";
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      cause: this.cause,
-      stack: this.stack,
-      toolName: this.toolName,
-      toolArgs: this.toolArgs
-    };
-  }
-};
-_a7 = symbol7;
-
-// errors/no-such-tool-error.ts
-var import_provider11 = __nccwpck_require__(8892);
-var name8 = "AI_NoSuchToolError";
-var marker8 = `vercel.ai.error.${name8}`;
-var symbol8 = Symbol.for(marker8);
-var _a8;
-var NoSuchToolError = class extends import_provider11.AISDKError {
-  constructor({
-    toolName,
-    availableTools = void 0,
-    message = `Model tried to call unavailable tool '${toolName}'. ${availableTools === void 0 ? "No tools are available." : `Available tools: ${availableTools.join(", ")}.`}`
-  }) {
-    super({ name: name8, message });
-    this[_a8] = true;
-    this.toolName = toolName;
-    this.availableTools = availableTools;
-  }
-  static isInstance(error) {
-    return import_provider11.AISDKError.hasMarker(error, marker8);
-  }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isNoSuchToolError(error) {
-    return error instanceof Error && error.name === name8 && "toolName" in error && error.toolName != void 0 && typeof error.name === "string";
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      stack: this.stack,
-      toolName: this.toolName,
-      availableTools: this.availableTools
-    };
-  }
-};
-_a8 = symbol8;
-
-// core/prompt/message-conversion-error.ts
-var import_provider12 = __nccwpck_require__(8892);
-var name9 = "AI_MessageConversionError";
-var marker9 = `vercel.ai.error.${name9}`;
-var symbol9 = Symbol.for(marker9);
-var _a9;
-var MessageConversionError = class extends import_provider12.AISDKError {
-  constructor({
-    originalMessage,
-    message
-  }) {
-    super({ name: name9, message });
-    this[_a9] = true;
-    this.originalMessage = originalMessage;
-  }
-  static isInstance(error) {
-    return import_provider12.AISDKError.hasMarker(error, marker9);
-  }
-};
-_a9 = symbol9;
-
-// core/prompt/prepare-tools-and-tool-choice.ts
-var import_ui_utils3 = __nccwpck_require__(6066);
-
-// core/util/is-non-empty-object.ts
-function isNonEmptyObject(object) {
-  return object != null && Object.keys(object).length > 0;
-}
-
-// core/prompt/prepare-tools-and-tool-choice.ts
-function prepareToolsAndToolChoice({
-  tools,
-  toolChoice
-}) {
-  if (!isNonEmptyObject(tools)) {
-    return {
-      tools: void 0,
-      toolChoice: void 0
-    };
-  }
   return {
-    tools: Object.entries(tools).map(([name11, tool2]) => ({
-      type: "function",
-      name: name11,
-      description: tool2.description,
-      parameters: (0, import_ui_utils3.asSchema)(tool2.parameters).jsonSchema
-    })),
-    toolChoice: toolChoice == null ? { type: "auto" } : typeof toolChoice === "string" ? { type: toolChoice } : { type: "tool", toolName: toolChoice.toolName }
+    promise,
+    resolve,
+    reject
   };
 }
-
-// core/util/split-on-last-whitespace.ts
-var lastWhitespaceRegexp = /^([\s\S]*?)(\s+)(\S*)$/;
-function splitOnLastWhitespace(text) {
-  const match = text.match(lastWhitespaceRegexp);
-  return match ? { prefix: match[1], whitespace: match[2], suffix: match[3] } : void 0;
-}
-
-// core/util/remove-text-after-last-whitespace.ts
-function removeTextAfterLastWhitespace(text) {
-  const match = splitOnLastWhitespace(text);
-  return match ? match.prefix + match.whitespace : text;
-}
-
-// core/generate-text/parse-tool-call.ts
-var import_provider_utils8 = __nccwpck_require__(127);
-var import_ui_utils4 = __nccwpck_require__(6066);
-function parseToolCall({
-  toolCall,
-  tools
-}) {
-  const toolName = toolCall.toolName;
-  if (tools == null) {
-    throw new NoSuchToolError({ toolName: toolCall.toolName });
-  }
-  const tool2 = tools[toolName];
-  if (tool2 == null) {
-    throw new NoSuchToolError({
-      toolName: toolCall.toolName,
-      availableTools: Object.keys(tools)
-    });
-  }
-  const schema = (0, import_ui_utils4.asSchema)(tool2.parameters);
-  const parseResult = toolCall.args.trim() === "" ? (0, import_provider_utils8.safeValidateTypes)({ value: {}, schema }) : (0, import_provider_utils8.safeParseJSON)({ text: toolCall.args, schema });
-  if (parseResult.success === false) {
-    throw new InvalidToolArgumentsError({
-      toolName,
-      toolArgs: toolCall.args,
-      cause: parseResult.error
-    });
-  }
-  return {
-    type: "tool-call",
-    toolCallId: toolCall.toolCallId,
-    toolName,
-    args: parseResult.value
-  };
-}
-
-// core/generate-text/to-response-messages.ts
-function toResponseMessages({
-  text = "",
-  toolCalls,
-  toolResults
-}) {
-  const responseMessages = [];
-  responseMessages.push({
-    role: "assistant",
-    content: [{ type: "text", text }, ...toolCalls]
-  });
-  if (toolResults.length > 0) {
-    responseMessages.push({
-      role: "tool",
-      content: toolResults.map((result) => ({
-        type: "tool-result",
-        toolCallId: result.toolCallId,
-        toolName: result.toolName,
-        result: result.result
-      }))
-    });
-  }
-  return responseMessages;
-}
-
-// core/generate-text/generate-text.ts
-var originalGenerateId3 = (0, import_provider_utils9.createIdGenerator)({ prefix: "aitxt-", size: 24 });
-async function generateText({
-  model,
-  tools,
-  toolChoice,
-  system,
-  prompt,
-  messages,
-  maxRetries,
-  abortSignal,
-  headers,
-  maxAutomaticRoundtrips = 0,
-  maxToolRoundtrips = maxAutomaticRoundtrips,
-  maxSteps = maxToolRoundtrips != null ? maxToolRoundtrips + 1 : 1,
-  experimental_continuationSteps,
-  experimental_continueSteps: continueSteps = experimental_continuationSteps != null ? experimental_continuationSteps : false,
-  experimental_telemetry: telemetry,
-  experimental_providerMetadata: providerMetadata,
-  _internal: {
-    generateId: generateId3 = originalGenerateId3,
-    currentDate = () => /* @__PURE__ */ new Date()
-  } = {},
-  onStepFinish,
-  ...settings
-}) {
-  var _a11;
-  if (maxSteps < 1) {
-    throw new InvalidArgumentError({
-      parameter: "maxSteps",
-      value: maxSteps,
-      message: "maxSteps must be at least 1"
-    });
-  }
-  const baseTelemetryAttributes = getBaseTelemetryAttributes({
-    model,
-    telemetry,
-    headers,
-    settings: { ...settings, maxRetries }
-  });
-  const tracer = getTracer({ isEnabled: (_a11 = telemetry == null ? void 0 : telemetry.isEnabled) != null ? _a11 : false });
-  return recordSpan({
-    name: "ai.generateText",
-    attributes: selectTelemetryAttributes({
-      telemetry,
-      attributes: {
-        ...assembleOperationName({
-          operationId: "ai.generateText",
-          telemetry
-        }),
-        ...baseTelemetryAttributes,
-        // specific settings that only make sense on the outer level:
-        "ai.prompt": {
-          input: () => JSON.stringify({ system, prompt, messages })
-        },
-        "ai.settings.maxSteps": maxSteps
-      }
-    }),
-    tracer,
-    fn: async (span) => {
-      var _a12, _b, _c, _d, _e;
-      const retry = retryWithExponentialBackoff({ maxRetries });
-      const validatedPrompt = validatePrompt({
-        system,
-        prompt,
-        messages
-      });
-      const mode = {
-        type: "regular",
-        ...prepareToolsAndToolChoice({ tools, toolChoice })
-      };
-      const callSettings = prepareCallSettings(settings);
-      const promptMessages = await convertToLanguageModelPrompt({
-        prompt: validatedPrompt,
-        modelSupportsImageUrls: model.supportsImageUrls
-      });
-      let currentModelResponse;
-      let currentToolCalls = [];
-      let currentToolResults = [];
-      let stepCount = 0;
-      const responseMessages = [];
-      let text = "";
-      const steps = [];
-      const usage = {
-        completionTokens: 0,
-        promptTokens: 0,
-        totalTokens: 0
-      };
-      let stepType = "initial";
-      do {
-        const currentInputFormat = stepCount === 0 ? validatedPrompt.type : "messages";
-        currentModelResponse = await retry(
-          () => recordSpan({
-            name: "ai.generateText.doGenerate",
-            attributes: selectTelemetryAttributes({
-              telemetry,
-              attributes: {
-                ...assembleOperationName({
-                  operationId: "ai.generateText.doGenerate",
-                  telemetry
-                }),
-                ...baseTelemetryAttributes,
-                "ai.prompt.format": { input: () => currentInputFormat },
-                "ai.prompt.messages": {
-                  input: () => JSON.stringify(promptMessages)
-                },
-                // standardized gen-ai llm span attributes:
-                "gen_ai.system": model.provider,
-                "gen_ai.request.model": model.modelId,
-                "gen_ai.request.frequency_penalty": settings.frequencyPenalty,
-                "gen_ai.request.max_tokens": settings.maxTokens,
-                "gen_ai.request.presence_penalty": settings.presencePenalty,
-                "gen_ai.request.stop_sequences": settings.stopSequences,
-                "gen_ai.request.temperature": settings.temperature,
-                "gen_ai.request.top_k": settings.topK,
-                "gen_ai.request.top_p": settings.topP
-              }
-            }),
-            tracer,
-            fn: async (span2) => {
-              var _a13, _b2, _c2, _d2, _e2, _f;
-              const result = await model.doGenerate({
-                mode,
-                ...callSettings,
-                inputFormat: currentInputFormat,
-                prompt: promptMessages,
-                providerMetadata,
-                abortSignal,
-                headers
-              });
-              const responseData = {
-                id: (_b2 = (_a13 = result.response) == null ? void 0 : _a13.id) != null ? _b2 : generateId3(),
-                timestamp: (_d2 = (_c2 = result.response) == null ? void 0 : _c2.timestamp) != null ? _d2 : currentDate(),
-                modelId: (_f = (_e2 = result.response) == null ? void 0 : _e2.modelId) != null ? _f : model.modelId
-              };
-              span2.setAttributes(
-                selectTelemetryAttributes({
-                  telemetry,
-                  attributes: {
-                    "ai.response.finishReason": result.finishReason,
-                    "ai.response.text": {
-                      output: () => result.text
-                    },
-                    "ai.response.toolCalls": {
-                      output: () => JSON.stringify(result.toolCalls)
-                    },
-                    "ai.response.id": responseData.id,
-                    "ai.response.model": responseData.modelId,
-                    "ai.response.timestamp": responseData.timestamp.toISOString(),
-                    "ai.usage.promptTokens": result.usage.promptTokens,
-                    "ai.usage.completionTokens": result.usage.completionTokens,
-                    // deprecated:
-                    "ai.finishReason": result.finishReason,
-                    "ai.result.text": {
-                      output: () => result.text
-                    },
-                    "ai.result.toolCalls": {
-                      output: () => JSON.stringify(result.toolCalls)
-                    },
-                    // standardized gen-ai llm span attributes:
-                    "gen_ai.response.finish_reasons": [result.finishReason],
-                    "gen_ai.response.id": responseData.id,
-                    "gen_ai.response.model": responseData.modelId,
-                    "gen_ai.usage.input_tokens": result.usage.promptTokens,
-                    "gen_ai.usage.output_tokens": result.usage.completionTokens
-                  }
-                })
-              );
-              return { ...result, response: responseData };
-            }
-          })
-        );
-        currentToolCalls = ((_a12 = currentModelResponse.toolCalls) != null ? _a12 : []).map(
-          (modelToolCall) => parseToolCall({ toolCall: modelToolCall, tools })
-        );
-        currentToolResults = tools == null ? [] : await executeTools({
-          toolCalls: currentToolCalls,
-          tools,
-          tracer,
-          telemetry
-        });
-        const currentUsage = calculateLanguageModelUsage(
-          currentModelResponse.usage
-        );
-        usage.completionTokens += currentUsage.completionTokens;
-        usage.promptTokens += currentUsage.promptTokens;
-        usage.totalTokens += currentUsage.totalTokens;
-        let nextStepType = "done";
-        if (++stepCount < maxSteps) {
-          if (continueSteps && currentModelResponse.finishReason === "length" && // only use continue when there are no tool calls:
-          currentToolCalls.length === 0) {
-            nextStepType = "continue";
-          } else if (
-            // there are tool calls:
-            currentToolCalls.length > 0 && // all current tool calls have results:
-            currentToolResults.length === currentToolCalls.length
-          ) {
-            nextStepType = "tool-result";
-          }
-        }
-        const stepText = nextStepType === "continue" ? removeTextAfterLastWhitespace((_b = currentModelResponse.text) != null ? _b : "") : (_c = currentModelResponse.text) != null ? _c : "";
-        text = nextStepType === "continue" || stepType === "continue" ? text + stepText : stepText;
-        const currentStep = {
-          stepType,
-          text: stepText,
-          toolCalls: currentToolCalls,
-          toolResults: currentToolResults,
-          finishReason: currentModelResponse.finishReason,
-          usage: currentUsage,
-          warnings: currentModelResponse.warnings,
-          logprobs: currentModelResponse.logprobs,
-          response: {
-            ...currentModelResponse.response,
-            headers: (_d = currentModelResponse.rawResponse) == null ? void 0 : _d.headers
-          },
-          experimental_providerMetadata: currentModelResponse.providerMetadata,
-          isContinued: nextStepType === "continue"
-        };
-        steps.push(currentStep);
-        await (onStepFinish == null ? void 0 : onStepFinish(currentStep));
-        if (stepType === "continue") {
-          const lastResponseMessage = responseMessages.pop();
-          promptMessages.pop();
-          if (typeof lastResponseMessage.content === "string") {
-            lastResponseMessage.content = text;
-          } else {
-            lastResponseMessage.content.push({
-              text: stepText,
-              type: "text"
-            });
-          }
-          responseMessages.push(lastResponseMessage);
-          promptMessages.push(
-            convertToLanguageModelMessage(lastResponseMessage, null)
-          );
-        } else if (nextStepType === "continue") {
-          const newResponseMessages = toResponseMessages({
-            text,
-            toolCalls: currentToolCalls,
-            toolResults: currentToolResults
-          });
-          responseMessages.push(...newResponseMessages);
-          promptMessages.push(
-            ...newResponseMessages.map(
-              (message) => convertToLanguageModelMessage(message, null)
-            )
-          );
-        } else {
-          const newResponseMessages = toResponseMessages({
-            text: currentModelResponse.text,
-            toolCalls: currentToolCalls,
-            toolResults: currentToolResults
-          });
-          responseMessages.push(...newResponseMessages);
-          promptMessages.push(
-            ...newResponseMessages.map(
-              (message) => convertToLanguageModelMessage(message, null)
-            )
-          );
-        }
-        stepType = nextStepType;
-      } while (stepType !== "done");
-      span.setAttributes(
-        selectTelemetryAttributes({
-          telemetry,
-          attributes: {
-            "ai.response.finishReason": currentModelResponse.finishReason,
-            "ai.response.text": {
-              output: () => currentModelResponse.text
-            },
-            "ai.response.toolCalls": {
-              output: () => JSON.stringify(currentModelResponse.toolCalls)
-            },
-            "ai.usage.promptTokens": currentModelResponse.usage.promptTokens,
-            "ai.usage.completionTokens": currentModelResponse.usage.completionTokens,
-            // deprecated:
-            "ai.finishReason": currentModelResponse.finishReason,
-            "ai.result.text": {
-              output: () => currentModelResponse.text
-            },
-            "ai.result.toolCalls": {
-              output: () => JSON.stringify(currentModelResponse.toolCalls)
-            }
-          }
-        })
-      );
-      return new DefaultGenerateTextResult({
-        text,
-        toolCalls: currentToolCalls,
-        toolResults: currentToolResults,
-        finishReason: currentModelResponse.finishReason,
-        usage,
-        warnings: currentModelResponse.warnings,
-        response: {
-          ...currentModelResponse.response,
-          headers: (_e = currentModelResponse.rawResponse) == null ? void 0 : _e.headers
-        },
-        logprobs: currentModelResponse.logprobs,
-        responseMessages,
-        steps,
-        providerMetadata: currentModelResponse.providerMetadata
-      });
-    }
-  });
-}
-async function executeTools({
-  toolCalls,
-  tools,
-  tracer,
-  telemetry
-}) {
-  const toolResults = await Promise.all(
-    toolCalls.map(async (toolCall) => {
-      const tool2 = tools[toolCall.toolName];
-      if ((tool2 == null ? void 0 : tool2.execute) == null) {
-        return void 0;
-      }
-      const result = await recordSpan({
-        name: "ai.toolCall",
-        attributes: selectTelemetryAttributes({
-          telemetry,
-          attributes: {
-            ...assembleOperationName({
-              operationId: "ai.toolCall",
-              telemetry
-            }),
-            "ai.toolCall.name": toolCall.toolName,
-            "ai.toolCall.id": toolCall.toolCallId,
-            "ai.toolCall.args": {
-              output: () => JSON.stringify(toolCall.args)
-            }
-          }
-        }),
-        tracer,
-        fn: async (span) => {
-          const result2 = await tool2.execute(toolCall.args);
-          try {
-            span.setAttributes(
-              selectTelemetryAttributes({
-                telemetry,
-                attributes: {
-                  "ai.toolCall.result": {
-                    output: () => JSON.stringify(result2)
-                  }
-                }
-              })
-            );
-          } catch (ignored) {
-          }
-          return result2;
-        }
-      });
-      return {
-        toolCallId: toolCall.toolCallId,
-        toolName: toolCall.toolName,
-        args: toolCall.args,
-        result
-      };
-    })
-  );
-  return toolResults.filter(
-    (result) => result != null
-  );
-}
-var DefaultGenerateTextResult = class {
-  constructor(options) {
-    this.text = options.text;
-    this.toolCalls = options.toolCalls;
-    this.toolResults = options.toolResults;
-    this.finishReason = options.finishReason;
-    this.usage = options.usage;
-    this.warnings = options.warnings;
-    this.response = options.response;
-    this.responseMessages = options.responseMessages;
-    this.roundtrips = options.steps;
-    this.steps = options.steps;
-    this.experimental_providerMetadata = options.providerMetadata;
-    this.rawResponse = {
-      headers: options.response.headers
-    };
-    this.logprobs = options.logprobs;
-  }
-};
-var experimental_generateText = generateText;
-
-// core/generate-text/stream-text.ts
-var import_provider_utils10 = __nccwpck_require__(127);
 
 // core/util/create-stitchable-stream.ts
 function createStitchableStream() {
   let innerStreamReaders = [];
   let controller = null;
   let isClosed = false;
+  let waitForNewStream = createResolvablePromise();
   const processPull = async () => {
     if (isClosed && innerStreamReaders.length === 0) {
       controller == null ? void 0 : controller.close();
       return;
     }
     if (innerStreamReaders.length === 0) {
-      return;
+      waitForNewStream = createResolvablePromise();
+      await waitForNewStream.promise;
+      return processPull();
     }
     try {
       const { value, done } = await innerStreamReaders[0].read();
@@ -19620,14 +19419,1465 @@ function createStitchableStream() {
         throw new Error("Cannot add inner stream: outer stream is closed");
       }
       innerStreamReaders.push(innerStream.getReader());
+      waitForNewStream.resolve();
     },
+    /**
+     * Gracefully close the outer stream. This will let the inner streams
+     * finish processing and then close the outer stream.
+     */
     close: () => {
       isClosed = true;
+      waitForNewStream.resolve();
       if (innerStreamReaders.length === 0) {
         controller == null ? void 0 : controller.close();
       }
+    },
+    /**
+     * Immediately close the outer stream. This will cancel all inner streams
+     * and close the outer stream.
+     */
+    terminate: () => {
+      isClosed = true;
+      waitForNewStream.resolve();
+      innerStreamReaders.forEach((reader) => reader.cancel());
+      innerStreamReaders = [];
+      controller == null ? void 0 : controller.close();
     }
   };
+}
+
+// core/util/now.ts
+function now() {
+  var _a15, _b;
+  return (_b = (_a15 = globalThis == null ? void 0 : globalThis.performance) == null ? void 0 : _a15.now()) != null ? _b : Date.now();
+}
+
+// core/generate-object/stream-object.ts
+var originalGenerateId2 = (0, import_provider_utils7.createIdGenerator)({ prefix: "aiobj", size: 24 });
+function streamObject({
+  model,
+  schema: inputSchema,
+  schemaName,
+  schemaDescription,
+  mode,
+  output = "object",
+  system,
+  prompt,
+  messages,
+  maxRetries,
+  abortSignal,
+  headers,
+  experimental_telemetry: telemetry,
+  experimental_providerMetadata,
+  providerOptions = experimental_providerMetadata,
+  onFinish,
+  _internal: {
+    generateId: generateId3 = originalGenerateId2,
+    currentDate = () => /* @__PURE__ */ new Date(),
+    now: now2 = now
+  } = {},
+  ...settings
+}) {
+  validateObjectGenerationInput({
+    output,
+    mode,
+    schema: inputSchema,
+    schemaName,
+    schemaDescription
+  });
+  const outputStrategy = getOutputStrategy({ output, schema: inputSchema });
+  if (outputStrategy.type === "no-schema" && mode === void 0) {
+    mode = "json";
+  }
+  return new DefaultStreamObjectResult({
+    model,
+    telemetry,
+    headers,
+    settings,
+    maxRetries,
+    abortSignal,
+    outputStrategy,
+    system,
+    prompt,
+    messages,
+    schemaName,
+    schemaDescription,
+    providerOptions,
+    mode,
+    onFinish,
+    generateId: generateId3,
+    currentDate,
+    now: now2
+  });
+}
+var DefaultStreamObjectResult = class {
+  constructor({
+    model,
+    headers,
+    telemetry,
+    settings,
+    maxRetries: maxRetriesArg,
+    abortSignal,
+    outputStrategy,
+    system,
+    prompt,
+    messages,
+    schemaName,
+    schemaDescription,
+    providerOptions,
+    mode,
+    onFinish,
+    generateId: generateId3,
+    currentDate,
+    now: now2
+  }) {
+    this.objectPromise = new DelayedPromise();
+    this.usagePromise = new DelayedPromise();
+    this.providerMetadataPromise = new DelayedPromise();
+    this.warningsPromise = new DelayedPromise();
+    this.requestPromise = new DelayedPromise();
+    this.responsePromise = new DelayedPromise();
+    this.stitchableStream = createStitchableStream();
+    const { maxRetries, retry } = prepareRetries({
+      maxRetries: maxRetriesArg
+    });
+    const baseTelemetryAttributes = getBaseTelemetryAttributes({
+      model,
+      telemetry,
+      headers,
+      settings: { ...settings, maxRetries }
+    });
+    const tracer = getTracer(telemetry);
+    const self = this;
+    recordSpan({
+      name: "ai.streamObject",
+      attributes: selectTelemetryAttributes({
+        telemetry,
+        attributes: {
+          ...assembleOperationName({
+            operationId: "ai.streamObject",
+            telemetry
+          }),
+          ...baseTelemetryAttributes,
+          // specific settings that only make sense on the outer level:
+          "ai.prompt": {
+            input: () => JSON.stringify({ system, prompt, messages })
+          },
+          "ai.schema": outputStrategy.jsonSchema != null ? { input: () => JSON.stringify(outputStrategy.jsonSchema) } : void 0,
+          "ai.schema.name": schemaName,
+          "ai.schema.description": schemaDescription,
+          "ai.settings.output": outputStrategy.type,
+          "ai.settings.mode": mode
+        }
+      }),
+      tracer,
+      endWhenDone: false,
+      fn: async (rootSpan) => {
+        var _a15, _b;
+        if (mode === "auto" || mode == null) {
+          mode = model.defaultObjectGenerationMode;
+        }
+        let callOptions;
+        let transformer;
+        switch (mode) {
+          case "json": {
+            const standardizedPrompt = standardizePrompt({
+              prompt: {
+                system: outputStrategy.jsonSchema == null ? injectJsonInstruction({ prompt: system }) : model.supportsStructuredOutputs ? system : injectJsonInstruction({
+                  prompt: system,
+                  schema: outputStrategy.jsonSchema
+                }),
+                prompt,
+                messages
+              },
+              tools: void 0
+            });
+            callOptions = {
+              mode: {
+                type: "object-json",
+                schema: outputStrategy.jsonSchema,
+                name: schemaName,
+                description: schemaDescription
+              },
+              ...prepareCallSettings(settings),
+              inputFormat: standardizedPrompt.type,
+              prompt: await convertToLanguageModelPrompt({
+                prompt: standardizedPrompt,
+                modelSupportsImageUrls: model.supportsImageUrls,
+                modelSupportsUrl: (_a15 = model.supportsUrl) == null ? void 0 : _a15.bind(model)
+                // support 'this' context
+              }),
+              providerMetadata: providerOptions,
+              abortSignal,
+              headers
+            };
+            transformer = {
+              transform: (chunk, controller) => {
+                switch (chunk.type) {
+                  case "text-delta":
+                    controller.enqueue(chunk.textDelta);
+                    break;
+                  case "response-metadata":
+                  case "finish":
+                  case "error":
+                    controller.enqueue(chunk);
+                    break;
+                }
+              }
+            };
+            break;
+          }
+          case "tool": {
+            const standardizedPrompt = standardizePrompt({
+              prompt: { system, prompt, messages },
+              tools: void 0
+            });
+            callOptions = {
+              mode: {
+                type: "object-tool",
+                tool: {
+                  type: "function",
+                  name: schemaName != null ? schemaName : "json",
+                  description: schemaDescription != null ? schemaDescription : "Respond with a JSON object.",
+                  parameters: outputStrategy.jsonSchema
+                }
+              },
+              ...prepareCallSettings(settings),
+              inputFormat: standardizedPrompt.type,
+              prompt: await convertToLanguageModelPrompt({
+                prompt: standardizedPrompt,
+                modelSupportsImageUrls: model.supportsImageUrls,
+                modelSupportsUrl: (_b = model.supportsUrl) == null ? void 0 : _b.bind(model)
+                // support 'this' context,
+              }),
+              providerMetadata: providerOptions,
+              abortSignal,
+              headers
+            };
+            transformer = {
+              transform(chunk, controller) {
+                switch (chunk.type) {
+                  case "tool-call-delta":
+                    controller.enqueue(chunk.argsTextDelta);
+                    break;
+                  case "response-metadata":
+                  case "finish":
+                  case "error":
+                    controller.enqueue(chunk);
+                    break;
+                }
+              }
+            };
+            break;
+          }
+          case void 0: {
+            throw new Error(
+              "Model does not have a default object generation mode."
+            );
+          }
+          default: {
+            const _exhaustiveCheck = mode;
+            throw new Error(`Unsupported mode: ${_exhaustiveCheck}`);
+          }
+        }
+        const {
+          result: { stream, warnings, rawResponse, request },
+          doStreamSpan,
+          startTimestampMs
+        } = await retry(
+          () => recordSpan({
+            name: "ai.streamObject.doStream",
+            attributes: selectTelemetryAttributes({
+              telemetry,
+              attributes: {
+                ...assembleOperationName({
+                  operationId: "ai.streamObject.doStream",
+                  telemetry
+                }),
+                ...baseTelemetryAttributes,
+                "ai.prompt.format": {
+                  input: () => callOptions.inputFormat
+                },
+                "ai.prompt.messages": {
+                  input: () => JSON.stringify(callOptions.prompt)
+                },
+                "ai.settings.mode": mode,
+                // standardized gen-ai llm span attributes:
+                "gen_ai.system": model.provider,
+                "gen_ai.request.model": model.modelId,
+                "gen_ai.request.frequency_penalty": settings.frequencyPenalty,
+                "gen_ai.request.max_tokens": settings.maxTokens,
+                "gen_ai.request.presence_penalty": settings.presencePenalty,
+                "gen_ai.request.temperature": settings.temperature,
+                "gen_ai.request.top_k": settings.topK,
+                "gen_ai.request.top_p": settings.topP
+              }
+            }),
+            tracer,
+            endWhenDone: false,
+            fn: async (doStreamSpan2) => ({
+              startTimestampMs: now2(),
+              doStreamSpan: doStreamSpan2,
+              result: await model.doStream(callOptions)
+            })
+          })
+        );
+        self.requestPromise.resolve(request != null ? request : {});
+        let usage;
+        let finishReason;
+        let providerMetadata;
+        let object2;
+        let error;
+        let accumulatedText = "";
+        let textDelta = "";
+        let response = {
+          id: generateId3(),
+          timestamp: currentDate(),
+          modelId: model.modelId
+        };
+        let latestObjectJson = void 0;
+        let latestObject = void 0;
+        let isFirstChunk = true;
+        let isFirstDelta = true;
+        const transformedStream = stream.pipeThrough(new TransformStream(transformer)).pipeThrough(
+          new TransformStream({
+            async transform(chunk, controller) {
+              var _a16, _b2, _c;
+              if (isFirstChunk) {
+                const msToFirstChunk = now2() - startTimestampMs;
+                isFirstChunk = false;
+                doStreamSpan.addEvent("ai.stream.firstChunk", {
+                  "ai.stream.msToFirstChunk": msToFirstChunk
+                });
+                doStreamSpan.setAttributes({
+                  "ai.stream.msToFirstChunk": msToFirstChunk
+                });
+              }
+              if (typeof chunk === "string") {
+                accumulatedText += chunk;
+                textDelta += chunk;
+                const { value: currentObjectJson, state: parseState } = (0, import_ui_utils3.parsePartialJson)(accumulatedText);
+                if (currentObjectJson !== void 0 && !(0, import_ui_utils3.isDeepEqualData)(latestObjectJson, currentObjectJson)) {
+                  const validationResult = outputStrategy.validatePartialResult({
+                    value: currentObjectJson,
+                    textDelta,
+                    latestObject,
+                    isFirstDelta,
+                    isFinalDelta: parseState === "successful-parse"
+                  });
+                  if (validationResult.success && !(0, import_ui_utils3.isDeepEqualData)(
+                    latestObject,
+                    validationResult.value.partial
+                  )) {
+                    latestObjectJson = currentObjectJson;
+                    latestObject = validationResult.value.partial;
+                    controller.enqueue({
+                      type: "object",
+                      object: latestObject
+                    });
+                    controller.enqueue({
+                      type: "text-delta",
+                      textDelta: validationResult.value.textDelta
+                    });
+                    textDelta = "";
+                    isFirstDelta = false;
+                  }
+                }
+                return;
+              }
+              switch (chunk.type) {
+                case "response-metadata": {
+                  response = {
+                    id: (_a16 = chunk.id) != null ? _a16 : response.id,
+                    timestamp: (_b2 = chunk.timestamp) != null ? _b2 : response.timestamp,
+                    modelId: (_c = chunk.modelId) != null ? _c : response.modelId
+                  };
+                  break;
+                }
+                case "finish": {
+                  if (textDelta !== "") {
+                    controller.enqueue({ type: "text-delta", textDelta });
+                  }
+                  finishReason = chunk.finishReason;
+                  usage = calculateLanguageModelUsage(chunk.usage);
+                  providerMetadata = chunk.providerMetadata;
+                  controller.enqueue({ ...chunk, usage, response });
+                  self.usagePromise.resolve(usage);
+                  self.providerMetadataPromise.resolve(providerMetadata);
+                  self.responsePromise.resolve({
+                    ...response,
+                    headers: rawResponse == null ? void 0 : rawResponse.headers
+                  });
+                  const validationResult = outputStrategy.validateFinalResult(
+                    latestObjectJson,
+                    {
+                      text: accumulatedText,
+                      response,
+                      usage
+                    }
+                  );
+                  if (validationResult.success) {
+                    object2 = validationResult.value;
+                    self.objectPromise.resolve(object2);
+                  } else {
+                    error = new NoObjectGeneratedError({
+                      message: "No object generated: response did not match schema.",
+                      cause: validationResult.error,
+                      text: accumulatedText,
+                      response,
+                      usage
+                    });
+                    self.objectPromise.reject(error);
+                  }
+                  break;
+                }
+                default: {
+                  controller.enqueue(chunk);
+                  break;
+                }
+              }
+            },
+            // invoke onFinish callback and resolve toolResults promise when the stream is about to close:
+            async flush(controller) {
+              try {
+                const finalUsage = usage != null ? usage : {
+                  promptTokens: NaN,
+                  completionTokens: NaN,
+                  totalTokens: NaN
+                };
+                doStreamSpan.setAttributes(
+                  selectTelemetryAttributes({
+                    telemetry,
+                    attributes: {
+                      "ai.response.finishReason": finishReason,
+                      "ai.response.object": {
+                        output: () => JSON.stringify(object2)
+                      },
+                      "ai.response.id": response.id,
+                      "ai.response.model": response.modelId,
+                      "ai.response.timestamp": response.timestamp.toISOString(),
+                      "ai.usage.promptTokens": finalUsage.promptTokens,
+                      "ai.usage.completionTokens": finalUsage.completionTokens,
+                      // standardized gen-ai llm span attributes:
+                      "gen_ai.response.finish_reasons": [finishReason],
+                      "gen_ai.response.id": response.id,
+                      "gen_ai.response.model": response.modelId,
+                      "gen_ai.usage.input_tokens": finalUsage.promptTokens,
+                      "gen_ai.usage.output_tokens": finalUsage.completionTokens
+                    }
+                  })
+                );
+                doStreamSpan.end();
+                rootSpan.setAttributes(
+                  selectTelemetryAttributes({
+                    telemetry,
+                    attributes: {
+                      "ai.usage.promptTokens": finalUsage.promptTokens,
+                      "ai.usage.completionTokens": finalUsage.completionTokens,
+                      "ai.response.object": {
+                        output: () => JSON.stringify(object2)
+                      }
+                    }
+                  })
+                );
+                await (onFinish == null ? void 0 : onFinish({
+                  usage: finalUsage,
+                  object: object2,
+                  error,
+                  response: {
+                    ...response,
+                    headers: rawResponse == null ? void 0 : rawResponse.headers
+                  },
+                  warnings,
+                  experimental_providerMetadata: providerMetadata
+                }));
+              } catch (error2) {
+                controller.error(error2);
+              } finally {
+                rootSpan.end();
+              }
+            }
+          })
+        );
+        self.stitchableStream.addStream(transformedStream);
+      }
+    }).catch((error) => {
+      self.stitchableStream.addStream(
+        new ReadableStream({
+          start(controller) {
+            controller.error(error);
+          }
+        })
+      );
+    }).finally(() => {
+      self.stitchableStream.close();
+    });
+    this.outputStrategy = outputStrategy;
+  }
+  get object() {
+    return this.objectPromise.value;
+  }
+  get usage() {
+    return this.usagePromise.value;
+  }
+  get experimental_providerMetadata() {
+    return this.providerMetadataPromise.value;
+  }
+  get warnings() {
+    return this.warningsPromise.value;
+  }
+  get request() {
+    return this.requestPromise.value;
+  }
+  get response() {
+    return this.responsePromise.value;
+  }
+  get partialObjectStream() {
+    return createAsyncIterableStream(
+      this.stitchableStream.stream.pipeThrough(
+        new TransformStream({
+          transform(chunk, controller) {
+            switch (chunk.type) {
+              case "object":
+                controller.enqueue(chunk.object);
+                break;
+              case "text-delta":
+              case "finish":
+                break;
+              case "error":
+                controller.error(chunk.error);
+                break;
+              default: {
+                const _exhaustiveCheck = chunk;
+                throw new Error(`Unsupported chunk type: ${_exhaustiveCheck}`);
+              }
+            }
+          }
+        })
+      )
+    );
+  }
+  get elementStream() {
+    return this.outputStrategy.createElementStream(
+      this.stitchableStream.stream
+    );
+  }
+  get textStream() {
+    return createAsyncIterableStream(
+      this.stitchableStream.stream.pipeThrough(
+        new TransformStream({
+          transform(chunk, controller) {
+            switch (chunk.type) {
+              case "text-delta":
+                controller.enqueue(chunk.textDelta);
+                break;
+              case "object":
+              case "finish":
+                break;
+              case "error":
+                controller.error(chunk.error);
+                break;
+              default: {
+                const _exhaustiveCheck = chunk;
+                throw new Error(`Unsupported chunk type: ${_exhaustiveCheck}`);
+              }
+            }
+          }
+        })
+      )
+    );
+  }
+  get fullStream() {
+    return createAsyncIterableStream(this.stitchableStream.stream);
+  }
+  pipeTextStreamToResponse(response, init) {
+    writeToServerResponse({
+      response,
+      status: init == null ? void 0 : init.status,
+      statusText: init == null ? void 0 : init.statusText,
+      headers: prepareOutgoingHttpHeaders(init == null ? void 0 : init.headers, {
+        contentType: "text/plain; charset=utf-8"
+      }),
+      stream: this.textStream.pipeThrough(new TextEncoderStream())
+    });
+  }
+  toTextStreamResponse(init) {
+    var _a15;
+    return new Response(this.textStream.pipeThrough(new TextEncoderStream()), {
+      status: (_a15 = init == null ? void 0 : init.status) != null ? _a15 : 200,
+      headers: prepareResponseHeaders(init == null ? void 0 : init.headers, {
+        contentType: "text/plain; charset=utf-8"
+      })
+    });
+  }
+};
+
+// core/generate-text/generate-text.ts
+var import_provider_utils9 = __nccwpck_require__(2458);
+
+// errors/no-output-specified-error.ts
+var import_provider12 = __nccwpck_require__(4069);
+var name9 = "AI_NoOutputSpecifiedError";
+var marker9 = `vercel.ai.error.${name9}`;
+var symbol9 = Symbol.for(marker9);
+var _a9;
+var NoOutputSpecifiedError = class extends import_provider12.AISDKError {
+  // used in isInstance
+  constructor({ message = "No output specified." } = {}) {
+    super({ name: name9, message });
+    this[_a9] = true;
+  }
+  static isInstance(error) {
+    return import_provider12.AISDKError.hasMarker(error, marker9);
+  }
+};
+_a9 = symbol9;
+
+// errors/tool-execution-error.ts
+var import_provider13 = __nccwpck_require__(4069);
+var name10 = "AI_ToolExecutionError";
+var marker10 = `vercel.ai.error.${name10}`;
+var symbol10 = Symbol.for(marker10);
+var _a10;
+var ToolExecutionError = class extends import_provider13.AISDKError {
+  constructor({
+    toolArgs,
+    toolName,
+    toolCallId,
+    cause,
+    message = `Error executing tool ${toolName}: ${(0, import_provider13.getErrorMessage)(cause)}`
+  }) {
+    super({ name: name10, message, cause });
+    this[_a10] = true;
+    this.toolArgs = toolArgs;
+    this.toolName = toolName;
+    this.toolCallId = toolCallId;
+  }
+  static isInstance(error) {
+    return import_provider13.AISDKError.hasMarker(error, marker10);
+  }
+};
+_a10 = symbol10;
+
+// core/prompt/prepare-tools-and-tool-choice.ts
+var import_ui_utils4 = __nccwpck_require__(8715);
+
+// core/util/is-non-empty-object.ts
+function isNonEmptyObject(object2) {
+  return object2 != null && Object.keys(object2).length > 0;
+}
+
+// core/prompt/prepare-tools-and-tool-choice.ts
+function prepareToolsAndToolChoice({
+  tools,
+  toolChoice,
+  activeTools
+}) {
+  if (!isNonEmptyObject(tools)) {
+    return {
+      tools: void 0,
+      toolChoice: void 0
+    };
+  }
+  const filteredTools = activeTools != null ? Object.entries(tools).filter(
+    ([name15]) => activeTools.includes(name15)
+  ) : Object.entries(tools);
+  return {
+    tools: filteredTools.map(([name15, tool2]) => {
+      const toolType = tool2.type;
+      switch (toolType) {
+        case void 0:
+        case "function":
+          return {
+            type: "function",
+            name: name15,
+            description: tool2.description,
+            parameters: (0, import_ui_utils4.asSchema)(tool2.parameters).jsonSchema
+          };
+        case "provider-defined":
+          return {
+            type: "provider-defined",
+            name: name15,
+            id: tool2.id,
+            args: tool2.args
+          };
+        default: {
+          const exhaustiveCheck = toolType;
+          throw new Error(`Unsupported tool type: ${exhaustiveCheck}`);
+        }
+      }
+    }),
+    toolChoice: toolChoice == null ? { type: "auto" } : typeof toolChoice === "string" ? { type: toolChoice } : { type: "tool", toolName: toolChoice.toolName }
+  };
+}
+
+// core/util/split-on-last-whitespace.ts
+var lastWhitespaceRegexp = /^([\s\S]*?)(\s+)(\S*)$/;
+function splitOnLastWhitespace(text2) {
+  const match = text2.match(lastWhitespaceRegexp);
+  return match ? { prefix: match[1], whitespace: match[2], suffix: match[3] } : void 0;
+}
+
+// core/util/remove-text-after-last-whitespace.ts
+function removeTextAfterLastWhitespace(text2) {
+  const match = splitOnLastWhitespace(text2);
+  return match ? match.prefix + match.whitespace : text2;
+}
+
+// core/generate-text/parse-tool-call.ts
+var import_provider_utils8 = __nccwpck_require__(2458);
+var import_ui_utils5 = __nccwpck_require__(8715);
+
+// errors/invalid-tool-arguments-error.ts
+var import_provider14 = __nccwpck_require__(4069);
+var name11 = "AI_InvalidToolArgumentsError";
+var marker11 = `vercel.ai.error.${name11}`;
+var symbol11 = Symbol.for(marker11);
+var _a11;
+var InvalidToolArgumentsError = class extends import_provider14.AISDKError {
+  constructor({
+    toolArgs,
+    toolName,
+    cause,
+    message = `Invalid arguments for tool ${toolName}: ${(0, import_provider14.getErrorMessage)(
+      cause
+    )}`
+  }) {
+    super({ name: name11, message, cause });
+    this[_a11] = true;
+    this.toolArgs = toolArgs;
+    this.toolName = toolName;
+  }
+  static isInstance(error) {
+    return import_provider14.AISDKError.hasMarker(error, marker11);
+  }
+};
+_a11 = symbol11;
+
+// errors/no-such-tool-error.ts
+var import_provider15 = __nccwpck_require__(4069);
+var name12 = "AI_NoSuchToolError";
+var marker12 = `vercel.ai.error.${name12}`;
+var symbol12 = Symbol.for(marker12);
+var _a12;
+var NoSuchToolError = class extends import_provider15.AISDKError {
+  constructor({
+    toolName,
+    availableTools = void 0,
+    message = `Model tried to call unavailable tool '${toolName}'. ${availableTools === void 0 ? "No tools are available." : `Available tools: ${availableTools.join(", ")}.`}`
+  }) {
+    super({ name: name12, message });
+    this[_a12] = true;
+    this.toolName = toolName;
+    this.availableTools = availableTools;
+  }
+  static isInstance(error) {
+    return import_provider15.AISDKError.hasMarker(error, marker12);
+  }
+};
+_a12 = symbol12;
+
+// errors/tool-call-repair-error.ts
+var import_provider16 = __nccwpck_require__(4069);
+var name13 = "AI_ToolCallRepairError";
+var marker13 = `vercel.ai.error.${name13}`;
+var symbol13 = Symbol.for(marker13);
+var _a13;
+var ToolCallRepairError = class extends import_provider16.AISDKError {
+  constructor({
+    cause,
+    originalError,
+    message = `Error repairing tool call: ${(0, import_provider16.getErrorMessage)(cause)}`
+  }) {
+    super({ name: name13, message, cause });
+    this[_a13] = true;
+    this.originalError = originalError;
+  }
+  static isInstance(error) {
+    return import_provider16.AISDKError.hasMarker(error, marker13);
+  }
+};
+_a13 = symbol13;
+
+// core/generate-text/parse-tool-call.ts
+async function parseToolCall({
+  toolCall,
+  tools,
+  repairToolCall,
+  system,
+  messages
+}) {
+  if (tools == null) {
+    throw new NoSuchToolError({ toolName: toolCall.toolName });
+  }
+  try {
+    return await doParseToolCall({ toolCall, tools });
+  } catch (error) {
+    if (repairToolCall == null || !(NoSuchToolError.isInstance(error) || InvalidToolArgumentsError.isInstance(error))) {
+      throw error;
+    }
+    let repairedToolCall = null;
+    try {
+      repairedToolCall = await repairToolCall({
+        toolCall,
+        tools,
+        parameterSchema: ({ toolName }) => (0, import_ui_utils5.asSchema)(tools[toolName].parameters).jsonSchema,
+        system,
+        messages,
+        error
+      });
+    } catch (repairError) {
+      throw new ToolCallRepairError({
+        cause: repairError,
+        originalError: error
+      });
+    }
+    if (repairedToolCall == null) {
+      throw error;
+    }
+    return await doParseToolCall({ toolCall: repairedToolCall, tools });
+  }
+}
+async function doParseToolCall({
+  toolCall,
+  tools
+}) {
+  const toolName = toolCall.toolName;
+  const tool2 = tools[toolName];
+  if (tool2 == null) {
+    throw new NoSuchToolError({
+      toolName: toolCall.toolName,
+      availableTools: Object.keys(tools)
+    });
+  }
+  const schema = (0, import_ui_utils5.asSchema)(tool2.parameters);
+  const parseResult = toolCall.args.trim() === "" ? (0, import_provider_utils8.safeValidateTypes)({ value: {}, schema }) : (0, import_provider_utils8.safeParseJSON)({ text: toolCall.args, schema });
+  if (parseResult.success === false) {
+    throw new InvalidToolArgumentsError({
+      toolName,
+      toolArgs: toolCall.args,
+      cause: parseResult.error
+    });
+  }
+  return {
+    type: "tool-call",
+    toolCallId: toolCall.toolCallId,
+    toolName,
+    args: parseResult.value
+  };
+}
+
+// core/generate-text/to-response-messages.ts
+function toResponseMessages({
+  text: text2 = "",
+  tools,
+  toolCalls,
+  toolResults,
+  messageId,
+  generateMessageId
+}) {
+  const responseMessages = [];
+  responseMessages.push({
+    role: "assistant",
+    content: [{ type: "text", text: text2 }, ...toolCalls],
+    id: messageId
+  });
+  if (toolResults.length > 0) {
+    responseMessages.push({
+      role: "tool",
+      id: generateMessageId(),
+      content: toolResults.map((toolResult) => {
+        const tool2 = tools[toolResult.toolName];
+        return (tool2 == null ? void 0 : tool2.experimental_toToolResultContent) != null ? {
+          type: "tool-result",
+          toolCallId: toolResult.toolCallId,
+          toolName: toolResult.toolName,
+          result: tool2.experimental_toToolResultContent(toolResult.result),
+          experimental_content: tool2.experimental_toToolResultContent(
+            toolResult.result
+          )
+        } : {
+          type: "tool-result",
+          toolCallId: toolResult.toolCallId,
+          toolName: toolResult.toolName,
+          result: toolResult.result
+        };
+      })
+    });
+  }
+  return responseMessages;
+}
+
+// core/generate-text/generate-text.ts
+var originalGenerateId3 = (0, import_provider_utils9.createIdGenerator)({
+  prefix: "aitxt",
+  size: 24
+});
+var originalGenerateMessageId = (0, import_provider_utils9.createIdGenerator)({
+  prefix: "msg",
+  size: 24
+});
+async function generateText({
+  model,
+  tools,
+  toolChoice,
+  system,
+  prompt,
+  messages,
+  maxRetries: maxRetriesArg,
+  abortSignal,
+  headers,
+  maxSteps = 1,
+  experimental_generateMessageId: generateMessageId = originalGenerateMessageId,
+  experimental_output: output,
+  experimental_continueSteps: continueSteps = false,
+  experimental_telemetry: telemetry,
+  experimental_providerMetadata,
+  providerOptions = experimental_providerMetadata,
+  experimental_activeTools: activeTools,
+  experimental_repairToolCall: repairToolCall,
+  _internal: {
+    generateId: generateId3 = originalGenerateId3,
+    currentDate = () => /* @__PURE__ */ new Date()
+  } = {},
+  onStepFinish,
+  ...settings
+}) {
+  var _a15;
+  if (maxSteps < 1) {
+    throw new InvalidArgumentError({
+      parameter: "maxSteps",
+      value: maxSteps,
+      message: "maxSteps must be at least 1"
+    });
+  }
+  const { maxRetries, retry } = prepareRetries({ maxRetries: maxRetriesArg });
+  const baseTelemetryAttributes = getBaseTelemetryAttributes({
+    model,
+    telemetry,
+    headers,
+    settings: { ...settings, maxRetries }
+  });
+  const initialPrompt = standardizePrompt({
+    prompt: {
+      system: (_a15 = output == null ? void 0 : output.injectIntoSystemPrompt({ system, model })) != null ? _a15 : system,
+      prompt,
+      messages
+    },
+    tools
+  });
+  const tracer = getTracer(telemetry);
+  return recordSpan({
+    name: "ai.generateText",
+    attributes: selectTelemetryAttributes({
+      telemetry,
+      attributes: {
+        ...assembleOperationName({
+          operationId: "ai.generateText",
+          telemetry
+        }),
+        ...baseTelemetryAttributes,
+        // specific settings that only make sense on the outer level:
+        "ai.prompt": {
+          input: () => JSON.stringify({ system, prompt, messages })
+        },
+        "ai.settings.maxSteps": maxSteps
+      }
+    }),
+    tracer,
+    fn: async (span) => {
+      var _a16, _b, _c, _d, _e, _f, _g;
+      const mode = {
+        type: "regular",
+        ...prepareToolsAndToolChoice({ tools, toolChoice, activeTools })
+      };
+      const callSettings = prepareCallSettings(settings);
+      let currentModelResponse;
+      let currentToolCalls = [];
+      let currentToolResults = [];
+      let stepCount = 0;
+      const responseMessages = [];
+      let text2 = "";
+      const steps = [];
+      let usage = {
+        completionTokens: 0,
+        promptTokens: 0,
+        totalTokens: 0
+      };
+      let stepType = "initial";
+      do {
+        const promptFormat = stepCount === 0 ? initialPrompt.type : "messages";
+        const stepInputMessages = [
+          ...initialPrompt.messages,
+          ...responseMessages
+        ];
+        const promptMessages = await convertToLanguageModelPrompt({
+          prompt: {
+            type: promptFormat,
+            system: initialPrompt.system,
+            messages: stepInputMessages
+          },
+          modelSupportsImageUrls: model.supportsImageUrls,
+          modelSupportsUrl: (_a16 = model.supportsUrl) == null ? void 0 : _a16.bind(model)
+          // support 'this' context
+        });
+        currentModelResponse = await retry(
+          () => recordSpan({
+            name: "ai.generateText.doGenerate",
+            attributes: selectTelemetryAttributes({
+              telemetry,
+              attributes: {
+                ...assembleOperationName({
+                  operationId: "ai.generateText.doGenerate",
+                  telemetry
+                }),
+                ...baseTelemetryAttributes,
+                "ai.prompt.format": { input: () => promptFormat },
+                "ai.prompt.messages": {
+                  input: () => JSON.stringify(promptMessages)
+                },
+                "ai.prompt.tools": {
+                  // convert the language model level tools:
+                  input: () => {
+                    var _a17;
+                    return (_a17 = mode.tools) == null ? void 0 : _a17.map((tool2) => JSON.stringify(tool2));
+                  }
+                },
+                "ai.prompt.toolChoice": {
+                  input: () => mode.toolChoice != null ? JSON.stringify(mode.toolChoice) : void 0
+                },
+                // standardized gen-ai llm span attributes:
+                "gen_ai.system": model.provider,
+                "gen_ai.request.model": model.modelId,
+                "gen_ai.request.frequency_penalty": settings.frequencyPenalty,
+                "gen_ai.request.max_tokens": settings.maxTokens,
+                "gen_ai.request.presence_penalty": settings.presencePenalty,
+                "gen_ai.request.stop_sequences": settings.stopSequences,
+                "gen_ai.request.temperature": settings.temperature,
+                "gen_ai.request.top_k": settings.topK,
+                "gen_ai.request.top_p": settings.topP
+              }
+            }),
+            tracer,
+            fn: async (span2) => {
+              var _a17, _b2, _c2, _d2, _e2, _f2;
+              const result = await model.doGenerate({
+                mode,
+                ...callSettings,
+                inputFormat: promptFormat,
+                responseFormat: output == null ? void 0 : output.responseFormat({ model }),
+                prompt: promptMessages,
+                providerMetadata: providerOptions,
+                abortSignal,
+                headers
+              });
+              const responseData = {
+                id: (_b2 = (_a17 = result.response) == null ? void 0 : _a17.id) != null ? _b2 : generateId3(),
+                timestamp: (_d2 = (_c2 = result.response) == null ? void 0 : _c2.timestamp) != null ? _d2 : currentDate(),
+                modelId: (_f2 = (_e2 = result.response) == null ? void 0 : _e2.modelId) != null ? _f2 : model.modelId
+              };
+              span2.setAttributes(
+                selectTelemetryAttributes({
+                  telemetry,
+                  attributes: {
+                    "ai.response.finishReason": result.finishReason,
+                    "ai.response.text": {
+                      output: () => result.text
+                    },
+                    "ai.response.toolCalls": {
+                      output: () => JSON.stringify(result.toolCalls)
+                    },
+                    "ai.response.id": responseData.id,
+                    "ai.response.model": responseData.modelId,
+                    "ai.response.timestamp": responseData.timestamp.toISOString(),
+                    "ai.usage.promptTokens": result.usage.promptTokens,
+                    "ai.usage.completionTokens": result.usage.completionTokens,
+                    // standardized gen-ai llm span attributes:
+                    "gen_ai.response.finish_reasons": [result.finishReason],
+                    "gen_ai.response.id": responseData.id,
+                    "gen_ai.response.model": responseData.modelId,
+                    "gen_ai.usage.input_tokens": result.usage.promptTokens,
+                    "gen_ai.usage.output_tokens": result.usage.completionTokens
+                  }
+                })
+              );
+              return { ...result, response: responseData };
+            }
+          })
+        );
+        currentToolCalls = await Promise.all(
+          ((_b = currentModelResponse.toolCalls) != null ? _b : []).map(
+            (toolCall) => parseToolCall({
+              toolCall,
+              tools,
+              repairToolCall,
+              system,
+              messages: stepInputMessages
+            })
+          )
+        );
+        currentToolResults = tools == null ? [] : await executeTools({
+          toolCalls: currentToolCalls,
+          tools,
+          tracer,
+          telemetry,
+          messages: stepInputMessages,
+          abortSignal
+        });
+        const currentUsage = calculateLanguageModelUsage(
+          currentModelResponse.usage
+        );
+        usage = addLanguageModelUsage(usage, currentUsage);
+        let nextStepType = "done";
+        if (++stepCount < maxSteps) {
+          if (continueSteps && currentModelResponse.finishReason === "length" && // only use continue when there are no tool calls:
+          currentToolCalls.length === 0) {
+            nextStepType = "continue";
+          } else if (
+            // there are tool calls:
+            currentToolCalls.length > 0 && // all current tool calls have results:
+            currentToolResults.length === currentToolCalls.length
+          ) {
+            nextStepType = "tool-result";
+          }
+        }
+        const originalText = (_c = currentModelResponse.text) != null ? _c : "";
+        const stepTextLeadingWhitespaceTrimmed = stepType === "continue" && // only for continue steps
+        text2.trimEnd() !== text2 ? originalText.trimStart() : originalText;
+        const stepText = nextStepType === "continue" ? removeTextAfterLastWhitespace(stepTextLeadingWhitespaceTrimmed) : stepTextLeadingWhitespaceTrimmed;
+        text2 = nextStepType === "continue" || stepType === "continue" ? text2 + stepText : stepText;
+        if (stepType === "continue") {
+          const lastMessage = responseMessages[responseMessages.length - 1];
+          if (typeof lastMessage.content === "string") {
+            lastMessage.content += stepText;
+          } else {
+            lastMessage.content.push({
+              text: stepText,
+              type: "text"
+            });
+          }
+        } else {
+          responseMessages.push(
+            ...toResponseMessages({
+              text: text2,
+              tools: tools != null ? tools : {},
+              toolCalls: currentToolCalls,
+              toolResults: currentToolResults,
+              messageId: generateMessageId(),
+              generateMessageId
+            })
+          );
+        }
+        const currentStepResult = {
+          stepType,
+          text: stepText,
+          reasoning: currentModelResponse.reasoning,
+          toolCalls: currentToolCalls,
+          toolResults: currentToolResults,
+          finishReason: currentModelResponse.finishReason,
+          usage: currentUsage,
+          warnings: currentModelResponse.warnings,
+          logprobs: currentModelResponse.logprobs,
+          request: (_d = currentModelResponse.request) != null ? _d : {},
+          response: {
+            ...currentModelResponse.response,
+            headers: (_e = currentModelResponse.rawResponse) == null ? void 0 : _e.headers,
+            // deep clone msgs to avoid mutating past messages in multi-step:
+            messages: structuredClone(responseMessages)
+          },
+          experimental_providerMetadata: currentModelResponse.providerMetadata,
+          isContinued: nextStepType === "continue"
+        };
+        steps.push(currentStepResult);
+        await (onStepFinish == null ? void 0 : onStepFinish(currentStepResult));
+        stepType = nextStepType;
+      } while (stepType !== "done");
+      span.setAttributes(
+        selectTelemetryAttributes({
+          telemetry,
+          attributes: {
+            "ai.response.finishReason": currentModelResponse.finishReason,
+            "ai.response.text": {
+              output: () => currentModelResponse.text
+            },
+            "ai.response.toolCalls": {
+              output: () => JSON.stringify(currentModelResponse.toolCalls)
+            },
+            "ai.usage.promptTokens": currentModelResponse.usage.promptTokens,
+            "ai.usage.completionTokens": currentModelResponse.usage.completionTokens
+          }
+        })
+      );
+      return new DefaultGenerateTextResult({
+        text: text2,
+        reasoning: currentModelResponse.reasoning,
+        outputResolver: () => {
+          if (output == null) {
+            throw new NoOutputSpecifiedError();
+          }
+          return output.parseOutput(
+            { text: text2 },
+            { response: currentModelResponse.response, usage }
+          );
+        },
+        toolCalls: currentToolCalls,
+        toolResults: currentToolResults,
+        finishReason: currentModelResponse.finishReason,
+        usage,
+        warnings: currentModelResponse.warnings,
+        request: (_f = currentModelResponse.request) != null ? _f : {},
+        response: {
+          ...currentModelResponse.response,
+          headers: (_g = currentModelResponse.rawResponse) == null ? void 0 : _g.headers,
+          messages: responseMessages
+        },
+        logprobs: currentModelResponse.logprobs,
+        steps,
+        providerMetadata: currentModelResponse.providerMetadata
+      });
+    }
+  });
+}
+async function executeTools({
+  toolCalls,
+  tools,
+  tracer,
+  telemetry,
+  messages,
+  abortSignal
+}) {
+  const toolResults = await Promise.all(
+    toolCalls.map(async ({ toolCallId, toolName, args }) => {
+      const tool2 = tools[toolName];
+      if ((tool2 == null ? void 0 : tool2.execute) == null) {
+        return void 0;
+      }
+      const result = await recordSpan({
+        name: "ai.toolCall",
+        attributes: selectTelemetryAttributes({
+          telemetry,
+          attributes: {
+            ...assembleOperationName({
+              operationId: "ai.toolCall",
+              telemetry
+            }),
+            "ai.toolCall.name": toolName,
+            "ai.toolCall.id": toolCallId,
+            "ai.toolCall.args": {
+              output: () => JSON.stringify(args)
+            }
+          }
+        }),
+        tracer,
+        fn: async (span) => {
+          try {
+            const result2 = await tool2.execute(args, {
+              toolCallId,
+              messages,
+              abortSignal
+            });
+            try {
+              span.setAttributes(
+                selectTelemetryAttributes({
+                  telemetry,
+                  attributes: {
+                    "ai.toolCall.result": {
+                      output: () => JSON.stringify(result2)
+                    }
+                  }
+                })
+              );
+            } catch (ignored) {
+            }
+            return result2;
+          } catch (error) {
+            throw new ToolExecutionError({
+              toolCallId,
+              toolName,
+              toolArgs: args,
+              cause: error
+            });
+          }
+        }
+      });
+      return {
+        type: "tool-result",
+        toolCallId,
+        toolName,
+        args,
+        result
+      };
+    })
+  );
+  return toolResults.filter(
+    (result) => result != null
+  );
+}
+var DefaultGenerateTextResult = class {
+  constructor(options) {
+    this.text = options.text;
+    this.reasoning = options.reasoning;
+    this.toolCalls = options.toolCalls;
+    this.toolResults = options.toolResults;
+    this.finishReason = options.finishReason;
+    this.usage = options.usage;
+    this.warnings = options.warnings;
+    this.request = options.request;
+    this.response = options.response;
+    this.steps = options.steps;
+    this.experimental_providerMetadata = options.providerMetadata;
+    this.logprobs = options.logprobs;
+    this.outputResolver = options.outputResolver;
+  }
+  get experimental_output() {
+    return this.outputResolver();
+  }
+};
+
+// core/generate-text/output.ts
+var output_exports = {};
+__export(output_exports, {
+  object: () => object,
+  text: () => text
+});
+var import_provider_utils10 = __nccwpck_require__(2458);
+var import_ui_utils6 = __nccwpck_require__(8715);
+
+// errors/index.ts
+var import_provider17 = __nccwpck_require__(4069);
+
+// core/generate-text/output.ts
+var text = () => ({
+  type: "text",
+  responseFormat: () => ({ type: "text" }),
+  injectIntoSystemPrompt({ system }) {
+    return system;
+  },
+  parsePartial({ text: text2 }) {
+    return { partial: text2 };
+  },
+  parseOutput({ text: text2 }) {
+    return text2;
+  }
+});
+var object = ({
+  schema: inputSchema
+}) => {
+  const schema = (0, import_ui_utils6.asSchema)(inputSchema);
+  return {
+    type: "object",
+    responseFormat: ({ model }) => ({
+      type: "json",
+      schema: model.supportsStructuredOutputs ? schema.jsonSchema : void 0
+    }),
+    injectIntoSystemPrompt({ system, model }) {
+      return model.supportsStructuredOutputs ? system : injectJsonInstruction({
+        prompt: system,
+        schema: schema.jsonSchema
+      });
+    },
+    parsePartial({ text: text2 }) {
+      const result = (0, import_ui_utils6.parsePartialJson)(text2);
+      switch (result.state) {
+        case "failed-parse":
+        case "undefined-input":
+          return void 0;
+        case "repaired-parse":
+        case "successful-parse":
+          return {
+            // Note: currently no validation of partial results:
+            partial: result.value
+          };
+        default: {
+          const _exhaustiveCheck = result.state;
+          throw new Error(`Unsupported parse state: ${_exhaustiveCheck}`);
+        }
+      }
+    },
+    parseOutput({ text: text2 }, context) {
+      const parseResult = (0, import_provider_utils10.safeParseJSON)({ text: text2 });
+      if (!parseResult.success) {
+        throw new NoObjectGeneratedError({
+          message: "No object generated: could not parse the response.",
+          cause: parseResult.error,
+          text: text2,
+          response: context.response,
+          usage: context.usage
+        });
+      }
+      const validationResult = (0, import_provider_utils10.safeValidateTypes)({
+        value: parseResult.value,
+        schema
+      });
+      if (!validationResult.success) {
+        throw new NoObjectGeneratedError({
+          message: "No object generated: response did not match schema.",
+          cause: validationResult.error,
+          text: text2,
+          response: context.response,
+          usage: context.usage
+        });
+      }
+      return validationResult.value;
+    }
+  };
+};
+
+// core/generate-text/smooth-stream.ts
+var import_provider18 = __nccwpck_require__(4069);
+var import_provider_utils11 = __nccwpck_require__(2458);
+var CHUNKING_REGEXPS = {
+  word: /\s*\S+\s+/m,
+  line: /[^\n]*\n/m
+};
+function smoothStream({
+  delayInMs = 10,
+  chunking = "word",
+  _internal: { delay: delay2 = import_provider_utils11.delay } = {}
+} = {}) {
+  const chunkingRegexp = typeof chunking === "string" ? CHUNKING_REGEXPS[chunking] : chunking;
+  if (chunkingRegexp == null) {
+    throw new import_provider18.InvalidArgumentError({
+      argument: "chunking",
+      message: `Chunking must be "word" or "line" or a RegExp. Received: ${chunking}`
+    });
+  }
+  return () => {
+    let buffer = "";
+    return new TransformStream({
+      async transform(chunk, controller) {
+        if (chunk.type === "step-finish") {
+          if (buffer.length > 0) {
+            controller.enqueue({ type: "text-delta", textDelta: buffer });
+            buffer = "";
+          }
+          controller.enqueue(chunk);
+          return;
+        }
+        if (chunk.type !== "text-delta") {
+          controller.enqueue(chunk);
+          return;
+        }
+        buffer += chunk.textDelta;
+        let match;
+        while ((match = chunkingRegexp.exec(buffer)) != null) {
+          const chunk2 = match[0];
+          controller.enqueue({ type: "text-delta", textDelta: chunk2 });
+          buffer = buffer.slice(chunk2.length);
+          await delay2(delayInMs);
+        }
+      }
+    });
+  };
+}
+
+// core/generate-text/stream-text.ts
+var import_provider_utils12 = __nccwpck_require__(2458);
+var import_ui_utils8 = __nccwpck_require__(8715);
+
+// util/as-array.ts
+function asArray(value) {
+  return value === void 0 ? [] : Array.isArray(value) ? value : [value];
 }
 
 // core/util/merge-streams.ts
@@ -19719,16 +20969,18 @@ function mergeStreams(stream1, stream2) {
 }
 
 // core/generate-text/run-tools-transformation.ts
-var import_ui_utils5 = __nccwpck_require__(6066);
+var import_ui_utils7 = __nccwpck_require__(8715);
 function runToolsTransformation({
   tools,
   generatorStream,
   toolCallStreaming,
   tracer,
-  telemetry
+  telemetry,
+  system,
+  messages,
+  abortSignal,
+  repairToolCall
 }) {
-  let canClose = false;
-  const outstandingToolCalls = /* @__PURE__ */ new Set();
   let toolResultsStreamController = null;
   const toolResultsStream = new ReadableStream({
     start(controller) {
@@ -19736,11 +20988,23 @@ function runToolsTransformation({
     }
   });
   const activeToolCalls = {};
+  const outstandingToolResults = /* @__PURE__ */ new Set();
+  let canClose = false;
+  let finishChunk = void 0;
+  function attemptClose() {
+    if (canClose && outstandingToolResults.size === 0) {
+      if (finishChunk != null) {
+        toolResultsStreamController.enqueue(finishChunk);
+      }
+      toolResultsStreamController.close();
+    }
+  }
   const forwardStream = new TransformStream({
-    transform(chunk, controller) {
+    async transform(chunk, controller) {
       const chunkType = chunk.type;
       switch (chunkType) {
         case "text-delta":
+        case "reasoning":
         case "response-metadata":
         case "error": {
           controller.enqueue(chunk);
@@ -19766,34 +21030,19 @@ function runToolsTransformation({
           break;
         }
         case "tool-call": {
-          const toolName = chunk.toolName;
-          if (tools == null) {
-            toolResultsStreamController.enqueue({
-              type: "error",
-              error: new NoSuchToolError({ toolName: chunk.toolName })
-            });
-            break;
-          }
-          const tool2 = tools[toolName];
-          if (tool2 == null) {
-            toolResultsStreamController.enqueue({
-              type: "error",
-              error: new NoSuchToolError({
-                toolName: chunk.toolName,
-                availableTools: Object.keys(tools)
-              })
-            });
-            break;
-          }
           try {
-            const toolCall = parseToolCall({
+            const toolCall = await parseToolCall({
               toolCall: chunk,
-              tools
+              tools,
+              repairToolCall,
+              system,
+              messages
             });
             controller.enqueue(toolCall);
+            const tool2 = tools[toolCall.toolName];
             if (tool2.execute != null) {
-              const toolExecutionId = (0, import_ui_utils5.generateId)();
-              outstandingToolCalls.add(toolExecutionId);
+              const toolExecutionId = (0, import_ui_utils7.generateId)();
+              outstandingToolResults.add(toolExecutionId);
               recordSpan({
                 name: "ai.toolCall",
                 attributes: selectTelemetryAttributes({
@@ -19811,17 +21060,19 @@ function runToolsTransformation({
                   }
                 }),
                 tracer,
-                fn: async (span) => tool2.execute(toolCall.args).then(
+                fn: async (span) => tool2.execute(toolCall.args, {
+                  toolCallId: toolCall.toolCallId,
+                  messages,
+                  abortSignal
+                }).then(
                   (result) => {
                     toolResultsStreamController.enqueue({
                       ...toolCall,
                       type: "tool-result",
                       result
                     });
-                    outstandingToolCalls.delete(toolExecutionId);
-                    if (canClose && outstandingToolCalls.size === 0) {
-                      toolResultsStreamController.close();
-                    }
+                    outstandingToolResults.delete(toolExecutionId);
+                    attemptClose();
                     try {
                       span.setAttributes(
                         selectTelemetryAttributes({
@@ -19839,12 +21090,15 @@ function runToolsTransformation({
                   (error) => {
                     toolResultsStreamController.enqueue({
                       type: "error",
-                      error
+                      error: new ToolExecutionError({
+                        toolCallId: toolCall.toolCallId,
+                        toolName: toolCall.toolName,
+                        toolArgs: toolCall.args,
+                        cause: error
+                      })
                     });
-                    outstandingToolCalls.delete(toolExecutionId);
-                    if (canClose && outstandingToolCalls.size === 0) {
-                      toolResultsStreamController.close();
-                    }
+                    outstandingToolResults.delete(toolExecutionId);
+                    attemptClose();
                   }
                 )
               });
@@ -19858,13 +21112,13 @@ function runToolsTransformation({
           break;
         }
         case "finish": {
-          controller.enqueue({
+          finishChunk = {
             type: "finish",
             finishReason: chunk.finishReason,
             logprobs: chunk.logprobs,
             usage: calculateLanguageModelUsage(chunk.usage),
             experimental_providerMetadata: chunk.providerMetadata
-          });
+          };
           break;
         }
         default: {
@@ -19875,9 +21129,7 @@ function runToolsTransformation({
     },
     flush() {
       canClose = true;
-      if (outstandingToolCalls.size === 0) {
-        toolResultsStreamController.close();
-      }
+      attemptClose();
     }
   });
   return new ReadableStream({
@@ -19908,8 +21160,15 @@ function runToolsTransformation({
 }
 
 // core/generate-text/stream-text.ts
-var originalGenerateId4 = (0, import_provider_utils10.createIdGenerator)({ prefix: "aitxt-", size: 24 });
-async function streamText({
+var originalGenerateId4 = (0, import_provider_utils12.createIdGenerator)({
+  prefix: "aitxt",
+  size: 24
+});
+var originalGenerateMessageId2 = (0, import_provider_utils12.createIdGenerator)({
+  prefix: "msg",
+  size: 24
+});
+function streamText({
   model,
   tools,
   toolChoice,
@@ -19919,12 +21178,18 @@ async function streamText({
   maxRetries,
   abortSignal,
   headers,
-  maxToolRoundtrips = 0,
-  maxSteps = maxToolRoundtrips != null ? maxToolRoundtrips + 1 : 1,
+  maxSteps = 1,
+  experimental_generateMessageId: generateMessageId = originalGenerateMessageId2,
+  experimental_output: output,
   experimental_continueSteps: continueSteps = false,
   experimental_telemetry: telemetry,
-  experimental_providerMetadata: providerMetadata,
-  experimental_toolCallStreaming: toolCallStreaming = false,
+  experimental_providerMetadata,
+  providerOptions = experimental_providerMetadata,
+  experimental_toolCallStreaming = false,
+  toolCallStreaming = experimental_toolCallStreaming,
+  experimental_activeTools: activeTools,
+  experimental_repairToolCall: repairToolCall,
+  experimental_transform: transform,
   onChunk,
   onFinish,
   onStepFinish,
@@ -19935,575 +21200,773 @@ async function streamText({
   } = {},
   ...settings
 }) {
-  var _a11;
-  if (maxSteps < 1) {
-    throw new InvalidArgumentError({
-      parameter: "maxSteps",
-      value: maxSteps,
-      message: "maxSteps must be at least 1"
-    });
-  }
-  const baseTelemetryAttributes = getBaseTelemetryAttributes({
+  return new DefaultStreamTextResult({
     model,
     telemetry,
     headers,
-    settings: { ...settings, maxRetries }
+    settings,
+    maxRetries,
+    abortSignal,
+    system,
+    prompt,
+    messages,
+    tools,
+    toolChoice,
+    toolCallStreaming,
+    transforms: asArray(transform),
+    activeTools,
+    repairToolCall,
+    maxSteps,
+    output,
+    continueSteps,
+    providerOptions,
+    onChunk,
+    onFinish,
+    onStepFinish,
+    now: now2,
+    currentDate,
+    generateId: generateId3,
+    generateMessageId
   });
-  const tracer = getTracer({ isEnabled: (_a11 = telemetry == null ? void 0 : telemetry.isEnabled) != null ? _a11 : false });
-  return recordSpan({
-    name: "ai.streamText",
-    attributes: selectTelemetryAttributes({
-      telemetry,
-      attributes: {
-        ...assembleOperationName({ operationId: "ai.streamText", telemetry }),
-        ...baseTelemetryAttributes,
-        // specific settings that only make sense on the outer level:
-        "ai.prompt": {
-          input: () => JSON.stringify({ system, prompt, messages })
-        },
-        "ai.settings.maxSteps": maxSteps
+}
+function createOutputTransformStream(output) {
+  if (!output) {
+    return new TransformStream({
+      transform(chunk, controller) {
+        controller.enqueue({ part: chunk, partialOutput: void 0 });
       }
-    }),
-    tracer,
-    endWhenDone: false,
-    fn: async (rootSpan) => {
-      const retry = retryWithExponentialBackoff({ maxRetries });
-      const startStep = async ({
-        promptMessages: promptMessages2,
-        promptType
-      }) => {
-        const {
-          result: { stream: stream2, warnings: warnings2, rawResponse: rawResponse2 },
-          doStreamSpan: doStreamSpan2,
-          startTimestampMs: startTimestampMs2
-        } = await retry(
-          () => recordSpan({
-            name: "ai.streamText.doStream",
-            attributes: selectTelemetryAttributes({
-              telemetry,
-              attributes: {
-                ...assembleOperationName({
-                  operationId: "ai.streamText.doStream",
-                  telemetry
-                }),
-                ...baseTelemetryAttributes,
-                "ai.prompt.format": {
-                  input: () => promptType
-                },
-                "ai.prompt.messages": {
-                  input: () => JSON.stringify(promptMessages2)
-                },
-                // standardized gen-ai llm span attributes:
-                "gen_ai.system": model.provider,
-                "gen_ai.request.model": model.modelId,
-                "gen_ai.request.frequency_penalty": settings.frequencyPenalty,
-                "gen_ai.request.max_tokens": settings.maxTokens,
-                "gen_ai.request.presence_penalty": settings.presencePenalty,
-                "gen_ai.request.stop_sequences": settings.stopSequences,
-                "gen_ai.request.temperature": settings.temperature,
-                "gen_ai.request.top_k": settings.topK,
-                "gen_ai.request.top_p": settings.topP
-              }
-            }),
-            tracer,
-            endWhenDone: false,
-            fn: async (doStreamSpan3) => ({
-              startTimestampMs: now2(),
-              // get before the call
-              doStreamSpan: doStreamSpan3,
-              result: await model.doStream({
-                mode: {
-                  type: "regular",
-                  ...prepareToolsAndToolChoice({ tools, toolChoice })
-                },
-                ...prepareCallSettings(settings),
-                inputFormat: promptType,
-                prompt: promptMessages2,
-                providerMetadata,
-                abortSignal,
-                headers
-              })
-            })
-          })
-        );
-        return {
-          result: {
-            stream: runToolsTransformation({
-              tools,
-              generatorStream: stream2,
-              toolCallStreaming,
-              tracer,
-              telemetry
-            }),
-            warnings: warnings2,
-            rawResponse: rawResponse2
+    });
+  }
+  let text2 = "";
+  let textChunk = "";
+  let lastPublishedJson = "";
+  return new TransformStream({
+    transform(chunk, controller) {
+      if (chunk.type !== "text-delta") {
+        controller.enqueue({
+          part: chunk,
+          partialOutput: void 0
+        });
+        return;
+      }
+      text2 += chunk.textDelta;
+      textChunk += chunk.textDelta;
+      const result = output.parsePartial({ text: text2 });
+      if (result != null) {
+        const currentJson = JSON.stringify(result.partial);
+        if (currentJson !== lastPublishedJson) {
+          controller.enqueue({
+            part: {
+              type: "text-delta",
+              textDelta: textChunk
+            },
+            partialOutput: result.partial
+          });
+          lastPublishedJson = currentJson;
+          textChunk = "";
+        }
+      }
+    },
+    flush(controller) {
+      if (textChunk.length > 0) {
+        controller.enqueue({
+          part: {
+            type: "text-delta",
+            textDelta: textChunk
           },
-          doStreamSpan: doStreamSpan2,
-          startTimestampMs: startTimestampMs2
-        };
-      };
-      const promptMessages = await convertToLanguageModelPrompt({
-        prompt: validatePrompt({ system, prompt, messages }),
-        modelSupportsImageUrls: model.supportsImageUrls
-      });
-      const {
-        result: { stream, warnings, rawResponse },
-        doStreamSpan,
-        startTimestampMs
-      } = await startStep({
-        promptType: validatePrompt({ system, prompt, messages }).type,
-        promptMessages
-      });
-      return new DefaultStreamTextResult({
-        stream,
-        warnings,
-        rawResponse,
-        onChunk,
-        onFinish,
-        onStepFinish,
-        rootSpan,
-        doStreamSpan,
-        telemetry,
-        startTimestampMs,
-        maxSteps,
-        continueSteps,
-        startStep,
-        promptMessages,
-        modelId: model.modelId,
-        now: now2,
-        currentDate,
-        generateId: generateId3
-      });
+          partialOutput: void 0
+        });
+      }
     }
   });
 }
 var DefaultStreamTextResult = class {
   constructor({
-    stream,
-    warnings,
-    rawResponse,
+    model,
+    telemetry,
+    headers,
+    settings,
+    maxRetries: maxRetriesArg,
+    abortSignal,
+    system,
+    prompt,
+    messages,
+    tools,
+    toolChoice,
+    toolCallStreaming,
+    transforms,
+    activeTools,
+    repairToolCall,
+    maxSteps,
+    output,
+    continueSteps,
+    providerOptions,
     onChunk,
     onFinish,
     onStepFinish,
-    rootSpan,
-    doStreamSpan,
-    telemetry,
-    startTimestampMs,
-    maxSteps,
-    continueSteps,
-    startStep,
-    promptMessages,
-    modelId,
     now: now2,
     currentDate,
-    generateId: generateId3
+    generateId: generateId3,
+    generateMessageId
   }) {
-    this.warnings = warnings;
-    this.rawResponse = rawResponse;
-    const { resolve: resolveUsage, promise: usagePromise } = createResolvablePromise();
-    this.usage = usagePromise;
-    const { resolve: resolveFinishReason, promise: finishReasonPromise } = createResolvablePromise();
-    this.finishReason = finishReasonPromise;
-    const { resolve: resolveText, promise: textPromise } = createResolvablePromise();
-    this.text = textPromise;
-    const { resolve: resolveToolCalls, promise: toolCallsPromise } = createResolvablePromise();
-    this.toolCalls = toolCallsPromise;
-    const { resolve: resolveToolResults, promise: toolResultsPromise } = createResolvablePromise();
-    this.toolResults = toolResultsPromise;
-    const { resolve: resolveSteps, promise: stepsPromise } = createResolvablePromise();
-    this.steps = stepsPromise;
-    const {
-      resolve: resolveProviderMetadata,
-      promise: providerMetadataPromise
-    } = createResolvablePromise();
-    this.experimental_providerMetadata = providerMetadataPromise;
-    const { resolve: resolveResponse, promise: responsePromise } = createResolvablePromise();
-    this.response = responsePromise;
-    const {
-      resolve: resolveResponseMessages,
-      promise: responseMessagesPromise
-    } = createResolvablePromise();
-    this.responseMessages = responseMessagesPromise;
-    const {
-      stream: stitchableStream,
-      addStream,
-      close: closeStitchableStream
-    } = createStitchableStream();
-    this.originalStream = stitchableStream;
-    const stepResults = [];
-    const self = this;
-    function addStepStream({
-      stream: stream2,
-      startTimestamp,
-      doStreamSpan: doStreamSpan2,
-      currentStep,
-      promptMessages: promptMessages2,
-      usage = {
-        promptTokens: 0,
-        completionTokens: 0,
-        totalTokens: 0
-      },
-      stepType,
-      previousStepText = ""
-    }) {
-      const stepToolCalls = [];
-      const stepToolResults = [];
-      let stepFinishReason = "unknown";
-      let stepUsage = {
-        promptTokens: 0,
-        completionTokens: 0,
-        totalTokens: 0
-      };
-      let stepProviderMetadata;
-      let stepFirstChunk = true;
-      let stepText = "";
-      let fullStepText = stepType === "continue" ? previousStepText : "";
-      let stepLogProbs;
-      let stepResponse = {
-        id: generateId3(),
-        timestamp: currentDate(),
-        modelId
-      };
-      let chunkBuffer = "";
-      let chunkTextPublished = false;
-      async function publishTextChunk({
-        controller,
-        chunk
-      }) {
+    this.warningsPromise = new DelayedPromise();
+    this.usagePromise = new DelayedPromise();
+    this.finishReasonPromise = new DelayedPromise();
+    this.providerMetadataPromise = new DelayedPromise();
+    this.textPromise = new DelayedPromise();
+    this.reasoningPromise = new DelayedPromise();
+    this.toolCallsPromise = new DelayedPromise();
+    this.toolResultsPromise = new DelayedPromise();
+    this.requestPromise = new DelayedPromise();
+    this.responsePromise = new DelayedPromise();
+    this.stepsPromise = new DelayedPromise();
+    var _a15;
+    if (maxSteps < 1) {
+      throw new InvalidArgumentError({
+        parameter: "maxSteps",
+        value: maxSteps,
+        message: "maxSteps must be at least 1"
+      });
+    }
+    this.output = output;
+    let recordedStepText = "";
+    let recordedContinuationText = "";
+    let recordedFullText = "";
+    let recordedReasoningText = void 0;
+    const recordedResponse = {
+      id: generateId3(),
+      timestamp: currentDate(),
+      modelId: model.modelId,
+      messages: []
+    };
+    let recordedToolCalls = [];
+    let recordedToolResults = [];
+    let recordedFinishReason = void 0;
+    let recordedUsage = void 0;
+    let stepType = "initial";
+    const recordedSteps = [];
+    let rootSpan;
+    const eventProcessor = new TransformStream({
+      async transform(chunk, controller) {
         controller.enqueue(chunk);
-        stepText += chunk.textDelta;
-        fullStepText += chunk.textDelta;
-        chunkTextPublished = true;
-        await (onChunk == null ? void 0 : onChunk({ chunk }));
-      }
-      addStream(
-        stream2.pipeThrough(
-          new TransformStream({
-            async transform(chunk, controller) {
-              var _a11, _b, _c;
-              if (stepFirstChunk) {
-                const msToFirstChunk = now2() - startTimestamp;
-                stepFirstChunk = false;
-                doStreamSpan2.addEvent("ai.stream.firstChunk", {
-                  "ai.response.msToFirstChunk": msToFirstChunk,
-                  // deprecated:
-                  "ai.stream.msToFirstChunk": msToFirstChunk
-                });
-                doStreamSpan2.setAttributes({
-                  "ai.response.msToFirstChunk": msToFirstChunk,
-                  // deprecated:
-                  "ai.stream.msToFirstChunk": msToFirstChunk
-                });
-              }
-              if (chunk.type === "text-delta" && chunk.textDelta.length === 0) {
-                return;
-              }
-              const chunkType = chunk.type;
-              switch (chunkType) {
-                case "text-delta": {
-                  if (continueSteps) {
-                    chunkBuffer += chunk.textDelta;
-                    const split = splitOnLastWhitespace(chunkBuffer);
-                    if (split != null) {
-                      chunkBuffer = split.suffix;
-                      await publishTextChunk({
-                        controller,
-                        chunk: {
-                          type: "text-delta",
-                          textDelta: split.prefix + split.whitespace
-                        }
-                      });
-                    }
-                  } else {
-                    await publishTextChunk({ controller, chunk });
-                  }
-                  break;
-                }
-                case "tool-call": {
-                  controller.enqueue(chunk);
-                  stepToolCalls.push(chunk);
-                  await (onChunk == null ? void 0 : onChunk({ chunk }));
-                  break;
-                }
-                case "tool-result": {
-                  controller.enqueue(chunk);
-                  stepToolResults.push(chunk);
-                  await (onChunk == null ? void 0 : onChunk({ chunk }));
-                  break;
-                }
-                case "response-metadata": {
-                  stepResponse = {
-                    id: (_a11 = chunk.id) != null ? _a11 : stepResponse.id,
-                    timestamp: (_b = chunk.timestamp) != null ? _b : stepResponse.timestamp,
-                    modelId: (_c = chunk.modelId) != null ? _c : stepResponse.modelId
-                  };
-                  break;
-                }
-                case "finish": {
-                  stepUsage = chunk.usage;
-                  stepFinishReason = chunk.finishReason;
-                  stepProviderMetadata = chunk.experimental_providerMetadata;
-                  stepLogProbs = chunk.logprobs;
-                  const msToFinish = now2() - startTimestamp;
-                  doStreamSpan2.addEvent("ai.stream.finish");
-                  doStreamSpan2.setAttributes({
-                    "ai.response.msToFinish": msToFinish,
-                    "ai.response.avgCompletionTokensPerSecond": 1e3 * stepUsage.completionTokens / msToFinish
-                  });
-                  break;
-                }
-                case "tool-call-streaming-start":
-                case "tool-call-delta": {
-                  controller.enqueue(chunk);
-                  await (onChunk == null ? void 0 : onChunk({ chunk }));
-                  break;
-                }
-                case "error": {
-                  controller.enqueue(chunk);
-                  stepFinishReason = "error";
-                  break;
-                }
-                default: {
-                  const exhaustiveCheck = chunkType;
-                  throw new Error(`Unknown chunk type: ${exhaustiveCheck}`);
-                }
-              }
-            },
-            // invoke onFinish callback and resolve toolResults promise when the stream is about to close:
-            async flush(controller) {
-              const stepToolCallsJson = stepToolCalls.length > 0 ? JSON.stringify(stepToolCalls) : void 0;
-              let nextStepType = "done";
-              if (currentStep + 1 < maxSteps) {
-                if (continueSteps && stepFinishReason === "length" && // only use continue when there are no tool calls:
-                stepToolCalls.length === 0) {
-                  nextStepType = "continue";
-                } else if (
-                  // there are tool calls:
-                  stepToolCalls.length > 0 && // all current tool calls have results:
-                  stepToolResults.length === stepToolCalls.length
-                ) {
-                  nextStepType = "tool-result";
-                }
-              }
-              if (continueSteps && chunkBuffer.length > 0 && (nextStepType !== "continue" || // when the next step is a regular step, publish the buffer
-              stepType === "continue" && !chunkTextPublished)) {
-                await publishTextChunk({
-                  controller,
-                  chunk: {
-                    type: "text-delta",
-                    textDelta: chunkBuffer
-                  }
-                });
-                chunkBuffer = "";
-              }
-              try {
-                doStreamSpan2.setAttributes(
-                  selectTelemetryAttributes({
-                    telemetry,
-                    attributes: {
-                      "ai.response.finishReason": stepFinishReason,
-                      "ai.response.text": { output: () => stepText },
-                      "ai.response.toolCalls": {
-                        output: () => stepToolCallsJson
-                      },
-                      "ai.response.id": stepResponse.id,
-                      "ai.response.model": stepResponse.modelId,
-                      "ai.response.timestamp": stepResponse.timestamp.toISOString(),
-                      "ai.usage.promptTokens": stepUsage.promptTokens,
-                      "ai.usage.completionTokens": stepUsage.completionTokens,
-                      // deprecated
-                      "ai.finishReason": stepFinishReason,
-                      "ai.result.text": { output: () => stepText },
-                      "ai.result.toolCalls": {
-                        output: () => stepToolCallsJson
-                      },
-                      // standardized gen-ai llm span attributes:
-                      "gen_ai.response.finish_reasons": [stepFinishReason],
-                      "gen_ai.response.id": stepResponse.id,
-                      "gen_ai.response.model": stepResponse.modelId,
-                      "gen_ai.usage.input_tokens": stepUsage.promptTokens,
-                      "gen_ai.usage.output_tokens": stepUsage.completionTokens
-                    }
-                  })
-                );
-              } catch (error) {
-              } finally {
-                doStreamSpan2.end();
-              }
-              controller.enqueue({
-                type: "step-finish",
-                finishReason: stepFinishReason,
-                usage: stepUsage,
-                experimental_providerMetadata: stepProviderMetadata,
-                logprobs: stepLogProbs,
-                response: stepResponse,
-                isContinued: nextStepType === "continue"
-              });
-              const stepResult = {
-                stepType,
-                text: stepText,
-                toolCalls: stepToolCalls,
-                toolResults: stepToolResults,
-                finishReason: stepFinishReason,
-                usage: stepUsage,
-                warnings: self.warnings,
-                logprobs: stepLogProbs,
-                response: stepResponse,
-                rawResponse: self.rawResponse,
-                experimental_providerMetadata: stepProviderMetadata,
-                isContinued: nextStepType === "continue"
-              };
-              stepResults.push(stepResult);
-              await (onStepFinish == null ? void 0 : onStepFinish(stepResult));
-              const combinedUsage = {
-                promptTokens: usage.promptTokens + stepUsage.promptTokens,
-                completionTokens: usage.completionTokens + stepUsage.completionTokens,
-                totalTokens: usage.totalTokens + stepUsage.totalTokens
-              };
-              if (nextStepType !== "done") {
-                if (stepType === "continue") {
-                  const lastPromptMessage = promptMessages2[promptMessages2.length - 1];
-                  lastPromptMessage.content.push({
-                    text: stepText,
-                    type: "text"
-                  });
-                } else {
-                  promptMessages2.push(
-                    ...toResponseMessages({
-                      text: stepText,
-                      toolCalls: stepToolCalls,
-                      toolResults: stepToolResults
-                    }).map(
-                      (message) => convertToLanguageModelMessage(message, null)
-                    )
-                  );
-                }
-                const {
-                  result,
-                  doStreamSpan: doStreamSpan3,
-                  startTimestampMs: startTimestamp2
-                } = await startStep({
-                  promptType: "messages",
-                  promptMessages: promptMessages2
-                });
-                self.warnings = result.warnings;
-                self.rawResponse = result.rawResponse;
-                addStepStream({
-                  stream: result.stream,
-                  startTimestamp: startTimestamp2,
-                  doStreamSpan: doStreamSpan3,
-                  currentStep: currentStep + 1,
-                  promptMessages: promptMessages2,
-                  usage: combinedUsage,
-                  stepType: nextStepType,
-                  previousStepText: fullStepText
-                });
-                return;
-              }
-              try {
-                controller.enqueue({
-                  type: "finish",
-                  finishReason: stepFinishReason,
-                  usage: combinedUsage,
-                  experimental_providerMetadata: stepProviderMetadata,
-                  logprobs: stepLogProbs,
-                  response: stepResponse
-                });
-                closeStitchableStream();
-                rootSpan.setAttributes(
-                  selectTelemetryAttributes({
-                    telemetry,
-                    attributes: {
-                      "ai.response.finishReason": stepFinishReason,
-                      "ai.response.text": { output: () => fullStepText },
-                      "ai.response.toolCalls": {
-                        output: () => stepToolCallsJson
-                      },
-                      "ai.usage.promptTokens": combinedUsage.promptTokens,
-                      "ai.usage.completionTokens": combinedUsage.completionTokens,
-                      // deprecated
-                      "ai.finishReason": stepFinishReason,
-                      "ai.result.text": { output: () => fullStepText },
-                      "ai.result.toolCalls": {
-                        output: () => stepToolCallsJson
-                      }
-                    }
-                  })
-                );
-                const responseMessages = stepResults.reduce((responseMessages2, step) => {
-                  if (step.stepType === "continue") {
-                    const lastResponseMessage = responseMessages2.pop();
-                    if (typeof lastResponseMessage.content === "string") {
-                      lastResponseMessage.content += step.text;
-                    } else {
-                      lastResponseMessage.content.push({
-                        text: step.text,
-                        type: "text"
-                      });
-                    }
-                    return [...responseMessages2, lastResponseMessage];
-                  }
-                  return [
-                    ...responseMessages2,
-                    ...toResponseMessages({
-                      text: step.text,
-                      toolCalls: step.toolCalls,
-                      toolResults: step.toolResults
-                    })
-                  ];
-                }, []);
-                resolveUsage(combinedUsage);
-                resolveFinishReason(stepFinishReason);
-                resolveText(fullStepText);
-                resolveToolCalls(stepToolCalls);
-                resolveProviderMetadata(stepProviderMetadata);
-                resolveToolResults(stepToolResults);
-                resolveResponse({
-                  ...stepResponse,
-                  headers: rawResponse == null ? void 0 : rawResponse.headers
-                });
-                resolveSteps(stepResults);
-                resolveResponseMessages(responseMessages);
-                await (onFinish == null ? void 0 : onFinish({
-                  finishReason: stepFinishReason,
-                  logprobs: stepLogProbs,
-                  usage: combinedUsage,
-                  text: fullStepText,
-                  toolCalls: stepToolCalls,
-                  // The tool results are inferred as a never[] type, because they are
-                  // optional and the execute method with an inferred result type is
-                  // optional as well. Therefore we need to cast the toolResults to any.
-                  // The type exposed to the users will be correctly inferred.
-                  toolResults: stepToolResults,
-                  rawResponse,
-                  response: {
-                    ...stepResponse,
-                    headers: rawResponse == null ? void 0 : rawResponse.headers
-                  },
-                  warnings,
-                  experimental_providerMetadata: stepProviderMetadata,
-                  steps: stepResults,
-                  responseMessages
-                }));
-              } catch (error) {
-                controller.error(error);
-              } finally {
-                rootSpan.end();
-              }
+        const { part } = chunk;
+        if (part.type === "text-delta" || part.type === "reasoning" || part.type === "tool-call" || part.type === "tool-result" || part.type === "tool-call-streaming-start" || part.type === "tool-call-delta") {
+          await (onChunk == null ? void 0 : onChunk({ chunk: part }));
+        }
+        if (part.type === "text-delta") {
+          recordedStepText += part.textDelta;
+          recordedContinuationText += part.textDelta;
+          recordedFullText += part.textDelta;
+        }
+        if (part.type === "reasoning") {
+          recordedReasoningText = (recordedReasoningText != null ? recordedReasoningText : "") + part.textDelta;
+        }
+        if (part.type === "tool-call") {
+          recordedToolCalls.push(part);
+        }
+        if (part.type === "tool-result") {
+          recordedToolResults.push(part);
+        }
+        if (part.type === "step-finish") {
+          const stepMessages = toResponseMessages({
+            text: recordedContinuationText,
+            tools: tools != null ? tools : {},
+            toolCalls: recordedToolCalls,
+            toolResults: recordedToolResults,
+            messageId: part.messageId,
+            generateMessageId
+          });
+          const currentStep = recordedSteps.length;
+          let nextStepType = "done";
+          if (currentStep + 1 < maxSteps) {
+            if (continueSteps && part.finishReason === "length" && // only use continue when there are no tool calls:
+            recordedToolCalls.length === 0) {
+              nextStepType = "continue";
+            } else if (
+              // there are tool calls:
+              recordedToolCalls.length > 0 && // all current tool calls have results:
+              recordedToolResults.length === recordedToolCalls.length
+            ) {
+              nextStepType = "tool-result";
             }
-          })
-        )
+          }
+          const currentStepResult = {
+            stepType,
+            text: recordedStepText,
+            reasoning: recordedReasoningText,
+            toolCalls: recordedToolCalls,
+            toolResults: recordedToolResults,
+            finishReason: part.finishReason,
+            usage: part.usage,
+            warnings: part.warnings,
+            logprobs: part.logprobs,
+            request: part.request,
+            response: {
+              ...part.response,
+              messages: [...recordedResponse.messages, ...stepMessages]
+            },
+            experimental_providerMetadata: part.experimental_providerMetadata,
+            isContinued: part.isContinued
+          };
+          await (onStepFinish == null ? void 0 : onStepFinish(currentStepResult));
+          recordedSteps.push(currentStepResult);
+          recordedToolCalls = [];
+          recordedToolResults = [];
+          recordedStepText = "";
+          if (nextStepType !== "done") {
+            stepType = nextStepType;
+          }
+          if (nextStepType !== "continue") {
+            recordedResponse.messages.push(...stepMessages);
+            recordedContinuationText = "";
+          }
+        }
+        if (part.type === "finish") {
+          recordedResponse.id = part.response.id;
+          recordedResponse.timestamp = part.response.timestamp;
+          recordedResponse.modelId = part.response.modelId;
+          recordedResponse.headers = part.response.headers;
+          recordedUsage = part.usage;
+          recordedFinishReason = part.finishReason;
+        }
+      },
+      async flush(controller) {
+        var _a16;
+        try {
+          if (recordedSteps.length === 0) {
+            return;
+          }
+          const lastStep = recordedSteps[recordedSteps.length - 1];
+          self.warningsPromise.resolve(lastStep.warnings);
+          self.requestPromise.resolve(lastStep.request);
+          self.responsePromise.resolve(lastStep.response);
+          self.toolCallsPromise.resolve(lastStep.toolCalls);
+          self.toolResultsPromise.resolve(lastStep.toolResults);
+          self.providerMetadataPromise.resolve(
+            lastStep.experimental_providerMetadata
+          );
+          const finishReason = recordedFinishReason != null ? recordedFinishReason : "unknown";
+          const usage = recordedUsage != null ? recordedUsage : {
+            completionTokens: NaN,
+            promptTokens: NaN,
+            totalTokens: NaN
+          };
+          self.finishReasonPromise.resolve(finishReason);
+          self.usagePromise.resolve(usage);
+          self.textPromise.resolve(recordedFullText);
+          self.reasoningPromise.resolve(recordedReasoningText);
+          self.stepsPromise.resolve(recordedSteps);
+          await (onFinish == null ? void 0 : onFinish({
+            finishReason,
+            logprobs: void 0,
+            usage,
+            text: recordedFullText,
+            reasoning: recordedReasoningText,
+            toolCalls: lastStep.toolCalls,
+            toolResults: lastStep.toolResults,
+            request: (_a16 = lastStep.request) != null ? _a16 : {},
+            response: lastStep.response,
+            warnings: lastStep.warnings,
+            experimental_providerMetadata: lastStep.experimental_providerMetadata,
+            steps: recordedSteps
+          }));
+          rootSpan.setAttributes(
+            selectTelemetryAttributes({
+              telemetry,
+              attributes: {
+                "ai.response.finishReason": finishReason,
+                "ai.response.text": { output: () => recordedFullText },
+                "ai.response.toolCalls": {
+                  output: () => {
+                    var _a17;
+                    return ((_a17 = lastStep.toolCalls) == null ? void 0 : _a17.length) ? JSON.stringify(lastStep.toolCalls) : void 0;
+                  }
+                },
+                "ai.usage.promptTokens": usage.promptTokens,
+                "ai.usage.completionTokens": usage.completionTokens
+              }
+            })
+          );
+        } catch (error) {
+          controller.error(error);
+        } finally {
+          rootSpan.end();
+        }
+      }
+    });
+    const stitchableStream = createStitchableStream();
+    this.addStream = stitchableStream.addStream;
+    this.closeStream = stitchableStream.close;
+    let stream = stitchableStream.stream;
+    for (const transform of transforms) {
+      stream = stream.pipeThrough(
+        transform({
+          tools,
+          stopStream() {
+            stitchableStream.terminate();
+          }
+        })
       );
     }
-    addStepStream({
-      stream,
-      startTimestamp: startTimestampMs,
-      doStreamSpan,
-      currentStep: 0,
-      promptMessages,
-      usage: void 0,
-      stepType: "initial"
+    this.baseStream = stream.pipeThrough(createOutputTransformStream(output)).pipeThrough(eventProcessor);
+    const { maxRetries, retry } = prepareRetries({
+      maxRetries: maxRetriesArg
     });
+    const tracer = getTracer(telemetry);
+    const baseTelemetryAttributes = getBaseTelemetryAttributes({
+      model,
+      telemetry,
+      headers,
+      settings: { ...settings, maxRetries }
+    });
+    const initialPrompt = standardizePrompt({
+      prompt: {
+        system: (_a15 = output == null ? void 0 : output.injectIntoSystemPrompt({ system, model })) != null ? _a15 : system,
+        prompt,
+        messages
+      },
+      tools
+    });
+    const self = this;
+    recordSpan({
+      name: "ai.streamText",
+      attributes: selectTelemetryAttributes({
+        telemetry,
+        attributes: {
+          ...assembleOperationName({ operationId: "ai.streamText", telemetry }),
+          ...baseTelemetryAttributes,
+          // specific settings that only make sense on the outer level:
+          "ai.prompt": {
+            input: () => JSON.stringify({ system, prompt, messages })
+          },
+          "ai.settings.maxSteps": maxSteps
+        }
+      }),
+      tracer,
+      endWhenDone: false,
+      fn: async (rootSpanArg) => {
+        rootSpan = rootSpanArg;
+        async function streamStep({
+          currentStep,
+          responseMessages,
+          usage,
+          stepType: stepType2,
+          previousStepText,
+          hasLeadingWhitespace,
+          messageId
+        }) {
+          var _a16;
+          const promptFormat = responseMessages.length === 0 ? initialPrompt.type : "messages";
+          const stepInputMessages = [
+            ...initialPrompt.messages,
+            ...responseMessages
+          ];
+          const promptMessages = await convertToLanguageModelPrompt({
+            prompt: {
+              type: promptFormat,
+              system: initialPrompt.system,
+              messages: stepInputMessages
+            },
+            modelSupportsImageUrls: model.supportsImageUrls,
+            modelSupportsUrl: (_a16 = model.supportsUrl) == null ? void 0 : _a16.bind(model)
+            // support 'this' context
+          });
+          const mode = {
+            type: "regular",
+            ...prepareToolsAndToolChoice({ tools, toolChoice, activeTools })
+          };
+          const {
+            result: { stream: stream2, warnings, rawResponse, request },
+            doStreamSpan,
+            startTimestampMs
+          } = await retry(
+            () => recordSpan({
+              name: "ai.streamText.doStream",
+              attributes: selectTelemetryAttributes({
+                telemetry,
+                attributes: {
+                  ...assembleOperationName({
+                    operationId: "ai.streamText.doStream",
+                    telemetry
+                  }),
+                  ...baseTelemetryAttributes,
+                  "ai.prompt.format": {
+                    input: () => promptFormat
+                  },
+                  "ai.prompt.messages": {
+                    input: () => JSON.stringify(promptMessages)
+                  },
+                  "ai.prompt.tools": {
+                    // convert the language model level tools:
+                    input: () => {
+                      var _a17;
+                      return (_a17 = mode.tools) == null ? void 0 : _a17.map((tool2) => JSON.stringify(tool2));
+                    }
+                  },
+                  "ai.prompt.toolChoice": {
+                    input: () => mode.toolChoice != null ? JSON.stringify(mode.toolChoice) : void 0
+                  },
+                  // standardized gen-ai llm span attributes:
+                  "gen_ai.system": model.provider,
+                  "gen_ai.request.model": model.modelId,
+                  "gen_ai.request.frequency_penalty": settings.frequencyPenalty,
+                  "gen_ai.request.max_tokens": settings.maxTokens,
+                  "gen_ai.request.presence_penalty": settings.presencePenalty,
+                  "gen_ai.request.stop_sequences": settings.stopSequences,
+                  "gen_ai.request.temperature": settings.temperature,
+                  "gen_ai.request.top_k": settings.topK,
+                  "gen_ai.request.top_p": settings.topP
+                }
+              }),
+              tracer,
+              endWhenDone: false,
+              fn: async (doStreamSpan2) => ({
+                startTimestampMs: now2(),
+                // get before the call
+                doStreamSpan: doStreamSpan2,
+                result: await model.doStream({
+                  mode,
+                  ...prepareCallSettings(settings),
+                  inputFormat: promptFormat,
+                  responseFormat: output == null ? void 0 : output.responseFormat({ model }),
+                  prompt: promptMessages,
+                  providerMetadata: providerOptions,
+                  abortSignal,
+                  headers
+                })
+              })
+            })
+          );
+          const transformedStream = runToolsTransformation({
+            tools,
+            generatorStream: stream2,
+            toolCallStreaming,
+            tracer,
+            telemetry,
+            system,
+            messages: stepInputMessages,
+            repairToolCall,
+            abortSignal
+          });
+          const stepRequest = request != null ? request : {};
+          const stepToolCalls = [];
+          const stepToolResults = [];
+          let stepFinishReason = "unknown";
+          let stepUsage = {
+            promptTokens: 0,
+            completionTokens: 0,
+            totalTokens: 0
+          };
+          let stepProviderMetadata;
+          let stepFirstChunk = true;
+          let stepText = "";
+          let stepReasoning = "";
+          let fullStepText = stepType2 === "continue" ? previousStepText : "";
+          let stepLogProbs;
+          let stepResponse = {
+            id: generateId3(),
+            timestamp: currentDate(),
+            modelId: model.modelId
+          };
+          let chunkBuffer = "";
+          let chunkTextPublished = false;
+          let inWhitespacePrefix = true;
+          let hasWhitespaceSuffix = false;
+          async function publishTextChunk({
+            controller,
+            chunk
+          }) {
+            controller.enqueue(chunk);
+            stepText += chunk.textDelta;
+            fullStepText += chunk.textDelta;
+            chunkTextPublished = true;
+            hasWhitespaceSuffix = chunk.textDelta.trimEnd() !== chunk.textDelta;
+          }
+          self.addStream(
+            transformedStream.pipeThrough(
+              new TransformStream({
+                async transform(chunk, controller) {
+                  var _a17, _b, _c;
+                  if (stepFirstChunk) {
+                    const msToFirstChunk = now2() - startTimestampMs;
+                    stepFirstChunk = false;
+                    doStreamSpan.addEvent("ai.stream.firstChunk", {
+                      "ai.response.msToFirstChunk": msToFirstChunk
+                    });
+                    doStreamSpan.setAttributes({
+                      "ai.response.msToFirstChunk": msToFirstChunk
+                    });
+                    controller.enqueue({
+                      type: "step-start",
+                      messageId,
+                      request: stepRequest,
+                      warnings: warnings != null ? warnings : []
+                    });
+                  }
+                  if (chunk.type === "text-delta" && chunk.textDelta.length === 0) {
+                    return;
+                  }
+                  const chunkType = chunk.type;
+                  switch (chunkType) {
+                    case "text-delta": {
+                      if (continueSteps) {
+                        const trimmedChunkText = inWhitespacePrefix && hasLeadingWhitespace ? chunk.textDelta.trimStart() : chunk.textDelta;
+                        if (trimmedChunkText.length === 0) {
+                          break;
+                        }
+                        inWhitespacePrefix = false;
+                        chunkBuffer += trimmedChunkText;
+                        const split = splitOnLastWhitespace(chunkBuffer);
+                        if (split != null) {
+                          chunkBuffer = split.suffix;
+                          await publishTextChunk({
+                            controller,
+                            chunk: {
+                              type: "text-delta",
+                              textDelta: split.prefix + split.whitespace
+                            }
+                          });
+                        }
+                      } else {
+                        await publishTextChunk({ controller, chunk });
+                      }
+                      break;
+                    }
+                    case "reasoning": {
+                      controller.enqueue(chunk);
+                      stepReasoning += chunk.textDelta;
+                      break;
+                    }
+                    case "tool-call": {
+                      controller.enqueue(chunk);
+                      stepToolCalls.push(chunk);
+                      break;
+                    }
+                    case "tool-result": {
+                      controller.enqueue(chunk);
+                      stepToolResults.push(chunk);
+                      break;
+                    }
+                    case "response-metadata": {
+                      stepResponse = {
+                        id: (_a17 = chunk.id) != null ? _a17 : stepResponse.id,
+                        timestamp: (_b = chunk.timestamp) != null ? _b : stepResponse.timestamp,
+                        modelId: (_c = chunk.modelId) != null ? _c : stepResponse.modelId
+                      };
+                      break;
+                    }
+                    case "finish": {
+                      stepUsage = chunk.usage;
+                      stepFinishReason = chunk.finishReason;
+                      stepProviderMetadata = chunk.experimental_providerMetadata;
+                      stepLogProbs = chunk.logprobs;
+                      const msToFinish = now2() - startTimestampMs;
+                      doStreamSpan.addEvent("ai.stream.finish");
+                      doStreamSpan.setAttributes({
+                        "ai.response.msToFinish": msToFinish,
+                        "ai.response.avgCompletionTokensPerSecond": 1e3 * stepUsage.completionTokens / msToFinish
+                      });
+                      break;
+                    }
+                    case "tool-call-streaming-start":
+                    case "tool-call-delta": {
+                      controller.enqueue(chunk);
+                      break;
+                    }
+                    case "error": {
+                      controller.enqueue(chunk);
+                      stepFinishReason = "error";
+                      break;
+                    }
+                    default: {
+                      const exhaustiveCheck = chunkType;
+                      throw new Error(`Unknown chunk type: ${exhaustiveCheck}`);
+                    }
+                  }
+                },
+                // invoke onFinish callback and resolve toolResults promise when the stream is about to close:
+                async flush(controller) {
+                  const stepToolCallsJson = stepToolCalls.length > 0 ? JSON.stringify(stepToolCalls) : void 0;
+                  let nextStepType = "done";
+                  if (currentStep + 1 < maxSteps) {
+                    if (continueSteps && stepFinishReason === "length" && // only use continue when there are no tool calls:
+                    stepToolCalls.length === 0) {
+                      nextStepType = "continue";
+                    } else if (
+                      // there are tool calls:
+                      stepToolCalls.length > 0 && // all current tool calls have results:
+                      stepToolResults.length === stepToolCalls.length
+                    ) {
+                      nextStepType = "tool-result";
+                    }
+                  }
+                  if (continueSteps && chunkBuffer.length > 0 && (nextStepType !== "continue" || // when the next step is a regular step, publish the buffer
+                  stepType2 === "continue" && !chunkTextPublished)) {
+                    await publishTextChunk({
+                      controller,
+                      chunk: {
+                        type: "text-delta",
+                        textDelta: chunkBuffer
+                      }
+                    });
+                    chunkBuffer = "";
+                  }
+                  try {
+                    doStreamSpan.setAttributes(
+                      selectTelemetryAttributes({
+                        telemetry,
+                        attributes: {
+                          "ai.response.finishReason": stepFinishReason,
+                          "ai.response.text": { output: () => stepText },
+                          "ai.response.toolCalls": {
+                            output: () => stepToolCallsJson
+                          },
+                          "ai.response.id": stepResponse.id,
+                          "ai.response.model": stepResponse.modelId,
+                          "ai.response.timestamp": stepResponse.timestamp.toISOString(),
+                          "ai.usage.promptTokens": stepUsage.promptTokens,
+                          "ai.usage.completionTokens": stepUsage.completionTokens,
+                          // standardized gen-ai llm span attributes:
+                          "gen_ai.response.finish_reasons": [stepFinishReason],
+                          "gen_ai.response.id": stepResponse.id,
+                          "gen_ai.response.model": stepResponse.modelId,
+                          "gen_ai.usage.input_tokens": stepUsage.promptTokens,
+                          "gen_ai.usage.output_tokens": stepUsage.completionTokens
+                        }
+                      })
+                    );
+                  } catch (error) {
+                  } finally {
+                    doStreamSpan.end();
+                  }
+                  controller.enqueue({
+                    type: "step-finish",
+                    finishReason: stepFinishReason,
+                    usage: stepUsage,
+                    experimental_providerMetadata: stepProviderMetadata,
+                    logprobs: stepLogProbs,
+                    request: stepRequest,
+                    response: {
+                      ...stepResponse,
+                      headers: rawResponse == null ? void 0 : rawResponse.headers
+                    },
+                    warnings,
+                    isContinued: nextStepType === "continue",
+                    messageId
+                  });
+                  const combinedUsage = addLanguageModelUsage(usage, stepUsage);
+                  if (nextStepType === "done") {
+                    controller.enqueue({
+                      type: "finish",
+                      finishReason: stepFinishReason,
+                      usage: combinedUsage,
+                      experimental_providerMetadata: stepProviderMetadata,
+                      logprobs: stepLogProbs,
+                      response: {
+                        ...stepResponse,
+                        headers: rawResponse == null ? void 0 : rawResponse.headers
+                      }
+                    });
+                    self.closeStream();
+                  } else {
+                    if (stepType2 === "continue") {
+                      const lastMessage = responseMessages[responseMessages.length - 1];
+                      if (typeof lastMessage.content === "string") {
+                        lastMessage.content += stepText;
+                      } else {
+                        lastMessage.content.push({
+                          text: stepText,
+                          type: "text"
+                        });
+                      }
+                    } else {
+                      responseMessages.push(
+                        ...toResponseMessages({
+                          text: stepText,
+                          tools: tools != null ? tools : {},
+                          toolCalls: stepToolCalls,
+                          toolResults: stepToolResults,
+                          messageId,
+                          generateMessageId
+                        })
+                      );
+                    }
+                    await streamStep({
+                      currentStep: currentStep + 1,
+                      responseMessages,
+                      usage: combinedUsage,
+                      stepType: nextStepType,
+                      previousStepText: fullStepText,
+                      hasLeadingWhitespace: hasWhitespaceSuffix,
+                      messageId: (
+                        // keep the same id when continuing a step:
+                        nextStepType === "continue" ? messageId : generateMessageId()
+                      )
+                    });
+                  }
+                }
+              })
+            )
+          );
+        }
+        await streamStep({
+          currentStep: 0,
+          responseMessages: [],
+          usage: {
+            promptTokens: 0,
+            completionTokens: 0,
+            totalTokens: 0
+          },
+          previousStepText: "",
+          stepType: "initial",
+          hasLeadingWhitespace: false,
+          messageId: generateMessageId()
+        });
+      }
+    }).catch((error) => {
+      self.addStream(
+        new ReadableStream({
+          start(controller) {
+            controller.enqueue({ type: "error", error });
+            controller.close();
+          }
+        })
+      );
+      self.closeStream();
+    });
+  }
+  get warnings() {
+    return this.warningsPromise.value;
+  }
+  get usage() {
+    return this.usagePromise.value;
+  }
+  get finishReason() {
+    return this.finishReasonPromise.value;
+  }
+  get experimental_providerMetadata() {
+    return this.providerMetadataPromise.value;
+  }
+  get text() {
+    return this.textPromise.value;
+  }
+  get reasoning() {
+    return this.reasoningPromise.value;
+  }
+  get toolCalls() {
+    return this.toolCallsPromise.value;
+  }
+  get toolResults() {
+    return this.toolResultsPromise.value;
+  }
+  get request() {
+    return this.requestPromise.value;
+  }
+  get response() {
+    return this.responsePromise.value;
+  }
+  get steps() {
+    return this.stepsPromise.value;
   }
   /**
   Split out a new stream from the original stream.
@@ -20514,59 +21977,65 @@ var DefaultStreamTextResult = class {
   However, the LLM results are expected to be small enough to not cause issues.
      */
   teeStream() {
-    const [stream1, stream2] = this.originalStream.tee();
-    this.originalStream = stream2;
+    const [stream1, stream2] = this.baseStream.tee();
+    this.baseStream = stream2;
     return stream1;
   }
   get textStream() {
-    return createAsyncIterableStream(this.teeStream(), {
-      transform(chunk, controller) {
-        if (chunk.type === "text-delta") {
-          controller.enqueue(chunk.textDelta);
-        } else if (chunk.type === "error") {
-          controller.error(chunk.error);
-        }
-      }
-    });
+    return createAsyncIterableStream(
+      this.teeStream().pipeThrough(
+        new TransformStream({
+          transform({ part }, controller) {
+            if (part.type === "text-delta") {
+              controller.enqueue(part.textDelta);
+            } else if (part.type === "error") {
+              controller.error(part.error);
+            }
+          }
+        })
+      )
+    );
   }
   get fullStream() {
-    return createAsyncIterableStream(this.teeStream(), {
-      transform(chunk, controller) {
-        controller.enqueue(chunk);
-      }
-    });
+    return createAsyncIterableStream(
+      this.teeStream().pipeThrough(
+        new TransformStream({
+          transform({ part }, controller) {
+            controller.enqueue(part);
+          }
+        })
+      )
+    );
   }
-  toAIStream(callbacks = {}) {
-    return this.toDataStreamInternal({ callbacks });
+  get experimental_partialOutputStream() {
+    if (this.output == null) {
+      throw new NoOutputSpecifiedError();
+    }
+    return createAsyncIterableStream(
+      this.teeStream().pipeThrough(
+        new TransformStream({
+          transform({ partialOutput }, controller) {
+            if (partialOutput != null) {
+              controller.enqueue(partialOutput);
+            }
+          }
+        })
+      )
+    );
   }
   toDataStreamInternal({
-    callbacks = {},
-    getErrorMessage: getErrorMessage4 = () => "",
+    getErrorMessage: getErrorMessage5 = () => "An error occurred.",
     // mask error messages for safety by default
-    sendUsage = true
-  } = {}) {
+    sendUsage = true,
+    sendReasoning = false
+  }) {
     let aggregatedResponse = "";
     const callbackTransformer = new TransformStream({
-      async start() {
-        if (callbacks.onStart)
-          await callbacks.onStart();
-      },
       async transform(chunk, controller) {
         controller.enqueue(chunk);
         if (chunk.type === "text-delta") {
-          const textDelta = chunk.textDelta;
-          aggregatedResponse += textDelta;
-          if (callbacks.onToken)
-            await callbacks.onToken(textDelta);
-          if (callbacks.onText)
-            await callbacks.onText(textDelta);
+          aggregatedResponse += chunk.textDelta;
         }
-      },
-      async flush() {
-        if (callbacks.onCompletion)
-          await callbacks.onCompletion(aggregatedResponse);
-        if (callbacks.onFinal)
-          await callbacks.onFinal(aggregatedResponse);
       }
     });
     const streamPartsTransformer = new TransformStream({
@@ -20574,12 +22043,20 @@ var DefaultStreamTextResult = class {
         const chunkType = chunk.type;
         switch (chunkType) {
           case "text-delta": {
-            controller.enqueue((0, import_ui_utils10.formatStreamPart)("text", chunk.textDelta));
+            controller.enqueue((0, import_ui_utils8.formatDataStreamPart)("text", chunk.textDelta));
+            break;
+          }
+          case "reasoning": {
+            if (sendReasoning) {
+              controller.enqueue(
+                (0, import_ui_utils8.formatDataStreamPart)("reasoning", chunk.textDelta)
+              );
+            }
             break;
           }
           case "tool-call-streaming-start": {
             controller.enqueue(
-              (0, import_ui_utils10.formatStreamPart)("tool_call_streaming_start", {
+              (0, import_ui_utils8.formatDataStreamPart)("tool_call_streaming_start", {
                 toolCallId: chunk.toolCallId,
                 toolName: chunk.toolName
               })
@@ -20588,7 +22065,7 @@ var DefaultStreamTextResult = class {
           }
           case "tool-call-delta": {
             controller.enqueue(
-              (0, import_ui_utils10.formatStreamPart)("tool_call_delta", {
+              (0, import_ui_utils8.formatDataStreamPart)("tool_call_delta", {
                 toolCallId: chunk.toolCallId,
                 argsTextDelta: chunk.argsTextDelta
               })
@@ -20597,7 +22074,7 @@ var DefaultStreamTextResult = class {
           }
           case "tool-call": {
             controller.enqueue(
-              (0, import_ui_utils10.formatStreamPart)("tool_call", {
+              (0, import_ui_utils8.formatDataStreamPart)("tool_call", {
                 toolCallId: chunk.toolCallId,
                 toolName: chunk.toolName,
                 args: chunk.args
@@ -20607,7 +22084,7 @@ var DefaultStreamTextResult = class {
           }
           case "tool-result": {
             controller.enqueue(
-              (0, import_ui_utils10.formatStreamPart)("tool_result", {
+              (0, import_ui_utils8.formatDataStreamPart)("tool_result", {
                 toolCallId: chunk.toolCallId,
                 result: chunk.result
               })
@@ -20616,13 +22093,21 @@ var DefaultStreamTextResult = class {
           }
           case "error": {
             controller.enqueue(
-              (0, import_ui_utils10.formatStreamPart)("error", getErrorMessage4(chunk.error))
+              (0, import_ui_utils8.formatDataStreamPart)("error", getErrorMessage5(chunk.error))
+            );
+            break;
+          }
+          case "step-start": {
+            controller.enqueue(
+              (0, import_ui_utils8.formatDataStreamPart)("start_step", {
+                messageId: chunk.messageId
+              })
             );
             break;
           }
           case "step-finish": {
             controller.enqueue(
-              (0, import_ui_utils10.formatStreamPart)("finish_step", {
+              (0, import_ui_utils8.formatDataStreamPart)("finish_step", {
                 finishReason: chunk.finishReason,
                 usage: sendUsage ? {
                   promptTokens: chunk.usage.promptTokens,
@@ -20635,7 +22120,7 @@ var DefaultStreamTextResult = class {
           }
           case "finish": {
             controller.enqueue(
-              (0, import_ui_utils10.formatStreamPart)("finish_message", {
+              (0, import_ui_utils8.formatDataStreamPart)("finish_message", {
                 finishReason: chunk.finishReason,
                 usage: sendUsage ? {
                   promptTokens: chunk.usage.promptTokens,
@@ -20652,29 +22137,31 @@ var DefaultStreamTextResult = class {
         }
       }
     });
-    return this.fullStream.pipeThrough(callbackTransformer).pipeThrough(streamPartsTransformer).pipeThrough(new TextEncoderStream());
+    return this.fullStream.pipeThrough(callbackTransformer).pipeThrough(streamPartsTransformer);
   }
-  pipeAIStreamToResponse(response, init) {
-    return this.pipeDataStreamToResponse(response, init);
-  }
-  pipeDataStreamToResponse(response, options) {
-    const init = options == null ? void 0 : "init" in options ? options.init : {
-      headers: "headers" in options ? options.headers : void 0,
-      status: "status" in options ? options.status : void 0,
-      statusText: "statusText" in options ? options.statusText : void 0
-    };
-    const data = options == null ? void 0 : "data" in options ? options.data : void 0;
-    const getErrorMessage4 = options == null ? void 0 : "getErrorMessage" in options ? options.getErrorMessage : void 0;
-    const sendUsage = options == null ? void 0 : "sendUsage" in options ? options.sendUsage : void 0;
+  pipeDataStreamToResponse(response, {
+    status,
+    statusText,
+    headers,
+    data,
+    getErrorMessage: getErrorMessage5,
+    sendUsage,
+    sendReasoning
+  } = {}) {
     writeToServerResponse({
       response,
-      status: init == null ? void 0 : init.status,
-      statusText: init == null ? void 0 : init.statusText,
-      headers: prepareOutgoingHttpHeaders(init, {
+      status,
+      statusText,
+      headers: prepareOutgoingHttpHeaders(headers, {
         contentType: "text/plain; charset=utf-8",
         dataStreamVersion: "v1"
       }),
-      stream: this.toDataStream({ data, getErrorMessage: getErrorMessage4, sendUsage })
+      stream: this.toDataStream({
+        data,
+        getErrorMessage: getErrorMessage5,
+        sendUsage,
+        sendReasoning
+      })
     });
   }
   pipeTextStreamToResponse(response, init) {
@@ -20682,38 +22169,45 @@ var DefaultStreamTextResult = class {
       response,
       status: init == null ? void 0 : init.status,
       statusText: init == null ? void 0 : init.statusText,
-      headers: prepareOutgoingHttpHeaders(init, {
+      headers: prepareOutgoingHttpHeaders(init == null ? void 0 : init.headers, {
         contentType: "text/plain; charset=utf-8"
       }),
       stream: this.textStream.pipeThrough(new TextEncoderStream())
     });
   }
-  toAIStreamResponse(options) {
-    return this.toDataStreamResponse(options);
-  }
+  // TODO breaking change 5.0: remove pipeThrough(new TextEncoderStream())
   toDataStream(options) {
     const stream = this.toDataStreamInternal({
       getErrorMessage: options == null ? void 0 : options.getErrorMessage,
-      sendUsage: options == null ? void 0 : options.sendUsage
-    });
+      sendUsage: options == null ? void 0 : options.sendUsage,
+      sendReasoning: options == null ? void 0 : options.sendReasoning
+    }).pipeThrough(new TextEncoderStream());
     return (options == null ? void 0 : options.data) ? mergeStreams(options == null ? void 0 : options.data.stream, stream) : stream;
   }
-  toDataStreamResponse(options) {
-    var _a11;
-    const init = options == null ? void 0 : "init" in options ? options.init : {
-      headers: "headers" in options ? options.headers : void 0,
-      status: "status" in options ? options.status : void 0,
-      statusText: "statusText" in options ? options.statusText : void 0
-    };
-    const data = options == null ? void 0 : "data" in options ? options.data : void 0;
-    const getErrorMessage4 = options == null ? void 0 : "getErrorMessage" in options ? options.getErrorMessage : void 0;
-    const sendUsage = options == null ? void 0 : "sendUsage" in options ? options.sendUsage : void 0;
+  mergeIntoDataStream(writer, options) {
+    writer.merge(
+      this.toDataStreamInternal({
+        getErrorMessage: writer.onError,
+        sendUsage: options == null ? void 0 : options.sendUsage,
+        sendReasoning: options == null ? void 0 : options.sendReasoning
+      })
+    );
+  }
+  toDataStreamResponse({
+    headers,
+    status,
+    statusText,
+    data,
+    getErrorMessage: getErrorMessage5,
+    sendUsage,
+    sendReasoning
+  } = {}) {
     return new Response(
-      this.toDataStream({ data, getErrorMessage: getErrorMessage4, sendUsage }),
+      this.toDataStream({ data, getErrorMessage: getErrorMessage5, sendUsage, sendReasoning }),
       {
-        status: (_a11 = init == null ? void 0 : init.status) != null ? _a11 : 200,
-        statusText: init == null ? void 0 : init.statusText,
-        headers: prepareResponseHeaders(init, {
+        status,
+        statusText,
+        headers: prepareResponseHeaders(headers, {
           contentType: "text/plain; charset=utf-8",
           dataStreamVersion: "v1"
         })
@@ -20721,19 +22215,136 @@ var DefaultStreamTextResult = class {
     );
   }
   toTextStreamResponse(init) {
-    var _a11;
+    var _a15;
     return new Response(this.textStream.pipeThrough(new TextEncoderStream()), {
-      status: (_a11 = init == null ? void 0 : init.status) != null ? _a11 : 200,
-      headers: prepareResponseHeaders(init, {
+      status: (_a15 = init == null ? void 0 : init.status) != null ? _a15 : 200,
+      headers: prepareResponseHeaders(init == null ? void 0 : init.headers, {
         contentType: "text/plain; charset=utf-8"
       })
     });
   }
 };
-var experimental_streamText = streamText;
+
+// core/util/get-potential-start-index.ts
+function getPotentialStartIndex(text2, searchedText) {
+  if (searchedText.length === 0) {
+    return null;
+  }
+  const directIndex = text2.indexOf(searchedText);
+  if (directIndex !== -1) {
+    return directIndex;
+  }
+  for (let i = text2.length - 1; i >= 0; i--) {
+    const suffix = text2.substring(i);
+    if (searchedText.startsWith(suffix)) {
+      return i;
+    }
+  }
+  return null;
+}
+
+// core/middleware/extract-reasoning-middleware.ts
+function extractReasoningMiddleware({
+  tagName,
+  separator = "\n"
+}) {
+  const openingTag = `<${tagName}>`;
+  const closingTag = `</${tagName}>`;
+  return {
+    middlewareVersion: "v1",
+    wrapGenerate: async ({ doGenerate }) => {
+      const { text: text2, ...rest } = await doGenerate();
+      if (text2 == null) {
+        return { text: text2, ...rest };
+      }
+      const regexp = new RegExp(`${openingTag}(.*?)${closingTag}`, "gs");
+      const matches = Array.from(text2.matchAll(regexp));
+      if (!matches.length) {
+        return { text: text2, ...rest };
+      }
+      const reasoning = matches.map((match) => match[1]).join(separator);
+      let textWithoutReasoning = text2;
+      for (let i = matches.length - 1; i >= 0; i--) {
+        const match = matches[i];
+        const beforeMatch = textWithoutReasoning.slice(0, match.index);
+        const afterMatch = textWithoutReasoning.slice(
+          match.index + match[0].length
+        );
+        textWithoutReasoning = beforeMatch + (beforeMatch.length > 0 && afterMatch.length > 0 ? separator : "") + afterMatch;
+      }
+      return { text: textWithoutReasoning, reasoning, ...rest };
+    },
+    wrapStream: async ({ doStream }) => {
+      const { stream, ...rest } = await doStream();
+      let isFirstReasoning = true;
+      let isFirstText = true;
+      let afterSwitch = false;
+      let isReasoning = false;
+      let buffer = "";
+      return {
+        stream: stream.pipeThrough(
+          new TransformStream({
+            transform: (chunk, controller) => {
+              if (chunk.type !== "text-delta") {
+                controller.enqueue(chunk);
+                return;
+              }
+              buffer += chunk.textDelta;
+              function publish(text2) {
+                if (text2.length > 0) {
+                  const prefix = afterSwitch && (isReasoning ? !isFirstReasoning : !isFirstText) ? separator : "";
+                  controller.enqueue({
+                    type: isReasoning ? "reasoning" : "text-delta",
+                    textDelta: prefix + text2
+                  });
+                  afterSwitch = false;
+                  if (isReasoning) {
+                    isFirstReasoning = false;
+                  } else {
+                    isFirstText = false;
+                  }
+                }
+              }
+              do {
+                const nextTag = isReasoning ? closingTag : openingTag;
+                const startIndex = getPotentialStartIndex(buffer, nextTag);
+                if (startIndex == null) {
+                  publish(buffer);
+                  buffer = "";
+                  break;
+                }
+                publish(buffer.slice(0, startIndex));
+                const foundFullMatch = startIndex + nextTag.length <= buffer.length;
+                if (foundFullMatch) {
+                  buffer = buffer.slice(startIndex + nextTag.length);
+                  isReasoning = !isReasoning;
+                  afterSwitch = true;
+                } else {
+                  buffer = buffer.slice(startIndex);
+                  break;
+                }
+              } while (true);
+            }
+          })
+        ),
+        ...rest
+      };
+    }
+  };
+}
 
 // core/middleware/wrap-language-model.ts
-var experimental_wrapLanguageModel = ({
+var wrapLanguageModel = ({
+  model,
+  middleware: middlewareArg,
+  modelId,
+  providerId
+}) => {
+  return asArray(middlewareArg).reverse().reduce((wrappedModel, middleware) => {
+    return doWrap({ model: wrappedModel, middleware, modelId, providerId });
+  }, model);
+};
+var doWrap = ({
   model,
   middleware: { transformParams, wrapGenerate, wrapStream },
   modelId,
@@ -20751,6 +22362,7 @@ var experimental_wrapLanguageModel = ({
     modelId: modelId != null ? modelId : model.modelId,
     defaultObjectGenerationMode: model.defaultObjectGenerationMode,
     supportsImageUrls: model.supportsImageUrls,
+    supportsUrl: model.supportsUrl,
     supportsStructuredOutputs: model.supportsStructuredOutputs,
     async doGenerate(params) {
       const transformedParams = await doTransform({ params, type: "generate" });
@@ -20764,167 +22376,100 @@ var experimental_wrapLanguageModel = ({
     }
   };
 };
+var experimental_wrapLanguageModel = wrapLanguageModel;
 
-// core/prompt/attachments-to-parts.ts
-function attachmentsToParts(attachments) {
-  var _a11, _b, _c;
-  const parts = [];
-  for (const attachment of attachments) {
-    let url;
-    try {
-      url = new URL(attachment.url);
-    } catch (error) {
-      throw new Error(`Invalid URL: ${attachment.url}`);
-    }
-    switch (url.protocol) {
-      case "http:":
-      case "https:": {
-        if ((_a11 = attachment.contentType) == null ? void 0 : _a11.startsWith("image/")) {
-          parts.push({ type: "image", image: url });
-        } else {
-          if (!attachment.contentType) {
-            throw new Error(
-              "If the attachment is not an image, it must specify a content type"
-            );
-          }
-          parts.push({
-            type: "file",
-            data: url,
-            mimeType: attachment.contentType
-          });
-        }
-        break;
-      }
-      case "data:": {
-        let header;
-        let base64Content;
-        let mimeType;
-        try {
-          [header, base64Content] = attachment.url.split(",");
-          mimeType = header.split(";")[0].split(":")[1];
-        } catch (error) {
-          throw new Error(`Error processing data URL: ${attachment.url}`);
-        }
-        if (mimeType == null || base64Content == null) {
-          throw new Error(`Invalid data URL format: ${attachment.url}`);
-        }
-        if ((_b = attachment.contentType) == null ? void 0 : _b.startsWith("image/")) {
-          parts.push({
-            type: "image",
-            image: convertDataContentToUint8Array(base64Content)
-          });
-        } else if ((_c = attachment.contentType) == null ? void 0 : _c.startsWith("text/")) {
-          parts.push({
-            type: "text",
-            text: convertUint8ArrayToText(
-              convertDataContentToUint8Array(base64Content)
-            )
-          });
-        } else {
-          if (!attachment.contentType) {
-            throw new Error(
-              "If the attachment is not an image or text, it must specify a content type"
-            );
-          }
-          parts.push({
-            type: "file",
-            data: base64Content,
-            mimeType: attachment.contentType
-          });
-        }
-        break;
-      }
-      default: {
-        throw new Error(`Unsupported URL protocol: ${url.protocol}`);
-      }
-    }
-  }
-  return parts;
+// core/prompt/append-client-message.ts
+function appendClientMessage({
+  messages,
+  message
+}) {
+  return [
+    ...messages.length > 0 && messages[messages.length - 1].id === message.id ? messages.slice(0, -1) : messages,
+    message
+  ];
 }
 
-// core/prompt/convert-to-core-messages.ts
-function convertToCoreMessages(messages) {
-  const coreMessages = [];
-  for (const message of messages) {
-    const { role, content, toolInvocations, experimental_attachments } = message;
+// core/prompt/append-response-messages.ts
+var import_ui_utils9 = __nccwpck_require__(8715);
+function appendResponseMessages({
+  messages,
+  responseMessages
+}) {
+  var _a15, _b;
+  const clonedMessages = structuredClone(messages);
+  for (const message of responseMessages) {
+    const role = message.role;
+    const lastMessage = clonedMessages[clonedMessages.length - 1];
+    const isLastMessageAssistant = lastMessage.role === "assistant";
     switch (role) {
-      case "system": {
-        coreMessages.push({
-          role: "system",
-          content
-        });
-        break;
-      }
-      case "user": {
-        coreMessages.push({
-          role: "user",
-          content: experimental_attachments ? [
-            { type: "text", text: content },
-            ...attachmentsToParts(experimental_attachments)
-          ] : content
-        });
-        break;
-      }
       case "assistant": {
-        if (toolInvocations == null) {
-          coreMessages.push({ role: "assistant", content });
-          break;
+        let getToolInvocations2 = function(step) {
+          return (typeof message.content === "string" ? [] : message.content.filter((part) => part.type === "tool-call")).map((call) => ({
+            state: "call",
+            step,
+            args: call.args,
+            toolCallId: call.toolCallId,
+            toolName: call.toolName
+          }));
+        };
+        var getToolInvocations = getToolInvocations2;
+        const textContent = typeof message.content === "string" ? message.content : message.content.filter((part) => part.type === "text").map((part) => part.text).join("");
+        if (isLastMessageAssistant) {
+          const maxStep = (0, import_ui_utils9.extractMaxToolInvocationStep)(
+            lastMessage.toolInvocations
+          );
+          lastMessage.content = textContent;
+          lastMessage.toolInvocations = [
+            ...(_a15 = lastMessage.toolInvocations) != null ? _a15 : [],
+            ...getToolInvocations2(maxStep === void 0 ? 0 : maxStep + 1)
+          ];
+        } else {
+          clonedMessages.push({
+            role: "assistant",
+            id: message.id,
+            createdAt: /* @__PURE__ */ new Date(),
+            // generate a createdAt date for the message, will be overridden by the client
+            content: textContent,
+            toolInvocations: getToolInvocations2(0)
+          });
         }
-        coreMessages.push({
-          role: "assistant",
-          content: [
-            { type: "text", text: content },
-            ...toolInvocations.map(({ toolCallId, toolName, args }) => ({
-              type: "tool-call",
-              toolCallId,
-              toolName,
-              args
-            }))
-          ]
-        });
-        coreMessages.push({
-          role: "tool",
-          content: toolInvocations.map((ToolInvocation) => {
-            if (!("result" in ToolInvocation)) {
-              throw new MessageConversionError({
-                originalMessage: message,
-                message: "ToolInvocation must have a result: " + JSON.stringify(ToolInvocation)
-              });
-            }
-            const { toolCallId, toolName, args, result } = ToolInvocation;
-            return {
-              type: "tool-result",
-              toolCallId,
-              toolName,
-              args,
-              result
-            };
-          })
-        });
         break;
       }
-      case "function":
-      case "data":
       case "tool": {
+        (_b = lastMessage.toolInvocations) != null ? _b : lastMessage.toolInvocations = [];
+        if (lastMessage.role !== "assistant") {
+          throw new Error(
+            `Tool result must follow an assistant message: ${lastMessage.role}`
+          );
+        }
+        for (const part of message.content) {
+          const toolCall = lastMessage.toolInvocations.find(
+            (call) => call.toolCallId === part.toolCallId
+          );
+          if (!toolCall) {
+            throw new Error("Tool call not found in previous message");
+          }
+          toolCall.state = "result";
+          const toolResult = toolCall;
+          toolResult.result = part.result;
+        }
         break;
       }
       default: {
         const _exhaustiveCheck = role;
-        throw new MessageConversionError({
-          originalMessage: message,
-          message: `Unsupported role: ${_exhaustiveCheck}`
-        });
+        throw new Error(`Unsupported message role: ${_exhaustiveCheck}`);
       }
     }
   }
-  return coreMessages;
+  return clonedMessages;
 }
 
 // core/registry/custom-provider.ts
-var import_provider14 = __nccwpck_require__(8892);
-function experimental_customProvider({
+var import_provider19 = __nccwpck_require__(4069);
+function customProvider({
   languageModels,
   textEmbeddingModels,
+  imageModels,
   fallbackProvider
 }) {
   return {
@@ -20935,7 +22480,7 @@ function experimental_customProvider({
       if (fallbackProvider) {
         return fallbackProvider.languageModel(modelId);
       }
-      throw new import_provider14.NoSuchModelError({ modelId, modelType: "languageModel" });
+      throw new import_provider19.NoSuchModelError({ modelId, modelType: "languageModel" });
     },
     textEmbeddingModel(modelId) {
       if (textEmbeddingModels != null && modelId in textEmbeddingModels) {
@@ -20944,18 +22489,28 @@ function experimental_customProvider({
       if (fallbackProvider) {
         return fallbackProvider.textEmbeddingModel(modelId);
       }
-      throw new import_provider14.NoSuchModelError({ modelId, modelType: "textEmbeddingModel" });
+      throw new import_provider19.NoSuchModelError({ modelId, modelType: "textEmbeddingModel" });
+    },
+    imageModel(modelId) {
+      if (imageModels != null && modelId in imageModels) {
+        return imageModels[modelId];
+      }
+      if (fallbackProvider == null ? void 0 : fallbackProvider.imageModel) {
+        return fallbackProvider.imageModel(modelId);
+      }
+      throw new import_provider19.NoSuchModelError({ modelId, modelType: "imageModel" });
     }
   };
 }
+var experimental_customProvider = customProvider;
 
 // core/registry/no-such-provider-error.ts
-var import_provider15 = __nccwpck_require__(8892);
-var name10 = "AI_NoSuchProviderError";
-var marker10 = `vercel.ai.error.${name10}`;
-var symbol10 = Symbol.for(marker10);
-var _a10;
-var NoSuchProviderError = class extends import_provider15.NoSuchModelError {
+var import_provider20 = __nccwpck_require__(4069);
+var name14 = "AI_NoSuchProviderError";
+var marker14 = `vercel.ai.error.${name14}`;
+var symbol14 = Symbol.for(marker14);
+var _a14;
+var NoSuchProviderError = class extends import_provider20.NoSuchModelError {
   constructor({
     modelId,
     modelType,
@@ -20963,39 +22518,19 @@ var NoSuchProviderError = class extends import_provider15.NoSuchModelError {
     availableProviders,
     message = `No such provider: ${providerId} (available providers: ${availableProviders.join()})`
   }) {
-    super({ errorName: name10, modelId, modelType, message });
-    this[_a10] = true;
+    super({ errorName: name14, modelId, modelType, message });
+    this[_a14] = true;
     this.providerId = providerId;
     this.availableProviders = availableProviders;
   }
   static isInstance(error) {
-    return import_provider15.AISDKError.hasMarker(error, marker10);
-  }
-  /**
-   * @deprecated use `isInstance` instead
-   */
-  static isNoSuchProviderError(error) {
-    return error instanceof Error && error.name === name10 && typeof error.providerId === "string" && Array.isArray(error.availableProviders);
-  }
-  /**
-   * @deprecated Do not use this method. It will be removed in the next major version.
-   */
-  toJSON() {
-    return {
-      name: this.name,
-      message: this.message,
-      stack: this.stack,
-      modelId: this.modelId,
-      modelType: this.modelType,
-      providerId: this.providerId,
-      availableProviders: this.availableProviders
-    };
+    return import_provider20.AISDKError.hasMarker(error, marker14);
   }
 };
-_a10 = symbol10;
+_a14 = symbol14;
 
 // core/registry/provider-registry.ts
-var import_provider16 = __nccwpck_require__(8892);
+var import_provider21 = __nccwpck_require__(4069);
 function experimental_createProviderRegistry(providers) {
   const registry = new DefaultProviderRegistry();
   for (const [id, provider] of Object.entries(providers)) {
@@ -21003,7 +22538,6 @@ function experimental_createProviderRegistry(providers) {
   }
   return registry;
 }
-var experimental_createModelRegistry = experimental_createProviderRegistry;
 var DefaultProviderRegistry = class {
   constructor() {
     this.providers = {};
@@ -21029,7 +22563,7 @@ var DefaultProviderRegistry = class {
   splitId(id, modelType) {
     const index = id.indexOf(":");
     if (index === -1) {
-      throw new import_provider16.NoSuchModelError({
+      throw new import_provider21.NoSuchModelError({
         modelId: id,
         modelType,
         message: `Invalid ${modelType} id for registry: ${id} (must be in the format "providerId:modelId")`
@@ -21038,24 +22572,34 @@ var DefaultProviderRegistry = class {
     return [id.slice(0, index), id.slice(index + 1)];
   }
   languageModel(id) {
-    var _a11, _b;
+    var _a15, _b;
     const [providerId, modelId] = this.splitId(id, "languageModel");
-    const model = (_b = (_a11 = this.getProvider(providerId)).languageModel) == null ? void 0 : _b.call(_a11, modelId);
+    const model = (_b = (_a15 = this.getProvider(providerId)).languageModel) == null ? void 0 : _b.call(_a15, modelId);
     if (model == null) {
-      throw new import_provider16.NoSuchModelError({ modelId: id, modelType: "languageModel" });
+      throw new import_provider21.NoSuchModelError({ modelId: id, modelType: "languageModel" });
     }
     return model;
   }
   textEmbeddingModel(id) {
-    var _a11, _b, _c;
+    var _a15;
     const [providerId, modelId] = this.splitId(id, "textEmbeddingModel");
     const provider = this.getProvider(providerId);
-    const model = (_c = (_a11 = provider.textEmbeddingModel) == null ? void 0 : _a11.call(provider, modelId)) != null ? _c : "textEmbedding" in provider ? (_b = provider.textEmbedding) == null ? void 0 : _b.call(provider, modelId) : void 0;
+    const model = (_a15 = provider.textEmbeddingModel) == null ? void 0 : _a15.call(provider, modelId);
     if (model == null) {
-      throw new import_provider16.NoSuchModelError({
+      throw new import_provider21.NoSuchModelError({
         modelId: id,
         modelType: "textEmbeddingModel"
       });
+    }
+    return model;
+  }
+  imageModel(id) {
+    var _a15;
+    const [providerId, modelId] = this.splitId(id, "imageModel");
+    const provider = this.getProvider(providerId);
+    const model = (_a15 = provider.imageModel) == null ? void 0 : _a15.call(provider, modelId);
+    if (model == null) {
+      throw new import_provider21.NoSuchModelError({ modelId: id, modelType: "imageModel" });
     }
     return model;
   }
@@ -21073,13 +22617,28 @@ function tool(tool2) {
 }
 
 // core/util/cosine-similarity.ts
-function cosineSimilarity(vector1, vector2) {
+function cosineSimilarity(vector1, vector2, options = {
+  throwErrorForEmptyVectors: false
+}) {
+  const { throwErrorForEmptyVectors } = options;
   if (vector1.length !== vector2.length) {
     throw new Error(
       `Vectors must have the same length (vector1: ${vector1.length} elements, vector2: ${vector2.length} elements)`
     );
   }
-  return dotProduct(vector1, vector2) / (magnitude(vector1) * magnitude(vector2));
+  if (throwErrorForEmptyVectors && vector1.length === 0) {
+    throw new InvalidArgumentError({
+      parameter: "vector1",
+      value: vector1,
+      message: "Vectors cannot be empty"
+    });
+  }
+  const magnitude1 = magnitude(vector1);
+  const magnitude2 = magnitude(vector2);
+  if (magnitude1 === 0 || magnitude2 === 0) {
+    return 0;
+  }
+  return dotProduct(vector1, vector2) / (magnitude1 * magnitude2);
 }
 function dotProduct(vector1, vector2) {
   return vector1.reduce(
@@ -21091,136 +22650,301 @@ function magnitude(vector) {
   return Math.sqrt(dotProduct(vector, vector));
 }
 
-// streams/ai-stream.ts
-var import_eventsource_parser = __nccwpck_require__(1083);
-function createEventStreamTransformer(customParser) {
-  const textDecoder = new TextDecoder();
-  let eventSourceParser;
-  return new TransformStream({
-    async start(controller) {
-      eventSourceParser = (0, import_eventsource_parser.createParser)(
-        (event) => {
-          if ("data" in event && event.type === "event" && event.data === "[DONE]" || // Replicate doesn't send [DONE] but does send a 'done' event
-          // @see https://replicate.com/docs/streaming
-          event.event === "done") {
-            controller.terminate();
-            return;
-          }
-          if ("data" in event) {
-            const parsedMessage = customParser ? customParser(event.data, {
-              event: event.event
-            }) : event.data;
-            if (parsedMessage)
-              controller.enqueue(parsedMessage);
-          }
-        }
-      );
-    },
-    transform(chunk) {
-      eventSourceParser.feed(textDecoder.decode(chunk));
+// core/util/simulate-readable-stream.ts
+var import_provider_utils13 = __nccwpck_require__(2458);
+function simulateReadableStream({
+  chunks,
+  initialDelayInMs = 0,
+  chunkDelayInMs = 0,
+  _internal
+}) {
+  var _a15;
+  const delay2 = (_a15 = _internal == null ? void 0 : _internal.delay) != null ? _a15 : import_provider_utils13.delay;
+  let index = 0;
+  return new ReadableStream({
+    async pull(controller) {
+      if (index < chunks.length) {
+        await delay2(index === 0 ? initialDelayInMs : chunkDelayInMs);
+        controller.enqueue(chunks[index++]);
+      } else {
+        controller.close();
+      }
     }
   });
 }
-function createCallbacksTransformer(cb) {
+
+// streams/assistant-response.ts
+var import_ui_utils11 = __nccwpck_require__(8715);
+function AssistantResponse({ threadId, messageId }, process2) {
+  const stream = new ReadableStream({
+    async start(controller) {
+      var _a15;
+      const textEncoder = new TextEncoder();
+      const sendMessage = (message) => {
+        controller.enqueue(
+          textEncoder.encode(
+            (0, import_ui_utils11.formatAssistantStreamPart)("assistant_message", message)
+          )
+        );
+      };
+      const sendDataMessage = (message) => {
+        controller.enqueue(
+          textEncoder.encode(
+            (0, import_ui_utils11.formatAssistantStreamPart)("data_message", message)
+          )
+        );
+      };
+      const sendError = (errorMessage) => {
+        controller.enqueue(
+          textEncoder.encode((0, import_ui_utils11.formatAssistantStreamPart)("error", errorMessage))
+        );
+      };
+      const forwardStream = async (stream2) => {
+        var _a16, _b;
+        let result = void 0;
+        for await (const value of stream2) {
+          switch (value.event) {
+            case "thread.message.created": {
+              controller.enqueue(
+                textEncoder.encode(
+                  (0, import_ui_utils11.formatAssistantStreamPart)("assistant_message", {
+                    id: value.data.id,
+                    role: "assistant",
+                    content: [{ type: "text", text: { value: "" } }]
+                  })
+                )
+              );
+              break;
+            }
+            case "thread.message.delta": {
+              const content = (_a16 = value.data.delta.content) == null ? void 0 : _a16[0];
+              if ((content == null ? void 0 : content.type) === "text" && ((_b = content.text) == null ? void 0 : _b.value) != null) {
+                controller.enqueue(
+                  textEncoder.encode(
+                    (0, import_ui_utils11.formatAssistantStreamPart)("text", content.text.value)
+                  )
+                );
+              }
+              break;
+            }
+            case "thread.run.completed":
+            case "thread.run.requires_action": {
+              result = value.data;
+              break;
+            }
+          }
+        }
+        return result;
+      };
+      controller.enqueue(
+        textEncoder.encode(
+          (0, import_ui_utils11.formatAssistantStreamPart)("assistant_control_data", {
+            threadId,
+            messageId
+          })
+        )
+      );
+      try {
+        await process2({
+          sendMessage,
+          sendDataMessage,
+          forwardStream
+        });
+      } catch (error) {
+        sendError((_a15 = error.message) != null ? _a15 : `${error}`);
+      } finally {
+        controller.close();
+      }
+    },
+    pull(controller) {
+    },
+    cancel() {
+    }
+  });
+  return new Response(stream, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8"
+    }
+  });
+}
+
+// streams/langchain-adapter.ts
+var langchain_adapter_exports = {};
+__export(langchain_adapter_exports, {
+  mergeIntoDataStream: () => mergeIntoDataStream,
+  toDataStream: () => toDataStream,
+  toDataStreamResponse: () => toDataStreamResponse
+});
+var import_ui_utils12 = __nccwpck_require__(8715);
+
+// streams/stream-callbacks.ts
+function createCallbacksTransformer(callbacks = {}) {
   const textEncoder = new TextEncoder();
   let aggregatedResponse = "";
-  const callbacks = cb || {};
   return new TransformStream({
     async start() {
       if (callbacks.onStart)
         await callbacks.onStart();
     },
     async transform(message, controller) {
-      const content = typeof message === "string" ? message : message.content;
-      controller.enqueue(textEncoder.encode(content));
-      aggregatedResponse += content;
+      controller.enqueue(textEncoder.encode(message));
+      aggregatedResponse += message;
       if (callbacks.onToken)
-        await callbacks.onToken(content);
+        await callbacks.onToken(message);
       if (callbacks.onText && typeof message === "string") {
         await callbacks.onText(message);
       }
     },
     async flush() {
-      const isOpenAICallbacks = isOfTypeOpenAIStreamCallbacks(callbacks);
       if (callbacks.onCompletion) {
         await callbacks.onCompletion(aggregatedResponse);
       }
-      if (callbacks.onFinal && !isOpenAICallbacks) {
+      if (callbacks.onFinal) {
         await callbacks.onFinal(aggregatedResponse);
       }
     }
   });
 }
-function isOfTypeOpenAIStreamCallbacks(callbacks) {
-  return "experimental_onFunctionCall" in callbacks;
-}
-function trimStartOfStreamHelper() {
-  let isStreamStart = true;
-  return (text) => {
-    if (isStreamStart) {
-      text = text.trimStart();
-      if (text)
-        isStreamStart = false;
-    }
-    return text;
-  };
-}
-function AIStream(response, customParser, callbacks) {
-  if (!response.ok) {
-    if (response.body) {
-      const reader = response.body.getReader();
-      return new ReadableStream({
-        async start(controller) {
-          const { done, value } = await reader.read();
-          if (!done) {
-            const errorText = new TextDecoder().decode(value);
-            controller.error(new Error(`Response error: ${errorText}`));
+
+// streams/langchain-adapter.ts
+function toDataStreamInternal(stream, callbacks) {
+  return stream.pipeThrough(
+    new TransformStream({
+      transform: async (value, controller) => {
+        var _a15;
+        if (typeof value === "string") {
+          controller.enqueue(value);
+          return;
+        }
+        if ("event" in value) {
+          if (value.event === "on_chat_model_stream") {
+            forwardAIMessageChunk(
+              (_a15 = value.data) == null ? void 0 : _a15.chunk,
+              controller
+            );
           }
+          return;
         }
-      });
-    } else {
-      return new ReadableStream({
-        start(controller) {
-          controller.error(new Error("Response error: No response body"));
-        }
-      });
+        forwardAIMessageChunk(value, controller);
+      }
+    })
+  ).pipeThrough(createCallbacksTransformer(callbacks)).pipeThrough(new TextDecoderStream()).pipeThrough(
+    new TransformStream({
+      transform: async (chunk, controller) => {
+        controller.enqueue((0, import_ui_utils12.formatDataStreamPart)("text", chunk));
+      }
+    })
+  );
+}
+function toDataStream(stream, callbacks) {
+  return toDataStreamInternal(stream, callbacks).pipeThrough(
+    new TextEncoderStream()
+  );
+}
+function toDataStreamResponse(stream, options) {
+  var _a15;
+  const dataStream = toDataStreamInternal(
+    stream,
+    options == null ? void 0 : options.callbacks
+  ).pipeThrough(new TextEncoderStream());
+  const data = options == null ? void 0 : options.data;
+  const init = options == null ? void 0 : options.init;
+  const responseStream = data ? mergeStreams(data.stream, dataStream) : dataStream;
+  return new Response(responseStream, {
+    status: (_a15 = init == null ? void 0 : init.status) != null ? _a15 : 200,
+    statusText: init == null ? void 0 : init.statusText,
+    headers: prepareResponseHeaders(init == null ? void 0 : init.headers, {
+      contentType: "text/plain; charset=utf-8",
+      dataStreamVersion: "v1"
+    })
+  });
+}
+function mergeIntoDataStream(stream, options) {
+  options.dataStream.merge(toDataStreamInternal(stream, options.callbacks));
+}
+function forwardAIMessageChunk(chunk, controller) {
+  if (typeof chunk.content === "string") {
+    controller.enqueue(chunk.content);
+  } else {
+    const content = chunk.content;
+    for (const item of content) {
+      if (item.type === "text") {
+        controller.enqueue(item.text);
+      }
     }
   }
-  const responseBodyStream = response.body || createEmptyReadableStream();
-  return responseBodyStream.pipeThrough(createEventStreamTransformer(customParser)).pipeThrough(createCallbacksTransformer(callbacks));
 }
-function createEmptyReadableStream() {
-  return new ReadableStream({
-    start(controller) {
-      controller.close();
-    }
+
+// streams/llamaindex-adapter.ts
+var llamaindex_adapter_exports = {};
+__export(llamaindex_adapter_exports, {
+  mergeIntoDataStream: () => mergeIntoDataStream2,
+  toDataStream: () => toDataStream2,
+  toDataStreamResponse: () => toDataStreamResponse2
+});
+var import_provider_utils15 = __nccwpck_require__(2458);
+var import_ui_utils13 = __nccwpck_require__(8715);
+function toDataStreamInternal2(stream, callbacks) {
+  const trimStart = trimStartOfStream();
+  return (0, import_provider_utils15.convertAsyncIteratorToReadableStream)(stream[Symbol.asyncIterator]()).pipeThrough(
+    new TransformStream({
+      async transform(message, controller) {
+        controller.enqueue(trimStart(message.delta));
+      }
+    })
+  ).pipeThrough(createCallbacksTransformer(callbacks)).pipeThrough(new TextDecoderStream()).pipeThrough(
+    new TransformStream({
+      transform: async (chunk, controller) => {
+        controller.enqueue((0, import_ui_utils13.formatDataStreamPart)("text", chunk));
+      }
+    })
+  );
+}
+function toDataStream2(stream, callbacks) {
+  return toDataStreamInternal2(stream, callbacks).pipeThrough(
+    new TextEncoderStream()
+  );
+}
+function toDataStreamResponse2(stream, options = {}) {
+  var _a15;
+  const { init, data, callbacks } = options;
+  const dataStream = toDataStreamInternal2(stream, callbacks).pipeThrough(
+    new TextEncoderStream()
+  );
+  const responseStream = data ? mergeStreams(data.stream, dataStream) : dataStream;
+  return new Response(responseStream, {
+    status: (_a15 = init == null ? void 0 : init.status) != null ? _a15 : 200,
+    statusText: init == null ? void 0 : init.statusText,
+    headers: prepareResponseHeaders(init == null ? void 0 : init.headers, {
+      contentType: "text/plain; charset=utf-8",
+      dataStreamVersion: "v1"
+    })
   });
 }
-function readableFromAsyncIterable(iterable) {
-  let it = iterable[Symbol.asyncIterator]();
-  return new ReadableStream({
-    async pull(controller) {
-      const { done, value } = await it.next();
-      if (done)
-        controller.close();
-      else
-        controller.enqueue(value);
-    },
-    async cancel(reason) {
-      var _a11;
-      await ((_a11 = it.return) == null ? void 0 : _a11.call(it, reason));
+function mergeIntoDataStream2(stream, options) {
+  options.dataStream.merge(toDataStreamInternal2(stream, options.callbacks));
+}
+function trimStartOfStream() {
+  let isStreamStart = true;
+  return (text2) => {
+    if (isStreamStart) {
+      text2 = text2.trimStart();
+      if (text2)
+        isStreamStart = false;
     }
-  });
+    return text2;
+  };
 }
 
 // streams/stream-data.ts
-var import_ui_utils7 = __nccwpck_require__(6066);
+var import_ui_utils14 = __nccwpck_require__(8715);
 
 // util/constants.ts
 var HANGING_STREAM_WARNING_TIME_MS = 15 * 1e3;
 
 // streams/stream-data.ts
-var StreamData2 = class {
+var StreamData = class {
   constructor() {
     this.encoder = new TextEncoder();
     this.controller = null;
@@ -21266,7 +22990,7 @@ var StreamData2 = class {
       throw new Error("Stream controller is not initialized.");
     }
     this.controller.enqueue(
-      this.encoder.encode((0, import_ui_utils7.formatStreamPart)("data", [value]))
+      this.encoder.encode((0, import_ui_utils14.formatDataStreamPart)("data", [value]))
     );
   }
   appendMessageAnnotation(value) {
@@ -21277,919 +23001,22 @@ var StreamData2 = class {
       throw new Error("Stream controller is not initialized.");
     }
     this.controller.enqueue(
-      this.encoder.encode((0, import_ui_utils7.formatStreamPart)("message_annotations", [value]))
+      this.encoder.encode((0, import_ui_utils14.formatDataStreamPart)("message_annotations", [value]))
     );
   }
 };
-function createStreamDataTransformer() {
-  const encoder = new TextEncoder();
-  const decoder = new TextDecoder();
-  return new TransformStream({
-    transform: async (chunk, controller) => {
-      const message = decoder.decode(chunk);
-      controller.enqueue(encoder.encode((0, import_ui_utils7.formatStreamPart)("text", message)));
-    }
-  });
-}
-var experimental_StreamData = class extends StreamData2 {
-};
-
-// streams/anthropic-stream.ts
-function parseAnthropicStream() {
-  let previous = "";
-  return (data) => {
-    const json = JSON.parse(data);
-    if ("error" in json) {
-      throw new Error(`${json.error.type}: ${json.error.message}`);
-    }
-    if (!("completion" in json)) {
-      return;
-    }
-    const text = json.completion;
-    if (!previous || text.length > previous.length && text.startsWith(previous)) {
-      const delta = text.slice(previous.length);
-      previous = text;
-      return delta;
-    }
-    return text;
-  };
-}
-async function* streamable(stream) {
-  for await (const chunk of stream) {
-    if ("completion" in chunk) {
-      const text = chunk.completion;
-      if (text)
-        yield text;
-    } else if ("delta" in chunk) {
-      const { delta } = chunk;
-      if ("text" in delta) {
-        const text = delta.text;
-        if (text)
-          yield text;
-      }
-    }
-  }
-}
-function AnthropicStream(res, cb) {
-  if (Symbol.asyncIterator in res) {
-    return readableFromAsyncIterable(streamable(res)).pipeThrough(createCallbacksTransformer(cb)).pipeThrough(createStreamDataTransformer());
-  } else {
-    return AIStream(res, parseAnthropicStream(), cb).pipeThrough(
-      createStreamDataTransformer()
-    );
-  }
-}
-
-// streams/assistant-response.ts
-var import_ui_utils8 = __nccwpck_require__(6066);
-function AssistantResponse({ threadId, messageId }, process2) {
-  const stream = new ReadableStream({
-    async start(controller) {
-      var _a11;
-      const textEncoder = new TextEncoder();
-      const sendMessage = (message) => {
-        controller.enqueue(
-          textEncoder.encode((0, import_ui_utils8.formatStreamPart)("assistant_message", message))
-        );
-      };
-      const sendDataMessage = (message) => {
-        controller.enqueue(
-          textEncoder.encode((0, import_ui_utils8.formatStreamPart)("data_message", message))
-        );
-      };
-      const sendError = (errorMessage) => {
-        controller.enqueue(
-          textEncoder.encode((0, import_ui_utils8.formatStreamPart)("error", errorMessage))
-        );
-      };
-      const forwardStream = async (stream2) => {
-        var _a12, _b;
-        let result = void 0;
-        for await (const value of stream2) {
-          switch (value.event) {
-            case "thread.message.created": {
-              controller.enqueue(
-                textEncoder.encode(
-                  (0, import_ui_utils8.formatStreamPart)("assistant_message", {
-                    id: value.data.id,
-                    role: "assistant",
-                    content: [{ type: "text", text: { value: "" } }]
-                  })
-                )
-              );
-              break;
-            }
-            case "thread.message.delta": {
-              const content = (_a12 = value.data.delta.content) == null ? void 0 : _a12[0];
-              if ((content == null ? void 0 : content.type) === "text" && ((_b = content.text) == null ? void 0 : _b.value) != null) {
-                controller.enqueue(
-                  textEncoder.encode(
-                    (0, import_ui_utils8.formatStreamPart)("text", content.text.value)
-                  )
-                );
-              }
-              break;
-            }
-            case "thread.run.completed":
-            case "thread.run.requires_action": {
-              result = value.data;
-              break;
-            }
-          }
-        }
-        return result;
-      };
-      controller.enqueue(
-        textEncoder.encode(
-          (0, import_ui_utils8.formatStreamPart)("assistant_control_data", {
-            threadId,
-            messageId
-          })
-        )
-      );
-      try {
-        await process2({
-          threadId,
-          messageId,
-          sendMessage,
-          sendDataMessage,
-          forwardStream
-        });
-      } catch (error) {
-        sendError((_a11 = error.message) != null ? _a11 : `${error}`);
-      } finally {
-        controller.close();
-      }
-    },
-    pull(controller) {
-    },
-    cancel() {
-    }
-  });
-  return new Response(stream, {
-    status: 200,
-    headers: {
-      "Content-Type": "text/plain; charset=utf-8"
-    }
-  });
-}
-var experimental_AssistantResponse = AssistantResponse;
-
-// streams/aws-bedrock-stream.ts
-async function* asDeltaIterable(response, extractTextDeltaFromChunk) {
-  var _a11, _b;
-  const decoder = new TextDecoder();
-  for await (const chunk of (_a11 = response.body) != null ? _a11 : []) {
-    const bytes = (_b = chunk.chunk) == null ? void 0 : _b.bytes;
-    if (bytes != null) {
-      const chunkText = decoder.decode(bytes);
-      const chunkJSON = JSON.parse(chunkText);
-      const delta = extractTextDeltaFromChunk(chunkJSON);
-      if (delta != null) {
-        yield delta;
-      }
-    }
-  }
-}
-function AWSBedrockAnthropicMessagesStream(response, callbacks) {
-  return AWSBedrockStream(response, callbacks, (chunk) => {
-    var _a11;
-    return (_a11 = chunk.delta) == null ? void 0 : _a11.text;
-  });
-}
-function AWSBedrockAnthropicStream(response, callbacks) {
-  return AWSBedrockStream(response, callbacks, (chunk) => chunk.completion);
-}
-function AWSBedrockCohereStream(response, callbacks) {
-  return AWSBedrockStream(response, callbacks, (chunk) => chunk == null ? void 0 : chunk.text);
-}
-function AWSBedrockLlama2Stream(response, callbacks) {
-  return AWSBedrockStream(response, callbacks, (chunk) => chunk.generation);
-}
-function AWSBedrockStream(response, callbacks, extractTextDeltaFromChunk) {
-  return readableFromAsyncIterable(
-    asDeltaIterable(response, extractTextDeltaFromChunk)
-  ).pipeThrough(createCallbacksTransformer(callbacks)).pipeThrough(createStreamDataTransformer());
-}
-
-// streams/cohere-stream.ts
-var utf8Decoder = new TextDecoder("utf-8");
-async function processLines(lines, controller) {
-  for (const line of lines) {
-    const { text, is_finished } = JSON.parse(line);
-    if (!is_finished) {
-      controller.enqueue(text);
-    }
-  }
-}
-async function readAndProcessLines(reader, controller) {
-  let segment = "";
-  while (true) {
-    const { value: chunk, done } = await reader.read();
-    if (done) {
-      break;
-    }
-    segment += utf8Decoder.decode(chunk, { stream: true });
-    const linesArray = segment.split(/\r\n|\n|\r/g);
-    segment = linesArray.pop() || "";
-    await processLines(linesArray, controller);
-  }
-  if (segment) {
-    const linesArray = [segment];
-    await processLines(linesArray, controller);
-  }
-  controller.close();
-}
-function createParser2(res) {
-  var _a11;
-  const reader = (_a11 = res.body) == null ? void 0 : _a11.getReader();
-  return new ReadableStream({
-    async start(controller) {
-      if (!reader) {
-        controller.close();
-        return;
-      }
-      await readAndProcessLines(reader, controller);
-    }
-  });
-}
-async function* streamable2(stream) {
-  for await (const chunk of stream) {
-    if (chunk.eventType === "text-generation") {
-      const text = chunk.text;
-      if (text)
-        yield text;
-    }
-  }
-}
-function CohereStream(reader, callbacks) {
-  if (Symbol.asyncIterator in reader) {
-    return readableFromAsyncIterable(streamable2(reader)).pipeThrough(createCallbacksTransformer(callbacks)).pipeThrough(createStreamDataTransformer());
-  } else {
-    return createParser2(reader).pipeThrough(createCallbacksTransformer(callbacks)).pipeThrough(createStreamDataTransformer());
-  }
-}
-
-// streams/google-generative-ai-stream.ts
-async function* streamable3(response) {
-  var _a11, _b, _c;
-  for await (const chunk of response.stream) {
-    const parts = (_c = (_b = (_a11 = chunk.candidates) == null ? void 0 : _a11[0]) == null ? void 0 : _b.content) == null ? void 0 : _c.parts;
-    if (parts === void 0) {
-      continue;
-    }
-    const firstPart = parts[0];
-    if (typeof firstPart.text === "string") {
-      yield firstPart.text;
-    }
-  }
-}
-function GoogleGenerativeAIStream(response, cb) {
-  return readableFromAsyncIterable(streamable3(response)).pipeThrough(createCallbacksTransformer(cb)).pipeThrough(createStreamDataTransformer());
-}
-
-// streams/huggingface-stream.ts
-function createParser3(res) {
-  const trimStartOfStream = trimStartOfStreamHelper();
-  return new ReadableStream({
-    async pull(controller) {
-      var _a11, _b;
-      const { value, done } = await res.next();
-      if (done) {
-        controller.close();
-        return;
-      }
-      const text = trimStartOfStream((_b = (_a11 = value.token) == null ? void 0 : _a11.text) != null ? _b : "");
-      if (!text)
-        return;
-      if (value.generated_text != null && value.generated_text.length > 0) {
-        return;
-      }
-      if (text === "</s>" || text === "<|endoftext|>" || text === "<|end|>") {
-        return;
-      }
-      controller.enqueue(text);
-    }
-  });
-}
-function HuggingFaceStream(res, callbacks) {
-  return createParser3(res).pipeThrough(createCallbacksTransformer(callbacks)).pipeThrough(createStreamDataTransformer());
-}
-
-// streams/inkeep-stream.ts
-function InkeepStream(res, callbacks) {
-  if (!res.body) {
-    throw new Error("Response body is null");
-  }
-  let chat_session_id = "";
-  let records_cited;
-  const inkeepEventParser = (data, options) => {
-    var _a11, _b;
-    const { event } = options;
-    if (event === "records_cited") {
-      records_cited = JSON.parse(data);
-      (_a11 = callbacks == null ? void 0 : callbacks.onRecordsCited) == null ? void 0 : _a11.call(callbacks, records_cited);
-    }
-    if (event === "message_chunk") {
-      const inkeepMessageChunk = JSON.parse(data);
-      chat_session_id = (_b = inkeepMessageChunk.chat_session_id) != null ? _b : chat_session_id;
-      return inkeepMessageChunk.content_chunk;
-    }
-    return;
-  };
-  let { onRecordsCited, ...passThroughCallbacks } = callbacks || {};
-  passThroughCallbacks = {
-    ...passThroughCallbacks,
-    onFinal: (completion) => {
-      var _a11;
-      const inkeepOnFinalMetadata = {
-        chat_session_id,
-        records_cited
-      };
-      (_a11 = callbacks == null ? void 0 : callbacks.onFinal) == null ? void 0 : _a11.call(callbacks, completion, inkeepOnFinalMetadata);
-    }
-  };
-  return AIStream(res, inkeepEventParser, passThroughCallbacks).pipeThrough(
-    createStreamDataTransformer()
-  );
-}
-
-// streams/langchain-adapter.ts
-var langchain_adapter_exports = {};
-__export(langchain_adapter_exports, {
-  toAIStream: () => toAIStream,
-  toDataStream: () => toDataStream,
-  toDataStreamResponse: () => toDataStreamResponse
-});
-function toAIStream(stream, callbacks) {
-  return toDataStream(stream, callbacks);
-}
-function toDataStream(stream, callbacks) {
-  return stream.pipeThrough(
-    new TransformStream({
-      transform: async (value, controller) => {
-        var _a11;
-        if (typeof value === "string") {
-          controller.enqueue(value);
-          return;
-        }
-        if ("event" in value) {
-          if (value.event === "on_chat_model_stream") {
-            forwardAIMessageChunk(
-              (_a11 = value.data) == null ? void 0 : _a11.chunk,
-              controller
-            );
-          }
-          return;
-        }
-        forwardAIMessageChunk(value, controller);
-      }
-    })
-  ).pipeThrough(createCallbacksTransformer(callbacks)).pipeThrough(createStreamDataTransformer());
-}
-function toDataStreamResponse(stream, options) {
-  var _a11;
-  const dataStream = toDataStream(stream, options == null ? void 0 : options.callbacks);
-  const data = options == null ? void 0 : options.data;
-  const init = options == null ? void 0 : options.init;
-  const responseStream = data ? mergeStreams(data.stream, dataStream) : dataStream;
-  return new Response(responseStream, {
-    status: (_a11 = init == null ? void 0 : init.status) != null ? _a11 : 200,
-    statusText: init == null ? void 0 : init.statusText,
-    headers: prepareResponseHeaders(init, {
-      contentType: "text/plain; charset=utf-8",
-      dataStreamVersion: "v1"
-    })
-  });
-}
-function forwardAIMessageChunk(chunk, controller) {
-  if (typeof chunk.content === "string") {
-    controller.enqueue(chunk.content);
-  } else {
-    const content = chunk.content;
-    for (const item of content) {
-      if (item.type === "text") {
-        controller.enqueue(item.text);
-      }
-    }
-  }
-}
-
-// streams/llamaindex-adapter.ts
-var llamaindex_adapter_exports = {};
-__export(llamaindex_adapter_exports, {
-  toDataStream: () => toDataStream2,
-  toDataStreamResponse: () => toDataStreamResponse2
-});
-function toDataStream2(stream, callbacks) {
-  return toReadableStream(stream).pipeThrough(createCallbacksTransformer(callbacks)).pipeThrough(createStreamDataTransformer());
-}
-function toDataStreamResponse2(stream, options = {}) {
-  var _a11;
-  const { init, data, callbacks } = options;
-  const dataStream = toDataStream2(stream, callbacks);
-  const responseStream = data ? mergeStreams(data.stream, dataStream) : dataStream;
-  return new Response(responseStream, {
-    status: (_a11 = init == null ? void 0 : init.status) != null ? _a11 : 200,
-    statusText: init == null ? void 0 : init.statusText,
-    headers: prepareResponseHeaders(init, {
-      contentType: "text/plain; charset=utf-8",
-      dataStreamVersion: "v1"
-    })
-  });
-}
-function toReadableStream(res) {
-  const it = res[Symbol.asyncIterator]();
-  const trimStartOfStream = trimStartOfStreamHelper();
-  return new ReadableStream({
-    async pull(controller) {
-      var _a11;
-      const { value, done } = await it.next();
-      if (done) {
-        controller.close();
-        return;
-      }
-      const text = trimStartOfStream((_a11 = value.delta) != null ? _a11 : "");
-      if (text) {
-        controller.enqueue(text);
-      }
-    }
-  });
-}
-
-// streams/langchain-stream.ts
-function LangChainStream(callbacks) {
-  const stream = new TransformStream();
-  const writer = stream.writable.getWriter();
-  const runs = /* @__PURE__ */ new Set();
-  const handleError = async (e, runId) => {
-    runs.delete(runId);
-    await writer.ready;
-    await writer.abort(e);
-  };
-  const handleStart = async (runId) => {
-    runs.add(runId);
-  };
-  const handleEnd = async (runId) => {
-    runs.delete(runId);
-    if (runs.size === 0) {
-      await writer.ready;
-      await writer.close();
-    }
-  };
-  return {
-    stream: stream.readable.pipeThrough(createCallbacksTransformer(callbacks)).pipeThrough(createStreamDataTransformer()),
-    writer,
-    handlers: {
-      handleLLMNewToken: async (token) => {
-        await writer.ready;
-        await writer.write(token);
-      },
-      handleLLMStart: async (_llm, _prompts, runId) => {
-        handleStart(runId);
-      },
-      handleLLMEnd: async (_output, runId) => {
-        await handleEnd(runId);
-      },
-      handleLLMError: async (e, runId) => {
-        await handleError(e, runId);
-      },
-      handleChainStart: async (_chain, _inputs, runId) => {
-        handleStart(runId);
-      },
-      handleChainEnd: async (_outputs, runId) => {
-        await handleEnd(runId);
-      },
-      handleChainError: async (e, runId) => {
-        await handleError(e, runId);
-      },
-      handleToolStart: async (_tool, _input, runId) => {
-        handleStart(runId);
-      },
-      handleToolEnd: async (_output, runId) => {
-        await handleEnd(runId);
-      },
-      handleToolError: async (e, runId) => {
-        await handleError(e, runId);
-      }
-    }
-  };
-}
-
-// streams/mistral-stream.ts
-async function* streamable4(stream) {
-  var _a11, _b;
-  for await (const chunk of stream) {
-    const content = (_b = (_a11 = chunk.choices[0]) == null ? void 0 : _a11.delta) == null ? void 0 : _b.content;
-    if (content === void 0 || content === "") {
-      continue;
-    }
-    yield content;
-  }
-}
-function MistralStream(response, callbacks) {
-  const stream = readableFromAsyncIterable(streamable4(response));
-  return stream.pipeThrough(createCallbacksTransformer(callbacks)).pipeThrough(createStreamDataTransformer());
-}
-
-// streams/openai-stream.ts
-var import_ui_utils9 = __nccwpck_require__(6066);
-function parseOpenAIStream() {
-  const extract = chunkToText();
-  return (data) => extract(JSON.parse(data));
-}
-async function* streamable5(stream) {
-  const extract = chunkToText();
-  for await (let chunk of stream) {
-    if ("promptFilterResults" in chunk) {
-      chunk = {
-        id: chunk.id,
-        created: chunk.created.getDate(),
-        object: chunk.object,
-        // not exposed by Azure API
-        model: chunk.model,
-        // not exposed by Azure API
-        choices: chunk.choices.map((choice) => {
-          var _a11, _b, _c, _d, _e, _f, _g;
-          return {
-            delta: {
-              content: (_a11 = choice.delta) == null ? void 0 : _a11.content,
-              function_call: (_b = choice.delta) == null ? void 0 : _b.functionCall,
-              role: (_c = choice.delta) == null ? void 0 : _c.role,
-              tool_calls: ((_e = (_d = choice.delta) == null ? void 0 : _d.toolCalls) == null ? void 0 : _e.length) ? (_g = (_f = choice.delta) == null ? void 0 : _f.toolCalls) == null ? void 0 : _g.map((toolCall, index) => ({
-                index,
-                id: toolCall.id,
-                function: toolCall.function,
-                type: toolCall.type
-              })) : void 0
-            },
-            finish_reason: choice.finishReason,
-            index: choice.index
-          };
-        })
-      };
-    }
-    const text = extract(chunk);
-    if (text)
-      yield text;
-  }
-}
-function chunkToText() {
-  const trimStartOfStream = trimStartOfStreamHelper();
-  let isFunctionStreamingIn;
-  return (json) => {
-    var _a11, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r;
-    if (isChatCompletionChunk(json)) {
-      const delta = (_a11 = json.choices[0]) == null ? void 0 : _a11.delta;
-      if ((_b = delta.function_call) == null ? void 0 : _b.name) {
-        isFunctionStreamingIn = true;
-        return {
-          isText: false,
-          content: `{"function_call": {"name": "${delta.function_call.name}", "arguments": "`
-        };
-      } else if ((_e = (_d = (_c = delta.tool_calls) == null ? void 0 : _c[0]) == null ? void 0 : _d.function) == null ? void 0 : _e.name) {
-        isFunctionStreamingIn = true;
-        const toolCall = delta.tool_calls[0];
-        if (toolCall.index === 0) {
-          return {
-            isText: false,
-            content: `{"tool_calls":[ {"id": "${toolCall.id}", "type": "function", "function": {"name": "${(_f = toolCall.function) == null ? void 0 : _f.name}", "arguments": "`
-          };
-        } else {
-          return {
-            isText: false,
-            content: `"}}, {"id": "${toolCall.id}", "type": "function", "function": {"name": "${(_g = toolCall.function) == null ? void 0 : _g.name}", "arguments": "`
-          };
-        }
-      } else if ((_h = delta.function_call) == null ? void 0 : _h.arguments) {
-        return {
-          isText: false,
-          content: cleanupArguments((_i = delta.function_call) == null ? void 0 : _i.arguments)
-        };
-      } else if ((_l = (_k = (_j = delta.tool_calls) == null ? void 0 : _j[0]) == null ? void 0 : _k.function) == null ? void 0 : _l.arguments) {
-        return {
-          isText: false,
-          content: cleanupArguments((_o = (_n = (_m = delta.tool_calls) == null ? void 0 : _m[0]) == null ? void 0 : _n.function) == null ? void 0 : _o.arguments)
-        };
-      } else if (isFunctionStreamingIn && (((_p = json.choices[0]) == null ? void 0 : _p.finish_reason) === "function_call" || ((_q = json.choices[0]) == null ? void 0 : _q.finish_reason) === "stop")) {
-        isFunctionStreamingIn = false;
-        return {
-          isText: false,
-          content: '"}}'
-        };
-      } else if (isFunctionStreamingIn && ((_r = json.choices[0]) == null ? void 0 : _r.finish_reason) === "tool_calls") {
-        isFunctionStreamingIn = false;
-        return {
-          isText: false,
-          content: '"}}]}'
-        };
-      }
-    }
-    const text = trimStartOfStream(
-      isChatCompletionChunk(json) && json.choices[0].delta.content ? json.choices[0].delta.content : isCompletion(json) ? json.choices[0].text : ""
-    );
-    return text;
-  };
-  function cleanupArguments(argumentChunk) {
-    let escapedPartialJson = argumentChunk.replace(/\\/g, "\\\\").replace(/\//g, "\\/").replace(/"/g, '\\"').replace(/\n/g, "\\n").replace(/\r/g, "\\r").replace(/\t/g, "\\t").replace(/\f/g, "\\f");
-    return `${escapedPartialJson}`;
-  }
-}
-var __internal__OpenAIFnMessagesSymbol = Symbol(
-  "internal_openai_fn_messages"
-);
-function isChatCompletionChunk(data) {
-  return "choices" in data && data.choices && data.choices[0] && "delta" in data.choices[0];
-}
-function isCompletion(data) {
-  return "choices" in data && data.choices && data.choices[0] && "text" in data.choices[0];
-}
-function OpenAIStream(res, callbacks) {
-  const cb = callbacks;
-  let stream;
-  if (Symbol.asyncIterator in res) {
-    stream = readableFromAsyncIterable(streamable5(res)).pipeThrough(
-      createCallbacksTransformer(
-        (cb == null ? void 0 : cb.experimental_onFunctionCall) || (cb == null ? void 0 : cb.experimental_onToolCall) ? {
-          ...cb,
-          onFinal: void 0
-        } : {
-          ...cb
-        }
-      )
-    );
-  } else {
-    stream = AIStream(
-      res,
-      parseOpenAIStream(),
-      (cb == null ? void 0 : cb.experimental_onFunctionCall) || (cb == null ? void 0 : cb.experimental_onToolCall) ? {
-        ...cb,
-        onFinal: void 0
-      } : {
-        ...cb
-      }
-    );
-  }
-  if (cb && (cb.experimental_onFunctionCall || cb.experimental_onToolCall)) {
-    const functionCallTransformer = createFunctionCallTransformer(cb);
-    return stream.pipeThrough(functionCallTransformer);
-  } else {
-    return stream.pipeThrough(createStreamDataTransformer());
-  }
-}
-function createFunctionCallTransformer(callbacks) {
-  const textEncoder = new TextEncoder();
-  let isFirstChunk = true;
-  let aggregatedResponse = "";
-  let aggregatedFinalCompletionResponse = "";
-  let isFunctionStreamingIn = false;
-  let functionCallMessages = callbacks[__internal__OpenAIFnMessagesSymbol] || [];
-  const decode = (0, import_ui_utils9.createChunkDecoder)();
-  return new TransformStream({
-    async transform(chunk, controller) {
-      const message = decode(chunk);
-      aggregatedFinalCompletionResponse += message;
-      const shouldHandleAsFunction = isFirstChunk && (message.startsWith('{"function_call":') || message.startsWith('{"tool_calls":'));
-      if (shouldHandleAsFunction) {
-        isFunctionStreamingIn = true;
-        aggregatedResponse += message;
-        isFirstChunk = false;
-        return;
-      }
-      if (!isFunctionStreamingIn) {
-        controller.enqueue(
-          textEncoder.encode((0, import_ui_utils9.formatStreamPart)("text", message))
-        );
-        return;
-      } else {
-        aggregatedResponse += message;
-      }
-    },
-    async flush(controller) {
-      try {
-        if (!isFirstChunk && isFunctionStreamingIn && (callbacks.experimental_onFunctionCall || callbacks.experimental_onToolCall)) {
-          isFunctionStreamingIn = false;
-          const payload = JSON.parse(aggregatedResponse);
-          let newFunctionCallMessages = [
-            ...functionCallMessages
-          ];
-          let functionResponse = void 0;
-          if (callbacks.experimental_onFunctionCall) {
-            if (payload.function_call === void 0) {
-              console.warn(
-                "experimental_onFunctionCall should not be defined when using tools"
-              );
-            }
-            const argumentsPayload = JSON.parse(
-              payload.function_call.arguments
-            );
-            functionResponse = await callbacks.experimental_onFunctionCall(
-              {
-                name: payload.function_call.name,
-                arguments: argumentsPayload
-              },
-              (result) => {
-                newFunctionCallMessages = [
-                  ...functionCallMessages,
-                  {
-                    role: "assistant",
-                    content: "",
-                    function_call: payload.function_call
-                  },
-                  {
-                    role: "function",
-                    name: payload.function_call.name,
-                    content: JSON.stringify(result)
-                  }
-                ];
-                return newFunctionCallMessages;
-              }
-            );
-          }
-          if (callbacks.experimental_onToolCall) {
-            const toolCalls = {
-              tools: []
-            };
-            for (const tool2 of payload.tool_calls) {
-              toolCalls.tools.push({
-                id: tool2.id,
-                type: "function",
-                func: {
-                  name: tool2.function.name,
-                  arguments: JSON.parse(tool2.function.arguments)
-                }
-              });
-            }
-            let responseIndex = 0;
-            try {
-              functionResponse = await callbacks.experimental_onToolCall(
-                toolCalls,
-                (result) => {
-                  if (result) {
-                    const { tool_call_id, function_name, tool_call_result } = result;
-                    newFunctionCallMessages = [
-                      ...newFunctionCallMessages,
-                      // Only append the assistant message if it's the first response
-                      ...responseIndex === 0 ? [
-                        {
-                          role: "assistant",
-                          content: "",
-                          tool_calls: payload.tool_calls.map(
-                            (tc) => ({
-                              id: tc.id,
-                              type: "function",
-                              function: {
-                                name: tc.function.name,
-                                // we send the arguments an object to the user, but as the API expects a string, we need to stringify it
-                                arguments: JSON.stringify(
-                                  tc.function.arguments
-                                )
-                              }
-                            })
-                          )
-                        }
-                      ] : [],
-                      // Append the function call result message
-                      {
-                        role: "tool",
-                        tool_call_id,
-                        name: function_name,
-                        content: JSON.stringify(tool_call_result)
-                      }
-                    ];
-                    responseIndex++;
-                  }
-                  return newFunctionCallMessages;
-                }
-              );
-            } catch (e) {
-              console.error("Error calling experimental_onToolCall:", e);
-            }
-          }
-          if (!functionResponse) {
-            controller.enqueue(
-              textEncoder.encode(
-                (0, import_ui_utils9.formatStreamPart)(
-                  payload.function_call ? "function_call" : "tool_calls",
-                  // parse to prevent double-encoding:
-                  JSON.parse(aggregatedResponse)
-                )
-              )
-            );
-            return;
-          } else if (typeof functionResponse === "string") {
-            controller.enqueue(
-              textEncoder.encode((0, import_ui_utils9.formatStreamPart)("text", functionResponse))
-            );
-            aggregatedFinalCompletionResponse = functionResponse;
-            return;
-          }
-          const filteredCallbacks = {
-            ...callbacks,
-            onStart: void 0
-          };
-          callbacks.onFinal = void 0;
-          const openAIStream = OpenAIStream(functionResponse, {
-            ...filteredCallbacks,
-            [__internal__OpenAIFnMessagesSymbol]: newFunctionCallMessages
-          });
-          const reader = openAIStream.getReader();
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) {
-              break;
-            }
-            controller.enqueue(value);
-          }
-        }
-      } finally {
-        if (callbacks.onFinal && aggregatedFinalCompletionResponse) {
-          await callbacks.onFinal(aggregatedFinalCompletionResponse);
-        }
-      }
-    }
-  });
-}
-
-// streams/replicate-stream.ts
-async function ReplicateStream(res, cb, options) {
-  var _a11;
-  const url = (_a11 = res.urls) == null ? void 0 : _a11.stream;
-  if (!url) {
-    if (res.error)
-      throw new Error(res.error);
-    else
-      throw new Error("Missing stream URL in Replicate response");
-  }
-  const eventStream = await fetch(url, {
-    method: "GET",
-    headers: {
-      Accept: "text/event-stream",
-      ...options == null ? void 0 : options.headers
-    }
-  });
-  return AIStream(eventStream, void 0, cb).pipeThrough(
-    createStreamDataTransformer()
-  );
-}
-
-// streams/stream-to-response.ts
-function streamToResponse(res, response, init, data) {
-  var _a11;
-  response.writeHead((_a11 = init == null ? void 0 : init.status) != null ? _a11 : 200, {
-    "Content-Type": "text/plain; charset=utf-8",
-    ...init == null ? void 0 : init.headers
-  });
-  let processedStream = res;
-  if (data) {
-    processedStream = mergeStreams(data.stream, res);
-  }
-  const reader = processedStream.getReader();
-  function read() {
-    reader.read().then(({ done, value }) => {
-      if (done) {
-        response.end();
-        return;
-      }
-      response.write(value);
-      read();
-    });
-  }
-  read();
-}
-
-// streams/streaming-text-response.ts
-var StreamingTextResponse = class extends Response {
-  constructor(res, init, data) {
-    let processedStream = res;
-    if (data) {
-      processedStream = mergeStreams(data.stream, res);
-    }
-    super(processedStream, {
-      ...init,
-      status: 200,
-      headers: prepareResponseHeaders(init, {
-        contentType: "text/plain; charset=utf-8"
-      })
-    });
-  }
-};
-
-// streams/index.ts
-var generateId2 = import_provider_utils11.generateId;
-var nanoid = import_provider_utils11.generateId;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (0);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 9922:
+/***/ 8841:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var register = __nccwpck_require__(773);
-var addHook = __nccwpck_require__(7477);
-var removeHook = __nccwpck_require__(8944);
+var register = __nccwpck_require__(9056);
+var addHook = __nccwpck_require__(5914);
+var removeHook = __nccwpck_require__(7177);
 
 // bind with array of arguments: https://stackoverflow.com/a/21792913
 var bind = Function.bind;
@@ -22252,7 +23079,7 @@ module.exports.Collection = Hook.Collection;
 
 /***/ }),
 
-/***/ 7477:
+/***/ 5914:
 /***/ ((module) => {
 
 module.exports = addHook;
@@ -22305,7 +23132,7 @@ function addHook(state, kind, name, hook) {
 
 /***/ }),
 
-/***/ 773:
+/***/ 9056:
 /***/ ((module) => {
 
 module.exports = register;
@@ -22339,7 +23166,7 @@ function register(state, name, method, options) {
 
 /***/ }),
 
-/***/ 8944:
+/***/ 7177:
 /***/ ((module) => {
 
 module.exports = removeHook;
@@ -22365,7 +23192,7 @@ function removeHook(state, name, method) {
 
 /***/ }),
 
-/***/ 6933:
+/***/ 5546:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -22393,10 +23220,10 @@ exports.Deprecation = Deprecation;
 
 /***/ }),
 
-/***/ 9745:
+/***/ 8068:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var wrappy = __nccwpck_require__(8009)
+var wrappy = __nccwpck_require__(8092)
 module.exports = wrappy(once)
 module.exports.strict = wrappy(onceStrict)
 
@@ -22442,7 +23269,7 @@ function onceStrict (fn) {
 
 /***/ }),
 
-/***/ 1052:
+/***/ 207:
 /***/ ((module) => {
 
 "use strict";
@@ -22576,22 +23403,22 @@ module.exports.scan = filter
 
 /***/ }),
 
-/***/ 7987:
+/***/ 6124:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-module.exports = __nccwpck_require__(4125);
+module.exports = __nccwpck_require__(3660);
 
 
 /***/ }),
 
-/***/ 4125:
+/***/ 3660:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 var net = __nccwpck_require__(9278);
-var tls = __nccwpck_require__(4756);
+var tls = __nccwpck_require__(2375);
 var http = __nccwpck_require__(8611);
 var https = __nccwpck_require__(5692);
 var events = __nccwpck_require__(4434);
@@ -22856,32 +23683,32 @@ exports.debug = debug; // for test
 
 /***/ }),
 
-/***/ 4860:
+/***/ 8242:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Client = __nccwpck_require__(4673)
-const Dispatcher = __nccwpck_require__(2711)
-const errors = __nccwpck_require__(575)
-const Pool = __nccwpck_require__(9960)
-const BalancedPool = __nccwpck_require__(7862)
-const Agent = __nccwpck_require__(4081)
-const util = __nccwpck_require__(532)
+const Client = __nccwpck_require__(2799)
+const Dispatcher = __nccwpck_require__(8089)
+const errors = __nccwpck_require__(2309)
+const Pool = __nccwpck_require__(6270)
+const BalancedPool = __nccwpck_require__(935)
+const Agent = __nccwpck_require__(99)
+const util = __nccwpck_require__(4374)
 const { InvalidArgumentError } = errors
-const api = __nccwpck_require__(8763)
-const buildConnector = __nccwpck_require__(5500)
-const MockClient = __nccwpck_require__(7073)
-const MockAgent = __nccwpck_require__(1777)
-const MockPool = __nccwpck_require__(2712)
-const mockErrors = __nccwpck_require__(9705)
-const ProxyAgent = __nccwpck_require__(1108)
-const RetryHandler = __nccwpck_require__(7241)
-const { getGlobalDispatcher, setGlobalDispatcher } = __nccwpck_require__(4001)
-const DecoratorHandler = __nccwpck_require__(7140)
-const RedirectHandler = __nccwpck_require__(903)
-const createRedirectInterceptor = __nccwpck_require__(379)
+const api = __nccwpck_require__(333)
+const buildConnector = __nccwpck_require__(9238)
+const MockClient = __nccwpck_require__(1675)
+const MockAgent = __nccwpck_require__(7047)
+const MockPool = __nccwpck_require__(8130)
+const mockErrors = __nccwpck_require__(6999)
+const ProxyAgent = __nccwpck_require__(3470)
+const RetryHandler = __nccwpck_require__(347)
+const { getGlobalDispatcher, setGlobalDispatcher } = __nccwpck_require__(1227)
+const DecoratorHandler = __nccwpck_require__(3370)
+const RedirectHandler = __nccwpck_require__(3553)
+const createRedirectInterceptor = __nccwpck_require__(9389)
 
 let hasCrypto
 try {
@@ -22964,7 +23791,7 @@ if (util.nodeMajor > 16 || (util.nodeMajor === 16 && util.nodeMinor >= 8)) {
   let fetchImpl = null
   module.exports.fetch = async function fetch (resource) {
     if (!fetchImpl) {
-      fetchImpl = (__nccwpck_require__(5799).fetch)
+      fetchImpl = (__nccwpck_require__(6417).fetch)
     }
 
     try {
@@ -22977,20 +23804,20 @@ if (util.nodeMajor > 16 || (util.nodeMajor === 16 && util.nodeMinor >= 8)) {
       throw err
     }
   }
-  module.exports.Headers = __nccwpck_require__(265).Headers
-  module.exports.Response = __nccwpck_require__(7488).Response
-  module.exports.Request = __nccwpck_require__(3406).Request
-  module.exports.FormData = __nccwpck_require__(3813).FormData
-  module.exports.File = __nccwpck_require__(133).File
-  module.exports.FileReader = __nccwpck_require__(2764).FileReader
+  module.exports.Headers = __nccwpck_require__(5639).Headers
+  module.exports.Response = __nccwpck_require__(4582).Response
+  module.exports.Request = __nccwpck_require__(6084).Request
+  module.exports.FormData = __nccwpck_require__(9659).FormData
+  module.exports.File = __nccwpck_require__(4515).File
+  module.exports.FileReader = __nccwpck_require__(6358).FileReader
 
-  const { setGlobalOrigin, getGlobalOrigin } = __nccwpck_require__(1896)
+  const { setGlobalOrigin, getGlobalOrigin } = __nccwpck_require__(9310)
 
   module.exports.setGlobalOrigin = setGlobalOrigin
   module.exports.getGlobalOrigin = getGlobalOrigin
 
-  const { CacheStorage } = __nccwpck_require__(5574)
-  const { kConstruct } = __nccwpck_require__(5412)
+  const { CacheStorage } = __nccwpck_require__(5352)
+  const { kConstruct } = __nccwpck_require__(1474)
 
   // Cache & CacheStorage are tightly coupled with fetch. Even if it may run
   // in an older version of Node, it doesn't have any use without fetch.
@@ -22998,21 +23825,21 @@ if (util.nodeMajor > 16 || (util.nodeMajor === 16 && util.nodeMinor >= 8)) {
 }
 
 if (util.nodeMajor >= 16) {
-  const { deleteCookie, getCookies, getSetCookies, setCookie } = __nccwpck_require__(3756)
+  const { deleteCookie, getCookies, getSetCookies, setCookie } = __nccwpck_require__(7786)
 
   module.exports.deleteCookie = deleteCookie
   module.exports.getCookies = getCookies
   module.exports.getSetCookies = getSetCookies
   module.exports.setCookie = setCookie
 
-  const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(342)
+  const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(6440)
 
   module.exports.parseMIMEType = parseMIMEType
   module.exports.serializeAMimeType = serializeAMimeType
 }
 
 if (util.nodeMajor >= 18 && hasCrypto) {
-  const { WebSocket } = __nccwpck_require__(9647)
+  const { WebSocket } = __nccwpck_require__(85)
 
   module.exports.WebSocket = WebSocket
 }
@@ -23031,20 +23858,20 @@ module.exports.mockErrors = mockErrors
 
 /***/ }),
 
-/***/ 4081:
+/***/ 99:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { InvalidArgumentError } = __nccwpck_require__(575)
-const { kClients, kRunning, kClose, kDestroy, kDispatch, kInterceptors } = __nccwpck_require__(4871)
-const DispatcherBase = __nccwpck_require__(9869)
-const Pool = __nccwpck_require__(9960)
-const Client = __nccwpck_require__(4673)
-const util = __nccwpck_require__(532)
-const createRedirectInterceptor = __nccwpck_require__(379)
-const { WeakRef, FinalizationRegistry } = __nccwpck_require__(3070)()
+const { InvalidArgumentError } = __nccwpck_require__(2309)
+const { kClients, kRunning, kClose, kDestroy, kDispatch, kInterceptors } = __nccwpck_require__(6933)
+const DispatcherBase = __nccwpck_require__(7379)
+const Pool = __nccwpck_require__(6270)
+const Client = __nccwpck_require__(2799)
+const util = __nccwpck_require__(4374)
+const createRedirectInterceptor = __nccwpck_require__(9389)
+const { WeakRef, FinalizationRegistry } = __nccwpck_require__(2072)()
 
 const kOnConnect = Symbol('onConnect')
 const kOnDisconnect = Symbol('onDisconnect')
@@ -23187,11 +24014,11 @@ module.exports = Agent
 
 /***/ }),
 
-/***/ 6914:
+/***/ 6044:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const { addAbortListener } = __nccwpck_require__(532)
-const { RequestAbortedError } = __nccwpck_require__(575)
+const { addAbortListener } = __nccwpck_require__(4374)
+const { RequestAbortedError } = __nccwpck_require__(2309)
 
 const kListener = Symbol('kListener')
 const kSignal = Symbol('kSignal')
@@ -23248,16 +24075,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7440:
+/***/ 7266:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { AsyncResource } = __nccwpck_require__(290)
-const { InvalidArgumentError, RequestAbortedError, SocketError } = __nccwpck_require__(575)
-const util = __nccwpck_require__(532)
-const { addSignal, removeSignal } = __nccwpck_require__(6914)
+const { InvalidArgumentError, RequestAbortedError, SocketError } = __nccwpck_require__(2309)
+const util = __nccwpck_require__(4374)
+const { addSignal, removeSignal } = __nccwpck_require__(6044)
 
 class ConnectHandler extends AsyncResource {
   constructor (opts, callback) {
@@ -23360,7 +24187,7 @@ module.exports = connect
 
 /***/ }),
 
-/***/ 26:
+/***/ 2664:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -23375,10 +24202,10 @@ const {
   InvalidArgumentError,
   InvalidReturnValueError,
   RequestAbortedError
-} = __nccwpck_require__(575)
-const util = __nccwpck_require__(532)
+} = __nccwpck_require__(2309)
+const util = __nccwpck_require__(4374)
 const { AsyncResource } = __nccwpck_require__(290)
-const { addSignal, removeSignal } = __nccwpck_require__(6914)
+const { addSignal, removeSignal } = __nccwpck_require__(6044)
 const assert = __nccwpck_require__(2613)
 
 const kResume = Symbol('resume')
@@ -23617,21 +24444,21 @@ module.exports = pipeline
 
 /***/ }),
 
-/***/ 8031:
+/***/ 8077:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Readable = __nccwpck_require__(987)
+const Readable = __nccwpck_require__(4325)
 const {
   InvalidArgumentError,
   RequestAbortedError
-} = __nccwpck_require__(575)
-const util = __nccwpck_require__(532)
-const { getResolveErrorBodyCallback } = __nccwpck_require__(819)
+} = __nccwpck_require__(2309)
+const util = __nccwpck_require__(4374)
+const { getResolveErrorBodyCallback } = __nccwpck_require__(6717)
 const { AsyncResource } = __nccwpck_require__(290)
-const { addSignal, removeSignal } = __nccwpck_require__(6914)
+const { addSignal, removeSignal } = __nccwpck_require__(6044)
 
 class RequestHandler extends AsyncResource {
   constructor (opts, callback) {
@@ -23805,7 +24632,7 @@ module.exports.RequestHandler = RequestHandler
 
 /***/ }),
 
-/***/ 1996:
+/***/ 1134:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -23816,11 +24643,11 @@ const {
   InvalidArgumentError,
   InvalidReturnValueError,
   RequestAbortedError
-} = __nccwpck_require__(575)
-const util = __nccwpck_require__(532)
-const { getResolveErrorBodyCallback } = __nccwpck_require__(819)
+} = __nccwpck_require__(2309)
+const util = __nccwpck_require__(4374)
+const { getResolveErrorBodyCallback } = __nccwpck_require__(6717)
 const { AsyncResource } = __nccwpck_require__(290)
-const { addSignal, removeSignal } = __nccwpck_require__(6914)
+const { addSignal, removeSignal } = __nccwpck_require__(6044)
 
 class StreamHandler extends AsyncResource {
   constructor (opts, factory, callback) {
@@ -24033,16 +24860,16 @@ module.exports = stream
 
 /***/ }),
 
-/***/ 9566:
+/***/ 8156:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { InvalidArgumentError, RequestAbortedError, SocketError } = __nccwpck_require__(575)
+const { InvalidArgumentError, RequestAbortedError, SocketError } = __nccwpck_require__(2309)
 const { AsyncResource } = __nccwpck_require__(290)
-const util = __nccwpck_require__(532)
-const { addSignal, removeSignal } = __nccwpck_require__(6914)
+const util = __nccwpck_require__(4374)
+const { addSignal, removeSignal } = __nccwpck_require__(6044)
 const assert = __nccwpck_require__(2613)
 
 class UpgradeHandler extends AsyncResource {
@@ -24146,22 +24973,22 @@ module.exports = upgrade
 
 /***/ }),
 
-/***/ 8763:
+/***/ 333:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-module.exports.request = __nccwpck_require__(8031)
-module.exports.stream = __nccwpck_require__(1996)
-module.exports.pipeline = __nccwpck_require__(26)
-module.exports.upgrade = __nccwpck_require__(9566)
-module.exports.connect = __nccwpck_require__(7440)
+module.exports.request = __nccwpck_require__(8077)
+module.exports.stream = __nccwpck_require__(1134)
+module.exports.pipeline = __nccwpck_require__(2664)
+module.exports.upgrade = __nccwpck_require__(8156)
+module.exports.connect = __nccwpck_require__(7266)
 
 
 /***/ }),
 
-/***/ 987:
+/***/ 4325:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -24171,9 +24998,9 @@ module.exports.connect = __nccwpck_require__(7440)
 
 const assert = __nccwpck_require__(2613)
 const { Readable } = __nccwpck_require__(2203)
-const { RequestAbortedError, NotSupportedError, InvalidArgumentError } = __nccwpck_require__(575)
-const util = __nccwpck_require__(532)
-const { ReadableStreamFrom, toUSVString } = __nccwpck_require__(532)
+const { RequestAbortedError, NotSupportedError, InvalidArgumentError } = __nccwpck_require__(2309)
+const util = __nccwpck_require__(4374)
+const { ReadableStreamFrom, toUSVString } = __nccwpck_require__(4374)
 
 let Blob
 
@@ -24491,14 +25318,14 @@ function consumeFinish (consume, err) {
 
 /***/ }),
 
-/***/ 819:
+/***/ 6717:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const assert = __nccwpck_require__(2613)
 const {
   ResponseStatusCodeError
-} = __nccwpck_require__(575)
-const { toUSVString } = __nccwpck_require__(532)
+} = __nccwpck_require__(2309)
+const { toUSVString } = __nccwpck_require__(4374)
 
 async function getResolveErrorBodyCallback ({ callback, body, contentType, statusCode, statusMessage, headers }) {
   assert(body)
@@ -24544,7 +25371,7 @@ module.exports = { getResolveErrorBodyCallback }
 
 /***/ }),
 
-/***/ 7862:
+/***/ 935:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -24553,7 +25380,7 @@ module.exports = { getResolveErrorBodyCallback }
 const {
   BalancedPoolMissingUpstreamError,
   InvalidArgumentError
-} = __nccwpck_require__(575)
+} = __nccwpck_require__(2309)
 const {
   PoolBase,
   kClients,
@@ -24561,10 +25388,10 @@ const {
   kAddClient,
   kRemoveClient,
   kGetDispatcher
-} = __nccwpck_require__(9852)
-const Pool = __nccwpck_require__(9960)
-const { kUrl, kInterceptors } = __nccwpck_require__(4871)
-const { parseOrigin } = __nccwpck_require__(532)
+} = __nccwpck_require__(6302)
+const Pool = __nccwpck_require__(6270)
+const { kUrl, kInterceptors } = __nccwpck_require__(6933)
+const { parseOrigin } = __nccwpck_require__(4374)
 const kFactory = Symbol('factory')
 
 const kOptions = Symbol('options')
@@ -24742,24 +25569,24 @@ module.exports = BalancedPool
 
 /***/ }),
 
-/***/ 6955:
+/***/ 9865:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kConstruct } = __nccwpck_require__(5412)
-const { urlEquals, fieldValues: getFieldValues } = __nccwpck_require__(1293)
-const { kEnumerableProperty, isDisturbed } = __nccwpck_require__(532)
-const { kHeadersList } = __nccwpck_require__(4871)
-const { webidl } = __nccwpck_require__(1994)
-const { Response, cloneResponse } = __nccwpck_require__(7488)
-const { Request } = __nccwpck_require__(3406)
-const { kState, kHeaders, kGuard, kRealm } = __nccwpck_require__(3610)
-const { fetching } = __nccwpck_require__(5799)
-const { urlIsHttpHttpsScheme, createDeferredPromise, readAllBytes } = __nccwpck_require__(7495)
+const { kConstruct } = __nccwpck_require__(1474)
+const { urlEquals, fieldValues: getFieldValues } = __nccwpck_require__(8559)
+const { kEnumerableProperty, isDisturbed } = __nccwpck_require__(4374)
+const { kHeadersList } = __nccwpck_require__(6933)
+const { webidl } = __nccwpck_require__(1468)
+const { Response, cloneResponse } = __nccwpck_require__(4582)
+const { Request } = __nccwpck_require__(6084)
+const { kState, kHeaders, kGuard, kRealm } = __nccwpck_require__(7784)
+const { fetching } = __nccwpck_require__(6417)
+const { urlIsHttpHttpsScheme, createDeferredPromise, readAllBytes } = __nccwpck_require__(2089)
 const assert = __nccwpck_require__(2613)
-const { getGlobalDispatcher } = __nccwpck_require__(4001)
+const { getGlobalDispatcher } = __nccwpck_require__(1227)
 
 /**
  * @see https://w3c.github.io/ServiceWorker/#dfn-cache-batch-operation
@@ -25588,16 +26415,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 5574:
+/***/ 5352:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kConstruct } = __nccwpck_require__(5412)
-const { Cache } = __nccwpck_require__(6955)
-const { webidl } = __nccwpck_require__(1994)
-const { kEnumerableProperty } = __nccwpck_require__(532)
+const { kConstruct } = __nccwpck_require__(1474)
+const { Cache } = __nccwpck_require__(9865)
+const { webidl } = __nccwpck_require__(1468)
+const { kEnumerableProperty } = __nccwpck_require__(4374)
 
 class CacheStorage {
   /**
@@ -25740,28 +26567,28 @@ module.exports = {
 
 /***/ }),
 
-/***/ 5412:
+/***/ 1474:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 module.exports = {
-  kConstruct: (__nccwpck_require__(4871).kConstruct)
+  kConstruct: (__nccwpck_require__(6933).kConstruct)
 }
 
 
 /***/ }),
 
-/***/ 1293:
+/***/ 8559:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const assert = __nccwpck_require__(2613)
-const { URLSerializer } = __nccwpck_require__(342)
-const { isValidHeaderName } = __nccwpck_require__(7495)
+const { URLSerializer } = __nccwpck_require__(6440)
+const { isValidHeaderName } = __nccwpck_require__(2089)
 
 /**
  * @see https://url.spec.whatwg.org/#concept-url-equals
@@ -25810,7 +26637,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 4673:
+/***/ 2799:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -25824,10 +26651,10 @@ const assert = __nccwpck_require__(2613)
 const net = __nccwpck_require__(9278)
 const http = __nccwpck_require__(8611)
 const { pipeline } = __nccwpck_require__(2203)
-const util = __nccwpck_require__(532)
-const timers = __nccwpck_require__(4552)
-const Request = __nccwpck_require__(8147)
-const DispatcherBase = __nccwpck_require__(9869)
+const util = __nccwpck_require__(4374)
+const timers = __nccwpck_require__(7822)
+const Request = __nccwpck_require__(5081)
+const DispatcherBase = __nccwpck_require__(7379)
 const {
   RequestContentLengthMismatchError,
   ResponseContentLengthMismatchError,
@@ -25841,8 +26668,8 @@ const {
   HTTPParserError,
   ResponseExceededMaxSizeError,
   ClientDestroyedError
-} = __nccwpck_require__(575)
-const buildConnector = __nccwpck_require__(5500)
+} = __nccwpck_require__(2309)
+const buildConnector = __nccwpck_require__(9238)
 const {
   kUrl,
   kReset,
@@ -25894,7 +26721,7 @@ const {
   kHTTP2BuildRequest,
   kHTTP2CopyHeaders,
   kHTTP1BuildRequest
-} = __nccwpck_require__(4871)
+} = __nccwpck_require__(6933)
 
 /** @type {import('http2')} */
 let http2
@@ -26300,16 +27127,16 @@ function onHTTP2GoAway (code) {
   resume(client)
 }
 
-const constants = __nccwpck_require__(9188)
-const createRedirectInterceptor = __nccwpck_require__(379)
+const constants = __nccwpck_require__(5366)
+const createRedirectInterceptor = __nccwpck_require__(9389)
 const EMPTY_BUF = Buffer.alloc(0)
 
 async function lazyllhttp () {
-  const llhttpWasmData = process.env.JEST_WORKER_ID ? __nccwpck_require__(474) : undefined
+  const llhttpWasmData = process.env.JEST_WORKER_ID ? __nccwpck_require__(700) : undefined
 
   let mod
   try {
-    mod = await WebAssembly.compile(Buffer.from(__nccwpck_require__(4214), 'base64'))
+    mod = await WebAssembly.compile(Buffer.from(__nccwpck_require__(1188), 'base64'))
   } catch (e) {
     /* istanbul ignore next */
 
@@ -26317,7 +27144,7 @@ async function lazyllhttp () {
     // being enabled, but the occurring of this other error
     // * https://github.com/emscripten-core/emscripten/issues/11495
     // got me to remove that check to avoid breaking Node 12.
-    mod = await WebAssembly.compile(Buffer.from(llhttpWasmData || __nccwpck_require__(474), 'base64'))
+    mod = await WebAssembly.compile(Buffer.from(llhttpWasmData || __nccwpck_require__(700), 'base64'))
   }
 
   return await WebAssembly.instantiate(mod, {
@@ -28101,7 +28928,7 @@ module.exports = Client
 
 /***/ }),
 
-/***/ 3070:
+/***/ 2072:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -28109,7 +28936,7 @@ module.exports = Client
 
 /* istanbul ignore file: only for Node 12 */
 
-const { kConnected, kSize } = __nccwpck_require__(4871)
+const { kConnected, kSize } = __nccwpck_require__(6933)
 
 class CompatWeakRef {
   constructor (value) {
@@ -28157,7 +28984,7 @@ module.exports = function () {
 
 /***/ }),
 
-/***/ 4721:
+/***/ 4075:
 /***/ ((module) => {
 
 "use strict";
@@ -28177,16 +29004,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3756:
+/***/ 7786:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { parseSetCookie } = __nccwpck_require__(9359)
-const { stringify, getHeadersList } = __nccwpck_require__(3374)
-const { webidl } = __nccwpck_require__(1994)
-const { Headers } = __nccwpck_require__(265)
+const { parseSetCookie } = __nccwpck_require__(3689)
+const { stringify, getHeadersList } = __nccwpck_require__(8084)
+const { webidl } = __nccwpck_require__(1468)
+const { Headers } = __nccwpck_require__(5639)
 
 /**
  * @typedef {Object} Cookie
@@ -28369,15 +29196,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9359:
+/***/ 3689:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { maxNameValuePairSize, maxAttributeValueSize } = __nccwpck_require__(4721)
-const { isCTLExcludingHtab } = __nccwpck_require__(3374)
-const { collectASequenceOfCodePointsFast } = __nccwpck_require__(342)
+const { maxNameValuePairSize, maxAttributeValueSize } = __nccwpck_require__(4075)
+const { isCTLExcludingHtab } = __nccwpck_require__(8084)
+const { collectASequenceOfCodePointsFast } = __nccwpck_require__(6440)
 const assert = __nccwpck_require__(2613)
 
 /**
@@ -28694,14 +29521,14 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3374:
+/***/ 8084:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const assert = __nccwpck_require__(2613)
-const { kHeadersList } = __nccwpck_require__(4871)
+const { kHeadersList } = __nccwpck_require__(6933)
 
 function isCTLExcludingHtab (value) {
   if (value.length === 0) {
@@ -28993,7 +29820,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 5500:
+/***/ 9238:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -29001,8 +29828,8 @@ module.exports = {
 
 const net = __nccwpck_require__(9278)
 const assert = __nccwpck_require__(2613)
-const util = __nccwpck_require__(532)
-const { InvalidArgumentError, ConnectTimeoutError } = __nccwpck_require__(575)
+const util = __nccwpck_require__(4374)
+const { InvalidArgumentError, ConnectTimeoutError } = __nccwpck_require__(2309)
 
 let tls // include tls conditionally since it is not always available
 
@@ -29085,7 +29912,7 @@ function buildConnector ({ allowH2, maxCachedSessions, socketPath, timeout, ...o
     let socket
     if (protocol === 'https:') {
       if (!tls) {
-        tls = __nccwpck_require__(4756)
+        tls = __nccwpck_require__(2375)
       }
       servername = servername || options.servername || util.getServerName(host) || null
 
@@ -29190,7 +30017,7 @@ module.exports = buildConnector
 
 /***/ }),
 
-/***/ 1291:
+/***/ 3465:
 /***/ ((module) => {
 
 "use strict";
@@ -29316,7 +30143,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 575:
+/***/ 2309:
 /***/ ((module) => {
 
 "use strict";
@@ -29554,7 +30381,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 8147:
+/***/ 5081:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -29563,10 +30390,10 @@ module.exports = {
 const {
   InvalidArgumentError,
   NotSupportedError
-} = __nccwpck_require__(575)
+} = __nccwpck_require__(2309)
 const assert = __nccwpck_require__(2613)
-const { kHTTP2BuildRequest, kHTTP2CopyHeaders, kHTTP1BuildRequest } = __nccwpck_require__(4871)
-const util = __nccwpck_require__(532)
+const { kHTTP2BuildRequest, kHTTP2CopyHeaders, kHTTP1BuildRequest } = __nccwpck_require__(6933)
+const util = __nccwpck_require__(4374)
 
 // tokenRegExp and headerCharRegex have been lifted from
 // https://github.com/nodejs/node/blob/main/lib/_http_common.js
@@ -29761,7 +30588,7 @@ class Request {
       }
 
       if (!extractBody) {
-        extractBody = (__nccwpck_require__(855).extractBody)
+        extractBody = (__nccwpck_require__(337).extractBody)
       }
 
       const [bodyStream, contentType] = extractBody(body)
@@ -30061,7 +30888,7 @@ module.exports = Request
 
 /***/ }),
 
-/***/ 4871:
+/***/ 6933:
 /***/ ((module) => {
 
 module.exports = {
@@ -30131,22 +30958,22 @@ module.exports = {
 
 /***/ }),
 
-/***/ 532:
+/***/ 4374:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const assert = __nccwpck_require__(2613)
-const { kDestroyed, kBodyUsed } = __nccwpck_require__(4871)
+const { kDestroyed, kBodyUsed } = __nccwpck_require__(6933)
 const { IncomingMessage } = __nccwpck_require__(8611)
 const stream = __nccwpck_require__(2203)
 const net = __nccwpck_require__(9278)
-const { InvalidArgumentError } = __nccwpck_require__(575)
+const { InvalidArgumentError } = __nccwpck_require__(2309)
 const { Blob } = __nccwpck_require__(181)
 const nodeUtil = __nccwpck_require__(9023)
 const { stringify } = __nccwpck_require__(3480)
-const { headerNameLowerCasedRecord } = __nccwpck_require__(1291)
+const { headerNameLowerCasedRecord } = __nccwpck_require__(3465)
 
 const [nodeMajor, nodeMinor] = process.versions.node.split('.').map(v => Number(v))
 
@@ -30661,19 +31488,19 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9869:
+/***/ 7379:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Dispatcher = __nccwpck_require__(2711)
+const Dispatcher = __nccwpck_require__(8089)
 const {
   ClientDestroyedError,
   ClientClosedError,
   InvalidArgumentError
-} = __nccwpck_require__(575)
-const { kDestroy, kClose, kDispatch, kInterceptors } = __nccwpck_require__(4871)
+} = __nccwpck_require__(2309)
+const { kDestroy, kClose, kDispatch, kInterceptors } = __nccwpck_require__(6933)
 
 const kDestroyed = Symbol('destroyed')
 const kClosed = Symbol('closed')
@@ -30861,7 +31688,7 @@ module.exports = DispatcherBase
 
 /***/ }),
 
-/***/ 2711:
+/***/ 8089:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -30888,14 +31715,14 @@ module.exports = Dispatcher
 
 /***/ }),
 
-/***/ 855:
+/***/ 337:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Busboy = __nccwpck_require__(8819)
-const util = __nccwpck_require__(532)
+const Busboy = __nccwpck_require__(9766)
+const util = __nccwpck_require__(4374)
 const {
   ReadableStreamFrom,
   isBlobLike,
@@ -30903,18 +31730,26 @@ const {
   readableStreamClose,
   createDeferredPromise,
   fullyReadBody
-} = __nccwpck_require__(7495)
-const { FormData } = __nccwpck_require__(3813)
-const { kState } = __nccwpck_require__(3610)
-const { webidl } = __nccwpck_require__(1994)
-const { DOMException, structuredClone } = __nccwpck_require__(7418)
+} = __nccwpck_require__(2089)
+const { FormData } = __nccwpck_require__(9659)
+const { kState } = __nccwpck_require__(7784)
+const { webidl } = __nccwpck_require__(1468)
+const { DOMException, structuredClone } = __nccwpck_require__(5224)
 const { Blob, File: NativeFile } = __nccwpck_require__(181)
-const { kBodyUsed } = __nccwpck_require__(4871)
+const { kBodyUsed } = __nccwpck_require__(6933)
 const assert = __nccwpck_require__(2613)
-const { isErrored } = __nccwpck_require__(532)
+const { isErrored } = __nccwpck_require__(4374)
 const { isUint8Array, isArrayBuffer } = __nccwpck_require__(8253)
-const { File: UndiciFile } = __nccwpck_require__(133)
-const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(342)
+const { File: UndiciFile } = __nccwpck_require__(4515)
+const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(6440)
+
+let random
+try {
+  const crypto = __nccwpck_require__(7598)
+  random = (max) => crypto.randomInt(0, max)
+} catch {
+  random = (max) => Math.floor(Math.random(max))
+}
 
 let ReadableStream = globalThis.ReadableStream
 
@@ -31001,7 +31836,7 @@ function extractBody (object, keepalive = false) {
     // Set source to a copy of the bytes held by object.
     source = new Uint8Array(object.buffer.slice(object.byteOffset, object.byteOffset + object.byteLength))
   } else if (util.isFormDataLike(object)) {
-    const boundary = `----formdata-undici-0${`${Math.floor(Math.random() * 1e11)}`.padStart(11, '0')}`
+    const boundary = `----formdata-undici-0${`${random(1e11)}`.padStart(11, '0')}`
     const prefix = `--${boundary}\r\nContent-Disposition: form-data`
 
     /*! formdata-polyfill. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
@@ -31501,7 +32336,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7418:
+/***/ 5224:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -31660,12 +32495,12 @@ module.exports = {
 
 /***/ }),
 
-/***/ 342:
+/***/ 6440:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const assert = __nccwpck_require__(2613)
 const { atob } = __nccwpck_require__(181)
-const { isomorphicDecode } = __nccwpck_require__(7495)
+const { isomorphicDecode } = __nccwpck_require__(2089)
 
 const encoder = new TextEncoder()
 
@@ -32294,7 +33129,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 133:
+/***/ 4515:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -32302,11 +33137,11 @@ module.exports = {
 
 const { Blob, File: NativeFile } = __nccwpck_require__(181)
 const { types } = __nccwpck_require__(9023)
-const { kState } = __nccwpck_require__(3610)
-const { isBlobLike } = __nccwpck_require__(7495)
-const { webidl } = __nccwpck_require__(1994)
-const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(342)
-const { kEnumerableProperty } = __nccwpck_require__(532)
+const { kState } = __nccwpck_require__(7784)
+const { isBlobLike } = __nccwpck_require__(2089)
+const { webidl } = __nccwpck_require__(1468)
+const { parseMIMEType, serializeAMimeType } = __nccwpck_require__(6440)
+const { kEnumerableProperty } = __nccwpck_require__(4374)
 const encoder = new TextEncoder()
 
 class File extends Blob {
@@ -32646,16 +33481,16 @@ module.exports = { File, FileLike, isFileLike }
 
 /***/ }),
 
-/***/ 3813:
+/***/ 9659:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { isBlobLike, toUSVString, makeIterator } = __nccwpck_require__(7495)
-const { kState } = __nccwpck_require__(3610)
-const { File: UndiciFile, FileLike, isFileLike } = __nccwpck_require__(133)
-const { webidl } = __nccwpck_require__(1994)
+const { isBlobLike, toUSVString, makeIterator } = __nccwpck_require__(2089)
+const { kState } = __nccwpck_require__(7784)
+const { File: UndiciFile, FileLike, isFileLike } = __nccwpck_require__(4515)
+const { webidl } = __nccwpck_require__(1468)
 const { Blob, File: NativeFile } = __nccwpck_require__(181)
 
 /** @type {globalThis['File']} */
@@ -32919,7 +33754,7 @@ module.exports = { FormData }
 
 /***/ }),
 
-/***/ 1896:
+/***/ 9310:
 /***/ ((module) => {
 
 "use strict";
@@ -32967,7 +33802,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 265:
+/***/ 5639:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -32975,15 +33810,15 @@ module.exports = {
 
 
 
-const { kHeadersList, kConstruct } = __nccwpck_require__(4871)
-const { kGuard } = __nccwpck_require__(3610)
-const { kEnumerableProperty } = __nccwpck_require__(532)
+const { kHeadersList, kConstruct } = __nccwpck_require__(6933)
+const { kGuard } = __nccwpck_require__(7784)
+const { kEnumerableProperty } = __nccwpck_require__(4374)
 const {
   makeIterator,
   isValidHeaderName,
   isValidHeaderValue
-} = __nccwpck_require__(7495)
-const { webidl } = __nccwpck_require__(1994)
+} = __nccwpck_require__(2089)
+const { webidl } = __nccwpck_require__(1468)
 const assert = __nccwpck_require__(2613)
 
 const kHeadersMap = Symbol('headers map')
@@ -33564,7 +34399,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 5799:
+/***/ 6417:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -33578,9 +34413,9 @@ const {
   makeAppropriateNetworkError,
   filterResponse,
   makeResponse
-} = __nccwpck_require__(7488)
-const { Headers } = __nccwpck_require__(265)
-const { Request, makeRequest } = __nccwpck_require__(3406)
+} = __nccwpck_require__(4582)
+const { Headers } = __nccwpck_require__(5639)
+const { Request, makeRequest } = __nccwpck_require__(6084)
 const zlib = __nccwpck_require__(3106)
 const {
   bytesMatch,
@@ -33611,10 +34446,10 @@ const {
   urlIsLocal,
   urlIsHttpHttpsScheme,
   urlHasHttpsScheme
-} = __nccwpck_require__(7495)
-const { kState, kHeaders, kGuard, kRealm } = __nccwpck_require__(3610)
+} = __nccwpck_require__(2089)
+const { kState, kHeaders, kGuard, kRealm } = __nccwpck_require__(7784)
 const assert = __nccwpck_require__(2613)
-const { safelyExtractBody } = __nccwpck_require__(855)
+const { safelyExtractBody } = __nccwpck_require__(337)
 const {
   redirectStatusSet,
   nullBodyStatus,
@@ -33622,15 +34457,15 @@ const {
   requestBodyHeader,
   subresourceSet,
   DOMException
-} = __nccwpck_require__(7418)
-const { kHeadersList } = __nccwpck_require__(4871)
+} = __nccwpck_require__(5224)
+const { kHeadersList } = __nccwpck_require__(6933)
 const EE = __nccwpck_require__(4434)
 const { Readable, pipeline } = __nccwpck_require__(2203)
-const { addAbortListener, isErrored, isReadable, nodeMajor, nodeMinor } = __nccwpck_require__(532)
-const { dataURLProcessor, serializeAMimeType } = __nccwpck_require__(342)
+const { addAbortListener, isErrored, isReadable, nodeMajor, nodeMinor } = __nccwpck_require__(4374)
+const { dataURLProcessor, serializeAMimeType } = __nccwpck_require__(6440)
 const { TransformStream } = __nccwpck_require__(3774)
-const { getGlobalDispatcher } = __nccwpck_require__(4001)
-const { webidl } = __nccwpck_require__(1994)
+const { getGlobalDispatcher } = __nccwpck_require__(1227)
+const { webidl } = __nccwpck_require__(1468)
 const { STATUS_CODES } = __nccwpck_require__(8611)
 const GET_OR_HEAD = ['GET', 'HEAD']
 
@@ -35720,7 +36555,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3406:
+/***/ 6084:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -35728,17 +36563,17 @@ module.exports = {
 
 
 
-const { extractBody, mixinBody, cloneBody } = __nccwpck_require__(855)
-const { Headers, fill: fillHeaders, HeadersList } = __nccwpck_require__(265)
-const { FinalizationRegistry } = __nccwpck_require__(3070)()
-const util = __nccwpck_require__(532)
+const { extractBody, mixinBody, cloneBody } = __nccwpck_require__(337)
+const { Headers, fill: fillHeaders, HeadersList } = __nccwpck_require__(5639)
+const { FinalizationRegistry } = __nccwpck_require__(2072)()
+const util = __nccwpck_require__(4374)
 const {
   isValidHTTPToken,
   sameOrigin,
   normalizeMethod,
   makePolicyContainer,
   normalizeMethodRecord
-} = __nccwpck_require__(7495)
+} = __nccwpck_require__(2089)
 const {
   forbiddenMethodsSet,
   corsSafeListedMethodsSet,
@@ -35748,13 +36583,13 @@ const {
   requestCredentials,
   requestCache,
   requestDuplex
-} = __nccwpck_require__(7418)
+} = __nccwpck_require__(5224)
 const { kEnumerableProperty } = util
-const { kHeaders, kSignal, kState, kGuard, kRealm } = __nccwpck_require__(3610)
-const { webidl } = __nccwpck_require__(1994)
-const { getGlobalOrigin } = __nccwpck_require__(1896)
-const { URLSerializer } = __nccwpck_require__(342)
-const { kHeadersList, kConstruct } = __nccwpck_require__(4871)
+const { kHeaders, kSignal, kState, kGuard, kRealm } = __nccwpck_require__(7784)
+const { webidl } = __nccwpck_require__(1468)
+const { getGlobalOrigin } = __nccwpck_require__(9310)
+const { URLSerializer } = __nccwpck_require__(6440)
+const { kHeadersList, kConstruct } = __nccwpck_require__(6933)
 const assert = __nccwpck_require__(2613)
 const { getMaxListeners, setMaxListeners, getEventListeners, defaultMaxListeners } = __nccwpck_require__(4434)
 
@@ -36674,15 +37509,15 @@ module.exports = { Request, makeRequest }
 
 /***/ }),
 
-/***/ 7488:
+/***/ 4582:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Headers, HeadersList, fill } = __nccwpck_require__(265)
-const { extractBody, cloneBody, mixinBody } = __nccwpck_require__(855)
-const util = __nccwpck_require__(532)
+const { Headers, HeadersList, fill } = __nccwpck_require__(5639)
+const { extractBody, cloneBody, mixinBody } = __nccwpck_require__(337)
+const util = __nccwpck_require__(4374)
 const { kEnumerableProperty } = util
 const {
   isValidReasonPhrase,
@@ -36692,18 +37527,18 @@ const {
   serializeJavascriptValueToJSONString,
   isErrorLike,
   isomorphicEncode
-} = __nccwpck_require__(7495)
+} = __nccwpck_require__(2089)
 const {
   redirectStatusSet,
   nullBodyStatus,
   DOMException
-} = __nccwpck_require__(7418)
-const { kState, kHeaders, kGuard, kRealm } = __nccwpck_require__(3610)
-const { webidl } = __nccwpck_require__(1994)
-const { FormData } = __nccwpck_require__(3813)
-const { getGlobalOrigin } = __nccwpck_require__(1896)
-const { URLSerializer } = __nccwpck_require__(342)
-const { kHeadersList, kConstruct } = __nccwpck_require__(4871)
+} = __nccwpck_require__(5224)
+const { kState, kHeaders, kGuard, kRealm } = __nccwpck_require__(7784)
+const { webidl } = __nccwpck_require__(1468)
+const { FormData } = __nccwpck_require__(9659)
+const { getGlobalOrigin } = __nccwpck_require__(9310)
+const { URLSerializer } = __nccwpck_require__(6440)
+const { kHeadersList, kConstruct } = __nccwpck_require__(6933)
 const assert = __nccwpck_require__(2613)
 const { types } = __nccwpck_require__(9023)
 
@@ -37253,7 +38088,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3610:
+/***/ 7784:
 /***/ ((module) => {
 
 "use strict";
@@ -37271,16 +38106,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7495:
+/***/ 2089:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { redirectStatusSet, referrerPolicySet: referrerPolicyTokens, badPortsSet } = __nccwpck_require__(7418)
-const { getGlobalOrigin } = __nccwpck_require__(1896)
+const { redirectStatusSet, referrerPolicySet: referrerPolicyTokens, badPortsSet } = __nccwpck_require__(5224)
+const { getGlobalOrigin } = __nccwpck_require__(9310)
 const { performance } = __nccwpck_require__(2987)
-const { isBlobLike, toUSVString, ReadableStreamFrom } = __nccwpck_require__(532)
+const { isBlobLike, toUSVString, ReadableStreamFrom } = __nccwpck_require__(4374)
 const assert = __nccwpck_require__(2613)
 const { isUint8Array } = __nccwpck_require__(8253)
 
@@ -38423,14 +39258,14 @@ module.exports = {
 
 /***/ }),
 
-/***/ 1994:
+/***/ 1468:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { types } = __nccwpck_require__(9023)
-const { hasOwn, toUSVString } = __nccwpck_require__(7495)
+const { hasOwn, toUSVString } = __nccwpck_require__(2089)
 
 /** @type {import('../../types/webidl').Webidl} */
 const webidl = {}
@@ -39077,7 +39912,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9064:
+/***/ 8210:
 /***/ ((module) => {
 
 "use strict";
@@ -39375,7 +40210,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2764:
+/***/ 6358:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -39385,16 +40220,16 @@ const {
   staticPropertyDescriptors,
   readOperation,
   fireAProgressEvent
-} = __nccwpck_require__(4041)
+} = __nccwpck_require__(6327)
 const {
   kState,
   kError,
   kResult,
   kEvents,
   kAborted
-} = __nccwpck_require__(8904)
-const { webidl } = __nccwpck_require__(1994)
-const { kEnumerableProperty } = __nccwpck_require__(532)
+} = __nccwpck_require__(3274)
+const { webidl } = __nccwpck_require__(1468)
+const { kEnumerableProperty } = __nccwpck_require__(4374)
 
 class FileReader extends EventTarget {
   constructor () {
@@ -39727,13 +40562,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9932:
+/***/ 6382:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { webidl } = __nccwpck_require__(1994)
+const { webidl } = __nccwpck_require__(1468)
 
 const kState = Symbol('ProgressEvent state')
 
@@ -39813,7 +40648,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 8904:
+/***/ 3274:
 /***/ ((module) => {
 
 "use strict";
@@ -39831,7 +40666,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 4041:
+/***/ 6327:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -39843,11 +40678,11 @@ const {
   kResult,
   kAborted,
   kLastProgressEventFired
-} = __nccwpck_require__(8904)
-const { ProgressEvent } = __nccwpck_require__(9932)
-const { getEncoding } = __nccwpck_require__(9064)
-const { DOMException } = __nccwpck_require__(7418)
-const { serializeAMimeType, parseMIMEType } = __nccwpck_require__(342)
+} = __nccwpck_require__(3274)
+const { ProgressEvent } = __nccwpck_require__(6382)
+const { getEncoding } = __nccwpck_require__(8210)
+const { DOMException } = __nccwpck_require__(5224)
+const { serializeAMimeType, parseMIMEType } = __nccwpck_require__(6440)
 const { types } = __nccwpck_require__(9023)
 const { StringDecoder } = __nccwpck_require__(3193)
 const { btoa } = __nccwpck_require__(181)
@@ -40231,7 +41066,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 4001:
+/***/ 1227:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -40240,8 +41075,8 @@ module.exports = {
 // We include a version number for the Dispatcher API. In case of breaking changes,
 // this version number must be increased to avoid conflicts.
 const globalDispatcher = Symbol.for('undici.globalDispatcher.1')
-const { InvalidArgumentError } = __nccwpck_require__(575)
-const Agent = __nccwpck_require__(4081)
+const { InvalidArgumentError } = __nccwpck_require__(2309)
+const Agent = __nccwpck_require__(99)
 
 if (getGlobalDispatcher() === undefined) {
   setGlobalDispatcher(new Agent())
@@ -40271,7 +41106,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7140:
+/***/ 3370:
 /***/ ((module) => {
 
 "use strict";
@@ -40314,16 +41149,16 @@ module.exports = class DecoratorHandler {
 
 /***/ }),
 
-/***/ 903:
+/***/ 3553:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const util = __nccwpck_require__(532)
-const { kBodyUsed } = __nccwpck_require__(4871)
+const util = __nccwpck_require__(4374)
+const { kBodyUsed } = __nccwpck_require__(6933)
 const assert = __nccwpck_require__(2613)
-const { InvalidArgumentError } = __nccwpck_require__(575)
+const { InvalidArgumentError } = __nccwpck_require__(2309)
 const EE = __nccwpck_require__(4434)
 
 const redirectableStatusCodes = [300, 301, 302, 303, 307, 308]
@@ -40543,14 +41378,14 @@ module.exports = RedirectHandler
 
 /***/ }),
 
-/***/ 7241:
+/***/ 347:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const assert = __nccwpck_require__(2613)
 
-const { kRetryHandlerDefaultRetry } = __nccwpck_require__(4871)
-const { RequestRetryError } = __nccwpck_require__(575)
-const { isDisturbed, parseHeaders, parseRangeHeader } = __nccwpck_require__(532)
+const { kRetryHandlerDefaultRetry } = __nccwpck_require__(6933)
+const { RequestRetryError } = __nccwpck_require__(2309)
+const { isDisturbed, parseHeaders, parseRangeHeader } = __nccwpck_require__(4374)
 
 function calculateRetryAfterHeader (retryAfter) {
   const current = Date.now()
@@ -40886,13 +41721,13 @@ module.exports = RetryHandler
 
 /***/ }),
 
-/***/ 379:
+/***/ 9389:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const RedirectHandler = __nccwpck_require__(903)
+const RedirectHandler = __nccwpck_require__(3553)
 
 function createRedirectInterceptor ({ maxRedirections: defaultMaxRedirections }) {
   return (dispatch) => {
@@ -40915,14 +41750,14 @@ module.exports = createRedirectInterceptor
 
 /***/ }),
 
-/***/ 9188:
+/***/ 5366:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SPECIAL_HEADERS = exports.HEADER_STATE = exports.MINOR = exports.MAJOR = exports.CONNECTION_TOKEN_CHARS = exports.HEADER_CHARS = exports.TOKEN = exports.STRICT_TOKEN = exports.HEX = exports.URL_CHAR = exports.STRICT_URL_CHAR = exports.USERINFO_CHARS = exports.MARK = exports.ALPHANUM = exports.NUM = exports.HEX_MAP = exports.NUM_MAP = exports.ALPHA = exports.FINISH = exports.H_METHOD_MAP = exports.METHOD_MAP = exports.METHODS_RTSP = exports.METHODS_ICE = exports.METHODS_HTTP = exports.METHODS = exports.LENIENT_FLAGS = exports.FLAGS = exports.TYPE = exports.ERROR = void 0;
-const utils_1 = __nccwpck_require__(6424);
+const utils_1 = __nccwpck_require__(1534);
 // C headers
 var ERROR;
 (function (ERROR) {
@@ -41200,7 +42035,7 @@ exports.SPECIAL_HEADERS = {
 
 /***/ }),
 
-/***/ 474:
+/***/ 700:
 /***/ ((module) => {
 
 module.exports = 'AGFzbQEAAAABMAhgAX8Bf2ADf39/AX9gBH9/f38Bf2AAAGADf39/AGABfwBgAn9/AGAGf39/f39/AALLAQgDZW52GHdhc21fb25faGVhZGVyc19jb21wbGV0ZQACA2VudhV3YXNtX29uX21lc3NhZ2VfYmVnaW4AAANlbnYLd2FzbV9vbl91cmwAAQNlbnYOd2FzbV9vbl9zdGF0dXMAAQNlbnYUd2FzbV9vbl9oZWFkZXJfZmllbGQAAQNlbnYUd2FzbV9vbl9oZWFkZXJfdmFsdWUAAQNlbnYMd2FzbV9vbl9ib2R5AAEDZW52GHdhc21fb25fbWVzc2FnZV9jb21wbGV0ZQAAA0ZFAwMEAAAFAAAAAAAABQEFAAUFBQAABgAAAAAGBgYGAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAAABAQcAAAUFAwABBAUBcAESEgUDAQACBggBfwFBgNQECwfRBSIGbWVtb3J5AgALX2luaXRpYWxpemUACRlfX2luZGlyZWN0X2Z1bmN0aW9uX3RhYmxlAQALbGxodHRwX2luaXQAChhsbGh0dHBfc2hvdWxkX2tlZXBfYWxpdmUAQQxsbGh0dHBfYWxsb2MADAZtYWxsb2MARgtsbGh0dHBfZnJlZQANBGZyZWUASA9sbGh0dHBfZ2V0X3R5cGUADhVsbGh0dHBfZ2V0X2h0dHBfbWFqb3IADxVsbGh0dHBfZ2V0X2h0dHBfbWlub3IAEBFsbGh0dHBfZ2V0X21ldGhvZAARFmxsaHR0cF9nZXRfc3RhdHVzX2NvZGUAEhJsbGh0dHBfZ2V0X3VwZ3JhZGUAEwxsbGh0dHBfcmVzZXQAFA5sbGh0dHBfZXhlY3V0ZQAVFGxsaHR0cF9zZXR0aW5nc19pbml0ABYNbGxodHRwX2ZpbmlzaAAXDGxsaHR0cF9wYXVzZQAYDWxsaHR0cF9yZXN1bWUAGRtsbGh0dHBfcmVzdW1lX2FmdGVyX3VwZ3JhZGUAGhBsbGh0dHBfZ2V0X2Vycm5vABsXbGxodHRwX2dldF9lcnJvcl9yZWFzb24AHBdsbGh0dHBfc2V0X2Vycm9yX3JlYXNvbgAdFGxsaHR0cF9nZXRfZXJyb3JfcG9zAB4RbGxodHRwX2Vycm5vX25hbWUAHxJsbGh0dHBfbWV0aG9kX25hbWUAIBJs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ADcDACAAQShqQgA3AwAgAEEgakIANwMAIABBEGpCADcDACAAQQhqQgA3AwAgAEHdATYCHEEAC3sBAX8CQCAAKAIMIgMNAAJAIAAoAgRFDQAgACABNgIECwJAIAAgASACEMSAgIAAIgMNACAAKAIMDwsgACADNgIcQQAhAyAAKAIEIgFFDQAgACABIAIgACgCCBGBgICAAAAiAUUNACAAIAI2AhQgACABNgIMIAEhAwsgAwvk8wEDDn8DfgR/I4CAgIAAQRBrIgMkgICAgAAgASEEIAEhBSABIQYgASEHIAEhCCABIQkgASEKIAEhCyABIQwgASENIAEhDiABIQ8CQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkAgACgCHCIQQX9qDt0B2gEB2QECAwQFBgcICQoLDA0O2AEPENcBERLWARMUFRYXGBkaG+AB3wEcHR7VAR8gISIjJCXUASYnKCkqKyzTAdIBLS7RAdABLzAxMjM0NTY3ODk6Ozw9Pj9AQUJDREVG2wFHSElKzwHOAUvNAUzMAU1OT1BRUlNUVVZXWFlaW1xdXl9gYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXp7fH1+f4ABgQGCAYMBhAGFAYYBhwGIAYkB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QAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkAC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FCAAIBA2AgxBACEQDLIBCyAAKAIEIRAgAEEANgIEAkAgACAQIAEQp4CAgAAiEA0AIAEhAQxNCyAAQdMANgIcIAAgATYCFCAAIBA2AgxBACEQDLEBCyAAKAIEIRAgAEEANgIEAkAgACAQIAEQp4CAgAAiEA0AIAEhAQxRCyAAQeUANgIcIAAgATYCFCAAIBA2AgxBACEQDLABCyAAQQA2AhwgACABNgIUIABBxoqAgAA2AhAgAEEHNgIMQQAhEAyvAQsgACgCBCEQIABBADYCBAJAIAAgECABEKeAgIAAIhANACABIQEMSQsgAEHSADYCHCAAIAE2AhQgACAQNgIMQQAhEAyuAQsgACgCBCEQIABBADYCBAJAIAAgECABEKeAgIAAIhANACABIQEMSQsgAEHTADYCHCAAIAE2AhQgACAQNgIMQQAhEAytAQsgACgCBCEQIABBADYCBAJAIAAgECABEKeAgIAAIhANACABIQEMTQsgAEHlADYCHCAAIAE2AhQgACAQNgIMQQAhEAysAQsgAEEANgIcIAAgATYCFCAAQdyIgIAANgIQIABBBzYCDEEAIRAMqwELIBBBP0cNASABQQFqIQELQQUhEAyQAQtBACEQIABBADYCHCAAIAE2AhQgAEH9koCAADYCECAAQQc2AgwMqAELIAAoAgQhECAAQQA2AgQCQCAAIBAgARCngICAACIQDQAgASEBDEILIABB0gA2AhwgACABNgIUIAAgEDYCDEEAIRAMpwELIAAoAgQhECAAQQA2AgQCQCAAIBAgARCngICAACIQDQAgASEBDEILIABB0wA2AhwgACABNgIUIAAgEDYCDEEAIRAMpgELIAAoAgQhECAAQQA2AgQCQCAAIBAgARCngICAACIQDQAgASEBDEYLIABB5QA2AhwgACABNgIUIAAgEDYCDEEAIRAMpQELIAAoAgQhASAAQQA2AgQCQCAAIAEgFBCngICAACIBDQAgFCEBDD8LIABB0gA2AhwgACAUNgIUIAAgATYCDEEAIRAMpAELIAAoAgQhASAAQQA2AgQCQCAAIAEgFBCngICAACIBDQAgFCEBDD8LIABB0wA2AhwgACAUNgIUIAAgATYCDEEAIRAMowELIAAoAgQhASAAQQA2AgQCQCAAIAEgFBCngICAACIBDQAgFCEBDEMLIABB5QA2AhwgACAU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YWdlX2JlZ2luYCBjYWxsYmFjayBlcnJvcgBgb25fY2h1bmtfZXh0ZW5zaW9uX3ZhbHVlYCBjYWxsYmFjayBlcnJvcgBgb25fc3RhdHVzX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fdmVyc2lvbl9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX3VybF9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX2NodW5rX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25faGVhZGVyX3ZhbHVlX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fbWVzc2FnZV9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX21ldGhvZF9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX2hlYWRlcl9maWVsZF9jb21wbGV0ZWAgY2FsbGJhY2sgZXJyb3IAYG9uX2NodW5rX2V4dGVuc2lvbl9uYW1lYCBjYWxsYmFjayBlcnJvcgBVbmV4cGVjdGVkIGNoYXIgaW4gdXJsIHNlcnZlcgBJbnZhbGlkIGhlYWRlciB2YWx1ZSBjaGFyAEludmFsaWQgaGVhZGVyIGZpZWxkIGNoYXIAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl92ZXJzaW9uAEludmFsaWQgbWlub3IgdmVyc2lvbgBJbnZhbGlkIG1ham9yIHZlcnNpb24ARXhwZWN0ZWQgc3BhY2UgYWZ0ZXIgdmVyc2lvbgBFeHBlY3RlZCBDUkxGIGFmdGVyIHZlcnNpb24ASW52YWxpZCBIVFRQIHZlcnNpb24ASW52YWxpZCBoZWFkZXIgdG9rZW4AU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl91cmwASW52YWxpZCBjaGFyYWN0ZXJzIGluIHVybABVbmV4cGVjdGVkIHN0YXJ0IGNoYXIgaW4gdXJsAERvdWJsZSBAIGluIHVybABFbXB0eSBDb250ZW50LUxlbmd0aABJbnZhbGlkIGNoYXJhY3RlciBpbiBDb250ZW50LUxlbmd0aABEdXBsaWNhdGUgQ29udGVudC1MZW5ndGgASW52YWxpZCBjaGFyIGluIHVybCBwYXRoAENvbnRlbnQtTGVuZ3RoIGNhbid0IGJlIHByZXNlbnQgd2l0aCBUcmFuc2Zlci1FbmNvZGluZwBJbnZhbGlkIGNoYXJhY3RlciBpbiBjaHVuayBzaXplAFNwYW4gY2FsbGJhY2sgZXJyb3IgaW4gb25faGVhZGVyX3ZhbHVlAFNwYW4gY2FsbGJhY2sgZXJyb3IgaW4gb25fY2h1bmtfZXh0ZW5zaW9uX3ZhbHVlAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIGV4dGVuc2lvbnMgdmFsdWUATWlzc2luZyBleHBlY3RlZCBMRiBhZnRlciBoZWFkZXIgdmFsdWUASW52YWxpZCBgVHJhbnNmZXItRW5jb2RpbmdgIGhlYWRlciB2YWx1ZQBJbnZhbGlkIGNoYXJhY3RlciBpbiBjaHVuayBleHRlbnNpb25zIHF1b3RlIHZhbHVlAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIGV4dGVuc2lvbnMgcXVvdGVkIHZhbHVlAFBhdXNlZCBieSBvbl9oZWFkZXJzX2NvbXBsZXRlAEludmFsaWQgRU9GIHN0YXRlAG9uX3Jlc2V0IHBhdXNlAG9uX2NodW5rX2hlYWRlciBwYXVzZQBvbl9tZXNzYWdlX2JlZ2luIHBhdXNlAG9uX2NodW5rX2V4dGVuc2lvbl92YWx1ZSBwYXVzZQBvbl9zdGF0dXNfY29tcGxldGUgcGF1c2UAb25fdmVyc2lvbl9jb21wbGV0ZSBwYXVzZQBvbl91cmxfY29tcGxldGUgcGF1c2UAb25fY2h1bmtfY29tcGxldGUgcGF1c2UAb25faGVhZGVyX3ZhbHVlX2NvbXBsZXRlIHBhdXNlAG9uX21lc3NhZ2VfY29tcGxldGUgcGF1c2UAb25fbWV0aG9kX2NvbXBsZXRlIHBhdXNlAG9uX2hlYWRlcl9maWVsZF9jb21wbGV0ZSBwYXVzZQBvbl9jaHVua19leHRlbnNpb25fbmFtZSBwYXVzZQBVbmV4cGVjdGVkIHNwYWNlIGFmdGVyIHN0YXJ0IGxpbmUAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9jaHVua19leHRlbnNpb25fbmFtZQBJbnZhbGlkIGNoYXJhY3RlciBpbiBjaHVuayBleHRlbnNpb25zIG5hbWUAUGF1c2Ugb24gQ09OTkVDVC9VcGdyYWRlAFBhdXNlIG9uIFBSSS9VcGdyYWRlAEV4cGVjdGVkIEhUVFAvMiBDb25uZWN0aW9uIFByZWZhY2UAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9tZXRob2QARXhwZWN0ZWQgc3BhY2UgYWZ0ZXIgbWV0aG9kAFNwYW4gY2FsbGJhY2sgZXJyb3IgaW4gb25faGVhZGVyX2ZpZWxkAFBhdXNlZABJbnZhbGlkIHdvcmQgZW5jb3VudGVyZWQASW52YWxpZCBtZXRob2QgZW5jb3VudGVyZWQAVW5leHBlY3RlZCBjaGFyIGluIHVybCBzY2hlbWEAUmVxdWVzdCBoYXMgaW52YWxpZCBgVHJhbnNmZXItRW5jb2RpbmdgAFNXSVRDSF9QUk9YWQBVU0VfUFJPWFkATUtBQ1RJVklUWQBVTlBST0NFU1NBQkxFX0VOVElUWQBDT1BZAE1PVkVEX1BFUk1BTkVOVExZAFRPT19FQVJMWQBOT1RJRlkARkFJTEVEX0RFUEVOREVOQ1kAQkFEX0dBVEVXQVkAUExBWQBQVVQAQ0hFQ0tPVVQAR0FURVdBWV9USU1FT1VUAFJFUVVFU1RfVElNRU9VVABORVRXT1JLX0NPTk5FQ1RfVElNRU9VVABDT05ORUNUSU9OX1RJTUVPVVQATE9HSU5fVElNRU9VVABORVRXT1JLX1JFQURfVElNRU9VVABQT1NUAE1JU0RJUkVDVEVEX1JFUVVFU1QAQ0xJRU5UX0NMT1NFRF9SRVFVRVNUAENMSUVOVF9DTE9TRURfTE9BRF9CQUxBTkNFRF9SRVFVRVNUAEJBRF9SRVFVRVNUAEhUVFBfUkVRVUVTVF9TRU5UX1RPX0hUVFBTX1BPUlQAUkVQT1JUAElNX0FfVEVBUE9UAFJFU0VUX0NPTlRFTlQATk9fQ09OVEVOVABQQVJUSUFMX0NPTlRFTlQASFBFX0lOVkFMSURfQ09OU1RBTlQASFBFX0NCX1JFU0VUAEdFVABIUEVfU1RSSUNUAENPTkZMSUNUAFRFTVBPUkFSWV9SRURJUkVDVABQRVJNQU5FTlRfUkVESVJFQ1QAQ09OTkVDVABNVUxUSV9TVEFUVVMASFBFX0lOVkFMSURfU1RBVFVTAFRPT19NQU5ZX1JFUVVFU1RTAEVBUkxZX0hJTlRTAFVOQVZBSUxBQkxFX0ZPUl9MRUdBTF9SRUFTT05TAE9QVElPTlMAU1dJVENISU5HX1BST1RPQ09MUwBWQVJJQU5UX0FMU09fTkVHT1RJQVRFUwBNVUxUSVBMRV9DSE9JQ0VTAElOVEVSTkFMX1NFUlZFUl9FUlJPUgBXRUJfU0VSVkVSX1VOS05PV05fRVJST1IAUkFJTEdVTl9FUlJPUgBJREVOVElUWV9QUk9WSURFUl9BVVRIRU5USUNBVElPTl9FUlJPUgBTU0xfQ0VSVElGSUNBVEVfRVJST1IASU5WQUxJRF9YX0ZPUldBUkRFRF9GT1IAU0VUX1BBUkFNRVRFUgBHRVRfUEFSQU1FVEVSAEhQRV9VU0VSAFNFRV9PVEhFUgBIUEVfQ0JfQ0hVTktfSEVBREVSAE1LQ0FMRU5EQVIAU0VUVVAAV0VCX1NFUlZFUl9JU19ET1dOAFRFQVJET1dOAEhQRV9DTE9TRURfQ09OTkVDVElPTgBIRVVSSVNUSUNfRVhQSVJBVElPTgBESVNDT05ORUNURURfT1BFUkFUSU9OAE5PTl9BVVRIT1JJVEFUSVZFX0lORk9STUFUSU9OAEhQRV9JTlZBTElEX1ZFUlNJT04ASFBFX0NCX01FU1NBR0VfQkVHSU4AU0lURV9JU19GUk9aRU4ASFBFX0lOVkFMSURfSEVBREVSX1RPS0VOAElOVkFMSURfVE9LRU4ARk9SQklEREVOAEVOSEFOQ0VfWU9VUl9DQUxNAEhQRV9JTlZBTElEX1VSTABCTE9DS0VEX0JZX1BBUkVOVEFMX0NPTlRST0wATUtDT0wAQUNMAEhQRV9JTlRFUk5BTABSRVFVRVNUX0hFQURFUl9GSUVMRFNfVE9PX0xBUkdFX1VOT0ZGSUNJQUwASFBFX09LAFVOTElOSwBVTkxPQ0sAUFJJAFJFVFJZX1dJVEgASFBFX0lOVkFMSURfQ09OVEVOVF9MRU5HVEgASFBFX1VORVhQRUNURURfQ09OVEVOVF9MRU5HVEgARkxVU0gAUFJPUFBBVENIAE0tU0VBUkNIAFVSSV9UT09fTE9ORwBQUk9DRVNTSU5HAE1JU0NFTExBTkVPVVNfUEVSU0lTVEVOVF9XQVJOSU5HAE1JU0NFTExBTkVPVVNfV0FSTklORwBIUEVfSU5WQUxJRF9UUkFOU0ZFUl9FTkNPRElORwBFeHBlY3RlZCBDUkxGAEhQRV9JTlZBTElEX0NIVU5LX1NJWkUATU9WRQBDT05USU5VRQBIUEVfQ0JfU1RBVFVTX0NPTVBMRVRFAEhQRV9DQl9IRUFERVJTX0NPTVBMRVRFAEhQRV9DQl9WRVJTSU9OX0NPTVBMRVRFAEhQRV9DQl9VUkxfQ09NUExFVEUASFBFX0NCX0NIVU5LX0NPTVBMRVRFAEhQRV9DQl9IRUFERVJfVkFMVUVfQ09NUExFVEUASFBFX0NCX0NIVU5LX0VYVEVOU0lPTl9WQUxVRV9DT01QTEVURQBIUEVfQ0JfQ0hVTktfRVhURU5TSU9OX05BTUVfQ09NUExFVEUASFBFX0NCX01FU1NBR0VfQ09NUExFVEUASFBFX0NCX01FVEhPRF9DT01QTEVURQBIUEVfQ0JfSEVBREVSX0ZJRUxEX0NPTVBMRVRFAERFTEVURQBIUEVfSU5WQUxJRF9FT0ZfU1RBVEUASU5WQUxJRF9TU0xfQ0VSVElGSUNBVEUAUEFVU0UATk9fUkVTUE9OU0UAVU5TVVBQT1JURURfTUVESUFfVFlQRQBHT05FAE5PVF9BQ0NFUFRBQkxFAFNFUlZJQ0VfVU5BVkFJTEFCTEUAUkFOR0VfTk9UX1NBVElTRklBQkxFAE9SSUdJTl9JU19VTlJFQUNIQUJMRQBSRVNQT05TRV9JU19TVEFMRQBQVVJHRQBNRVJHRQBSRVFVRVNUX0hFQURFUl9GSUVMRFNfVE9PX0xBUkdFAFJFUVVFU1RfSEVBREVSX1RPT19MQVJHRQBQQVlMT0FEX1RPT19MQVJHRQBJTlNVRkZJQ0lFTlRfU1RPUkFHRQBIUEVfUEFVU0VEX1VQR1JBREUASFBFX1BBVVNFRF9IMl9VUEdSQURFAFNPVVJDRQBBTk5PVU5DRQBUUkFDRQBIUEVfVU5FWFBFQ1RFRF9TUEFDRQBERVNDUklCRQBVTlNVQlNDUklCRQBSRUNPUkQASFBFX0lOVkFMSURfTUVUSE9EAE5PVF9GT1VORABQUk9QRklORABVTkJJTkQAUkVCSU5EAFVOQVVUSE9SSVpFRABNRVRIT0RfTk9UX0FMTE9XRUQASFRUUF9WRVJTSU9OX05PVF9TVVBQT1JURUQAQUxSRUFEWV9SRVBPUlRFRABBQ0NFUFRFRABOT1RfSU1QTEVNRU5URUQATE9PUF9ERVRFQ1RFRABIUEVfQ1JfRVhQRUNURUQASFBFX0xGX0VYUEVDVEVEAENSRUFURUQASU1fVVNFRABIUEVfUEFVU0VEAFRJTUVPVVRfT0NDVVJFRABQQVlNRU5UX1JFUVVJUkVEAFBSRUNPTkRJVElPTl9SRVFVSVJFRABQUk9YWV9BVVRIRU5USUNBVElPTl9SRVFVSVJFRABORVRXT1JLX0FVVEhFTlRJQ0FUSU9OX1JFUVVJUkVEAExFTkdUSF9SRVFVSVJFRABTU0xfQ0VSVElGSUNBVEVfUkVRVUlSRUQAVVBHUkFERV9SRVFVSVJFRABQQUdFX0VYUElSRUQAUFJFQ09ORElUSU9OX0ZBSUxFRABFWFBFQ1RBVElPTl9GQUlMRUQAUkVWQUxJREFUSU9OX0ZBSUxFRABTU0xfSEFORFNIQUtFX0ZBSUxFRABMT0NLRUQAVFJBTlNGT1JNQVRJT05fQVBQTElFRABOT1RfTU9ESUZJRUQATk9UX0VYVEVOREVEAEJBTkRXSURUSF9MSU1JVF9FWENFRURFRABTSVRFX0lTX09WRVJMT0FERUQASEVBRABFeHBlY3RlZCBIVFRQLwAAXhMAACYTAAAwEAAA8BcAAJ0TAAAVEgAAORcAAPASAAAKEAAAdRIAAK0SAACCEwAATxQAAH8QAACgFQAAIxQAAIkSAACLFAAATRUAANQRAADPFAAAEBgAAMkWAADcFgAAwREAAOAXAAC7FAAAdBQAAHwVAADlFAAACBcAAB8QAABlFQAAoxQAACgVAAACFQAAmRUAACwQAACLGQAATw8AANQOAABqEAAAzhAAAAIXAACJDgAAbhMAABwTAABmFAAAVhcAAMETAADNEwAAbBMAAGgXAABmFwAAXxcAACITAADODwAAaQ4AANgOAABjFgAAyxMAAKoOAAAoFwAAJhcAAMUTAABdFgAA6BEAAGcTAABlEwAA8hYAAHMTAAAdFwAA+RYAAPMRAADPDgAAzhUAAAwSAACzEQAApREAAGEQAAAyFwAAuxMAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQIBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAIDAgICAgIAAAICAAICAAICAgICAgICAgIABAAAAAAAAgICAgICAgICAgICAgICAgICAgICAgICAgIAAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgACAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAACAAICAgICAAACAgACAgACAgICAgICAgICAAMABAAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAAgACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbG9zZWVlcC1hbGl2ZQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQEBAQEBAQEBAQIBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBY2h1bmtlZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAQEBAQEAAAEBAAEBAAEBAQEBAQEBAQEAAAAAAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAAABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABlY3Rpb25lbnQtbGVuZ3Rob25yb3h5LWNvbm5lY3Rpb24AAAAAAAAAAAAAAAAAAAByYW5zZmVyLWVuY29kaW5ncGdyYWRlDQoNCg0KU00NCg0KVFRQL0NFL1RTUC8AAAAAAAAAAAAAAAABAgABAwAAAAAAAAAAAAAAAAAAAAAAAAQBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAAAAAAAAAAAAQIAAQMAAAAAAAAAAAAAAAAAAAAAAAAEAQEFAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAAAAAAAAAAAAAQAAAgAAAAAAAAAAAAAAAAAAAAAAAAMEAAAEBAQEBAQEBAQEBAUEBAQEBAQEBAQEBAQABAAGBwQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEAAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwAAAAAAAAMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAABAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAIAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAAAAAAAADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABOT1VOQ0VFQ0tPVVRORUNURVRFQ1JJQkVMVVNIRVRFQURTRUFSQ0hSR0VDVElWSVRZTEVOREFSVkVPVElGWVBUSU9OU0NIU0VBWVNUQVRDSEdFT1JESVJFQ1RPUlRSQ0hQQVJBTUVURVJVUkNFQlNDUklCRUFSRE9XTkFDRUlORE5LQ0tVQlNDUklCRUhUVFAvQURUUC8='
@@ -41208,7 +42043,7 @@ module.exports = 'AGFzbQEAAAABMAhgAX8Bf2ADf39/AX9gBH9/f38Bf2AAAGADf39/AGABfwBgAn
 
 /***/ }),
 
-/***/ 4214:
+/***/ 1188:
 /***/ ((module) => {
 
 module.exports = 'AGFzbQEAAAABMAhgAX8Bf2ADf39/AX9gBH9/f38Bf2AAAGADf39/AGABfwBgAn9/AGAGf39/f39/AALLAQgDZW52GHdhc21fb25faGVhZGVyc19jb21wbGV0ZQACA2VudhV3YXNtX29uX21lc3NhZ2VfYmVnaW4AAANlbnYLd2FzbV9vbl91cmwAAQNlbnYOd2FzbV9vbl9zdGF0dXMAAQNlbnYUd2FzbV9vbl9oZWFkZXJfZmllbGQAAQNlbnYUd2FzbV9vbl9oZWFkZXJfdmFsdWUAAQNlbnYMd2FzbV9vbl9ib2R5AAEDZW52GHdhc21fb25fbWVzc2FnZV9jb21wbGV0ZQAAA0ZFAwMEAAAFAAAAAAAABQEFAAUFBQAABgAAAAAGBgYGAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAAABAQcAAAUFAwABBAUBcAESEgUDAQACBggBfwFBgNQECwfRBSIGbWVtb3J5AgALX2luaXRpYWxpemUACRlfX2luZGlyZWN0X2Z1bmN0aW9uX3RhYmxlAQALbGxodHRwX2luaXQAChhsbGh0dHBfc2hvdWxkX2tlZXBfYWxpdmUAQQxsbGh0dHBfYWxsb2MADAZtYWxsb2MARgtsbGh0dHBfZnJlZQANBGZyZWUASA9sbGh0dHBfZ2V0X3R5cGUADhVsbGh0dHBfZ2V0X2h0dHBfbWFqb3IADxVsbGh0dHBfZ2V0X2h0dHBfbWlub3IAEBFsbGh0dHBfZ2V0X21ldGhvZAARFmxsaHR0cF9nZXRfc3RhdHVzX2NvZGUAEhJsbGh0dHBfZ2V0X3VwZ3JhZGUAEwxsbGh0dHBfcmVzZXQAFA5sbGh0dHBfZXhlY3V0ZQAVFGxsaHR0cF9zZXR0aW5nc19pbml0ABYNbGxodHRwX2ZpbmlzaAAXDGxsaHR0cF9wYXVzZQAYDWxsaHR0cF9yZXN1bWUAGRtsbGh0dHBfcmVzdW1lX2FmdGVyX3VwZ3JhZGUAGhBsbGh0dHBfZ2V0X2Vycm5vABsXbGxodHRwX2dldF9lcnJvcl9yZWFzb24AHBdsbGh0dHBfc2V0X2Vycm9yX3JlYXNvbgAdFGxsaHR0cF9nZXRfZXJyb3JfcG9zAB4RbGxodHRwX2Vycm5vX25hbWUAHxJsbGh0dHBfbWV0aG9kX25hbWUAIBJs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IAH9CwMAIABBMGogAf0LAwAgAEEgaiAB/QsDACAAQd0BNgIcQQALewEBfwJAIAAoAgwiAw0AAkAgACgCBEUNACAAIAE2AgQLAkAgACABIAIQxICAgAAiAw0AIAAoAgwPCyAAIAM2AhxBACEDIAAoAgQiAUUNACAAIAEgAiAAKAIIEYGAgIAAACIBRQ0AIAAgAjYCFCAAIAE2AgwgASEDCyADC+TzAQMOfwN+BH8jgICAgABBEGsiAySAgICAACABIQQgASEFIAEhBiABIQcgASEIIAEhCSABIQogASELIAEhDCABIQ0gASEOIAEhDwJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQCAAKAIcIhBBf2oO3QHaAQHZAQIDBAUGBwgJCgsMDQ7YAQ8Q1wEREtYBExQVFhcYGRob4AHfARwdHtUBHyAhIiMkJdQBJicoKSorLNMB0gEtLtEB0AEvMDEyMzQ1Njc4OTo7PD0+P0BBQkNERUbbAUdISUrPAc4BS80BTMwBTU5PUFFSU1RVVldYWVpbXF1eX2BhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5ent8fX5/gAGBAYIBgwGEAYUBhgGHAYgBiQGKAYsBjAGNAY4BjwGQAZEB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QAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAIBAOxwEAAQID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YWNrIGVycm9yAGBvbl9jaHVua19leHRlbnNpb25fdmFsdWVgIGNhbGxiYWNrIGVycm9yAGBvbl9zdGF0dXNfY29tcGxldGVgIGNhbGxiYWNrIGVycm9yAGBvbl92ZXJzaW9uX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fdXJsX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fY2h1bmtfY29tcGxldGVgIGNhbGxiYWNrIGVycm9yAGBvbl9oZWFkZXJfdmFsdWVfY29tcGxldGVgIGNhbGxiYWNrIGVycm9yAGBvbl9tZXNzYWdlX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fbWV0aG9kX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25faGVhZGVyX2ZpZWxkX2NvbXBsZXRlYCBjYWxsYmFjayBlcnJvcgBgb25fY2h1bmtfZXh0ZW5zaW9uX25hbWVgIGNhbGxiYWNrIGVycm9yAFVuZXhwZWN0ZWQgY2hhciBpbiB1cmwgc2VydmVyAEludmFsaWQgaGVhZGVyIHZhbHVlIGNoYXIASW52YWxpZCBoZWFkZXIgZmllbGQgY2hhcgBTcGFuIGNhbGxiYWNrIGVycm9yIGluIG9uX3ZlcnNpb24ASW52YWxpZCBtaW5vciB2ZXJzaW9uAEludmFsaWQgbWFqb3IgdmVyc2lvbgBFeHBlY3RlZCBzcGFjZSBhZnRlciB2ZXJzaW9uAEV4cGVjdGVkIENSTEYgYWZ0ZXIgdmVyc2lvbgBJbnZhbGlkIEhUVFAgdmVyc2lvbgBJbnZhbGlkIGhlYWRlciB0b2tlbgBTcGFuIGNhbGxiYWNrIGVycm9yIGluIG9uX3VybABJbnZhbGlkIGNoYXJhY3RlcnMgaW4gdXJsAFVuZXhwZWN0ZWQgc3RhcnQgY2hhciBpbiB1cmwARG91YmxlIEAgaW4gdXJsAEVtcHR5IENvbnRlbnQtTGVuZ3RoAEludmFsaWQgY2hhcmFjdGVyIGluIENvbnRlbnQtTGVuZ3RoAER1cGxpY2F0ZSBDb250ZW50LUxlbmd0aABJbnZhbGlkIGNoYXIgaW4gdXJsIHBhdGgAQ29udGVudC1MZW5ndGggY2FuJ3QgYmUgcHJlc2VudCB3aXRoIFRyYW5zZmVyLUVuY29kaW5nAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIHNpemUAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9oZWFkZXJfdmFsdWUAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9jaHVua19leHRlbnNpb25fdmFsdWUASW52YWxpZCBjaGFyYWN0ZXIgaW4gY2h1bmsgZXh0ZW5zaW9ucyB2YWx1ZQBNaXNzaW5nIGV4cGVjdGVkIExGIGFmdGVyIGhlYWRlciB2YWx1ZQBJbnZhbGlkIGBUcmFuc2Zlci1FbmNvZGluZ2AgaGVhZGVyIHZhbHVlAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIGV4dGVuc2lvbnMgcXVvdGUgdmFsdWUASW52YWxpZCBjaGFyYWN0ZXIgaW4gY2h1bmsgZXh0ZW5zaW9ucyBxdW90ZWQgdmFsdWUAUGF1c2VkIGJ5IG9uX2hlYWRlcnNfY29tcGxldGUASW52YWxpZCBFT0Ygc3RhdGUAb25fcmVzZXQgcGF1c2UAb25fY2h1bmtfaGVhZGVyIHBhdXNlAG9uX21lc3NhZ2VfYmVnaW4gcGF1c2UAb25fY2h1bmtfZXh0ZW5zaW9uX3ZhbHVlIHBhdXNlAG9uX3N0YXR1c19jb21wbGV0ZSBwYXVzZQBvbl92ZXJzaW9uX2NvbXBsZXRlIHBhdXNlAG9uX3VybF9jb21wbGV0ZSBwYXVzZQBvbl9jaHVua19jb21wbGV0ZSBwYXVzZQBvbl9oZWFkZXJfdmFsdWVfY29tcGxldGUgcGF1c2UAb25fbWVzc2FnZV9jb21wbGV0ZSBwYXVzZQBvbl9tZXRob2RfY29tcGxldGUgcGF1c2UAb25faGVhZGVyX2ZpZWxkX2NvbXBsZXRlIHBhdXNlAG9uX2NodW5rX2V4dGVuc2lvbl9uYW1lIHBhdXNlAFVuZXhwZWN0ZWQgc3BhY2UgYWZ0ZXIgc3RhcnQgbGluZQBTcGFuIGNhbGxiYWNrIGVycm9yIGluIG9uX2NodW5rX2V4dGVuc2lvbl9uYW1lAEludmFsaWQgY2hhcmFjdGVyIGluIGNodW5rIGV4dGVuc2lvbnMgbmFtZQBQYXVzZSBvbiBDT05ORUNUL1VwZ3JhZGUAUGF1c2Ugb24gUFJJL1VwZ3JhZGUARXhwZWN0ZWQgSFRUUC8yIENvbm5lY3Rpb24gUHJlZmFjZQBTcGFuIGNhbGxiYWNrIGVycm9yIGluIG9uX21ldGhvZABFeHBlY3RlZCBzcGFjZSBhZnRlciBtZXRob2QAU3BhbiBjYWxsYmFjayBlcnJvciBpbiBvbl9oZWFkZXJfZmllbGQAUGF1c2VkAEludmFsaWQgd29yZCBlbmNvdW50ZXJlZABJbnZhbGlkIG1ldGhvZCBlbmNvdW50ZXJlZABVbmV4cGVjdGVkIGNoYXIgaW4gdXJsIHNjaGVtYQBSZXF1ZXN0IGhhcyBpbnZhbGlkIGBUcmFuc2Zlci1FbmNvZGluZ2AAU1dJVENIX1BST1hZAFVTRV9QUk9YWQBNS0FDVElWSVRZAFVOUFJPQ0VTU0FCTEVfRU5USVRZAENPUFkATU9WRURfUEVSTUFORU5UTFkAVE9PX0VBUkxZAE5PVElGWQBGQUlMRURfREVQRU5ERU5DWQBCQURfR0FURVdBWQBQTEFZAFBVVABDSEVDS09VVABHQVRFV0FZX1RJTUVPVVQAUkVRVUVTVF9USU1FT1VUAE5FVFdPUktfQ09OTkVDVF9USU1FT1VUAENPTk5FQ1RJT05fVElNRU9VVABMT0dJTl9USU1FT1VUAE5FVFdPUktfUkVBRF9USU1FT1VUAFBPU1QATUlTRElSRUNURURfUkVRVUVTVABDTElFTlRfQ0xPU0VEX1JFUVVFU1QAQ0xJRU5UX0NMT1NFRF9MT0FEX0JBTEFOQ0VEX1JFUVVFU1QAQkFEX1JFUVVFU1QASFRUUF9SRVFVRVNUX1NFTlRfVE9fSFRUUFNfUE9SVABSRVBPUlQASU1fQV9URUFQT1QAUkVTRVRfQ09OVEVOVABOT19DT05URU5UAFBBUlRJQUxfQ09OVEVOVABIUEVfSU5WQUxJRF9DT05TVEFOVABIUEVfQ0JfUkVTRVQAR0VUAEhQRV9TVFJJQ1QAQ09ORkxJQ1QAVEVNUE9SQVJZX1JFRElSRUNUAFBFUk1BTkVOVF9SRURJUkVDVABDT05ORUNUAE1VTFRJX1NUQVRVUwBIUEVfSU5WQUxJRF9TVEFUVVMAVE9PX01BTllfUkVRVUVTVFMARUFSTFlfSElOVFMAVU5BVkFJTEFCTEVfRk9SX0xFR0FMX1JFQVNPTlMAT1BUSU9OUwBTV0lUQ0hJTkdfUFJPVE9DT0xTAFZBUklBTlRfQUxTT19ORUdPVElBVEVTAE1VTFRJUExFX0NIT0lDRVMASU5URVJOQUxfU0VSVkVSX0VSUk9SAFdFQl9TRVJWRVJfVU5LTk9XTl9FUlJPUgBSQUlMR1VOX0VSUk9SAElERU5USVRZX1BST1ZJREVSX0FVVEhFTlRJQ0FUSU9OX0VSUk9SAFNTTF9DRVJUSUZJQ0FURV9FUlJPUgBJTlZBTElEX1hfRk9SV0FSREVEX0ZPUgBTRVRfUEFSQU1FVEVSAEdFVF9QQVJBTUVURVIASFBFX1VTRVIAU0VFX09USEVSAEhQRV9DQl9DSFVOS19IRUFERVIATUtDQUxFTkRBUgBTRVRVUABXRUJfU0VSVkVSX0lTX0RPV04AVEVBUkRPV04ASFBFX0NMT1NFRF9DT05ORUNUSU9OAEhFVVJJU1RJQ19FWFBJUkFUSU9OAERJU0NPTk5FQ1RFRF9PUEVSQVRJT04ATk9OX0FVVEhPUklUQVRJVkVfSU5GT1JNQVRJT04ASFBFX0lOVkFMSURfVkVSU0lPTgBIUEVfQ0JfTUVTU0FHRV9CRUdJTgBTSVRFX0lTX0ZST1pFTgBIUEVfSU5WQUxJRF9IRUFERVJfVE9LRU4ASU5WQUxJRF9UT0tFTgBGT1JCSURERU4ARU5IQU5DRV9ZT1VSX0NBTE0ASFBFX0lOVkFMSURfVVJMAEJMT0NLRURfQllfUEFSRU5UQUxfQ09OVFJPTABNS0NPTABBQ0wASFBFX0lOVEVSTkFMAFJFUVVFU1RfSEVBREVSX0ZJRUxEU19UT09fTEFSR0VfVU5PRkZJQ0lBTABIUEVfT0sAVU5MSU5LAFVOTE9DSwBQUkkAUkVUUllfV0lUSABIUEVfSU5WQUxJRF9DT05URU5UX0xFTkdUSABIUEVfVU5FWFBFQ1RFRF9DT05URU5UX0xFTkdUSABGTFVTSABQUk9QUEFUQ0gATS1TRUFSQ0gAVVJJX1RPT19MT05HAFBST0NFU1NJTkcATUlTQ0VMTEFORU9VU19QRVJTSVNURU5UX1dBUk5JTkcATUlTQ0VMTEFORU9VU19XQVJOSU5HAEhQRV9JTlZBTElEX1RSQU5TRkVSX0VOQ09ESU5HAEV4cGVjdGVkIENSTEYASFBFX0lOVkFMSURfQ0hVTktfU0laRQBNT1ZFAENPTlRJTlVFAEhQRV9DQl9TVEFUVVNfQ09NUExFVEUASFBFX0NCX0hFQURFUlNfQ09NUExFVEUASFBFX0NCX1ZFUlNJT05fQ09NUExFVEUASFBFX0NCX1VSTF9DT01QTEVURQBIUEVfQ0JfQ0hVTktfQ09NUExFVEUASFBFX0NCX0hFQURFUl9WQUxVRV9DT01QTEVURQBIUEVfQ0JfQ0hVTktfRVhURU5TSU9OX1ZBTFVFX0NPTVBMRVRFAEhQRV9DQl9DSFVOS19FWFRFTlNJT05fTkFNRV9DT01QTEVURQBIUEVfQ0JfTUVTU0FHRV9DT01QTEVURQBIUEVfQ0JfTUVUSE9EX0NPTVBMRVRFAEhQRV9DQl9IRUFERVJfRklFTERfQ09NUExFVEUAREVMRVRFAEhQRV9JTlZBTElEX0VPRl9TVEFURQBJTlZBTElEX1NTTF9DRVJUSUZJQ0FURQBQQVVTRQBOT19SRVNQT05TRQBVTlNVUFBPUlRFRF9NRURJQV9UWVBFAEdPTkUATk9UX0FDQ0VQVEFCTEUAU0VSVklDRV9VTkFWQUlMQUJMRQBSQU5HRV9OT1RfU0FUSVNGSUFCTEUAT1JJR0lOX0lTX1VOUkVBQ0hBQkxFAFJFU1BPTlNFX0lTX1NUQUxFAFBVUkdFAE1FUkdFAFJFUVVFU1RfSEVBREVSX0ZJRUxEU19UT09fTEFSR0UAUkVRVUVTVF9IRUFERVJfVE9PX0xBUkdFAFBBWUxPQURfVE9PX0xBUkdFAElOU1VGRklDSUVOVF9TVE9SQUdFAEhQRV9QQVVTRURfVVBHUkFERQBIUEVfUEFVU0VEX0gyX1VQR1JBREUAU09VUkNFAEFOTk9VTkNFAFRSQUNFAEhQRV9VTkVYUEVDVEVEX1NQQUNFAERFU0NSSUJFAFVOU1VCU0NSSUJFAFJFQ09SRABIUEVfSU5WQUxJRF9NRVRIT0QATk9UX0ZPVU5EAFBST1BGSU5EAFVOQklORABSRUJJTkQAVU5BVVRIT1JJWkVEAE1FVEhPRF9OT1RfQUxMT1dFRABIVFRQX1ZFUlNJT05fTk9UX1NVUFBPUlRFRABBTFJFQURZX1JFUE9SVEVEAEFDQ0VQVEVEAE5PVF9JTVBMRU1FTlRFRABMT09QX0RFVEVDVEVEAEhQRV9DUl9FWFBFQ1RFRABIUEVfTEZfRVhQRUNURUQAQ1JFQVRFRABJTV9VU0VEAEhQRV9QQVVTRUQAVElNRU9VVF9PQ0NVUkVEAFBBWU1FTlRfUkVRVUlSRUQAUFJFQ09ORElUSU9OX1JFUVVJUkVEAFBST1hZX0FVVEhFTlRJQ0FUSU9OX1JFUVVJUkVEAE5FVFdPUktfQVVUSEVOVElDQVRJT05fUkVRVUlSRUQATEVOR1RIX1JFUVVJUkVEAFNTTF9DRVJUSUZJQ0FURV9SRVFVSVJFRABVUEdSQURFX1JFUVVJUkVEAFBBR0VfRVhQSVJFRABQUkVDT05ESVRJT05fRkFJTEVEAEVYUEVDVEFUSU9OX0ZBSUxFRABSRVZBTElEQVRJT05fRkFJTEVEAFNTTF9IQU5EU0hBS0VfRkFJTEVEAExPQ0tFRABUUkFOU0ZPUk1BVElPTl9BUFBMSUVEAE5PVF9NT0RJRklFRABOT1RfRVhURU5ERUQAQkFORFdJRFRIX0xJTUlUX0VYQ0VFREVEAFNJVEVfSVNfT1ZFUkxPQURFRABIRUFEAEV4cGVjdGVkIEhUVFAvAABeEwAAJhMAADAQAADwFwAAnRMAABUSAAA5FwAA8BIAAAoQAAB1EgAArRIAAIITAABPFAAAfxAAAKAVAAAjFAAAiRIAAIsUAABNFQAA1BEAAM8UAAAQGAAAyRYAANwWAADBEQAA4BcAALsUAAB0FAAAfBUAAOUUAAAIFwAAHxAAAGUVAACjFAAAKBUAAAIVAACZFQAALBAAAIsZAABPDwAA1A4AAGoQAADOEAAAAhcAAIkOAABuEwAAHBMAAGYUAABWFwAAwRMAAM0TAABsEwAAaBcAAGYXAABfFwAAIhMAAM4PAABpDgAA2A4AAGMWAADLEwAAqg4AACgXAAAmFwAAxRMAAF0WAADoEQAAZxMAAGUTAADyFgAAcxMAAB0XAAD5FgAA8xEAAM8OAADOFQAADBIAALMRAAClEQAAYRAAADIXAAC7EwAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAgEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAgMCAgICAgAAAgIAAgIAAgICAgICAgICAgAEAAAAAAACAgICAgICAgICAgICAgICAgICAgICAgICAgAAAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAAIAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAIAAgICAgIAAAICAAICAAICAgICAgICAgIAAwAEAAAAAgICAgICAgICAgICAgICAgICAgICAgICAgIAAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgACAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABsb3NlZWVwLWFsaXZlAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAgEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQFjaHVua2VkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQABAQEBAQAAAQEAAQEAAQEBAQEBAQEBAQAAAAAAAAABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGVjdGlvbmVudC1sZW5ndGhvbnJveHktY29ubmVjdGlvbgAAAAAAAAAAAAAAAAAAAHJhbnNmZXItZW5jb2RpbmdwZ3JhZGUNCg0KDQpTTQ0KDQpUVFAvQ0UvVFNQLwAAAAAAAAAAAAAAAAECAAEDAAAAAAAAAAAAAAAAAAAAAAAABAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAAAAAAAAAAABAgABAwAAAAAAAAAAAAAAAAAAAAAAAAQBAQUBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQAAAAAAAAAAAAABAAACAAAAAAAAAAAAAAAAAAAAAAAAAwQAAAQEBAQEBAQEBAQEBQQEBAQEBAQEBAQEBAAEAAYHBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAAQABAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAAAAAAAAAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAgAAAAACAAAAAAAAAAAAAAAAAAAAAAADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwAAAAAAAAMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE5PVU5DRUVDS09VVE5FQ1RFVEVDUklCRUxVU0hFVEVBRFNFQVJDSFJHRUNUSVZJVFlMRU5EQVJWRU9USUZZUFRJT05TQ0hTRUFZU1RBVENIR0VPUkRJUkVDVE9SVFJDSFBBUkFNRVRFUlVSQ0VCU0NSSUJFQVJET1dOQUNFSU5ETktDS1VCU0NSSUJFSFRUUC9BRFRQLw=='
@@ -41216,7 +42051,7 @@ module.exports = 'AGFzbQEAAAABMAhgAX8Bf2ADf39/AX9gBH9/f38Bf2AAAGADf39/AGABfwBgAn
 
 /***/ }),
 
-/***/ 6424:
+/***/ 1534:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -41238,14 +42073,14 @@ exports.enumToMap = enumToMap;
 
 /***/ }),
 
-/***/ 1777:
+/***/ 7047:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kClients } = __nccwpck_require__(4871)
-const Agent = __nccwpck_require__(4081)
+const { kClients } = __nccwpck_require__(6933)
+const Agent = __nccwpck_require__(99)
 const {
   kAgent,
   kMockAgentSet,
@@ -41256,14 +42091,14 @@ const {
   kGetNetConnect,
   kOptions,
   kFactory
-} = __nccwpck_require__(233)
-const MockClient = __nccwpck_require__(7073)
-const MockPool = __nccwpck_require__(2712)
-const { matchValue, buildMockOptions } = __nccwpck_require__(1)
-const { InvalidArgumentError, UndiciError } = __nccwpck_require__(575)
-const Dispatcher = __nccwpck_require__(2711)
-const Pluralizer = __nccwpck_require__(5893)
-const PendingInterceptorsFormatter = __nccwpck_require__(2466)
+} = __nccwpck_require__(7375)
+const MockClient = __nccwpck_require__(1675)
+const MockPool = __nccwpck_require__(8130)
+const { matchValue, buildMockOptions } = __nccwpck_require__(723)
+const { InvalidArgumentError, UndiciError } = __nccwpck_require__(2309)
+const Dispatcher = __nccwpck_require__(8089)
+const Pluralizer = __nccwpck_require__(6987)
+const PendingInterceptorsFormatter = __nccwpck_require__(2499)
 
 class FakeWeakRef {
   constructor (value) {
@@ -41417,15 +42252,15 @@ module.exports = MockAgent
 
 /***/ }),
 
-/***/ 7073:
+/***/ 1675:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { promisify } = __nccwpck_require__(9023)
-const Client = __nccwpck_require__(4673)
-const { buildMockDispatch } = __nccwpck_require__(1)
+const Client = __nccwpck_require__(2799)
+const { buildMockDispatch } = __nccwpck_require__(723)
 const {
   kDispatches,
   kMockAgent,
@@ -41434,10 +42269,10 @@ const {
   kOrigin,
   kOriginalDispatch,
   kConnected
-} = __nccwpck_require__(233)
-const { MockInterceptor } = __nccwpck_require__(6683)
-const Symbols = __nccwpck_require__(4871)
-const { InvalidArgumentError } = __nccwpck_require__(575)
+} = __nccwpck_require__(7375)
+const { MockInterceptor } = __nccwpck_require__(9357)
+const Symbols = __nccwpck_require__(6933)
+const { InvalidArgumentError } = __nccwpck_require__(2309)
 
 /**
  * MockClient provides an API that extends the Client to influence the mockDispatches.
@@ -41484,13 +42319,13 @@ module.exports = MockClient
 
 /***/ }),
 
-/***/ 9705:
+/***/ 6999:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { UndiciError } = __nccwpck_require__(575)
+const { UndiciError } = __nccwpck_require__(2309)
 
 class MockNotMatchedError extends UndiciError {
   constructor (message) {
@@ -41509,13 +42344,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 6683:
+/***/ 9357:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { getResponseData, buildKey, addMockDispatch } = __nccwpck_require__(1)
+const { getResponseData, buildKey, addMockDispatch } = __nccwpck_require__(723)
 const {
   kDispatches,
   kDispatchKey,
@@ -41523,9 +42358,9 @@ const {
   kDefaultTrailers,
   kContentLength,
   kMockDispatch
-} = __nccwpck_require__(233)
-const { InvalidArgumentError } = __nccwpck_require__(575)
-const { buildURL } = __nccwpck_require__(532)
+} = __nccwpck_require__(7375)
+const { InvalidArgumentError } = __nccwpck_require__(2309)
+const { buildURL } = __nccwpck_require__(4374)
 
 /**
  * Defines the scope API for an interceptor reply
@@ -41723,15 +42558,15 @@ module.exports.MockScope = MockScope
 
 /***/ }),
 
-/***/ 2712:
+/***/ 8130:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const { promisify } = __nccwpck_require__(9023)
-const Pool = __nccwpck_require__(9960)
-const { buildMockDispatch } = __nccwpck_require__(1)
+const Pool = __nccwpck_require__(6270)
+const { buildMockDispatch } = __nccwpck_require__(723)
 const {
   kDispatches,
   kMockAgent,
@@ -41740,10 +42575,10 @@ const {
   kOrigin,
   kOriginalDispatch,
   kConnected
-} = __nccwpck_require__(233)
-const { MockInterceptor } = __nccwpck_require__(6683)
-const Symbols = __nccwpck_require__(4871)
-const { InvalidArgumentError } = __nccwpck_require__(575)
+} = __nccwpck_require__(7375)
+const { MockInterceptor } = __nccwpck_require__(9357)
+const Symbols = __nccwpck_require__(6933)
+const { InvalidArgumentError } = __nccwpck_require__(2309)
 
 /**
  * MockPool provides an API that extends the Pool to influence the mockDispatches.
@@ -41790,7 +42625,7 @@ module.exports = MockPool
 
 /***/ }),
 
-/***/ 233:
+/***/ 7375:
 /***/ ((module) => {
 
 "use strict";
@@ -41821,21 +42656,21 @@ module.exports = {
 
 /***/ }),
 
-/***/ 1:
+/***/ 723:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { MockNotMatchedError } = __nccwpck_require__(9705)
+const { MockNotMatchedError } = __nccwpck_require__(6999)
 const {
   kDispatches,
   kMockAgent,
   kOriginalDispatch,
   kOrigin,
   kGetNetConnect
-} = __nccwpck_require__(233)
-const { buildURL, nop } = __nccwpck_require__(532)
+} = __nccwpck_require__(7375)
+const { buildURL, nop } = __nccwpck_require__(4374)
 const { STATUS_CODES } = __nccwpck_require__(8611)
 const {
   types: {
@@ -42180,7 +43015,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2466:
+/***/ 2499:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -42228,7 +43063,7 @@ module.exports = class PendingInterceptorsFormatter {
 
 /***/ }),
 
-/***/ 5893:
+/***/ 6987:
 /***/ ((module) => {
 
 "use strict";
@@ -42265,7 +43100,7 @@ module.exports = class Pluralizer {
 
 /***/ }),
 
-/***/ 9625:
+/***/ 8767:
 /***/ ((module) => {
 
 "use strict";
@@ -42390,16 +43225,16 @@ module.exports = class FixedQueue {
 
 /***/ }),
 
-/***/ 9852:
+/***/ 6302:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const DispatcherBase = __nccwpck_require__(9869)
-const FixedQueue = __nccwpck_require__(9625)
-const { kConnected, kSize, kRunning, kPending, kQueued, kBusy, kFree, kUrl, kClose, kDestroy, kDispatch } = __nccwpck_require__(4871)
-const PoolStats = __nccwpck_require__(2746)
+const DispatcherBase = __nccwpck_require__(7379)
+const FixedQueue = __nccwpck_require__(8767)
+const { kConnected, kSize, kRunning, kPending, kQueued, kBusy, kFree, kUrl, kClose, kDestroy, kDispatch } = __nccwpck_require__(6933)
+const PoolStats = __nccwpck_require__(4352)
 
 const kClients = Symbol('clients')
 const kNeedDrain = Symbol('needDrain')
@@ -42592,10 +43427,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2746:
+/***/ 4352:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const { kFree, kConnected, kPending, kQueued, kRunning, kSize } = __nccwpck_require__(4871)
+const { kFree, kConnected, kPending, kQueued, kRunning, kSize } = __nccwpck_require__(6933)
 const kPool = Symbol('pool')
 
 class PoolStats {
@@ -42633,7 +43468,7 @@ module.exports = PoolStats
 
 /***/ }),
 
-/***/ 9960:
+/***/ 6270:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -42645,14 +43480,14 @@ const {
   kNeedDrain,
   kAddClient,
   kGetDispatcher
-} = __nccwpck_require__(9852)
-const Client = __nccwpck_require__(4673)
+} = __nccwpck_require__(6302)
+const Client = __nccwpck_require__(2799)
 const {
   InvalidArgumentError
-} = __nccwpck_require__(575)
-const util = __nccwpck_require__(532)
-const { kUrl, kInterceptors } = __nccwpck_require__(4871)
-const buildConnector = __nccwpck_require__(5500)
+} = __nccwpck_require__(2309)
+const util = __nccwpck_require__(4374)
+const { kUrl, kInterceptors } = __nccwpck_require__(6933)
+const buildConnector = __nccwpck_require__(9238)
 
 const kOptions = Symbol('options')
 const kConnections = Symbol('connections')
@@ -42735,19 +43570,19 @@ module.exports = Pool
 
 /***/ }),
 
-/***/ 1108:
+/***/ 3470:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kProxy, kClose, kDestroy, kInterceptors } = __nccwpck_require__(4871)
+const { kProxy, kClose, kDestroy, kInterceptors } = __nccwpck_require__(6933)
 const { URL } = __nccwpck_require__(7016)
-const Agent = __nccwpck_require__(4081)
-const Pool = __nccwpck_require__(9960)
-const DispatcherBase = __nccwpck_require__(9869)
-const { InvalidArgumentError, RequestAbortedError } = __nccwpck_require__(575)
-const buildConnector = __nccwpck_require__(5500)
+const Agent = __nccwpck_require__(99)
+const Pool = __nccwpck_require__(6270)
+const DispatcherBase = __nccwpck_require__(7379)
+const { InvalidArgumentError, RequestAbortedError } = __nccwpck_require__(2309)
+const buildConnector = __nccwpck_require__(9238)
 
 const kAgent = Symbol('proxy agent')
 const kClient = Symbol('proxy client')
@@ -42932,7 +43767,7 @@ module.exports = ProxyAgent
 
 /***/ }),
 
-/***/ 4552:
+/***/ 7822:
 /***/ ((module) => {
 
 "use strict";
@@ -43037,27 +43872,27 @@ module.exports = {
 
 /***/ }),
 
-/***/ 1162:
+/***/ 9640:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 const diagnosticsChannel = __nccwpck_require__(1637)
-const { uid, states } = __nccwpck_require__(9189)
+const { uid, states } = __nccwpck_require__(923)
 const {
   kReadyState,
   kSentClose,
   kByteParser,
   kReceivedClose
-} = __nccwpck_require__(7265)
-const { fireEvent, failWebsocketConnection } = __nccwpck_require__(7386)
-const { CloseEvent } = __nccwpck_require__(9779)
-const { makeRequest } = __nccwpck_require__(3406)
-const { fetching } = __nccwpck_require__(5799)
-const { Headers } = __nccwpck_require__(265)
-const { getGlobalDispatcher } = __nccwpck_require__(4001)
-const { kHeadersList } = __nccwpck_require__(4871)
+} = __nccwpck_require__(2327)
+const { fireEvent, failWebsocketConnection } = __nccwpck_require__(8951)
+const { CloseEvent } = __nccwpck_require__(4433)
+const { makeRequest } = __nccwpck_require__(6084)
+const { fetching } = __nccwpck_require__(6417)
+const { Headers } = __nccwpck_require__(5639)
+const { getGlobalDispatcher } = __nccwpck_require__(1227)
+const { kHeadersList } = __nccwpck_require__(6933)
 
 const channels = {}
 channels.open = diagnosticsChannel.channel('undici:websocket:open')
@@ -43336,7 +44171,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9189:
+/***/ 923:
 /***/ ((module) => {
 
 "use strict";
@@ -43395,14 +44230,14 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9779:
+/***/ 4433:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { webidl } = __nccwpck_require__(1994)
-const { kEnumerableProperty } = __nccwpck_require__(532)
+const { webidl } = __nccwpck_require__(1468)
+const { kEnumerableProperty } = __nccwpck_require__(4374)
 const { MessagePort } = __nccwpck_require__(8167)
 
 /**
@@ -43706,13 +44541,13 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3841:
+/***/ 4799:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { maxUnsigned16Bit } = __nccwpck_require__(9189)
+const { maxUnsigned16Bit } = __nccwpck_require__(923)
 
 /** @type {import('crypto')} */
 let crypto
@@ -43787,7 +44622,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2287:
+/***/ 601:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -43795,10 +44630,10 @@ module.exports = {
 
 const { Writable } = __nccwpck_require__(2203)
 const diagnosticsChannel = __nccwpck_require__(1637)
-const { parserStates, opcodes, states, emptyBuffer } = __nccwpck_require__(9189)
-const { kReadyState, kSentClose, kResponse, kReceivedClose } = __nccwpck_require__(7265)
-const { isValidStatusCode, failWebsocketConnection, websocketMessageReceived } = __nccwpck_require__(7386)
-const { WebsocketFrameSend } = __nccwpck_require__(3841)
+const { parserStates, opcodes, states, emptyBuffer } = __nccwpck_require__(923)
+const { kReadyState, kSentClose, kResponse, kReceivedClose } = __nccwpck_require__(2327)
+const { isValidStatusCode, failWebsocketConnection, websocketMessageReceived } = __nccwpck_require__(8951)
+const { WebsocketFrameSend } = __nccwpck_require__(4799)
 
 // This code was influenced by ws released under the MIT license.
 // Copyright (c) 2011 Einar Otto Stangvik <einaros@gmail.com>
@@ -44139,7 +44974,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7265:
+/***/ 2327:
 /***/ ((module) => {
 
 "use strict";
@@ -44159,15 +44994,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ 7386:
+/***/ 8951:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { kReadyState, kController, kResponse, kBinaryType, kWebSocketURL } = __nccwpck_require__(7265)
-const { states, opcodes } = __nccwpck_require__(9189)
-const { MessageEvent, ErrorEvent } = __nccwpck_require__(9779)
+const { kReadyState, kController, kResponse, kBinaryType, kWebSocketURL } = __nccwpck_require__(2327)
+const { states, opcodes } = __nccwpck_require__(923)
+const { MessageEvent, ErrorEvent } = __nccwpck_require__(4433)
 
 /* globals Blob */
 
@@ -44367,17 +45202,17 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9647:
+/***/ 85:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { webidl } = __nccwpck_require__(1994)
-const { DOMException } = __nccwpck_require__(7418)
-const { URLSerializer } = __nccwpck_require__(342)
-const { getGlobalOrigin } = __nccwpck_require__(1896)
-const { staticPropertyDescriptors, states, opcodes, emptyBuffer } = __nccwpck_require__(9189)
+const { webidl } = __nccwpck_require__(1468)
+const { DOMException } = __nccwpck_require__(5224)
+const { URLSerializer } = __nccwpck_require__(6440)
+const { getGlobalOrigin } = __nccwpck_require__(9310)
+const { staticPropertyDescriptors, states, opcodes, emptyBuffer } = __nccwpck_require__(923)
 const {
   kWebSocketURL,
   kReadyState,
@@ -44386,13 +45221,13 @@ const {
   kResponse,
   kSentClose,
   kByteParser
-} = __nccwpck_require__(7265)
-const { isEstablished, isClosing, isValidSubprotocol, failWebsocketConnection, fireEvent } = __nccwpck_require__(7386)
-const { establishWebSocketConnection } = __nccwpck_require__(1162)
-const { WebsocketFrameSend } = __nccwpck_require__(3841)
-const { ByteParser } = __nccwpck_require__(2287)
-const { kEnumerableProperty, isBlobLike } = __nccwpck_require__(532)
-const { getGlobalDispatcher } = __nccwpck_require__(4001)
+} = __nccwpck_require__(2327)
+const { isEstablished, isClosing, isValidSubprotocol, failWebsocketConnection, fireEvent } = __nccwpck_require__(8951)
+const { establishWebSocketConnection } = __nccwpck_require__(9640)
+const { WebsocketFrameSend } = __nccwpck_require__(4799)
+const { ByteParser } = __nccwpck_require__(601)
+const { kEnumerableProperty, isBlobLike } = __nccwpck_require__(4374)
+const { getGlobalDispatcher } = __nccwpck_require__(1227)
 const { types } = __nccwpck_require__(9023)
 
 let experimentalWarned = false
@@ -45016,7 +45851,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3168:
+/***/ 9279:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -45042,653 +45877,7 @@ exports.getUserAgent = getUserAgent;
 
 /***/ }),
 
-/***/ 1987:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-Object.defineProperty(exports, "v1", ({
-  enumerable: true,
-  get: function () {
-    return _v.default;
-  }
-}));
-Object.defineProperty(exports, "v3", ({
-  enumerable: true,
-  get: function () {
-    return _v2.default;
-  }
-}));
-Object.defineProperty(exports, "v4", ({
-  enumerable: true,
-  get: function () {
-    return _v3.default;
-  }
-}));
-Object.defineProperty(exports, "v5", ({
-  enumerable: true,
-  get: function () {
-    return _v4.default;
-  }
-}));
-Object.defineProperty(exports, "NIL", ({
-  enumerable: true,
-  get: function () {
-    return _nil.default;
-  }
-}));
-Object.defineProperty(exports, "version", ({
-  enumerable: true,
-  get: function () {
-    return _version.default;
-  }
-}));
-Object.defineProperty(exports, "validate", ({
-  enumerable: true,
-  get: function () {
-    return _validate.default;
-  }
-}));
-Object.defineProperty(exports, "stringify", ({
-  enumerable: true,
-  get: function () {
-    return _stringify.default;
-  }
-}));
-Object.defineProperty(exports, "parse", ({
-  enumerable: true,
-  get: function () {
-    return _parse.default;
-  }
-}));
-
-var _v = _interopRequireDefault(__nccwpck_require__(4986));
-
-var _v2 = _interopRequireDefault(__nccwpck_require__(7840));
-
-var _v3 = _interopRequireDefault(__nccwpck_require__(7221));
-
-var _v4 = _interopRequireDefault(__nccwpck_require__(9030));
-
-var _nil = _interopRequireDefault(__nccwpck_require__(8500));
-
-var _version = _interopRequireDefault(__nccwpck_require__(1691));
-
-var _validate = _interopRequireDefault(__nccwpck_require__(7961));
-
-var _stringify = _interopRequireDefault(__nccwpck_require__(9362));
-
-var _parse = _interopRequireDefault(__nccwpck_require__(2156));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-
-/***/ 1563:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _crypto = _interopRequireDefault(__nccwpck_require__(6982));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function md5(bytes) {
-  if (Array.isArray(bytes)) {
-    bytes = Buffer.from(bytes);
-  } else if (typeof bytes === 'string') {
-    bytes = Buffer.from(bytes, 'utf8');
-  }
-
-  return _crypto.default.createHash('md5').update(bytes).digest();
-}
-
-var _default = md5;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 8500:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-var _default = '00000000-0000-0000-0000-000000000000';
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 2156:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _validate = _interopRequireDefault(__nccwpck_require__(7961));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function parse(uuid) {
-  if (!(0, _validate.default)(uuid)) {
-    throw TypeError('Invalid UUID');
-  }
-
-  let v;
-  const arr = new Uint8Array(16); // Parse ########-....-....-....-............
-
-  arr[0] = (v = parseInt(uuid.slice(0, 8), 16)) >>> 24;
-  arr[1] = v >>> 16 & 0xff;
-  arr[2] = v >>> 8 & 0xff;
-  arr[3] = v & 0xff; // Parse ........-####-....-....-............
-
-  arr[4] = (v = parseInt(uuid.slice(9, 13), 16)) >>> 8;
-  arr[5] = v & 0xff; // Parse ........-....-####-....-............
-
-  arr[6] = (v = parseInt(uuid.slice(14, 18), 16)) >>> 8;
-  arr[7] = v & 0xff; // Parse ........-....-....-####-............
-
-  arr[8] = (v = parseInt(uuid.slice(19, 23), 16)) >>> 8;
-  arr[9] = v & 0xff; // Parse ........-....-....-....-############
-  // (Use "/" to avoid 32-bit truncation when bit-shifting high-order bytes)
-
-  arr[10] = (v = parseInt(uuid.slice(24, 36), 16)) / 0x10000000000 & 0xff;
-  arr[11] = v / 0x100000000 & 0xff;
-  arr[12] = v >>> 24 & 0xff;
-  arr[13] = v >>> 16 & 0xff;
-  arr[14] = v >>> 8 & 0xff;
-  arr[15] = v & 0xff;
-  return arr;
-}
-
-var _default = parse;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 5276:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-var _default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 8070:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = rng;
-
-var _crypto = _interopRequireDefault(__nccwpck_require__(6982));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const rnds8Pool = new Uint8Array(256); // # of random values to pre-allocate
-
-let poolPtr = rnds8Pool.length;
-
-function rng() {
-  if (poolPtr > rnds8Pool.length - 16) {
-    _crypto.default.randomFillSync(rnds8Pool);
-
-    poolPtr = 0;
-  }
-
-  return rnds8Pool.slice(poolPtr, poolPtr += 16);
-}
-
-/***/ }),
-
-/***/ 8678:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _crypto = _interopRequireDefault(__nccwpck_require__(6982));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function sha1(bytes) {
-  if (Array.isArray(bytes)) {
-    bytes = Buffer.from(bytes);
-  } else if (typeof bytes === 'string') {
-    bytes = Buffer.from(bytes, 'utf8');
-  }
-
-  return _crypto.default.createHash('sha1').update(bytes).digest();
-}
-
-var _default = sha1;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 9362:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _validate = _interopRequireDefault(__nccwpck_require__(7961));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Convert array of 16 byte values to UUID string format of the form:
- * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
- */
-const byteToHex = [];
-
-for (let i = 0; i < 256; ++i) {
-  byteToHex.push((i + 0x100).toString(16).substr(1));
-}
-
-function stringify(arr, offset = 0) {
-  // Note: Be careful editing this code!  It's been tuned for performance
-  // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
-  const uuid = (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + '-' + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + '-' + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + '-' + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + '-' + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase(); // Consistency check for valid UUID.  If this throws, it's likely due to one
-  // of the following:
-  // - One or more input array values don't map to a hex octet (leading to
-  // "undefined" in the uuid)
-  // - Invalid input values for the RFC `version` or `variant` fields
-
-  if (!(0, _validate.default)(uuid)) {
-    throw TypeError('Stringified UUID is invalid');
-  }
-
-  return uuid;
-}
-
-var _default = stringify;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 4986:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _rng = _interopRequireDefault(__nccwpck_require__(8070));
-
-var _stringify = _interopRequireDefault(__nccwpck_require__(9362));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// **`v1()` - Generate time-based UUID**
-//
-// Inspired by https://github.com/LiosK/UUID.js
-// and http://docs.python.org/library/uuid.html
-let _nodeId;
-
-let _clockseq; // Previous uuid creation time
-
-
-let _lastMSecs = 0;
-let _lastNSecs = 0; // See https://github.com/uuidjs/uuid for API details
-
-function v1(options, buf, offset) {
-  let i = buf && offset || 0;
-  const b = buf || new Array(16);
-  options = options || {};
-  let node = options.node || _nodeId;
-  let clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq; // node and clockseq need to be initialized to random values if they're not
-  // specified.  We do this lazily to minimize issues related to insufficient
-  // system entropy.  See #189
-
-  if (node == null || clockseq == null) {
-    const seedBytes = options.random || (options.rng || _rng.default)();
-
-    if (node == null) {
-      // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
-      node = _nodeId = [seedBytes[0] | 0x01, seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]];
-    }
-
-    if (clockseq == null) {
-      // Per 4.2.2, randomize (14 bit) clockseq
-      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
-    }
-  } // UUID timestamps are 100 nano-second units since the Gregorian epoch,
-  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
-  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
-  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
-
-
-  let msecs = options.msecs !== undefined ? options.msecs : Date.now(); // Per 4.2.1.2, use count of uuid's generated during the current clock
-  // cycle to simulate higher resolution clock
-
-  let nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1; // Time since last uuid creation (in msecs)
-
-  const dt = msecs - _lastMSecs + (nsecs - _lastNSecs) / 10000; // Per 4.2.1.2, Bump clockseq on clock regression
-
-  if (dt < 0 && options.clockseq === undefined) {
-    clockseq = clockseq + 1 & 0x3fff;
-  } // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
-  // time interval
-
-
-  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) {
-    nsecs = 0;
-  } // Per 4.2.1.2 Throw error if too many uuids are requested
-
-
-  if (nsecs >= 10000) {
-    throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
-  }
-
-  _lastMSecs = msecs;
-  _lastNSecs = nsecs;
-  _clockseq = clockseq; // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
-
-  msecs += 12219292800000; // `time_low`
-
-  const tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
-  b[i++] = tl >>> 24 & 0xff;
-  b[i++] = tl >>> 16 & 0xff;
-  b[i++] = tl >>> 8 & 0xff;
-  b[i++] = tl & 0xff; // `time_mid`
-
-  const tmh = msecs / 0x100000000 * 10000 & 0xfffffff;
-  b[i++] = tmh >>> 8 & 0xff;
-  b[i++] = tmh & 0xff; // `time_high_and_version`
-
-  b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
-
-  b[i++] = tmh >>> 16 & 0xff; // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
-
-  b[i++] = clockseq >>> 8 | 0x80; // `clock_seq_low`
-
-  b[i++] = clockseq & 0xff; // `node`
-
-  for (let n = 0; n < 6; ++n) {
-    b[i + n] = node[n];
-  }
-
-  return buf || (0, _stringify.default)(b);
-}
-
-var _default = v1;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 7840:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _v = _interopRequireDefault(__nccwpck_require__(9981));
-
-var _md = _interopRequireDefault(__nccwpck_require__(1563));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const v3 = (0, _v.default)('v3', 0x30, _md.default);
-var _default = v3;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 9981:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = _default;
-exports.URL = exports.DNS = void 0;
-
-var _stringify = _interopRequireDefault(__nccwpck_require__(9362));
-
-var _parse = _interopRequireDefault(__nccwpck_require__(2156));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function stringToBytes(str) {
-  str = unescape(encodeURIComponent(str)); // UTF8 escape
-
-  const bytes = [];
-
-  for (let i = 0; i < str.length; ++i) {
-    bytes.push(str.charCodeAt(i));
-  }
-
-  return bytes;
-}
-
-const DNS = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
-exports.DNS = DNS;
-const URL = '6ba7b811-9dad-11d1-80b4-00c04fd430c8';
-exports.URL = URL;
-
-function _default(name, version, hashfunc) {
-  function generateUUID(value, namespace, buf, offset) {
-    if (typeof value === 'string') {
-      value = stringToBytes(value);
-    }
-
-    if (typeof namespace === 'string') {
-      namespace = (0, _parse.default)(namespace);
-    }
-
-    if (namespace.length !== 16) {
-      throw TypeError('Namespace must be array-like (16 iterable integer values, 0-255)');
-    } // Compute hash of namespace and value, Per 4.3
-    // Future: Use spread syntax when supported on all platforms, e.g. `bytes =
-    // hashfunc([...namespace, ... value])`
-
-
-    let bytes = new Uint8Array(16 + value.length);
-    bytes.set(namespace);
-    bytes.set(value, namespace.length);
-    bytes = hashfunc(bytes);
-    bytes[6] = bytes[6] & 0x0f | version;
-    bytes[8] = bytes[8] & 0x3f | 0x80;
-
-    if (buf) {
-      offset = offset || 0;
-
-      for (let i = 0; i < 16; ++i) {
-        buf[offset + i] = bytes[i];
-      }
-
-      return buf;
-    }
-
-    return (0, _stringify.default)(bytes);
-  } // Function#name is not settable on some platforms (#270)
-
-
-  try {
-    generateUUID.name = name; // eslint-disable-next-line no-empty
-  } catch (err) {} // For CommonJS default export support
-
-
-  generateUUID.DNS = DNS;
-  generateUUID.URL = URL;
-  return generateUUID;
-}
-
-/***/ }),
-
-/***/ 7221:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _rng = _interopRequireDefault(__nccwpck_require__(8070));
-
-var _stringify = _interopRequireDefault(__nccwpck_require__(9362));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function v4(options, buf, offset) {
-  options = options || {};
-
-  const rnds = options.random || (options.rng || _rng.default)(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
-
-
-  rnds[6] = rnds[6] & 0x0f | 0x40;
-  rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
-
-  if (buf) {
-    offset = offset || 0;
-
-    for (let i = 0; i < 16; ++i) {
-      buf[offset + i] = rnds[i];
-    }
-
-    return buf;
-  }
-
-  return (0, _stringify.default)(rnds);
-}
-
-var _default = v4;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 9030:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _v = _interopRequireDefault(__nccwpck_require__(9981));
-
-var _sha = _interopRequireDefault(__nccwpck_require__(8678));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const v5 = (0, _v.default)('v5', 0x50, _sha.default);
-var _default = v5;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 7961:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _regex = _interopRequireDefault(__nccwpck_require__(5276));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function validate(uuid) {
-  return typeof uuid === 'string' && _regex.default.test(uuid);
-}
-
-var _default = validate;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 1691:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _validate = _interopRequireDefault(__nccwpck_require__(7961));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function version(uuid) {
-  if (!(0, _validate.default)(uuid)) {
-    throw TypeError('Invalid UUID');
-  }
-
-  return parseInt(uuid.substr(14, 1), 16);
-}
-
-var _default = version;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 8009:
+/***/ 8092:
 /***/ ((module) => {
 
 // Returns a wrapper function that returns a wrapped callback
@@ -45728,14 +45917,14 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
-/***/ 1082:
+/***/ 2435:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ZodError = exports.quotelessJson = exports.ZodIssueCode = void 0;
-const util_1 = __nccwpck_require__(2329);
+const util_1 = __nccwpck_require__(9876);
 exports.ZodIssueCode = util_1.util.arrayToEnum([
     "invalid_type",
     "invalid_literal",
@@ -45760,6 +45949,9 @@ const quotelessJson = (obj) => {
 };
 exports.quotelessJson = quotelessJson;
 class ZodError extends Error {
+    get errors() {
+        return this.issues;
+    }
     constructor(issues) {
         super();
         this.issues = [];
@@ -45779,9 +45971,6 @@ class ZodError extends Error {
         }
         this.name = "ZodError";
         this.issues = issues;
-    }
-    get errors() {
-        return this.issues;
     }
     format(_mapper) {
         const mapper = _mapper ||
@@ -45873,7 +46062,7 @@ ZodError.create = (issues) => {
 
 /***/ }),
 
-/***/ 4732:
+/***/ 773:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -45883,7 +46072,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getErrorMap = exports.setErrorMap = exports.defaultErrorMap = void 0;
-const en_1 = __importDefault(__nccwpck_require__(2276));
+const en_1 = __importDefault(__nccwpck_require__(1469));
 exports.defaultErrorMap = en_1.default;
 let overrideErrorMap = en_1.default;
 function setErrorMap(map) {
@@ -45898,14 +46087,18 @@ exports.getErrorMap = getErrorMap;
 
 /***/ }),
 
-/***/ 9868:
+/***/ 2033:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -45914,17 +46107,17 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(4732), exports);
-__exportStar(__nccwpck_require__(3706), exports);
-__exportStar(__nccwpck_require__(1497), exports);
-__exportStar(__nccwpck_require__(2329), exports);
-__exportStar(__nccwpck_require__(2), exports);
-__exportStar(__nccwpck_require__(1082), exports);
+__exportStar(__nccwpck_require__(773), exports);
+__exportStar(__nccwpck_require__(8901), exports);
+__exportStar(__nccwpck_require__(642), exports);
+__exportStar(__nccwpck_require__(9876), exports);
+__exportStar(__nccwpck_require__(4689), exports);
+__exportStar(__nccwpck_require__(2435), exports);
 
 
 /***/ }),
 
-/***/ 727:
+/***/ 2916:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -45935,12 +46128,12 @@ var errorUtil;
 (function (errorUtil) {
     errorUtil.errToObj = (message) => typeof message === "string" ? { message } : message || {};
     errorUtil.toString = (message) => typeof message === "string" ? message : message === null || message === void 0 ? void 0 : message.message;
-})(errorUtil = exports.errorUtil || (exports.errorUtil = {}));
+})(errorUtil || (exports.errorUtil = errorUtil = {}));
 
 
 /***/ }),
 
-/***/ 3706:
+/***/ 8901:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -45950,8 +46143,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.isAsync = exports.isValid = exports.isDirty = exports.isAborted = exports.OK = exports.DIRTY = exports.INVALID = exports.ParseStatus = exports.addIssueToContext = exports.EMPTY_PATH = exports.makeIssue = void 0;
-const errors_1 = __nccwpck_require__(4732);
-const en_1 = __importDefault(__nccwpck_require__(2276));
+const errors_1 = __nccwpck_require__(773);
+const en_1 = __importDefault(__nccwpck_require__(1469));
 const makeIssue = (params) => {
     const { data, path, errorMaps, issueData } = params;
     const fullPath = [...path, ...(issueData.path || [])];
@@ -45989,9 +46182,9 @@ function addIssueToContext(ctx, issueData) {
         data: ctx.data,
         path: ctx.path,
         errorMaps: [
-            ctx.common.contextualErrorMap,
-            ctx.schemaErrorMap,
-            overrideMap,
+            ctx.common.contextualErrorMap, // contextual error map is first priority
+            ctx.schemaErrorMap, // then schema-bound map if available
+            overrideMap, // then global override map
             overrideMap === en_1.default ? undefined : en_1.default, // then global default map
         ].filter((x) => !!x),
     });
@@ -46073,7 +46266,7 @@ exports.isAsync = isAsync;
 
 /***/ }),
 
-/***/ 1497:
+/***/ 642:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -46083,7 +46276,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
-/***/ 2329:
+/***/ 9876:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -46152,7 +46345,7 @@ var util;
         }
         return value;
     };
-})(util = exports.util || (exports.util = {}));
+})(util || (exports.util = util = {}));
 var objectUtil;
 (function (objectUtil) {
     objectUtil.mergeShapes = (first, second) => {
@@ -46161,7 +46354,7 @@ var objectUtil;
             ...second, // second overwrites first
         };
     };
-})(objectUtil = exports.objectUtil || (exports.objectUtil = {}));
+})(objectUtil || (exports.objectUtil = objectUtil = {}));
 exports.ZodParsedType = util.arrayToEnum([
     "string",
     "nan",
@@ -46233,14 +46426,18 @@ exports.getParsedType = getParsedType;
 
 /***/ }),
 
-/***/ 931:
+/***/ 6516:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -46262,22 +46459,22 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.z = void 0;
-const z = __importStar(__nccwpck_require__(9868));
+const z = __importStar(__nccwpck_require__(2033));
 exports.z = z;
-__exportStar(__nccwpck_require__(9868), exports);
+__exportStar(__nccwpck_require__(2033), exports);
 exports["default"] = z;
 
 
 /***/ }),
 
-/***/ 2276:
+/***/ 1469:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const util_1 = __nccwpck_require__(2329);
-const ZodError_1 = __nccwpck_require__(1082);
+const util_1 = __nccwpck_require__(9876);
+const ZodError_1 = __nccwpck_require__(2435);
 const errorMap = (issue, _ctx) => {
     let message;
     switch (issue.code) {
@@ -46407,7 +46604,7 @@ exports["default"] = errorMap;
 
 /***/ }),
 
-/***/ 2:
+/***/ 4689:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -46427,11 +46624,11 @@ var _ZodEnum_cache, _ZodNativeEnum_cache;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.boolean = exports.bigint = exports.array = exports.any = exports.coerce = exports.ZodFirstPartyTypeKind = exports.late = exports.ZodSchema = exports.Schema = exports.custom = exports.ZodReadonly = exports.ZodPipeline = exports.ZodBranded = exports.BRAND = exports.ZodNaN = exports.ZodCatch = exports.ZodDefault = exports.ZodNullable = exports.ZodOptional = exports.ZodTransformer = exports.ZodEffects = exports.ZodPromise = exports.ZodNativeEnum = exports.ZodEnum = exports.ZodLiteral = exports.ZodLazy = exports.ZodFunction = exports.ZodSet = exports.ZodMap = exports.ZodRecord = exports.ZodTuple = exports.ZodIntersection = exports.ZodDiscriminatedUnion = exports.ZodUnion = exports.ZodObject = exports.ZodArray = exports.ZodVoid = exports.ZodNever = exports.ZodUnknown = exports.ZodAny = exports.ZodNull = exports.ZodUndefined = exports.ZodSymbol = exports.ZodDate = exports.ZodBoolean = exports.ZodBigInt = exports.ZodNumber = exports.ZodString = exports.datetimeRegex = exports.ZodType = void 0;
 exports.NEVER = exports["void"] = exports.unknown = exports.union = exports.undefined = exports.tuple = exports.transformer = exports.symbol = exports.string = exports.strictObject = exports.set = exports.record = exports.promise = exports.preprocess = exports.pipeline = exports.ostring = exports.optional = exports.onumber = exports.oboolean = exports.object = exports.number = exports.nullable = exports["null"] = exports.never = exports.nativeEnum = exports.nan = exports.map = exports.literal = exports.lazy = exports.intersection = exports["instanceof"] = exports["function"] = exports["enum"] = exports.effect = exports.discriminatedUnion = exports.date = void 0;
-const errors_1 = __nccwpck_require__(4732);
-const errorUtil_1 = __nccwpck_require__(727);
-const parseUtil_1 = __nccwpck_require__(3706);
-const util_1 = __nccwpck_require__(2329);
-const ZodError_1 = __nccwpck_require__(1082);
+const errors_1 = __nccwpck_require__(773);
+const errorUtil_1 = __nccwpck_require__(2916);
+const parseUtil_1 = __nccwpck_require__(8901);
+const util_1 = __nccwpck_require__(9876);
+const ZodError_1 = __nccwpck_require__(2435);
 class ParseInputLazyPath {
     constructor(parent, value, path, key) {
         this._cachedPath = [];
@@ -46497,35 +46694,6 @@ function processCreateParams(params) {
     return { errorMap: customMap, description };
 }
 class ZodType {
-    constructor(def) {
-        /** Alias of safeParseAsync */
-        this.spa = this.safeParseAsync;
-        this._def = def;
-        this.parse = this.parse.bind(this);
-        this.safeParse = this.safeParse.bind(this);
-        this.parseAsync = this.parseAsync.bind(this);
-        this.safeParseAsync = this.safeParseAsync.bind(this);
-        this.spa = this.spa.bind(this);
-        this.refine = this.refine.bind(this);
-        this.refinement = this.refinement.bind(this);
-        this.superRefine = this.superRefine.bind(this);
-        this.optional = this.optional.bind(this);
-        this.nullable = this.nullable.bind(this);
-        this.nullish = this.nullish.bind(this);
-        this.array = this.array.bind(this);
-        this.promise = this.promise.bind(this);
-        this.or = this.or.bind(this);
-        this.and = this.and.bind(this);
-        this.transform = this.transform.bind(this);
-        this.brand = this.brand.bind(this);
-        this.default = this.default.bind(this);
-        this.catch = this.catch.bind(this);
-        this.describe = this.describe.bind(this);
-        this.pipe = this.pipe.bind(this);
-        this.readonly = this.readonly.bind(this);
-        this.isNullable = this.isNullable.bind(this);
-        this.isOptional = this.isOptional.bind(this);
-    }
     get description() {
         return this._def.description;
     }
@@ -46588,6 +46756,48 @@ class ZodType {
         };
         const result = this._parseSync({ data, path: ctx.path, parent: ctx });
         return handleResult(ctx, result);
+    }
+    "~validate"(data) {
+        var _a, _b;
+        const ctx = {
+            common: {
+                issues: [],
+                async: !!this["~standard"].async,
+            },
+            path: [],
+            schemaErrorMap: this._def.errorMap,
+            parent: null,
+            data,
+            parsedType: (0, util_1.getParsedType)(data),
+        };
+        if (!this["~standard"].async) {
+            try {
+                const result = this._parseSync({ data, path: [], parent: ctx });
+                return (0, parseUtil_1.isValid)(result)
+                    ? {
+                        value: result.value,
+                    }
+                    : {
+                        issues: ctx.common.issues,
+                    };
+            }
+            catch (err) {
+                if ((_b = (_a = err === null || err === void 0 ? void 0 : err.message) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === null || _b === void 0 ? void 0 : _b.includes("encountered")) {
+                    this["~standard"].async = true;
+                }
+                ctx.common = {
+                    issues: [],
+                    async: true,
+                };
+            }
+        }
+        return this._parseAsync({ data, path: [], parent: ctx }).then((result) => (0, parseUtil_1.isValid)(result)
+            ? {
+                value: result.value,
+            }
+            : {
+                issues: ctx.common.issues,
+            });
     }
     async parseAsync(data, params) {
         const result = await this.safeParseAsync(data, params);
@@ -46675,6 +46885,40 @@ class ZodType {
     superRefine(refinement) {
         return this._refinement(refinement);
     }
+    constructor(def) {
+        /** Alias of safeParseAsync */
+        this.spa = this.safeParseAsync;
+        this._def = def;
+        this.parse = this.parse.bind(this);
+        this.safeParse = this.safeParse.bind(this);
+        this.parseAsync = this.parseAsync.bind(this);
+        this.safeParseAsync = this.safeParseAsync.bind(this);
+        this.spa = this.spa.bind(this);
+        this.refine = this.refine.bind(this);
+        this.refinement = this.refinement.bind(this);
+        this.superRefine = this.superRefine.bind(this);
+        this.optional = this.optional.bind(this);
+        this.nullable = this.nullable.bind(this);
+        this.nullish = this.nullish.bind(this);
+        this.array = this.array.bind(this);
+        this.promise = this.promise.bind(this);
+        this.or = this.or.bind(this);
+        this.and = this.and.bind(this);
+        this.transform = this.transform.bind(this);
+        this.brand = this.brand.bind(this);
+        this.default = this.default.bind(this);
+        this.catch = this.catch.bind(this);
+        this.describe = this.describe.bind(this);
+        this.pipe = this.pipe.bind(this);
+        this.readonly = this.readonly.bind(this);
+        this.isNullable = this.isNullable.bind(this);
+        this.isOptional = this.isOptional.bind(this);
+        this["~standard"] = {
+            version: 1,
+            vendor: "zod",
+            validate: (data) => this["~validate"](data),
+        };
+    }
     optional() {
         return ZodOptional.create(this, this._def);
     }
@@ -46685,7 +46929,7 @@ class ZodType {
         return this.nullable().optional();
     }
     array() {
-        return ZodArray.create(this, this._def);
+        return ZodArray.create(this);
     }
     promise() {
         return ZodPromise.create(this, this._def);
@@ -46754,11 +46998,12 @@ exports.Schema = ZodType;
 exports.ZodSchema = ZodType;
 const cuidRegex = /^c[^\s-]{8,}$/i;
 const cuid2Regex = /^[0-9a-z]+$/;
-const ulidRegex = /^[0-9A-HJKMNP-TV-Z]{26}$/;
+const ulidRegex = /^[0-9A-HJKMNP-TV-Z]{26}$/i;
 // const uuidRegex =
 //   /^([a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[a-f0-9]{4}-[a-f0-9]{12}|00000000-0000-0000-0000-000000000000)$/i;
 const uuidRegex = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/i;
 const nanoidRegex = /^[a-z0-9_-]{21}$/i;
+const jwtRegex = /^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]*$/;
 const durationRegex = /^[-+]?P(?!$)(?:(?:[-+]?\d+Y)|(?:[-+]?\d+[.,]\d+Y$))?(?:(?:[-+]?\d+M)|(?:[-+]?\d+[.,]\d+M$))?(?:(?:[-+]?\d+W)|(?:[-+]?\d+[.,]\d+W$))?(?:(?:[-+]?\d+D)|(?:[-+]?\d+[.,]\d+D$))?(?:T(?=[\d+-])(?:(?:[-+]?\d+H)|(?:[-+]?\d+[.,]\d+H$))?(?:(?:[-+]?\d+M)|(?:[-+]?\d+[.,]\d+M$))?(?:[-+]?\d+(?:[.,]\d+)?S)?)??$/;
 // from https://stackoverflow.com/a/46181/1550155
 // old version: too slow, didn't support unicode
@@ -46780,9 +47025,15 @@ const _emojiRegex = `^(\\p{Extended_Pictographic}|\\p{Emoji_Component})+$`;
 let emojiRegex;
 // faster, simpler, safer
 const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/;
-const ipv6Regex = /^(([a-f0-9]{1,4}:){7}|::([a-f0-9]{1,4}:){0,6}|([a-f0-9]{1,4}:){1}:([a-f0-9]{1,4}:){0,5}|([a-f0-9]{1,4}:){2}:([a-f0-9]{1,4}:){0,4}|([a-f0-9]{1,4}:){3}:([a-f0-9]{1,4}:){0,3}|([a-f0-9]{1,4}:){4}:([a-f0-9]{1,4}:){0,2}|([a-f0-9]{1,4}:){5}:([a-f0-9]{1,4}:){0,1})([a-f0-9]{1,4}|(((25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([0-9]{1,2}))\.){3}((25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([0-9]{1,2})))$/;
+const ipv4CidrRegex = /^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\/(3[0-2]|[12]?[0-9])$/;
+// const ipv6Regex =
+// /^(([a-f0-9]{1,4}:){7}|::([a-f0-9]{1,4}:){0,6}|([a-f0-9]{1,4}:){1}:([a-f0-9]{1,4}:){0,5}|([a-f0-9]{1,4}:){2}:([a-f0-9]{1,4}:){0,4}|([a-f0-9]{1,4}:){3}:([a-f0-9]{1,4}:){0,3}|([a-f0-9]{1,4}:){4}:([a-f0-9]{1,4}:){0,2}|([a-f0-9]{1,4}:){5}:([a-f0-9]{1,4}:){0,1})([a-f0-9]{1,4}|(((25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([0-9]{1,2}))\.){3}((25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([0-9]{1,2})))$/;
+const ipv6Regex = /^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$/;
+const ipv6CidrRegex = /^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))\/(12[0-8]|1[01][0-9]|[1-9]?[0-9])$/;
 // https://stackoverflow.com/questions/7860392/determine-if-string-is-in-base64-using-javascript
 const base64Regex = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
+// https://base64.guru/standards/base64url
+const base64urlRegex = /^([0-9a-zA-Z-_]{4})*(([0-9a-zA-Z-_]{2}(==)?)|([0-9a-zA-Z-_]{3}(=)?))?$/;
 // simple
 // const dateRegexSource = `\\d{4}-\\d{2}-\\d{2}`;
 // no leap year validation
@@ -46820,6 +47071,38 @@ function isValidIP(ip, version) {
         return true;
     }
     if ((version === "v6" || !version) && ipv6Regex.test(ip)) {
+        return true;
+    }
+    return false;
+}
+function isValidJWT(jwt, alg) {
+    if (!jwtRegex.test(jwt))
+        return false;
+    try {
+        const [header] = jwt.split(".");
+        // Convert base64url to base64
+        const base64 = header
+            .replace(/-/g, "+")
+            .replace(/_/g, "/")
+            .padEnd(header.length + ((4 - (header.length % 4)) % 4), "=");
+        const decoded = JSON.parse(atob(base64));
+        if (typeof decoded !== "object" || decoded === null)
+            return false;
+        if (!decoded.typ || !decoded.alg)
+            return false;
+        if (alg && decoded.alg !== alg)
+            return false;
+        return true;
+    }
+    catch (_a) {
+        return false;
+    }
+}
+function isValidCidr(ip, version) {
+    if ((version === "v4" || !version) && ipv4CidrRegex.test(ip)) {
+        return true;
+    }
+    if ((version === "v6" || !version) && ipv6CidrRegex.test(ip)) {
         return true;
     }
     return false;
@@ -47105,11 +47388,44 @@ class ZodString extends ZodType {
                     status.dirty();
                 }
             }
+            else if (check.kind === "jwt") {
+                if (!isValidJWT(input.data, check.alg)) {
+                    ctx = this._getOrReturnCtx(input, ctx);
+                    (0, parseUtil_1.addIssueToContext)(ctx, {
+                        validation: "jwt",
+                        code: ZodError_1.ZodIssueCode.invalid_string,
+                        message: check.message,
+                    });
+                    status.dirty();
+                }
+            }
+            else if (check.kind === "cidr") {
+                if (!isValidCidr(input.data, check.version)) {
+                    ctx = this._getOrReturnCtx(input, ctx);
+                    (0, parseUtil_1.addIssueToContext)(ctx, {
+                        validation: "cidr",
+                        code: ZodError_1.ZodIssueCode.invalid_string,
+                        message: check.message,
+                    });
+                    status.dirty();
+                }
+            }
             else if (check.kind === "base64") {
                 if (!base64Regex.test(input.data)) {
                     ctx = this._getOrReturnCtx(input, ctx);
                     (0, parseUtil_1.addIssueToContext)(ctx, {
                         validation: "base64",
+                        code: ZodError_1.ZodIssueCode.invalid_string,
+                        message: check.message,
+                    });
+                    status.dirty();
+                }
+            }
+            else if (check.kind === "base64url") {
+                if (!base64urlRegex.test(input.data)) {
+                    ctx = this._getOrReturnCtx(input, ctx);
+                    (0, parseUtil_1.addIssueToContext)(ctx, {
+                        validation: "base64url",
                         code: ZodError_1.ZodIssueCode.invalid_string,
                         message: check.message,
                     });
@@ -47162,8 +47478,21 @@ class ZodString extends ZodType {
     base64(message) {
         return this._addCheck({ kind: "base64", ...errorUtil_1.errorUtil.errToObj(message) });
     }
+    base64url(message) {
+        // base64url encoding is a modification of base64 that can safely be used in URLs and filenames
+        return this._addCheck({
+            kind: "base64url",
+            ...errorUtil_1.errorUtil.errToObj(message),
+        });
+    }
+    jwt(options) {
+        return this._addCheck({ kind: "jwt", ...errorUtil_1.errorUtil.errToObj(options) });
+    }
     ip(options) {
         return this._addCheck({ kind: "ip", ...errorUtil_1.errorUtil.errToObj(options) });
+    }
+    cidr(options) {
+        return this._addCheck({ kind: "cidr", ...errorUtil_1.errorUtil.errToObj(options) });
     }
     datetime(options) {
         var _a, _b;
@@ -47255,8 +47584,7 @@ class ZodString extends ZodType {
         });
     }
     /**
-     * @deprecated Use z.string().min(1) instead.
-     * @see {@link ZodString.min}
+     * Equivalent to `.min(1)`
      */
     nonempty(message) {
         return this.min(1, errorUtil_1.errorUtil.errToObj(message));
@@ -47318,8 +47646,15 @@ class ZodString extends ZodType {
     get isIP() {
         return !!this._def.checks.find((ch) => ch.kind === "ip");
     }
+    get isCIDR() {
+        return !!this._def.checks.find((ch) => ch.kind === "cidr");
+    }
     get isBase64() {
         return !!this._def.checks.find((ch) => ch.kind === "base64");
+    }
+    get isBase64url() {
+        // base64url encoding is a modification of base64 that can safely be used in URLs and filenames
+        return !!this._def.checks.find((ch) => ch.kind === "base64url");
     }
     get minLength() {
         let min = null;
@@ -47615,17 +47950,16 @@ class ZodBigInt extends ZodType {
     }
     _parse(input) {
         if (this._def.coerce) {
-            input.data = BigInt(input.data);
+            try {
+                input.data = BigInt(input.data);
+            }
+            catch (_a) {
+                return this._getInvalidInput(input);
+            }
         }
         const parsedType = this._getType(input);
         if (parsedType !== util_1.ZodParsedType.bigint) {
-            const ctx = this._getOrReturnCtx(input);
-            (0, parseUtil_1.addIssueToContext)(ctx, {
-                code: ZodError_1.ZodIssueCode.invalid_type,
-                expected: util_1.ZodParsedType.bigint,
-                received: ctx.parsedType,
-            });
-            return parseUtil_1.INVALID;
+            return this._getInvalidInput(input);
         }
         let ctx = undefined;
         const status = new parseUtil_1.ParseStatus();
@@ -47678,6 +48012,15 @@ class ZodBigInt extends ZodType {
             }
         }
         return { status: status.value, value: input.data };
+    }
+    _getInvalidInput(input) {
+        const ctx = this._getOrReturnCtx(input);
+        (0, parseUtil_1.addIssueToContext)(ctx, {
+            code: ZodError_1.ZodIssueCode.invalid_type,
+            expected: util_1.ZodParsedType.bigint,
+            received: ctx.parsedType,
+        });
+        return parseUtil_1.INVALID;
     }
     gte(value, message) {
         return this.setLimit("min", value, true, errorUtil_1.errorUtil.toString(message));
@@ -49991,7 +50334,7 @@ var ZodFirstPartyTypeKind;
     ZodFirstPartyTypeKind["ZodBranded"] = "ZodBranded";
     ZodFirstPartyTypeKind["ZodPipeline"] = "ZodPipeline";
     ZodFirstPartyTypeKind["ZodReadonly"] = "ZodReadonly";
-})(ZodFirstPartyTypeKind = exports.ZodFirstPartyTypeKind || (exports.ZodFirstPartyTypeKind = {}));
+})(ZodFirstPartyTypeKind || (exports.ZodFirstPartyTypeKind = ZodFirstPartyTypeKind = {}));
 // requires TS 4.4+
 class Class {
     constructor(..._) { }
@@ -50092,7 +50435,7 @@ exports.NEVER = parseUtil_1.INVALID;
 
 /***/ }),
 
-/***/ 697:
+/***/ 7500:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -50103,9 +50446,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createAIInstance = exports.AI = void 0;
 const promises_1 = __importDefault(__nccwpck_require__(1943));
-const google_ai_adapter_1 = __nccwpck_require__(3021);
-const vercel_ai_adapter_1 = __nccwpck_require__(6549);
-const git_1 = __nccwpck_require__(2483);
+const google_ai_adapter_1 = __nccwpck_require__(2014);
+const vercel_ai_adapter_1 = __nccwpck_require__(2862);
+const git_1 = __nccwpck_require__(2082);
 const providerInitializers = {
     google: google_ai_adapter_1.createGoogleGenerativeAI,
     'vercel-ai-google': (model, apiKey, config) => (0, vercel_ai_adapter_1.createVercelAI)('google', model, apiKey, config),
@@ -50175,14 +50518,14 @@ exports.createAIInstance = createAIInstance;
 
 /***/ }),
 
-/***/ 3021:
+/***/ 2014:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createGoogleGenerativeAI = void 0;
-const generative_ai_1 = __nccwpck_require__(750);
+const generative_ai_1 = __nccwpck_require__(6962);
 class GoogleAiProvider {
     provider;
     constructor(model, apiKey, config) {
@@ -50212,7 +50555,7 @@ exports.createGoogleGenerativeAI = createGoogleGenerativeAI;
 
 /***/ }),
 
-/***/ 526:
+/***/ 7333:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -50234,17 +50577,17 @@ exports.estimateTokensByWords = estimateTokensByWords;
 
 /***/ }),
 
-/***/ 6549:
+/***/ 2862:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createVercelAI = void 0;
-const ai_1 = __nccwpck_require__(4455);
-const google_1 = __nccwpck_require__(3418);
-const openai_1 = __nccwpck_require__(2395);
-const utils_1 = __nccwpck_require__(526);
+const ai_1 = __nccwpck_require__(3593);
+const google_1 = __nccwpck_require__(9622);
+const openai_1 = __nccwpck_require__(2772);
+const utils_1 = __nccwpck_require__(7333);
 const providerInitializers = {
     google: google_1.createGoogleGenerativeAI,
     openai: openai_1.createOpenAI,
@@ -50298,16 +50641,16 @@ exports.createVercelAI = createVercelAI;
 
 /***/ }),
 
-/***/ 9844:
+/***/ 3429:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.applyReviewCommand = void 0;
-const const_1 = __nccwpck_require__(1357);
-const git_1 = __nccwpck_require__(2483);
-const file_1 = __nccwpck_require__(8754);
+const const_1 = __nccwpck_require__(5500);
+const git_1 = __nccwpck_require__(2082);
+const file_1 = __nccwpck_require__(3449);
 const applyReviewCommand = async ({ aiInstance, filePath, suggestions }) => {
     const resultText = await aiInstance.applyReview(filePath, suggestions);
     await (0, file_1.modifyFile)(filePath, resultText);
@@ -50322,16 +50665,16 @@ exports.applyReviewCommand = applyReviewCommand;
 
 /***/ }),
 
-/***/ 6248:
+/***/ 5831:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getCommandParams = void 0;
-const validate_1 = __nccwpck_require__(8561);
-const types_1 = __nccwpck_require__(7998);
-const error_1 = __nccwpck_require__(8032);
+const validate_1 = __nccwpck_require__(8668);
+const types_1 = __nccwpck_require__(4497);
+const error_1 = __nccwpck_require__(2265);
 const getCommandParams = async (comment, filePath) => {
     if (!comment)
         throw new Error('Error: Failed to get command correctly.');
@@ -50349,14 +50692,14 @@ exports.getCommandParams = getCommandParams;
 
 /***/ }),
 
-/***/ 6335:
+/***/ 6474:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.reviewCommand = void 0;
-const git_1 = __nccwpck_require__(2483);
+const git_1 = __nccwpck_require__(2082);
 const reviewCommand = async ({ aiInstance, filePath }) => {
     const suggestions = await aiInstance.reviewFile(filePath);
     await (0, git_1.gitPostReplyPullReviewComment)(`🎉 Here are the suggestions:\r\n\r\n${suggestions}`);
@@ -50366,16 +50709,16 @@ exports.reviewCommand = reviewCommand;
 
 /***/ }),
 
-/***/ 9389:
+/***/ 6354:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.translateCommand = void 0;
-const const_1 = __nccwpck_require__(1357);
-const git_1 = __nccwpck_require__(2483);
-const file_1 = __nccwpck_require__(8754);
+const const_1 = __nccwpck_require__(5500);
+const git_1 = __nccwpck_require__(2082);
+const file_1 = __nccwpck_require__(3449);
 const translateCommand = async ({ aiInstance, filePath, targetLang }) => {
     const outputFileContent = await aiInstance.translateFile(filePath, targetLang);
     const outputFilePath = (0, file_1.generateOutputFilePath)({ filePath, targetLang });
@@ -50395,7 +50738,7 @@ exports.translateCommand = translateCommand;
 
 /***/ }),
 
-/***/ 7998:
+/***/ 4497:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -50412,7 +50755,7 @@ var Command;
 
 /***/ }),
 
-/***/ 8561:
+/***/ 8668:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -50423,9 +50766,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.commandValidator = void 0;
 const path_1 = __importDefault(__nccwpck_require__(6928));
-const types_1 = __nccwpck_require__(7998);
-const const_1 = __nccwpck_require__(1357);
-const error_1 = __nccwpck_require__(8032);
+const types_1 = __nccwpck_require__(4497);
+const const_1 = __nccwpck_require__(5500);
+const error_1 = __nccwpck_require__(2265);
 const isValidFileExt = (filename) => {
     const availabilities = new Set([...const_1.availableFileExtensions]);
     const fileExt = path_1.default.extname(filename);
@@ -50462,16 +50805,16 @@ exports.commandValidator = commandValidator;
 
 /***/ }),
 
-/***/ 2483:
+/***/ 2082:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getCommitMessage = exports.authorizeUser = exports.gitCheckout = exports.gitCommitPush = exports.gitSetConfig = exports.gitPostReplyPullReviewComment = exports.gitPostComment = exports.gitAddCommentReaction = exports.logBuildInfo = exports.buildContext = exports.getBuildInput = exports.setBuildFailed = exports.getGitInstance = exports.Reaction = void 0;
-const core_1 = __nccwpck_require__(7627);
-const exec_1 = __nccwpck_require__(9365);
-const github_1 = __nccwpck_require__(3802);
+const core_1 = __nccwpck_require__(9999);
+const exec_1 = __nccwpck_require__(8872);
+const github_1 = __nccwpck_require__(2819);
 var Reaction;
 (function (Reaction) {
     Reaction["PLUS_ONE"] = "+1";
@@ -50575,7 +50918,7 @@ exports.getCommitMessage = getCommitMessage;
 
 /***/ }),
 
-/***/ 1357:
+/***/ 5500:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -50592,16 +50935,16 @@ exports.ACTION_INPUT_KEY_AI_API_KEY = 'aiApiKey';
 
 /***/ }),
 
-/***/ 8032:
+/***/ 2265:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.postError = exports.INVALID_FILE_EXTENSION = exports.COMMAND_USAGE = void 0;
-const const_1 = __nccwpck_require__(1357);
-const types_1 = __nccwpck_require__(7998);
-const git_1 = __nccwpck_require__(2483);
+const const_1 = __nccwpck_require__(5500);
+const types_1 = __nccwpck_require__(4497);
+const git_1 = __nccwpck_require__(2082);
 exports.COMMAND_USAGE = `usage:
 \`\`\`
 /${Object.values(types_1.Command).join('|')} [input file path] [output file path] [target language]
@@ -50619,7 +50962,7 @@ exports.postError = postError;
 
 /***/ }),
 
-/***/ 8754:
+/***/ 3449:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -50772,6 +51115,14 @@ module.exports = require("net");
 
 /***/ }),
 
+/***/ 7598:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("node:crypto");
+
+/***/ }),
+
 /***/ 8474:
 /***/ ((module) => {
 
@@ -50860,7 +51211,7 @@ module.exports = require("timers");
 
 /***/ }),
 
-/***/ 4756:
+/***/ 2375:
 /***/ ((module) => {
 
 "use strict";
@@ -50908,7 +51259,7 @@ module.exports = require("zlib");
 
 /***/ }),
 
-/***/ 3932:
+/***/ 6917:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -50917,10 +51268,10 @@ module.exports = require("zlib");
 const WritableStream = (__nccwpck_require__(7075).Writable)
 const inherits = (__nccwpck_require__(7975).inherits)
 
-const StreamSearch = __nccwpck_require__(4362)
+const StreamSearch = __nccwpck_require__(439)
 
-const PartStream = __nccwpck_require__(8122)
-const HeaderParser = __nccwpck_require__(6001)
+const PartStream = __nccwpck_require__(5341)
+const HeaderParser = __nccwpck_require__(6890)
 
 const DASH = 45
 const B_ONEDASH = Buffer.from('-')
@@ -51129,7 +51480,7 @@ module.exports = Dicer
 
 /***/ }),
 
-/***/ 6001:
+/***/ 6890:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -51137,9 +51488,9 @@ module.exports = Dicer
 
 const EventEmitter = (__nccwpck_require__(8474).EventEmitter)
 const inherits = (__nccwpck_require__(7975).inherits)
-const getLimit = __nccwpck_require__(3215)
+const getLimit = __nccwpck_require__(1954)
 
-const StreamSearch = __nccwpck_require__(4362)
+const StreamSearch = __nccwpck_require__(439)
 
 const B_DCRLF = Buffer.from('\r\n\r\n')
 const RE_CRLF = /\r\n/g
@@ -51237,7 +51588,7 @@ module.exports = HeaderParser
 
 /***/ }),
 
-/***/ 8122:
+/***/ 5341:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -51258,7 +51609,7 @@ module.exports = PartStream
 
 /***/ }),
 
-/***/ 4362:
+/***/ 439:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -51494,7 +51845,7 @@ module.exports = SBMH
 
 /***/ }),
 
-/***/ 8819:
+/***/ 9766:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -51502,11 +51853,11 @@ module.exports = SBMH
 
 const WritableStream = (__nccwpck_require__(7075).Writable)
 const { inherits } = __nccwpck_require__(7975)
-const Dicer = __nccwpck_require__(3932)
+const Dicer = __nccwpck_require__(6917)
 
-const MultipartParser = __nccwpck_require__(7962)
-const UrlencodedParser = __nccwpck_require__(2913)
-const parseParams = __nccwpck_require__(2271)
+const MultipartParser = __nccwpck_require__(4945)
+const UrlencodedParser = __nccwpck_require__(1724)
+const parseParams = __nccwpck_require__(6812)
 
 function Busboy (opts) {
   if (!(this instanceof Busboy)) { return new Busboy(opts) }
@@ -51587,7 +51938,7 @@ module.exports.Dicer = Dicer
 
 /***/ }),
 
-/***/ 7962:
+/***/ 4945:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -51603,12 +51954,12 @@ module.exports.Dicer = Dicer
 const { Readable } = __nccwpck_require__(7075)
 const { inherits } = __nccwpck_require__(7975)
 
-const Dicer = __nccwpck_require__(3932)
+const Dicer = __nccwpck_require__(6917)
 
-const parseParams = __nccwpck_require__(2271)
-const decodeText = __nccwpck_require__(1269)
-const basename = __nccwpck_require__(9434)
-const getLimit = __nccwpck_require__(3215)
+const parseParams = __nccwpck_require__(6812)
+const decodeText = __nccwpck_require__(3772)
+const basename = __nccwpck_require__(4935)
+const getLimit = __nccwpck_require__(1954)
 
 const RE_BOUNDARY = /^boundary$/i
 const RE_FIELD = /^form-data$/i
@@ -51901,15 +52252,15 @@ module.exports = Multipart
 
 /***/ }),
 
-/***/ 2913:
+/***/ 1724:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Decoder = __nccwpck_require__(674)
-const decodeText = __nccwpck_require__(1269)
-const getLimit = __nccwpck_require__(3215)
+const Decoder = __nccwpck_require__(393)
+const decodeText = __nccwpck_require__(3772)
+const getLimit = __nccwpck_require__(1954)
 
 const RE_CHARSET = /^charset$/i
 
@@ -52099,7 +52450,7 @@ module.exports = UrlEncoded
 
 /***/ }),
 
-/***/ 674:
+/***/ 393:
 /***/ ((module) => {
 
 "use strict";
@@ -52161,7 +52512,7 @@ module.exports = Decoder
 
 /***/ }),
 
-/***/ 9434:
+/***/ 4935:
 /***/ ((module) => {
 
 "use strict";
@@ -52183,7 +52534,7 @@ module.exports = function basename (path) {
 
 /***/ }),
 
-/***/ 1269:
+/***/ 3772:
 /***/ (function(module) {
 
 "use strict";
@@ -52305,7 +52656,7 @@ module.exports = decodeText
 
 /***/ }),
 
-/***/ 3215:
+/***/ 1954:
 /***/ ((module) => {
 
 "use strict";
@@ -52329,14 +52680,14 @@ module.exports = function getLimit (limits, name, defaultLimit) {
 
 /***/ }),
 
-/***/ 2271:
+/***/ 6812:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 /* eslint-disable object-property-newline */
 
 
-const decodeText = __nccwpck_require__(1269)
+const decodeText = __nccwpck_require__(3772)
 
 const RE_ENCODED = /%[a-fA-F0-9][a-fA-F0-9]/g
 
@@ -52533,7 +52884,7 @@ module.exports = parseParams
 
 /***/ }),
 
-/***/ 4966:
+/***/ 2417:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -52560,7 +52911,7 @@ exports.defaultOptions = {
     applyRegexFlags: false,
     emailStrategy: "format:email",
     base64Strategy: "contentEncoding:base64",
-    nameStrategy: "ref"
+    nameStrategy: "ref",
 };
 const getDefaultOptions = (options) => (typeof options === "string"
     ? {
@@ -52576,14 +52927,14 @@ exports.getDefaultOptions = getDefaultOptions;
 
 /***/ }),
 
-/***/ 3600:
+/***/ 8173:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getRefs = void 0;
-const Options_js_1 = __nccwpck_require__(4966);
+const Options_js_1 = __nccwpck_require__(2417);
 const getRefs = (options) => {
     const _options = (0, Options_js_1.getDefaultOptions)(options);
     const currentPath = _options.name !== undefined
@@ -52609,7 +52960,7 @@ exports.getRefs = getRefs;
 
 /***/ }),
 
-/***/ 4330:
+/***/ 8797:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -52636,7 +52987,7 @@ exports.setResponseValueAndErrors = setResponseValueAndErrors;
 
 /***/ }),
 
-/***/ 4248:
+/***/ 4499:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -52656,86 +53007,86 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(4966), exports);
-__exportStar(__nccwpck_require__(3600), exports);
-__exportStar(__nccwpck_require__(4330), exports);
-__exportStar(__nccwpck_require__(9168), exports);
-__exportStar(__nccwpck_require__(7257), exports);
-__exportStar(__nccwpck_require__(3482), exports);
-__exportStar(__nccwpck_require__(1368), exports);
-__exportStar(__nccwpck_require__(4447), exports);
-__exportStar(__nccwpck_require__(3975), exports);
-__exportStar(__nccwpck_require__(1904), exports);
-__exportStar(__nccwpck_require__(9095), exports);
-__exportStar(__nccwpck_require__(1882), exports);
-__exportStar(__nccwpck_require__(2125), exports);
-__exportStar(__nccwpck_require__(7882), exports);
-__exportStar(__nccwpck_require__(1890), exports);
-__exportStar(__nccwpck_require__(3384), exports);
-__exportStar(__nccwpck_require__(9277), exports);
-__exportStar(__nccwpck_require__(5185), exports);
-__exportStar(__nccwpck_require__(313), exports);
-__exportStar(__nccwpck_require__(4906), exports);
-__exportStar(__nccwpck_require__(5514), exports);
-__exportStar(__nccwpck_require__(7574), exports);
-__exportStar(__nccwpck_require__(3232), exports);
-__exportStar(__nccwpck_require__(207), exports);
-__exportStar(__nccwpck_require__(7829), exports);
-__exportStar(__nccwpck_require__(3262), exports);
-__exportStar(__nccwpck_require__(5813), exports);
-__exportStar(__nccwpck_require__(1602), exports);
-__exportStar(__nccwpck_require__(2155), exports);
-__exportStar(__nccwpck_require__(7486), exports);
-__exportStar(__nccwpck_require__(9469), exports);
-__exportStar(__nccwpck_require__(1367), exports);
-__exportStar(__nccwpck_require__(2544), exports);
-__exportStar(__nccwpck_require__(6617), exports);
-__exportStar(__nccwpck_require__(7117), exports);
-const zodToJsonSchema_js_1 = __nccwpck_require__(7117);
+__exportStar(__nccwpck_require__(2417), exports);
+__exportStar(__nccwpck_require__(8173), exports);
+__exportStar(__nccwpck_require__(8797), exports);
+__exportStar(__nccwpck_require__(4137), exports);
+__exportStar(__nccwpck_require__(5354), exports);
+__exportStar(__nccwpck_require__(5437), exports);
+__exportStar(__nccwpck_require__(7433), exports);
+__exportStar(__nccwpck_require__(9448), exports);
+__exportStar(__nccwpck_require__(7456), exports);
+__exportStar(__nccwpck_require__(6719), exports);
+__exportStar(__nccwpck_require__(1006), exports);
+__exportStar(__nccwpck_require__(709), exports);
+__exportStar(__nccwpck_require__(6690), exports);
+__exportStar(__nccwpck_require__(9451), exports);
+__exportStar(__nccwpck_require__(67), exports);
+__exportStar(__nccwpck_require__(3047), exports);
+__exportStar(__nccwpck_require__(2374), exports);
+__exportStar(__nccwpck_require__(764), exports);
+__exportStar(__nccwpck_require__(9870), exports);
+__exportStar(__nccwpck_require__(5991), exports);
+__exportStar(__nccwpck_require__(911), exports);
+__exportStar(__nccwpck_require__(459), exports);
+__exportStar(__nccwpck_require__(6665), exports);
+__exportStar(__nccwpck_require__(142), exports);
+__exportStar(__nccwpck_require__(1332), exports);
+__exportStar(__nccwpck_require__(5745), exports);
+__exportStar(__nccwpck_require__(4880), exports);
+__exportStar(__nccwpck_require__(3023), exports);
+__exportStar(__nccwpck_require__(3220), exports);
+__exportStar(__nccwpck_require__(2019), exports);
+__exportStar(__nccwpck_require__(9974), exports);
+__exportStar(__nccwpck_require__(6916), exports);
+__exportStar(__nccwpck_require__(9559), exports);
+__exportStar(__nccwpck_require__(7694), exports);
+__exportStar(__nccwpck_require__(5282), exports);
+const zodToJsonSchema_js_1 = __nccwpck_require__(5282);
 exports["default"] = zodToJsonSchema_js_1.zodToJsonSchema;
 
 
 /***/ }),
 
-/***/ 9168:
+/***/ 4137:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseDef = void 0;
-const zod_1 = __nccwpck_require__(931);
-const any_js_1 = __nccwpck_require__(7257);
-const array_js_1 = __nccwpck_require__(3482);
-const bigint_js_1 = __nccwpck_require__(1368);
-const boolean_js_1 = __nccwpck_require__(4447);
-const branded_js_1 = __nccwpck_require__(3975);
-const catch_js_1 = __nccwpck_require__(1904);
-const date_js_1 = __nccwpck_require__(9095);
-const default_js_1 = __nccwpck_require__(1882);
-const effects_js_1 = __nccwpck_require__(2125);
-const enum_js_1 = __nccwpck_require__(7882);
-const intersection_js_1 = __nccwpck_require__(1890);
-const literal_js_1 = __nccwpck_require__(3384);
-const map_js_1 = __nccwpck_require__(9277);
-const nativeEnum_js_1 = __nccwpck_require__(5185);
-const never_js_1 = __nccwpck_require__(313);
-const null_js_1 = __nccwpck_require__(4906);
-const nullable_js_1 = __nccwpck_require__(5514);
-const number_js_1 = __nccwpck_require__(7574);
-const object_js_1 = __nccwpck_require__(3232);
-const optional_js_1 = __nccwpck_require__(207);
-const pipeline_js_1 = __nccwpck_require__(7829);
-const promise_js_1 = __nccwpck_require__(3262);
-const record_js_1 = __nccwpck_require__(1602);
-const set_js_1 = __nccwpck_require__(2155);
-const string_js_1 = __nccwpck_require__(7486);
-const tuple_js_1 = __nccwpck_require__(9469);
-const undefined_js_1 = __nccwpck_require__(1367);
-const union_js_1 = __nccwpck_require__(2544);
-const unknown_js_1 = __nccwpck_require__(6617);
-const readonly_js_1 = __nccwpck_require__(5813);
-const Options_js_1 = __nccwpck_require__(4966);
+const zod_1 = __nccwpck_require__(6516);
+const any_js_1 = __nccwpck_require__(5354);
+const array_js_1 = __nccwpck_require__(5437);
+const bigint_js_1 = __nccwpck_require__(7433);
+const boolean_js_1 = __nccwpck_require__(9448);
+const branded_js_1 = __nccwpck_require__(7456);
+const catch_js_1 = __nccwpck_require__(6719);
+const date_js_1 = __nccwpck_require__(1006);
+const default_js_1 = __nccwpck_require__(709);
+const effects_js_1 = __nccwpck_require__(6690);
+const enum_js_1 = __nccwpck_require__(9451);
+const intersection_js_1 = __nccwpck_require__(67);
+const literal_js_1 = __nccwpck_require__(3047);
+const map_js_1 = __nccwpck_require__(2374);
+const nativeEnum_js_1 = __nccwpck_require__(764);
+const never_js_1 = __nccwpck_require__(9870);
+const null_js_1 = __nccwpck_require__(5991);
+const nullable_js_1 = __nccwpck_require__(911);
+const number_js_1 = __nccwpck_require__(459);
+const object_js_1 = __nccwpck_require__(6665);
+const optional_js_1 = __nccwpck_require__(142);
+const pipeline_js_1 = __nccwpck_require__(1332);
+const promise_js_1 = __nccwpck_require__(5745);
+const record_js_1 = __nccwpck_require__(3023);
+const set_js_1 = __nccwpck_require__(3220);
+const string_js_1 = __nccwpck_require__(2019);
+const tuple_js_1 = __nccwpck_require__(9974);
+const undefined_js_1 = __nccwpck_require__(6916);
+const union_js_1 = __nccwpck_require__(9559);
+const unknown_js_1 = __nccwpck_require__(7694);
+const readonly_js_1 = __nccwpck_require__(4880);
+const Options_js_1 = __nccwpck_require__(2417);
 function parseDef(def, refs, forceResolution = false) {
     const seenItem = refs.seen.get(def);
     if (refs.override) {
@@ -52856,6 +53207,7 @@ const selectParser = (def, typeName, refs) => {
         case zod_1.ZodFirstPartyTypeKind.ZodSymbol:
             return undefined;
         default:
+            /* c8 ignore next */
             return ((_) => undefined)(typeName);
     }
 };
@@ -52872,7 +53224,7 @@ const addMeta = (def, refs, jsonSchema) => {
 
 /***/ }),
 
-/***/ 7257:
+/***/ 5354:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -52887,21 +53239,22 @@ exports.parseAnyDef = parseAnyDef;
 
 /***/ }),
 
-/***/ 3482:
+/***/ 5437:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseArrayDef = void 0;
-const zod_1 = __nccwpck_require__(931);
-const errorMessages_js_1 = __nccwpck_require__(4330);
-const parseDef_js_1 = __nccwpck_require__(9168);
+const zod_1 = __nccwpck_require__(6516);
+const errorMessages_js_1 = __nccwpck_require__(8797);
+const parseDef_js_1 = __nccwpck_require__(4137);
 function parseArrayDef(def, refs) {
     const res = {
         type: "array",
     };
-    if (def.type?._def?.typeName !== zod_1.ZodFirstPartyTypeKind.ZodAny) {
+    if (def.type?._def &&
+        def.type?._def?.typeName !== zod_1.ZodFirstPartyTypeKind.ZodAny) {
         res.items = (0, parseDef_js_1.parseDef)(def.type._def, {
             ...refs,
             currentPath: [...refs.currentPath, "items"],
@@ -52924,14 +53277,14 @@ exports.parseArrayDef = parseArrayDef;
 
 /***/ }),
 
-/***/ 1368:
+/***/ 7433:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseBigintDef = void 0;
-const errorMessages_js_1 = __nccwpck_require__(4330);
+const errorMessages_js_1 = __nccwpck_require__(8797);
 function parseBigintDef(def, refs) {
     const res = {
         type: "integer",
@@ -52985,7 +53338,7 @@ exports.parseBigintDef = parseBigintDef;
 
 /***/ }),
 
-/***/ 4447:
+/***/ 9448:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -53002,14 +53355,14 @@ exports.parseBooleanDef = parseBooleanDef;
 
 /***/ }),
 
-/***/ 3975:
+/***/ 7456:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseBrandedDef = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
+const parseDef_js_1 = __nccwpck_require__(4137);
 function parseBrandedDef(_def, refs) {
     return (0, parseDef_js_1.parseDef)(_def.type._def, refs);
 }
@@ -53018,14 +53371,14 @@ exports.parseBrandedDef = parseBrandedDef;
 
 /***/ }),
 
-/***/ 1904:
+/***/ 6719:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseCatchDef = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
+const parseDef_js_1 = __nccwpck_require__(4137);
 const parseCatchDef = (def, refs) => {
     return (0, parseDef_js_1.parseDef)(def.innerType._def, refs);
 };
@@ -53034,14 +53387,14 @@ exports.parseCatchDef = parseCatchDef;
 
 /***/ }),
 
-/***/ 9095:
+/***/ 1006:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseDateDef = void 0;
-const errorMessages_js_1 = __nccwpck_require__(4330);
+const errorMessages_js_1 = __nccwpck_require__(8797);
 function parseDateDef(def, refs, overrideDateStrategy) {
     const strategy = overrideDateStrategy ?? refs.dateStrategy;
     if (Array.isArray(strategy)) {
@@ -53092,14 +53445,14 @@ const integerDateParser = (def, refs) => {
 
 /***/ }),
 
-/***/ 1882:
+/***/ 709:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseDefaultDef = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
+const parseDef_js_1 = __nccwpck_require__(4137);
 function parseDefaultDef(_def, refs) {
     return {
         ...(0, parseDef_js_1.parseDef)(_def.innerType._def, refs),
@@ -53111,14 +53464,14 @@ exports.parseDefaultDef = parseDefaultDef;
 
 /***/ }),
 
-/***/ 2125:
+/***/ 6690:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseEffectsDef = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
+const parseDef_js_1 = __nccwpck_require__(4137);
 function parseEffectsDef(_def, refs) {
     return refs.effectStrategy === "input"
         ? (0, parseDef_js_1.parseDef)(_def.schema._def, refs)
@@ -53129,7 +53482,7 @@ exports.parseEffectsDef = parseEffectsDef;
 
 /***/ }),
 
-/***/ 7882:
+/***/ 9451:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -53139,7 +53492,7 @@ exports.parseEnumDef = void 0;
 function parseEnumDef(def) {
     return {
         type: "string",
-        enum: def.values,
+        enum: Array.from(def.values),
     };
 }
 exports.parseEnumDef = parseEnumDef;
@@ -53147,14 +53500,14 @@ exports.parseEnumDef = parseEnumDef;
 
 /***/ }),
 
-/***/ 1890:
+/***/ 67:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseIntersectionDef = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
+const parseDef_js_1 = __nccwpck_require__(4137);
 const isJsonSchema7AllOfType = (type) => {
     if ("type" in type && type.type === "string")
         return false;
@@ -53211,7 +53564,7 @@ exports.parseIntersectionDef = parseIntersectionDef;
 
 /***/ }),
 
-/***/ 3384:
+/***/ 3047:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -53244,15 +53597,15 @@ exports.parseLiteralDef = parseLiteralDef;
 
 /***/ }),
 
-/***/ 9277:
+/***/ 2374:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseMapDef = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
-const record_js_1 = __nccwpck_require__(1602);
+const parseDef_js_1 = __nccwpck_require__(4137);
+const record_js_1 = __nccwpck_require__(3023);
 function parseMapDef(def, refs) {
     if (refs.mapStrategy === "record") {
         return (0, record_js_1.parseRecordDef)(def, refs);
@@ -53281,7 +53634,7 @@ exports.parseMapDef = parseMapDef;
 
 /***/ }),
 
-/***/ 5185:
+/***/ 764:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -53309,7 +53662,7 @@ exports.parseNativeEnumDef = parseNativeEnumDef;
 
 /***/ }),
 
-/***/ 313:
+/***/ 9870:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -53326,7 +53679,7 @@ exports.parseNeverDef = parseNeverDef;
 
 /***/ }),
 
-/***/ 4906:
+/***/ 5991:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -53348,15 +53701,15 @@ exports.parseNullDef = parseNullDef;
 
 /***/ }),
 
-/***/ 5514:
+/***/ 911:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseNullableDef = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
-const union_js_1 = __nccwpck_require__(2544);
+const parseDef_js_1 = __nccwpck_require__(4137);
+const union_js_1 = __nccwpck_require__(9559);
 function parseNullableDef(def, refs) {
     if (["ZodString", "ZodNumber", "ZodBigInt", "ZodBoolean", "ZodNull"].includes(def.innerType._def.typeName) &&
         (!def.innerType._def.checks || !def.innerType._def.checks.length)) {
@@ -53378,7 +53731,7 @@ function parseNullableDef(def, refs) {
             ...refs,
             currentPath: [...refs.currentPath],
         });
-        if (base && '$ref' in base)
+        if (base && "$ref" in base)
             return { allOf: [base], nullable: true };
         return base && { ...base, nullable: true };
     }
@@ -53393,14 +53746,14 @@ exports.parseNullableDef = parseNullableDef;
 
 /***/ }),
 
-/***/ 7574:
+/***/ 459:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseNumberDef = void 0;
-const errorMessages_js_1 = __nccwpck_require__(4330);
+const errorMessages_js_1 = __nccwpck_require__(8797);
 function parseNumberDef(def, refs) {
     const res = {
         type: "number",
@@ -53457,14 +53810,15 @@ exports.parseNumberDef = parseNumberDef;
 
 /***/ }),
 
-/***/ 3232:
+/***/ 6665:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.parseObjectDef = exports.parseObjectDefX = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
+exports.parseObjectDef = void 0;
+const zod_1 = __nccwpck_require__(6516);
+const parseDef_js_1 = __nccwpck_require__(4137);
 function decideAdditionalProperties(def, refs) {
     if (refs.removeAdditionalStrategy === "strict") {
         return def.catchall._def.typeName === "ZodNever"
@@ -53483,66 +53837,23 @@ function decideAdditionalProperties(def, refs) {
             }) ?? true;
     }
 }
-;
-function parseObjectDefX(def, refs) {
-    Object.keys(def.shape()).reduce((schema, key) => {
-        let prop = def.shape()[key];
-        const isOptional = prop.isOptional();
-        if (!isOptional) {
-            prop = { ...prop._def.innerSchema };
-        }
-        const propSchema = (0, parseDef_js_1.parseDef)(prop._def, {
-            ...refs,
-            currentPath: [...refs.currentPath, "properties", key],
-            propertyPath: [...refs.currentPath, "properties", key],
-        });
-        if (propSchema !== undefined) {
-            schema.properties[key] = propSchema;
-            if (!isOptional) {
-                if (!schema.required) {
-                    schema.required = [];
-                }
-                schema.required.push(key);
-            }
-        }
-        return schema;
-    }, {
-        type: "object",
-        properties: {},
-        additionalProperties: decideAdditionalProperties(def, refs),
-    });
-    const result = {
-        type: "object",
-        ...Object.entries(def.shape()).reduce((acc, [propName, propDef]) => {
-            if (propDef === undefined || propDef._def === undefined)
-                return acc;
-            const parsedDef = (0, parseDef_js_1.parseDef)(propDef._def, {
-                ...refs,
-                currentPath: [...refs.currentPath, "properties", propName],
-                propertyPath: [...refs.currentPath, "properties", propName],
-            });
-            if (parsedDef === undefined)
-                return acc;
-            return {
-                properties: { ...acc.properties, [propName]: parsedDef },
-                required: propDef.isOptional()
-                    ? acc.required
-                    : [...acc.required, propName],
-            };
-        }, { properties: {}, required: [] }),
-        additionalProperties: decideAdditionalProperties(def, refs),
-    };
-    if (!result.required.length)
-        delete result.required;
-    return result;
-}
-exports.parseObjectDefX = parseObjectDefX;
 function parseObjectDef(def, refs) {
+    const forceOptionalIntoNullable = refs.target === "openAi";
     const result = {
         type: "object",
         ...Object.entries(def.shape()).reduce((acc, [propName, propDef]) => {
             if (propDef === undefined || propDef._def === undefined)
                 return acc;
+            let propOptional = propDef.isOptional();
+            if (propOptional && forceOptionalIntoNullable) {
+                if (propDef instanceof zod_1.ZodOptional) {
+                    propDef = propDef._def.innerType;
+                }
+                if (!propDef.isNullable()) {
+                    propDef = propDef.nullable();
+                }
+                propOptional = false;
+            }
             const parsedDef = (0, parseDef_js_1.parseDef)(propDef._def, {
                 ...refs,
                 currentPath: [...refs.currentPath, "properties", propName],
@@ -53552,9 +53863,7 @@ function parseObjectDef(def, refs) {
                 return acc;
             return {
                 properties: { ...acc.properties, [propName]: parsedDef },
-                required: propDef.isOptional()
-                    ? acc.required
-                    : [...acc.required, propName],
+                required: propOptional ? acc.required : [...acc.required, propName],
             };
         }, { properties: {}, required: [] }),
         additionalProperties: decideAdditionalProperties(def, refs),
@@ -53568,14 +53877,14 @@ exports.parseObjectDef = parseObjectDef;
 
 /***/ }),
 
-/***/ 207:
+/***/ 142:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseOptionalDef = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
+const parseDef_js_1 = __nccwpck_require__(4137);
 const parseOptionalDef = (def, refs) => {
     if (refs.currentPath.toString() === refs.propertyPath?.toString()) {
         return (0, parseDef_js_1.parseDef)(def.innerType._def, refs);
@@ -53600,14 +53909,14 @@ exports.parseOptionalDef = parseOptionalDef;
 
 /***/ }),
 
-/***/ 7829:
+/***/ 1332:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parsePipelineDef = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
+const parseDef_js_1 = __nccwpck_require__(4137);
 const parsePipelineDef = (def, refs) => {
     if (refs.pipeStrategy === "input") {
         return (0, parseDef_js_1.parseDef)(def.in._def, refs);
@@ -53632,14 +53941,14 @@ exports.parsePipelineDef = parsePipelineDef;
 
 /***/ }),
 
-/***/ 3262:
+/***/ 5745:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parsePromiseDef = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
+const parseDef_js_1 = __nccwpck_require__(4137);
 function parsePromiseDef(def, refs) {
     return (0, parseDef_js_1.parseDef)(def.type._def, refs);
 }
@@ -53648,14 +53957,14 @@ exports.parsePromiseDef = parsePromiseDef;
 
 /***/ }),
 
-/***/ 5813:
+/***/ 4880:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseReadonlyDef = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
+const parseDef_js_1 = __nccwpck_require__(4137);
 const parseReadonlyDef = (def, refs) => {
     return (0, parseDef_js_1.parseDef)(def.innerType._def, refs);
 };
@@ -53664,17 +53973,21 @@ exports.parseReadonlyDef = parseReadonlyDef;
 
 /***/ }),
 
-/***/ 1602:
+/***/ 3023:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseRecordDef = void 0;
-const zod_1 = __nccwpck_require__(931);
-const parseDef_js_1 = __nccwpck_require__(9168);
-const string_js_1 = __nccwpck_require__(7486);
+const zod_1 = __nccwpck_require__(6516);
+const parseDef_js_1 = __nccwpck_require__(4137);
+const string_js_1 = __nccwpck_require__(2019);
+const branded_js_1 = __nccwpck_require__(7456);
 function parseRecordDef(def, refs) {
+    if (refs.target === "openAi") {
+        console.warn("Warning: OpenAI may not support records in schemas! Try an array of key-value pairs instead.");
+    }
     if (refs.target === "openApi3" &&
         def.keyType?._def.typeName === zod_1.ZodFirstPartyTypeKind.ZodEnum) {
         return {
@@ -53702,7 +54015,7 @@ function parseRecordDef(def, refs) {
     }
     if (def.keyType?._def.typeName === zod_1.ZodFirstPartyTypeKind.ZodString &&
         def.keyType._def.checks?.length) {
-        const keyType = Object.entries((0, string_js_1.parseStringDef)(def.keyType._def, refs)).reduce((acc, [key, value]) => (key === "type" ? acc : { ...acc, [key]: value }), {});
+        const { type, ...keyType } = (0, string_js_1.parseStringDef)(def.keyType._def, refs);
         return {
             ...schema,
             propertyNames: keyType,
@@ -53716,6 +54029,15 @@ function parseRecordDef(def, refs) {
             },
         };
     }
+    else if (def.keyType?._def.typeName === zod_1.ZodFirstPartyTypeKind.ZodBranded &&
+        def.keyType._def.type._def.typeName === zod_1.ZodFirstPartyTypeKind.ZodString &&
+        def.keyType._def.type._def.checks?.length) {
+        const { type, ...keyType } = (0, branded_js_1.parseBrandedDef)(def.keyType._def, refs);
+        return {
+            ...schema,
+            propertyNames: keyType,
+        };
+    }
     return schema;
 }
 exports.parseRecordDef = parseRecordDef;
@@ -53723,15 +54045,15 @@ exports.parseRecordDef = parseRecordDef;
 
 /***/ }),
 
-/***/ 2155:
+/***/ 3220:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseSetDef = void 0;
-const errorMessages_js_1 = __nccwpck_require__(4330);
-const parseDef_js_1 = __nccwpck_require__(9168);
+const errorMessages_js_1 = __nccwpck_require__(8797);
+const parseDef_js_1 = __nccwpck_require__(4137);
 function parseSetDef(def, refs) {
     const items = (0, parseDef_js_1.parseDef)(def.valueType._def, {
         ...refs,
@@ -53755,15 +54077,15 @@ exports.parseSetDef = parseSetDef;
 
 /***/ }),
 
-/***/ 7486:
+/***/ 2019:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseStringDef = exports.zodPatterns = void 0;
-const errorMessages_js_1 = __nccwpck_require__(4330);
-let emojiRegex;
+const errorMessages_js_1 = __nccwpck_require__(8797);
+let emojiRegex = undefined;
 /**
  * Generated from the regular expressions found here as of 2024-05-22:
  * https://github.com/colinhacks/zod/blob/master/src/types.ts.
@@ -53806,22 +54128,21 @@ exports.zodPatterns = {
      * Unused
      */
     ipv4: /^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/,
+    ipv4Cidr: /^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\/(3[0-2]|[12]?[0-9])$/,
     /**
      * Unused
      */
     ipv6: /^(([a-f0-9]{1,4}:){7}|::([a-f0-9]{1,4}:){0,6}|([a-f0-9]{1,4}:){1}:([a-f0-9]{1,4}:){0,5}|([a-f0-9]{1,4}:){2}:([a-f0-9]{1,4}:){0,4}|([a-f0-9]{1,4}:){3}:([a-f0-9]{1,4}:){0,3}|([a-f0-9]{1,4}:){4}:([a-f0-9]{1,4}:){0,2}|([a-f0-9]{1,4}:){5}:([a-f0-9]{1,4}:){0,1})([a-f0-9]{1,4}|(((25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([0-9]{1,2}))\.){3}((25[0-5])|(2[0-4][0-9])|(1[0-9]{2})|([0-9]{1,2})))$/,
+    ipv6Cidr: /^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))\/(12[0-8]|1[01][0-9]|[1-9]?[0-9])$/,
     base64: /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/,
+    base64url: /^([0-9a-zA-Z-_]{4})*(([0-9a-zA-Z-_]{2}(==)?)|([0-9a-zA-Z-_]{3}(=)?))?$/,
     nanoid: /^[a-zA-Z0-9_-]{21}$/,
+    jwt: /^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]*$/,
 };
 function parseStringDef(def, refs) {
     const res = {
         type: "string",
     };
-    function processPattern(value) {
-        return refs.patternStrategy === "escape"
-            ? escapeNonAlphaNumeric(value)
-            : value;
-    }
     if (def.checks) {
         for (const check of def.checks) {
             switch (check.kind) {
@@ -53864,10 +54185,10 @@ function parseStringDef(def, refs) {
                     addPattern(res, exports.zodPatterns.cuid2, check.message, refs);
                     break;
                 case "startsWith":
-                    addPattern(res, RegExp(`^${processPattern(check.value)}`), check.message, refs);
+                    addPattern(res, RegExp(`^${escapeLiteralCheckValue(check.value, refs)}`), check.message, refs);
                     break;
                 case "endsWith":
-                    addPattern(res, RegExp(`${processPattern(check.value)}$`), check.message, refs);
+                    addPattern(res, RegExp(`${escapeLiteralCheckValue(check.value, refs)}$`), check.message, refs);
                     break;
                 case "datetime":
                     addFormat(res, "date-time", check.message, refs);
@@ -53890,7 +54211,7 @@ function parseStringDef(def, refs) {
                         : check.value, check.message, refs);
                     break;
                 case "includes": {
-                    addPattern(res, RegExp(processPattern(check.value)), check.message, refs);
+                    addPattern(res, RegExp(escapeLiteralCheckValue(check.value, refs)), check.message, refs);
                     break;
                 }
                 case "ip": {
@@ -53902,8 +54223,23 @@ function parseStringDef(def, refs) {
                     }
                     break;
                 }
+                case "base64url":
+                    addPattern(res, exports.zodPatterns.base64url, check.message, refs);
+                    break;
+                case "jwt":
+                    addPattern(res, exports.zodPatterns.jwt, check.message, refs);
+                    break;
+                case "cidr": {
+                    if (check.version !== "v6") {
+                        addPattern(res, exports.zodPatterns.ipv4Cidr, check.message, refs);
+                    }
+                    if (check.version !== "v4") {
+                        addPattern(res, exports.zodPatterns.ipv6Cidr, check.message, refs);
+                    }
+                    break;
+                }
                 case "emoji":
-                    addPattern(res, exports.zodPatterns.emoji, check.message, refs);
+                    addPattern(res, exports.zodPatterns.emoji(), check.message, refs);
                     break;
                 case "ulid": {
                     addPattern(res, exports.zodPatterns.ulid, check.message, refs);
@@ -53934,6 +54270,7 @@ function parseStringDef(def, refs) {
                 case "trim":
                     break;
                 default:
+                    /* c8 ignore next */
                     ((_) => { })(check);
             }
         }
@@ -53941,10 +54278,24 @@ function parseStringDef(def, refs) {
     return res;
 }
 exports.parseStringDef = parseStringDef;
-const escapeNonAlphaNumeric = (value) => Array.from(value)
-    .map((c) => (/[a-zA-Z0-9]/.test(c) ? c : `\\${c}`))
-    .join("");
-const addFormat = (schema, value, message, refs) => {
+function escapeLiteralCheckValue(literal, refs) {
+    return refs.patternStrategy === "escape"
+        ? escapeNonAlphaNumeric(literal)
+        : literal;
+}
+const ALPHA_NUMERIC = new Set("ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvxyz0123456789");
+function escapeNonAlphaNumeric(source) {
+    let result = "";
+    for (let i = 0; i < source.length; i++) {
+        if (!ALPHA_NUMERIC.has(source[i])) {
+            result += "\\";
+        }
+        result += source[i];
+    }
+    return result;
+}
+// Adds a "format" keyword to the schema. If a format exists, both formats will be joined in an allOf-node, along with subsequent ones.
+function addFormat(schema, value, message, refs) {
     if (schema.format || schema.anyOf?.some((x) => x.format)) {
         if (!schema.anyOf) {
             schema.anyOf = [];
@@ -53974,8 +54325,9 @@ const addFormat = (schema, value, message, refs) => {
     else {
         (0, errorMessages_js_1.setResponseValueAndErrors)(schema, "format", value, message, refs);
     }
-};
-const addPattern = (schema, regex, message, refs) => {
+}
+// Adds a "pattern" keyword to the schema. If a pattern exists, both patterns will be joined in an allOf-node, along with subsequent ones.
+function addPattern(schema, regex, message, refs) {
     if (schema.pattern || schema.allOf?.some((x) => x.pattern)) {
         if (!schema.allOf) {
             schema.allOf = [];
@@ -53997,20 +54349,20 @@ const addPattern = (schema, regex, message, refs) => {
             }
         }
         schema.allOf.push({
-            pattern: processRegExp(regex, refs),
+            pattern: stringifyRegExpWithFlags(regex, refs),
             ...(message &&
                 refs.errorMessages && { errorMessage: { pattern: message } }),
         });
     }
     else {
-        (0, errorMessages_js_1.setResponseValueAndErrors)(schema, "pattern", processRegExp(regex, refs), message, refs);
+        (0, errorMessages_js_1.setResponseValueAndErrors)(schema, "pattern", stringifyRegExpWithFlags(regex, refs), message, refs);
     }
-};
+}
 // Mutate z.string.regex() in a best attempt to accommodate for regex flags when applyRegexFlags is true
-const processRegExp = (regexOrFunction, refs) => {
-    const regex = typeof regexOrFunction === "function" ? regexOrFunction() : regexOrFunction;
-    if (!refs.applyRegexFlags || !regex.flags)
+function stringifyRegExpWithFlags(regex, refs) {
+    if (!refs.applyRegexFlags || !regex.flags) {
         return regex.source;
+    }
     // Currently handled flags
     const flags = {
         i: regex.flags.includes("i"),
@@ -54078,26 +54430,26 @@ const processRegExp = (regexOrFunction, refs) => {
         }
     }
     try {
-        const regexTest = new RegExp(pattern);
+        new RegExp(pattern);
     }
     catch {
         console.warn(`Could not convert regex pattern at ${refs.currentPath.join("/")} to a flag-independent form! Falling back to the flag-ignorant source`);
         return regex.source;
     }
     return pattern;
-};
+}
 
 
 /***/ }),
 
-/***/ 9469:
+/***/ 9974:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseTupleDef = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
+const parseDef_js_1 = __nccwpck_require__(4137);
 function parseTupleDef(def, refs) {
     if (def.rest) {
         return {
@@ -54134,7 +54486,7 @@ exports.parseTupleDef = parseTupleDef;
 
 /***/ }),
 
-/***/ 1367:
+/***/ 6916:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -54151,14 +54503,14 @@ exports.parseUndefinedDef = parseUndefinedDef;
 
 /***/ }),
 
-/***/ 2544:
+/***/ 9559:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parseUnionDef = exports.primitiveMappings = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
+const parseDef_js_1 = __nccwpck_require__(4137);
 exports.primitiveMappings = {
     ZodString: "string",
     ZodNumber: "number",
@@ -54243,7 +54595,7 @@ const asAnyOf = (def, refs) => {
 
 /***/ }),
 
-/***/ 6617:
+/***/ 7694:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -54258,15 +54610,15 @@ exports.parseUnknownDef = parseUnknownDef;
 
 /***/ }),
 
-/***/ 7117:
+/***/ 5282:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.zodToJsonSchema = void 0;
-const parseDef_js_1 = __nccwpck_require__(9168);
-const Refs_js_1 = __nccwpck_require__(3600);
+const parseDef_js_1 = __nccwpck_require__(4137);
+const Refs_js_1 = __nccwpck_require__(8173);
 const zodToJsonSchema = (schema, options) => {
     const refs = (0, Refs_js_1.getRefs)(options);
     const definitions = typeof options === "object" && options.definitions
@@ -54318,8 +54670,15 @@ const zodToJsonSchema = (schema, options) => {
     if (refs.target === "jsonSchema7") {
         combined.$schema = "http://json-schema.org/draft-07/schema#";
     }
-    else if (refs.target === "jsonSchema2019-09") {
+    else if (refs.target === "jsonSchema2019-09" || refs.target === "openAi") {
         combined.$schema = "https://json-schema.org/draft/2019-09/schema#";
+    }
+    if (refs.target === "openAi" &&
+        ("anyOf" in combined ||
+            "oneOf" in combined ||
+            "allOf" in combined ||
+            ("type" in combined && Array.isArray(combined.type)))) {
+        console.warn("Warning: OpenAI may not support schemas with unions as roots! Try wrapping it in an object property.");
     }
     return combined;
 };
@@ -54328,160 +54687,132 @@ exports.zodToJsonSchema = zodToJsonSchema;
 
 /***/ }),
 
-/***/ 1083:
+/***/ 2087:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-function createParser(onParse) {
-  let isFirstChunk;
-  let buffer;
-  let startingPosition;
-  let startingFieldLength;
-  let eventId;
-  let eventName;
-  let data;
-  reset();
-  return {
-    feed,
-    reset
-  };
-  function reset() {
-    isFirstChunk = true;
-    buffer = "";
-    startingPosition = 0;
-    startingFieldLength = -1;
-    eventId = void 0;
-    eventName = void 0;
-    data = "";
+Object.defineProperty(exports, "__esModule", ({ value: !0 }));
+var __defProp = Object.defineProperty, __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: !0, configurable: !0, writable: !0, value }) : obj[key] = value, __publicField = (obj, key, value) => __defNormalProp(obj, typeof key != "symbol" ? key + "" : key, value);
+class ParseError extends Error {
+  constructor(message, options) {
+    super(message), __publicField(this, "type"), __publicField(this, "field"), __publicField(this, "value"), __publicField(this, "line"), this.name = "ParseError", this.type = options.type, this.field = options.field, this.value = options.value, this.line = options.line;
   }
-  function feed(chunk) {
-    buffer = buffer ? buffer + chunk : chunk;
-    if (isFirstChunk && hasBom(buffer)) {
-      buffer = buffer.slice(BOM.length);
-    }
-    isFirstChunk = false;
-    const length = buffer.length;
-    let position = 0;
-    let discardTrailingNewline = false;
-    while (position < length) {
-      if (discardTrailingNewline) {
-        if (buffer[position] === "\n") {
-          ++position;
-        }
-        discardTrailingNewline = false;
-      }
-      let lineLength = -1;
-      let fieldLength = startingFieldLength;
-      let character;
-      for (let index = startingPosition; lineLength < 0 && index < length; ++index) {
-        character = buffer[index];
-        if (character === ":" && fieldLength < 0) {
-          fieldLength = index - position;
-        } else if (character === "\r") {
-          discardTrailingNewline = true;
-          lineLength = index - position;
-        } else if (character === "\n") {
-          lineLength = index - position;
-        }
-      }
-      if (lineLength < 0) {
-        startingPosition = length - position;
-        startingFieldLength = fieldLength;
-        break;
-      } else {
-        startingPosition = 0;
-        startingFieldLength = -1;
-      }
-      parseEventStreamLine(buffer, position, fieldLength, lineLength);
-      position += lineLength + 1;
-    }
-    if (position === length) {
-      buffer = "";
-    } else if (position > 0) {
-      buffer = buffer.slice(position);
-    }
+}
+function noop(_arg) {
+}
+function createParser(callbacks) {
+  const { onEvent = noop, onError = noop, onRetry = noop, onComment } = callbacks;
+  let incompleteLine = "", isFirstChunk = !0, id, data = "", eventType = "";
+  function feed(newChunk) {
+    const chunk = isFirstChunk ? newChunk.replace(/^\xEF\xBB\xBF/, "") : newChunk, [complete, incomplete] = splitLines(`${incompleteLine}${chunk}`);
+    for (const line of complete)
+      parseLine(line);
+    incompleteLine = incomplete, isFirstChunk = !1;
   }
-  function parseEventStreamLine(lineBuffer, index, fieldLength, lineLength) {
-    if (lineLength === 0) {
-      if (data.length > 0) {
-        onParse({
-          type: "event",
-          id: eventId,
-          event: eventName || void 0,
-          data: data.slice(0, -1)
-          // remove trailing newline
-        });
-
-        data = "";
-        eventId = void 0;
-      }
-      eventName = void 0;
+  function parseLine(line) {
+    if (line === "") {
+      dispatchEvent();
       return;
     }
-    const noValue = fieldLength < 0;
-    const field = lineBuffer.slice(index, index + (noValue ? lineLength : fieldLength));
-    let step = 0;
-    if (noValue) {
-      step = lineLength;
-    } else if (lineBuffer[index + fieldLength + 1] === " ") {
-      step = fieldLength + 2;
-    } else {
-      step = fieldLength + 1;
+    if (line.startsWith(":")) {
+      onComment && onComment(line.slice(line.startsWith(": ") ? 2 : 1));
+      return;
     }
-    const position = index + step;
-    const valueLength = lineLength - step;
-    const value = lineBuffer.slice(position, position + valueLength).toString();
-    if (field === "data") {
-      data += value ? "".concat(value, "\n") : "\n";
-    } else if (field === "event") {
-      eventName = value;
-    } else if (field === "id" && !value.includes("\0")) {
-      eventId = value;
-    } else if (field === "retry") {
-      const retry = parseInt(value, 10);
-      if (!Number.isNaN(retry)) {
-        onParse({
-          type: "reconnect-interval",
-          value: retry
-        });
-      }
+    const fieldSeparatorIndex = line.indexOf(":");
+    if (fieldSeparatorIndex !== -1) {
+      const field = line.slice(0, fieldSeparatorIndex), offset = line[fieldSeparatorIndex + 1] === " " ? 2 : 1, value = line.slice(fieldSeparatorIndex + offset);
+      processField(field, value, line);
+      return;
+    }
+    processField(line, "", line);
+  }
+  function processField(field, value, line) {
+    switch (field) {
+      case "event":
+        eventType = value;
+        break;
+      case "data":
+        data = `${data}${value}
+`;
+        break;
+      case "id":
+        id = value.includes("\0") ? void 0 : value;
+        break;
+      case "retry":
+        /^\d+$/.test(value) ? onRetry(parseInt(value, 10)) : onError(
+          new ParseError(`Invalid \`retry\` value: "${value}"`, {
+            type: "invalid-retry",
+            value,
+            line
+          })
+        );
+        break;
+      default:
+        onError(
+          new ParseError(
+            `Unknown field "${field.length > 20 ? `${field.slice(0, 20)}\u2026` : field}"`,
+            { type: "unknown-field", field, value, line }
+          )
+        );
+        break;
     }
   }
+  function dispatchEvent() {
+    data.length > 0 && onEvent({
+      id,
+      event: eventType || void 0,
+      // If the data buffer's last character is a U+000A LINE FEED (LF) character,
+      // then remove the last character from the data buffer.
+      data: data.endsWith(`
+`) ? data.slice(0, -1) : data
+    }), id = void 0, data = "", eventType = "";
+  }
+  function reset(options = {}) {
+    incompleteLine && options.consume && parseLine(incompleteLine), id = void 0, data = "", eventType = "", incompleteLine = "";
+  }
+  return { feed, reset };
 }
-const BOM = [239, 187, 191];
-function hasBom(buffer) {
-  return BOM.every((charCode, index) => buffer.charCodeAt(index) === charCode);
+function splitLines(chunk) {
+  const lines = [];
+  let incompleteLine = "";
+  const totalLength = chunk.length;
+  for (let i = 0; i < totalLength; i++) {
+    const char = chunk[i];
+    char === "\r" && chunk[i + 1] === `
+` ? (lines.push(incompleteLine), incompleteLine = "", i++) : char === "\r" || char === `
+` ? (lines.push(incompleteLine), incompleteLine = "") : incompleteLine += char;
+  }
+  return [lines, incompleteLine];
 }
+exports.ParseError = ParseError;
 exports.createParser = createParser;
 //# sourceMappingURL=index.cjs.map
 
 
 /***/ }),
 
-/***/ 585:
+/***/ 3005:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-var index = __nccwpck_require__(1083);
+Object.defineProperty(exports, "__esModule", ({ value: !0 }));
+var index = __nccwpck_require__(2087);
 class EventSourceParserStream extends TransformStream {
-  constructor() {
+  constructor({ onError, onRetry, onComment } = {}) {
     let parser;
     super({
       start(controller) {
-        parser = index.createParser(event => {
-          if (event.type === "event") {
+        parser = index.createParser({
+          onEvent: (event) => {
             controller.enqueue(event);
-          }
+          },
+          onError(error) {
+            onError === "terminate" ? controller.error(error) : typeof onError == "function" && onError(error);
+          },
+          onRetry,
+          onComment
         });
       },
       transform(chunk) {
@@ -54490,35 +54821,49 @@ class EventSourceParserStream extends TransformStream {
     });
   }
 }
+exports.ParseError = index.ParseError;
 exports.EventSourceParserStream = EventSourceParserStream;
 //# sourceMappingURL=stream.cjs.map
 
 
 /***/ }),
 
-/***/ 7498:
+/***/ 9707:
 /***/ ((module) => {
 
+// This alphabet uses `A-Za-z0-9_-` symbols.
+// The order of characters is optimized for better gzip and brotli compression.
+// References to the same file (works both for gzip and brotli):
+// `'use`, `andom`, and `rict'`
+// References to the brotli default dictionary:
+// `-26T`, `1983`, `40px`, `75px`, `bush`, `jack`, `mind`, `very`, and `wolf`
 let urlAlphabet =
   'useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict'
+
 let customAlphabet = (alphabet, defaultSize = 21) => {
   return (size = defaultSize) => {
     let id = ''
-    let i = size
+    // A compact alternative for `for (var i = 0; i < step; i++)`.
+    let i = size | 0
     while (i--) {
+      // `| 0` is more compact and faster than `Math.floor()`.
       id += alphabet[(Math.random() * alphabet.length) | 0]
     }
     return id
   }
 }
+
 let nanoid = (size = 21) => {
   let id = ''
-  let i = size
+  // A compact alternative for `for (var i = 0; i < step; i++)`.
+  let i = size | 0
   while (i--) {
+    // `| 0` is more compact and faster than `Math.floor()`.
     id += urlAlphabet[(Math.random() * 64) | 0]
   }
   return id
 }
+
 module.exports = { nanoid, customAlphabet }
 
 
@@ -54569,15 +54914,15 @@ var __webpack_exports__ = {};
 var exports = __webpack_exports__;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const ai_1 = __nccwpck_require__(697);
-const const_1 = __nccwpck_require__(1357);
-const parse_1 = __nccwpck_require__(6248);
-const translate_1 = __nccwpck_require__(9389);
-const git_1 = __nccwpck_require__(2483);
-const types_1 = __nccwpck_require__(7998);
-const review_1 = __nccwpck_require__(6335);
-const apply_review_1 = __nccwpck_require__(9844);
-const error_1 = __nccwpck_require__(8032);
+const ai_1 = __nccwpck_require__(7500);
+const const_1 = __nccwpck_require__(5500);
+const parse_1 = __nccwpck_require__(5831);
+const translate_1 = __nccwpck_require__(6354);
+const git_1 = __nccwpck_require__(2082);
+const types_1 = __nccwpck_require__(4497);
+const review_1 = __nccwpck_require__(6474);
+const apply_review_1 = __nccwpck_require__(3429);
+const error_1 = __nccwpck_require__(2265);
 const commands = {
     [types_1.Command.MtrTranslate]: async ({ aiInstance, filePath, targetLang }) => {
         await (0, translate_1.translateCommand)({ aiInstance, filePath, targetLang });
