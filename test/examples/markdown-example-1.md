@@ -2,7 +2,7 @@
 
 ## Prehistory (Before 3000 BCE)
 
-The earliest stages of human history are known as prehistory, marked by the development of tools, fire, and early communication through cave art. Humans lived as hunter-gatherers, with evidence of their existence found in Africa as early as 200,000 years ago.
+The earliest stages of human history are known as prehistory, marked by the development of tools, fire, and early communication through cave art. Humans lived as hunter-gatherers, with evidence of their existence found in Africa as early as 200,001 years ago.
 
 ### Key Developments
 
