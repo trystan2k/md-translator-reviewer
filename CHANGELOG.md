@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.2.0](https://github.com/trystan2k/md-translator-reviewer/compare/v1.1.1...v1.2.0) (2025-02-05)
+
+
+### Chore
+
+* **config:** update pre-commit git hook to add build file generate after build command ([20e9f28](https://github.com/trystan2k/md-translator-reviewer/commit/20e9f284c79b49ebf06acd7db6c2cf8de2f20219))
+* **deps:** update dependencies ([65f6c19](https://github.com/trystan2k/md-translator-reviewer/commit/65f6c1923c391fe31dab0edd3cab30b06575c327))
+
 ## [1.1.1](https://github.com/trystan2k/md-translator-reviewer/compare/v1.1.0...v1.1.1) (2024-10-02)
 
 ## [1.1.0](https://github.com/trystan2k/md-translator-reviewer/compare/v1.0.1...v1.1.0) (2024-10-02)
